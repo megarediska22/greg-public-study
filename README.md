@@ -33,7 +33,7 @@ npm run preview
 - The available course is A1 with these three lessons; A2, B1 and B2 content is not included.
 - Progress and theme preferences stay in the current browser and do not sync across devices.
 - There is no account system, backend or AI tutor.
-- The site has not been deployed.
+- The production site is static and requires no server-side services.
 
 ## Organization
 
@@ -51,15 +51,19 @@ npm run preview
 - `docs/LESSON_SCHEMA.md`: authoring, completion rules and persistence contract.
 - `assets/brand`: official project logos. Development-only third-party reference screenshots remain local and are excluded from Git.
 
-## Static hosting / GitHub Pages
+## GitHub Pages
 
-Hash routes work without server rewrites, including direct refreshes under repository subpaths. Default Vite base is `./` for portable static assets. To configure an explicit repository path, create `.env.production.local`:
+The repository workflow at `.github/workflows/deploy.yml` runs on pushes to `main` and can also be started manually. It installs dependencies, runs type checks and tests, builds with the repository base path, and publishes only `dist/` to GitHub Pages. Hash routes work under the repository subpath without server rewrites.
+
+The expected public URL is <https://megarediska22.github.io/greg-public-study/>.
+
+The default Vite base remains `./` for portable static builds. To override it for a local production build, create `.env.production.local`:
 
 ```dotenv
 VITE_BASE_PATH=/YOUR_REPOSITORY_NAME/
 ```
 
-Run `npm run build`; output is `dist/`. A future approved Pages deployment can upload that directory as the Pages artifact. No publishing workflow or remote changes are performed in Phase 3.
+Run `npm run build`; output is `dist/`. The deployment workflow passes the same repository path directly as `VITE_BASE_PATH`.
 
 For the verified repository subpath, use the same base configuration for the build and preview server:
 
@@ -70,7 +74,7 @@ VITE_BASE_PATH=/greg-public-study/ npm run preview -- --port 4173 --strictPort
 
 Open `http://127.0.0.1:4173/greg-public-study/`. Direct hash routes and refreshes work under that path. Running preview with a different base can serve fallback HTML at asset URLs, so keep the values aligned. The `.env.production.local` method above also applies the same value to both commands.
 
-Publishing, remote repository changes, additional lessons/levels and later phases require separate approval.
+Additional lessons/levels and later phases require separate approval.
 
 ## Verification
 
