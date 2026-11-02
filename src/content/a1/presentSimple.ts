@@ -13,32 +13,55 @@ export const presentSimpleLesson: Lesson = {
       heading: "Что вы делаете каждый день?",
       text: "Для привычек и регулярных действий используем Present Simple. В этом уроке расскажем о работе, учёбе и отдыхе, а затем скажем, чего мы обычно не делаем. Вопросы с такими глаголами изучим в следующем уроке.",
       example: "I work at home. She works at home.", translation: "Я работаю дома. Она работает дома." },
-    { id: "theory", type: "theory", completion: "acknowledge", title: "Теория", description: "Правило и примеры",
-      heading: "Привычки и повседневные дела.",
-      text: `Present Simple описывает обычные действия, привычки и предпочтения. Порядок слов: кто + действие + остальные слова. С I, you, we, they используйте начальную форму глагола: I work at home. — Я работаю дома. They play tennis. — Они играют в теннис. Часто добавляют every day — каждый день: We study English every day. — Мы учим английский каждый день.
-
-С he, she, it в утверждениях к глаголу обычно добавляют -s: work → works, like → likes, play → plays. He likes coffee. — Он любит кофе. It works. — Это работает.
-
-После -s, -sh, -ch, -x, -z обычно добавляют -es: watch → watches (смотреть), wash → washes (мыть). Запомните go → goes (ходить) и do → does (делать). Если перед конечной y стоит согласная, замените y на -ies: study → studies (учиться). После гласной y сохраняется, добавляется -s: play → plays (играть).
-
-Отрицание с I, you, we, they: кто + do not + начальная форма глагола. I do not like coffee. = I don't like coffee. — Я не люблю кофе. They do not play tennis. = They don't play tennis. — Они не играют в теннис.
-
-Отрицание с he, she, it: кто + does not + начальная форма глагола. She does not work at home. = She doesn't work at home. — Она не работает дома. He does not study English. = He doesn't study English. — Он не учит английский. Окончание -s/-es/-ies в отрицании исчезает: doesn't watch, doesn't go, doesn't study. Don't = do not; doesn't = does not.
-
-Слова для практики: work — работать; study English — учить английский; watch TV — смотреть телевизор; play tennis — играть в теннис; like coffee — любить кофе; go to school — ходить в школу; at home — дома; every day — каждый день. She watches TV every day. — Она смотрит телевизор каждый день.
-
-Глагол to be из первого урока подчиняется своему правилу: She isn't tired. — Она не устала. С обычным глаголом действия нужен don't или doesn't: She doesn't work. — Она не работает. Не добавляйте am/is/are к таким фразам.`,
-      tableCaption: "Утверждения и отрицания в Present Simple", rows: [
-        { subject: "I / You / We / They", form: "work", example: "We work at home.", translation: "Мы работаем дома." },
-        { subject: "He / She / It", form: "works", example: "He works at home.", translation: "Он работает дома." },
-        { subject: "She", form: "watches", example: "She watches TV.", translation: "Она смотрит телевизор." },
-        { subject: "He", form: "studies", example: "He studies English.", translation: "Он учит английский." },
-        { subject: "She", form: "plays", example: "She plays tennis.", translation: "Она играет в теннис." },
-        { subject: "He", form: "goes", example: "He goes to school.", translation: "Он ходит в школу." },
-        { subject: "I / You / We / They", form: "don't + work", example: "They don't work at home.", translation: "Они не работают дома." },
-        { subject: "He / She / It", form: "doesn't + work", example: "She doesn't work at home.", translation: "Она не работает дома." },
-      ], noteTitle: "Частые ошибки",
-      note: "He works, а не He work. She watches, а не She watchs. He studies, а не He studys. В отрицании: She doesn't work, а не She doesn't works. С we используется don't, а не doesn't. Для «я работаю» говорите I work, а не I am work." },
+    {
+      "id": "theory",
+      "type": "theory",
+      "completion": "acknowledge",
+      "title": "Теория",
+      "description": "Правило и примеры",
+      "heading": "О том, что бывает обычно.",
+      "text": "Работа, привычки, любимый кофе — это Present Simple. Сначала говорим кто, затем — что делает.",
+      "tableCaption": "В утверждении окончание зависит от того, кто действует",
+      "rows": [
+        {
+          "subject": "I / You / We / They",
+          "form": "work",
+          "example": "I work at home.",
+          "translation": "Я работаю дома."
+        },
+        {
+          "subject": "He / She / It",
+          "form": "works",
+          "example": "Gregory works every day.",
+          "translation": "Грегори работает каждый день."
+        }
+      ],
+      "blocks": [
+        {
+          "title": "С he, she, it добавьте окончание",
+          "text": "Обычно добавляем -s. Имя одного человека работает так же: Gregory = he, Natasha = she.",
+          "formula": "work → works · like → likes"
+        },
+        {
+          "title": "Три подсказки для написания",
+          "text": "После -s, -sh, -ch, -x, -z добавляем -es. Согласная + y: меняем y на -ies. Гласная + y: сохраняем y и добавляем -s. Запомните go → goes; do → does.",
+          "formula": "watch → watches · study → studies · play → plays"
+        },
+        {
+          "title": "Чтобы сказать «не»",
+          "text": "С I, you, we, they используйте do not = don’t. С he, she, it — does not = doesn’t.",
+          "formula": "Кто + don’t/doesn’t + глагол без окончания",
+          "example": "Natasha doesn't like coffee.",
+          "translation": "Наташа не любит кофе."
+        },
+        {
+          "title": "Слова для практики",
+          "text": "work — работать; like — любить; watch TV — смотреть телевизор; study English — учить английский; play tennis — играть в теннис; go to school — ходить в школу; every day — каждый день."
+        }
+      ],
+      "noteTitle": "Doesn’t забирает окончание себе",
+      "note": "She works → She doesn’t work. He studies → He doesn’t study. После doesn’t нужен глагол без -s/-es/-ies. Не добавляйте am/is/are: I work, а не I am work."
+    },
     { id: "choice", type: "exercise", completion: "all-correct", title: "Выбор ответа", description: "Упражнение 1", questions: [
       { id: "ps-works", type: "choice", instruction: "Выберите форму: «Он работает дома»", prompt: "He ___ at home.", options: ["work", "works", "workes"], acceptedAnswers: ["works"], explanation: "С he в утверждении добавьте -s: He works at home. — Он работает дома." },
       { id: "ps-watches", type: "choice", instruction: "Выберите форму: «Она смотрит телевизор каждый день»", prompt: "She ___ TV every day.", options: ["watch", "watchs", "watches"], acceptedAnswers: ["watches"], explanation: "После -ch добавляется -es: watch → watches. She watches TV every day. — Она смотрит телевизор каждый день." },

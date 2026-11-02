@@ -1,6 +1,6 @@
 # Lesson engine contract
 
-Phase 3 supplies `src/content/a1/toBe.ts`, `presentSimple.ts` and `doDoes.ts`: three production lessons with seven steps and 15 questions each. The historical three-question Phase 2 sample is a test-only fixture at `tests/fixtures/sampleLesson.ts`. It is never imported by the production catalog. The authoritative TypeScript types are unchanged in `src/types/lesson.ts`.
+Phase 3 supplies `src/content/a1/toBe.ts`, `presentSimple.ts` and `doDoes.ts`: three production lessons with seven steps and 15 questions each. The historical three-question Phase 2 sample is a test-only fixture at `tests/fixtures/sampleLesson.ts`. It is never imported by the production catalog. The authoritative TypeScript types are in `src/types/lesson.ts`.
 
 ## Lesson and catalog
 
@@ -17,12 +17,18 @@ Every step has `id`, `title`, `description`, `type` and `completion`.
 | Type | Content | Completion |
 | --- | --- | --- |
 | `intro` | `heading`, `text`, `example`, `translation` | `acknowledge` |
-| `theory` | `heading`, `text`, `tableCaption`, `rows`, `noteTitle`, `note` | `acknowledge` |
+| `theory` | `heading`, `text`, `tableCaption`, `rows`, optional `blocks`, `noteTitle`, `note` | `acknowledge` |
 | `exercise` | Nonempty `questions` array | `all-correct` |
 | `review` | Mistakes derived from saved attempts | `acknowledge` |
 | `summary` | Scores derived from saved attempts | `acknowledge` |
 
 Each theory row has `subject`, `form`, `example`, `translation`. Theory text is rendered as paragraphs separated by a blank line; no HTML is accepted. Production validation enforces exactly seven ordered steps: intro, theory, choice exercise, blank exercise, written exercise, review, summary. Each exercise must contain at least five questions of the specified type; all must be solved before that section completes. Translated introductory examples, theory table rows and common-mistake explanations are required.
+
+### Compact theory presentation
+
+The optional `blocks` array adds short concepts after the table and before the closing tip. Each block has a unique `title` and a short `text`; optional `formula` renders in bold. Optional `example` and `translation` must be supplied together and render as a separate example panel, with the English text marked `lang="en"`. Newlines may separate related examples. Table rows may also include `subjectTranslation` below the English subject. All fields remain plain text; no Markdown/HTML parsing or new dependency is introduced.
+
+These additions are backward-compatible: existing lessons without `blocks` or `subjectTranslation` continue to validate and render. They do not change IDs, completion rules, questions, grading, routing or the storage schema. Keep each concept brief, use a few examples, and preserve rules needed by the existing exercises. Gregory and Natasha in the examples are fictional instructional characters.
 
 Reading acknowledgement happens only through the explicit Next action. Opening a route never completes a step. Next cannot complete an exercise. Review acknowledgement unlocks the summary; explicitly finishing the summary completes the lesson and unlocks the next. Completed steps remain open, and correct answers remain visible with their explanations. Review does not clear or regrade an earned result.
 

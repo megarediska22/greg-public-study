@@ -14,11 +14,16 @@ export function LessonContent({ lesson, step }: { lesson: Lesson; step: LessonSt
     {step.questions.map((question, index) => <ExerciseQuestion key={question.id} question={question} lessonId={lesson.id} stepId={step.id} index={index} />)}
     <p className="field-hint" role="status">Результат раздела: {score.correct} из {score.total}. С первой попытки: {score.firstTry}. Всего попыток: {score.attempts}.</p>
   </>;
-  if (step.type === 'theory') return <>
+  if (step.type === 'theory') return <div className="theory-content">
     <span className="pill">Короткая теория</span><h2>{step.heading}</h2>{step.text.split('\n\n').map(paragraph => <p key={paragraph}>{paragraph}</p>)}
-    <div className="grammar-table-wrap"><table className="grammar-table"><caption>{step.tableCaption}</caption><thead><tr><th scope="col">Кто?</th><th scope="col">Форма</th><th scope="col">Пример</th></tr></thead><tbody>{step.rows.map(row => <tr key={`${row.subject}/${row.example}`}><th scope="row" lang="en">{row.subject}</th><td><strong lang="en">{row.form}</strong></td><td><span lang="en">{row.example}</span><small>{row.translation}</small></td></tr>)}</tbody></table></div>
+    <div className="grammar-table-wrap"><table className="grammar-table"><caption>{step.tableCaption}</caption><thead><tr><th scope="col">Кто?</th><th scope="col">Форма</th><th scope="col">Пример</th></tr></thead><tbody>{step.rows.map(row => <tr key={`${row.subject}/${row.example}`}><th scope="row"><span lang="en">{row.subject}</span>{row.subjectTranslation && <small>{row.subjectTranslation}</small>}</th><td><strong lang="en">{row.form}</strong></td><td><span lang="en">{row.example}</span><small>{row.translation}</small></td></tr>)}</tbody></table></div>
+    {step.blocks?.map(block => <section className="theory-block" key={block.title}>
+      <h3>{block.title}</h3><p>{block.text}</p>
+      {block.formula && <p className="theory-formula"><strong>{block.formula}</strong></p>}
+      {block.example && <div className="theory-example"><p lang="en">{block.example}</p><p>{block.translation}</p></div>}
+    </section>)}
     <aside className="rule-note"><strong>{step.noteTitle}</strong><p>{step.note}</p></aside>
-  </>;
+  </div>;
   if (step.type === 'review') {
     const questions = lesson.steps.flatMap(item => item.type === 'exercise' ? item.questions.map(question => ({ question, stepId: item.id })) : []);
     const mistakes = questions.filter(({ question }) => progress.lessons[lesson.id]?.answers[question.id]?.attempts.some(attempt => !attempt.correct));

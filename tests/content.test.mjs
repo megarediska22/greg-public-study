@@ -133,6 +133,19 @@ test('validator rejects duplicate course-wide question IDs and incomplete theory
   assert.throws(() => validateCourse(theory), /to-be\/theory.*translated table rows/);
 });
 
+test('optional theory blocks validate translations and remain compatible with legacy lessons', () => {
+  assert.doesNotThrow(() => validateCourse([{ id: sampleLesson.id, lesson: sampleLesson }]));
+  const missingTranslation = structuredClone(lessons);
+  missingTranslation[0].lesson.steps[1].blocks[0].translation = '';
+  assert.throws(() => validateCourse(missingTranslation), /to-be\/theory.*both English text and a translation/);
+  const duplicate = structuredClone(lessons);
+  duplicate[0].lesson.steps[1].blocks[1].title = duplicate[0].lesson.steps[1].blocks[0].title;
+  assert.throws(() => validateCourse(duplicate), /to-be\/theory.*unique titles/);
+  const blankFormula = structuredClone(lessons);
+  blankFormula[0].lesson.steps[1].blocks[0].formula = ' ';
+  assert.throws(() => validateCourse(blankFormula), /to-be\/theory.*formulas must be nonempty/);
+});
+
 function completeLesson(progress, course, lesson) {
   for (const step of lesson.steps) {
     const action = { lessonId: lesson.id, stepId: step.id };

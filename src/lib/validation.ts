@@ -44,6 +44,16 @@ export function validateCourse(course: readonly CourseEntry[]): void {
       } else if (step.completion !== 'acknowledge') fail(path, 'reading/review/summary needs acknowledgement');
       if (step.type === 'intro' && [step.heading, step.text, step.example, step.translation].some(value => !value.trim())) fail(path, 'introduction needs a heading, explanation and translated example');
       if (step.type === 'theory' && ([step.heading, step.text, step.tableCaption, step.noteTitle, step.note].some(value => !value.trim()) || !step.rows.length || step.rows.some(row => [row.subject, row.form, row.example, row.translation].some(value => !value.trim())))) fail(path, 'theory needs explanations, translated table rows and a common-mistake note');
+      if (step.type === 'theory' && step.blocks) {
+        const titles = new Set<string>();
+        for (const block of step.blocks) {
+          const location = `${path}/${block.title}`;
+          if (!block.title.trim() || !block.text.trim() || titles.has(block.title)) fail(location, 'theory blocks need unique titles and nonempty explanations');
+          titles.add(block.title);
+          if (block.formula !== undefined && !block.formula.trim()) fail(location, 'theory formulas must be nonempty');
+          if ((block.example !== undefined || block.translation !== undefined) && (!block.example?.trim() || !block.translation?.trim())) fail(location, 'theory examples require both English text and a translation');
+        }
+      }
     }
   }
 }

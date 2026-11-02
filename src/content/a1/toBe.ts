@@ -13,31 +13,70 @@ export const toBeLesson: Lesson = {
       heading: "Первая фраза о себе.",
       text: "В русском мы говорим «Я студент» или «Она дома» без глагола. В английском в таких фразах нужен to be. Начнём с трёх его форм: am, is и are. Затем научимся отрицать, спрашивать и отвечать.",
       example: "I am a student. I am at home.", translation: "Я студент / студентка. Я дома." },
-    { id: "theory", type: "theory", completion: "acknowledge", title: "Теория", description: "Правило и примеры",
-      heading: "Кто? Где? Как себя чувствует?",
-      text: `Личные местоимения заменяют имя: I — я; you — ты или вы; he — он; she — она; it — оно (о предмете, животном или погоде); we — мы; they — они. I всегда пишется с большой буквы. В обычном утверждении сначала идёт тот, о ком говорим, затем am, is или are.
-
-To be помогает назвать человека, место, возраст или состояние: I am a student. — Я студент / студентка. She is at home. — Она дома. You are 20. — Тебе 20 лет. They are tired. — Они устали. В английском возраст выражают с to be: I am 20, а не I have 20. Перед названием профессии или словом student в единственном числе нужен a: He is a teacher. — Он учитель.
-
-Сокращения в разговоре и письме: I am → I'm; you are → you're; he is → he's; she is → she's; it is → it's; we are → we're; they are → they're. Апостроф заменяет пропущенные буквы.
-
-Отрицание: поставьте not сразу после to be. I am not ready. = I'm not ready. — Я не готов / не готова. She is not tired. = She isn't tired. = She's not tired. — Она не устала. We are not at home. = We aren't at home. = We're not at home. — Мы не дома. Обычного сокращения amn't нет.
-
-Вопрос: перенесите am, is или are перед местоимением, остальные слова оставьте на месте. You are ready. → Are you ready? — Ты готов / готова? She is at home. → Is she at home? — Она дома? They are tired. → Are they tired? — Они устали?
-
-Короткий ответ состоит из Yes/No, местоимения и формы to be: Are you happy? — Yes, I am. / No, I am not. (Ты счастлив / счастлива? — Да. / Нет.) Is she at home? — Yes, she is. / No, she isn't. (Она дома? — Да. / Нет.) В ответе на вопрос о себе you меняется на I. Утвердительную форму в конце короткого ответа не сокращаем: Yes, I am, а не Yes, I'm.
-
-Слова для практики: ready — готовый; tired — уставший; happy — счастливый; cold — холодный; here — здесь; at home — дома; a student — студент; a teacher — учитель. It is cold. — Холодно (о погоде).`,
-      tableCaption: "Местоимения, формы to be и примеры", rows: [
-        { subject: "I", form: "am", example: "I am ready.", translation: "Я готов / готова." },
-        { subject: "You", form: "are", example: "You are 20.", translation: "Тебе / вам 20 лет." },
-        { subject: "He", form: "is", example: "He is a teacher.", translation: "Он учитель." },
-        { subject: "She", form: "is", example: "She is at home.", translation: "Она дома." },
-        { subject: "It", form: "is", example: "It is cold.", translation: "Холодно." },
-        { subject: "We", form: "are", example: "We are here.", translation: "Мы здесь." },
-        { subject: "They", form: "are", example: "They are happy.", translation: "Они счастливы." },
-      ], noteTitle: "Частые ошибки",
-      note: "Не пропускайте глагол: I am happy, а не I happy. Не смешивайте формы: she is, а не she are. Для вопроса меняйте порядок: Are they tired?, а не They are tired? В отрицании: I am not; в вопросе: Am I…?" },
+    {
+      "id": "theory",
+      "type": "theory",
+      "completion": "acknowledge",
+      "title": "Теория",
+      "description": "Правило и примеры",
+      "heading": "Кто вы, где вы и как дела?",
+      "text": "В русском можно сказать «Я дома». В английском нужен to be — маленький глагол с тремя формами: am, is, are.",
+      "tableCaption": "Выберите форму по тому, о ком говорите",
+      "rows": [
+        {
+          "subject": "I",
+          "subjectTranslation": "я",
+          "form": "am",
+          "example": "I am Gregory.",
+          "translation": "Я Грегори."
+        },
+        {
+          "subject": "You / We / They",
+          "subjectTranslation": "ты, вы / мы / они",
+          "form": "are",
+          "example": "We are at home.",
+          "translation": "Мы дома."
+        },
+        {
+          "subject": "He / She / It",
+          "subjectTranslation": "он / она / оно, это",
+          "form": "is",
+          "example": "Natasha is happy.",
+          "translation": "Наташа счастлива."
+        }
+      ],
+      "blocks": [
+        {
+          "title": "В разговоре — короче",
+          "text": "I всегда пишется с большой буквы. Апостроф заменяет пропущенные буквы: I am → I’m.",
+          "formula": "I'm · you're · we're · they're · he's · she's · it's",
+          "example": "I'm Gregory.",
+          "translation": "Я Грегори."
+        },
+        {
+          "title": "Чтобы сказать «не»",
+          "text": "Добавьте not после am, is или are. Сокращения: I am not → I’m not; is not → isn’t; are not → aren’t.",
+          "formula": "Кто + am/is/are + not + остальное",
+          "example": "She is not at home. = She isn't at home. = She's not at home.",
+          "translation": "Она не дома. Все три формы верны."
+        },
+        {
+          "title": "Чтобы спросить",
+          "text": "Переставьте am, is или are перед тем, о ком спрашиваете.",
+          "formula": "Am/Is/Are + кто + остальное?",
+          "example": "You are ready. → Are you ready?",
+          "translation": "Вы готовы. → Вы готовы?"
+        },
+        {
+          "title": "Коротко ответить",
+          "text": "В коротком ответе повторите местоимение и am/is/are; для «нет» добавьте not. На Are you…? о себе отвечайте с I. После Yes глагол не сокращаем.",
+          "example": "Yes, I am. / No, I am not. = No, I'm not.",
+          "translation": "Да. / Нет."
+        }
+      ],
+      "noteTitle": "Два полезных штриха",
+      "note": "Возраст тоже с to be: You are 20. — Тебе 20 лет. Перед профессией или student нужен a: a teacher — учитель, a student — студент. Глагол не теряем: I am happy, а не I happy."
+    },
     { id: "choice", type: "exercise", completion: "all-correct", title: "Выбор ответа", description: "Упражнение 1", questions: [
       { id: "choose-am", type: "choice", instruction: "Выберите форму глагола", prompt: "I ___ ready.", options: ["am", "is", "are"], acceptedAnswers: ["am"], explanation: "С I используется am: I am ready. — Я готов / готова." },
       { id: "to-be-teacher", type: "choice", instruction: "Выберите форму глагола: «Он учитель»", prompt: "He ___ a teacher.", options: ["are", "is", "am"], acceptedAnswers: ["is"], explanation: "С he нужна форма is: He is a teacher. — Он учитель." },

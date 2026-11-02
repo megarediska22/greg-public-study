@@ -356,3 +356,27 @@ progress::-moz-progress-bar { background: var(--accent); }
   .lesson-pagination > span { margin-left: auto; }
   .lesson-pagination > .button:last-child { width: 100%; order: 3; }
 }
+
+/* Theory keeps the existing palette and type scale, with one concept per block. */
+.theory-content > .pill { margin-bottom: 24px; }
+.theory-content p { max-width: 65ch; font-size: .95rem; }
+.theory-content .grammar-table { font-size: .9rem; }
+.theory-content .grammar-table small { font-size: .8rem; font-weight: 400; }
+.theory-block { margin: 28px 0; }
+.theory-block h3 { margin: 0 0 8px; font-size: 1.05rem; }
+.theory-block > p { margin: 0 0 12px; }
+.theory-formula { line-height: 1.8; }
+.theory-example { background: var(--surface-secondary); border-radius: 10px; padding: 14px 18px; }
+.theory-example p { margin: 0; white-space: pre-line; }
+.theory-example p + p { color: var(--muted); margin-top: 6px; font-size: .85rem; }
+.theory-content .rule-note { margin-top: 28px; }
+.theory-content .rule-note p { font-size: .9rem; }
+@media (max-width: 600px) {
+  .theory-content .grammar-table { font-size: .9rem; table-layout: fixed; }
+  .theory-content .grammar-table thead th:nth-child(1) { width: 32%; }
+  .theory-content .grammar-table thead th:nth-child(2) { width: 24%; }
+  .theory-content .grammar-table thead th:nth-child(3) { width: 44%; }
+  .theory-content .grammar-table th, .theory-content .grammar-table td { padding: 14px 8px; }
+  .theory-content .grammar-table td strong { font-size: 1rem; }
+  .theory-example { padding: 14px; }
+}
