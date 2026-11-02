@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ru" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#F7F7F7" />
+    <meta name="description" content="Greg Public Study — бесплатный английский с нуля. Короткие объяснения и понятный путь от правила к практике." />
+    <title>Greg Public Study — английский с нуля</title>
+    <script>
+      (() => {
+        let theme = 'light';
+        try { if (localStorage.getItem('gps.theme.v1') === 'dark') theme = 'dark'; } catch {}
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+        document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#121212' : '#F7F7F7';
+      })();
+    </script>
+    <style>html{background:#F7F7F7;color:#171717}html[data-theme="dark"]{background:#121212;color:#F5F5F5}</style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
