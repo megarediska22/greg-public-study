@@ -1,3 +1,4 @@
+import { formatLessonCount } from '../lib/format';
 import { lessons, questionCount } from '../content/course';
 import { Icon } from '../components/Icon';
 import { LinkButton } from '../components/LinkButton';
@@ -10,7 +11,7 @@ export function CoursePage() {
   return <div className="course-page">
     <a className="back-link" href="#/"><Icon name="back" /> На главную</a>
     <div className="course-heading"><div><span className="pill pill-accent">A1 · Начальный уровень</span><h1>Большой путь<br />с простых фраз.</h1><p className="lead">Грамматика и полезные слова чередуются: от первых фраз с to be до действий сейчас и рассказов о прошлом.</p></div><div className="course-stamp"><strong>A1</strong><span>Начните здесь</span></div></div>
-    <div className="course-meta"><span><Icon name="book" /> {lessons.length} уроков · {questionCount} вопросов</span><span>Теория → практика → разбор</span><span>Без регистрации</span></div>
+    <div className="course-meta"><span><Icon name="book" /> {formatLessonCount(lessons.length)} · {questionCount} вопросов</span><span>Теория → практика → разбор</span><span>Без регистрации</span></div>
     <aside className="notice"><strong>Завершено уроков: {progress.completedLessons.length} из {lessons.length}.</strong><p>{progress.completedLessons.length === lessons.length ? 'Курс A1 завершён. Все уроки доступны для повторения.' : 'Начните с глагола to be. Следующий урок откроется после практики, разбора ошибок и завершения предыдущего.'}</p></aside>
     {progress.legacyUnlockedLessons?.length ? <aside className="notice"><strong>Ваш прежний прогресс сохранён.</strong><p>Ранее открытые грамматические уроки остаются доступны. Новые словарные уроки нужно пройти отдельно; для дальнейшего движения по новой программе заполните эти пробелы.</p></aside> : null}
     <section aria-labelledby="program-title"><div className="section-heading"><h2 id="program-title">Программа курса</h2><span className="muted">Уроки идут по порядку</span></div>

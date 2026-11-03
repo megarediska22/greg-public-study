@@ -8,6 +8,8 @@ const questions = lessons.flatMap(({lesson}) => lesson.steps.flatMap(step => ste
 test('UX metadata preserves the complete pre-change catalog including all 150 answer keys', () => {
   const original = JSON.parse(JSON.stringify(lessons));
   for (const {lesson} of original) for (const step of lesson.steps) if (step.type === 'exercise') for (const question of step.questions) delete question.sentenceType;
+  const demo = original.find(e => e.id === 'demonstratives').lesson.steps.find(s => s.type === 'theory');
+  demo.blocks = demo.blocks.filter(b => b.title !== 'Произнесите и покажите');
   assert.equal(createHash('sha256').update(JSON.stringify(original)).digest('hex'), 'df8daf3bb478da053d3eebe2630db8aef9a9a9557b1c79661d9c287df506ac1a');
   assert.equal(questions.length, 150);
 });

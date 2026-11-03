@@ -9,6 +9,8 @@ import { thereIsAreLesson } from './a1/thereIsAre.ts';
 import { canCantLesson } from './a1/canCant.ts';
 import { presentContinuousLesson } from './a1/presentContinuous.ts';
 import { wasWereLesson } from './a1/wasWere.ts';
+import { questionTasks } from './questionTasks.ts';
+import { validateTaskIndicators } from '../lib/taskIndicators.ts';
 import { validateCourse } from '../lib/validation.ts';
 
 import { peopleFeelingsLesson } from './vocabulary/peopleFeelings.ts';
@@ -17,6 +19,12 @@ import { familyObjectsLesson } from './vocabulary/familyObjects.ts';
 import { homePlacesLesson } from './vocabulary/homePlaces.ts';
 import { hobbiesAbilitiesLesson } from './vocabulary/hobbiesAbilities.ts';
 import { actionsTimeLesson } from './vocabulary/actionsTime.ts';
+
+import { greetingsReactionsLesson } from './practical/greetingsReactions.ts';
+import { everydayCombinationsLesson } from './practical/everydayCombinations.ts';
+import { helpAndCafeLesson } from './practical/helpAndCafe.ts';
+import { simpleArrangementsLesson } from './practical/simpleArrangements.ts';
+import { smallTalkBasicsLesson } from './practical/smallTalkBasics.ts';
 
 // Catalog order defines prerequisites. Missing content is never treated as complete.
 export const grammarLessons: readonly CourseEntry[] = [
@@ -42,7 +50,7 @@ const vocabularyEntries: readonly CourseEntry[] = [
 ];
 
 const entriesById = new Map([...grammarLessons, ...vocabularyEntries].map(entry => [entry.id, entry]));
-export const lessons: readonly CourseEntry[] = [
+export const foundationLessons: readonly CourseEntry[] = [
   'to-be', 'people-feelings', 'present-simple', 'do-does',
   'daily-routines', 'have-has', 'articles', 'family-objects',
   'demonstratives', 'there-is-are', 'home-places', 'can-cant',
@@ -53,6 +61,18 @@ export const lessons: readonly CourseEntry[] = [
   return entry;
 });
 
+export const practicalLessons: readonly CourseEntry[] = [
+  { id: 'greetings-reactions', title: 'Приветствия и реакции', subtitle: 'Greetings & Reactions', objective: 'Поздоровайтесь, отреагируйте на новость и попрощайтесь.', lesson: greetingsReactionsLesson },
+  { id: 'everyday-combinations', title: 'Полезные сочетания глаголов', subtitle: 'Everyday Verb Combinations', objective: 'Говорите об учёбе и отдыхе привычными сочетаниями.', lesson: everydayCombinationsLesson },
+  { id: 'help-and-cafe', title: 'Просьбы, помощь и кафе', subtitle: 'Help, Clarification & Café', objective: 'Попросите помощи, уточните непонятное и закажите кофе.', lesson: helpAndCafeLesson },
+  { id: 'simple-arrangements', title: 'Простые договорённости', subtitle: 'Making Simple Plans', objective: 'Пригласите друга и договоритесь об удобном времени.', lesson: simpleArrangementsLesson },
+  { id: 'small-talk-basics', title: 'Короткая беседа', subtitle: 'Small Talk Basics', objective: 'Поддержите разговор и вежливо завершите его.', lesson: smallTalkBasicsLesson },
+];
+
+// Preserve the published 16-lesson prefix: no new prerequisite is inserted.
+export const lessons: readonly CourseEntry[] = [...foundationLessons, ...practicalLessons];
+
 validateCourse(lessons);
+validateTaskIndicators(lessons, questionTasks);
 
 export const questionCount = lessons.reduce((total, entry) => total + (entry.lesson?.steps.reduce((count, step) => count + (step.type === 'exercise' ? step.questions.length : 0), 0) ?? 0), 0);

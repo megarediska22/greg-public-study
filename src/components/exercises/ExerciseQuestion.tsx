@@ -1,7 +1,7 @@
 import type { Question } from '../../types/lesson';
 import type { QuestionProgress } from '../../lib/progress';
 import { getQuestionState } from '../../lib/exercise';
-import { SentenceTypeBadge } from './SentenceTypeBadge';
+import { TaskIndicator } from './TaskIndicator';
 
 type Props = {
   question: Question;
@@ -18,16 +18,16 @@ export function ExerciseQuestion({ question, index, value, saved, missing, onCha
   const feedbackId = `${question.id}-feedback`;
   const instructionId = `${question.id}-instruction`;
   const missingId = `${question.id}-missing`;
-  const descriptionIds = [instructionId, feedback ? feedbackId : '', missing ? missingId : ''].filter(Boolean).join(' ');
+  const descriptionIds = [`${question.id}-task`, instructionId, feedback ? feedbackId : '', missing ? missingId : ''].filter(Boolean).join(' ');
   const answerLabel = question.type !== 'written' ? question.vocabularyId ? 'Ваш ответ — слово или выражение' : 'Ваш ответ — пропущенные слова'
     : question.sentenceType === 'short-affirmative' || question.sentenceType === 'short-negative'
-      ? 'Ваш короткий ответ' : 'Ваш ответ — предложение целиком';
+      ? 'Ваш короткий ответ' : question.vocabularyId ? 'Ваш ответ — фраза целиком' : 'Ваш ответ — предложение целиком';
   const invalid = missing || feedback === 'incorrect';
 
   return <div className={`question-card ${feedback ? `question-${feedback}` : ''} ${missing ? 'question-missing' : ''}`}>
     <fieldset id={`${question.id}-question`} className="exercise-card" disabled={locked} tabIndex={-1} aria-describedby={descriptionIds} aria-invalid={invalid || undefined}>
       <legend>Задание {index + 1}{feedback ? locked ? ' · ✓ Верно' : ' · ✕ Исправьте ответ' : ''}</legend>
-      {question.sentenceType && <SentenceTypeBadge type={question.sentenceType} />}
+      <TaskIndicator questionId={question.id} />
       <p id={instructionId} className="question-instruction">{question.instruction}</p>
       <p className="exercise-prompt" lang={question.promptLanguage ?? 'en'}>{question.prompt}</p>
       {question.type === 'choice' ? <div className="choice-options">{question.options.map(option =>

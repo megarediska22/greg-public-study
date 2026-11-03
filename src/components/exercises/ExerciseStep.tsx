@@ -34,7 +34,10 @@ export function ExerciseStep({ lesson, step, reviewOnly = false }: { lesson: Les
   useEffect(() => {
     if (!focusTarget) return;
     if (focusTarget.id) focusQuestion(focusTarget.id);
-    else summaryRef.current?.focus({ preventScroll: true });
+    else {
+      summaryRef.current?.focus({ preventScroll: true });
+      summaryRef.current?.scrollIntoView({ block: 'center', behavior: 'instant' });
+    }
   }, [focusTarget]);
 
   return <>

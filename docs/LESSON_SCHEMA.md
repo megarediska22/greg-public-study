@@ -1,6 +1,6 @@
 # Lesson engine contract
 
-The integrated A1 catalog contains 16 production lessons: ten unchanged grammar lessons under `src/content/a1/` (150 questions) and six interleaved vocabulary lessons under `src/content/vocabulary/` (180 questions, 60 target words/expressions). Each lesson has seven steps: **112 steps / 330 questions**. The historical three-question Phase 2 sample remains test-only. The authoritative types are in `src/types/lesson.ts`. See `VOCABULARY_EXPANSION_REVIEW.md` for exact ordering and inventory.
+The current A1 catalog contains 21 production lessons: ten grammar lessons (150 questions), six foundation vocabulary lessons (180 questions), and five appended practical vocabulary lessons (150 questions). Each has seven steps: **147 steps / 480 questions**. The unchanged 16-entry foundation prefix is exported as `foundationLessons` for regression checks; `lessons` is the full production registry. See `README.md`, the exercise-clarity regression review, and the historical `VOCABULARY_EXPANSION_REVIEW.md`. The authoritative types remain in `src/types/lesson.ts`.
 
 ## Lesson and catalog
 
@@ -8,7 +8,7 @@ The integrated A1 catalog contains 16 production lessons: ten unchanged grammar 
 
 The ordered `CourseEntry[]` in `src/content/course.ts` supplies card metadata (`id`, `title`, `subtitle`, `objective`) and an optional `lesson`. The lesson ID must match its catalog ID. An entry without content can unlock, but cannot award completion. New learners must complete all preceding entries. Validated retained grammar access for returning learners is described below.
 
-IDs are stable lowercase URL-safe slugs (`to-be`, `ready-question`), unique within their owner. Production question IDs must be unique across the course. Routes use `#/lesson/{lessonId}/{stepId}`; no component depends on particular lesson or step IDs. All sixteen production lessons use `sample: false`.
+IDs are stable lowercase URL-safe slugs (`to-be`, `ready-question`), unique within their owner. Production question IDs must be unique across the course. Routes use `#/lesson/{lessonId}/{stepId}`; no component depends on particular lesson or step IDs. All twenty-one production lessons use `sample: false`.
 
 ## Steps
 
@@ -111,7 +111,7 @@ QA uses only `gps.qa.progress.v1` for synthetic lesson/step completion flags and
 1. Create a typed lesson content file, with explanations before the relevant exercises and configured accepted alternatives.
 2. Attach it to the appropriate entry in `src/content/course.ts`. Preserve the catalog order and stable IDs.
 3. Follow the seven-step sequence. Add questions to the existing exercise arrays without changing UI components.
-4. Run `npm run typecheck`, `npm test` and `npm run build`. `validateCourse` runs when the catalog loads and in content unit tests, reporting lesson/step/question paths for invalid IDs, keys, normalized duplicate alternatives, incomplete theory, incorrect step order/type or exercises with fewer than five questions. Grammar regression tests retain the original ten-lesson/150-question oracle. Integrated tests independently enforce the 16-lesson order, 330 questions, 60 vocabulary entries, all 180 new keys, full progression and legacy migration.
+4. Run `npm run typecheck`, `npm test` and `npm run build`. `validateCourse` runs when the catalog loads and in content unit tests, reporting lesson/step/question paths for invalid IDs, keys, normalized duplicate alternatives, incomplete theory, incorrect step order/type or exercises with fewer than five questions. Grammar regression tests retain the original ten-lesson/150-question oracle. Foundation regression tests retain the exact 16-lesson/330-question order and original vocabulary keys. Practical tests additionally enforce 21 lessons, 480 unique questions, 50 new expressions, all 150 new answers, full progression and 16→21 compatibility.
 5. Check the learner flow, error review, refresh, both themes and small screens.
 
 The level union anticipates later levels without adding any content. A future level needs its own catalog/page and progress scope; only the A1 catalog is currently wired to the interface. Phase 3 does not create A2–B2 courses.
@@ -142,3 +142,16 @@ The decoder then replays the full integrated catalog with these retained grammar
 On subsequent loads, version-2 curriculum metadata preserves only known grammar IDs; the decoder does not infer new legacy rights from current progress. Explicit reset drops the entitlements and creates a fresh integrated learner. New completions are stored in catalog order so backfilling vocabulary round-trips deterministically. Object-key insertion order does not falsely signal recovery; invalid/unknown data still does.
 
 Migration is in memory and read-only at startup. The unchanged guarded storage session preserves exact original bytes before the first migrated write, blocks that write if backup fails, and retains stale-tab/read-failure/explicit-reset protections. Theme keys are unchanged. Old releases do not understand the retained-access metadata: do not use an older build to write the same origin after adopting this expansion; keep the raw backup for deliberate rollback. No user Chrome profile was used for migration tests.
+
+
+## Appended practical vocabulary lessons
+
+`src/content/practical/createPracticalLesson.ts` is a content-only adapter around the existing vocabulary factory, not an exercise-engine extension. It authors short dialogue introductions, in-context recognition, optional explicit `recallAnswers`, harmless terminal punctuation normalization for whole-phrase recall, and constrained situational written answers. `contextTranslation` is an authoring-only explanation field. Generated lessons use the existing `Lesson`, `VocabularyItem` and `Question` types unchanged. Full forms, contractions, numeric time spellings and optional internal commas are configured explicitly. Old factory output/normalization is unchanged.
+
+The five new stable IDs append after `was-were`; the existing sixteen entries retain their order and all question IDs. No storage key, schema version, decoder, entitlement rule or guarded persistence change is introduced. All previously accessible content remains accessible; completing the old sixteenth lesson unlocks `greetings-reactions`, and subsequent practical lessons unlock sequentially. Existing complete/partial progress and pending retries round-trip unchanged. The only old educational addition is one acknowledged demonstratives pronunciation/physical-practice block; no new prerequisite or question was added there.
+
+## Mandatory task clarity catalog
+
+Every production question must have an explicit entry in `src/content/questionTasks.ts`. The separate catalog preserves educational data and saved question identities. Author the learner action and, where relevant, target form from the actual educational intent; never infer them from punctuation or keyword matching. `validateTaskIndicators` runs with the production catalog and rejects missing, unsupported, type-incompatible or legacy-form-conflicting metadata. Duplicate authored IDs also fail. Keep equivalent metadata grouped by explicit IDs; do not silently assign a generic fallback to new content.
+
+`TaskIndicator` is always rendered before instructions/prompts, including choice and blank questions. Legacy `sentenceType` remains unchanged but no longer gates indicator visibility. Retain the per-step batch form and its single bottom validation button. See `EXERCISE_CLARITY_REGRESSION_REVIEW.md` and the 480-row audit CSV for current classifications and browser evidence.

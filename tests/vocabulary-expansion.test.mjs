@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { lessons, grammarLessons, questionCount } from '../src/content/course.ts';
+import { foundationLessons as lessons, grammarLessons } from '../src/content/course.ts';
+const questionCount = lessons.reduce((n, {lesson})=>n+lesson.steps.flatMap(s=>s.type==='exercise'?s.questions:[]).length,0);
 import { validateCourse } from '../src/lib/validation.ts';
 import { gradeAnswer } from '../src/lib/grading.ts';
 import { emptyProgress, updateProgress, decodeProgress, isLessonUnlocked, isStepUnlocked, getScore, PROGRESS_KEY } from '../src/lib/progress.ts';

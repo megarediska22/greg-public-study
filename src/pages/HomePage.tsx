@@ -1,3 +1,4 @@
+import { formatLessonCount } from '../lib/format';
 import { LinkButton } from '../components/LinkButton';
 import { Icon } from '../components/Icon';
 import { useProgress } from '../lib/ProgressContext';
@@ -30,7 +31,7 @@ export function HomePage() {
           <div className="level-card-top"><span className="level-number">{level}</span><span className={`pill ${i === 0 ? 'pill-accent' : ''}`}>{i === 0 ? 'Доступен' : 'Скоро'}</span></div>
           <h3>{['Самое начало', 'Больше уверенности', 'Свобода общения', 'Новый горизонт'][i]}</h3>
           <p>{['Базовая грамматика и первые фразы о себе.', 'Повседневные ситуации и простые диалоги.', 'Разговоры, мнения и самостоятельность.', 'Точные формулировки и сложные темы.'][i]}</p>
-          {i === 0 ? <a className="text-link" href="#/course/a1">Посмотреть {lessons.length} уроков <Icon name="arrow" /></a> : <span className="upcoming"><Icon name="lock" /> В разработке</span>}
+          {i === 0 ? <a className="text-link" href="#/course/a1">Посмотреть {formatLessonCount(lessons.length)} <Icon name="arrow" /></a> : <span className="upcoming"><Icon name="lock" /> В разработке</span>}
         </article>)}
       </div>
     </section>

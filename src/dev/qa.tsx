@@ -31,7 +31,7 @@ function LocalQa() {
           setNotice('Тестовые ответы и ошибки выбранного урока очищены. Можно пройти его с начала.');
           window.location.hash = `/lesson/${selected}/intro`;
         }}>Очистить ответы этого урока</button>
-        <a className="text-link" href="#/course/a1">Все {lessons.length} уроков</a>
+        <a className="text-link" href="#/course/a1">Все уроки ({lessons.length})</a>
       </div>
       {(notice || unavailable) && <p role="status">{unavailable ? 'Тестовые ответы не сохраняются: браузер ограничил хранилище.' : notice}</p>}
     </aside>
