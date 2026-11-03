@@ -228,6 +228,7 @@ export const haveHasLesson: Lesson = {
         {
           "id": "hh-car-negative",
           "type": "written",
+          "sentenceType": "negative",
           "instruction": "Сделайте предложение отрицательным; сохраните остальные слова",
           "prompt": "He has a car.",
           "acceptedAnswers": [
@@ -240,6 +241,7 @@ export const haveHasLesson: Lesson = {
         {
           "id": "hh-bag-question",
           "type": "written",
+          "sentenceType": "question",
           "instruction": "Сделайте вопрос с do/does; сохраните местоимение you",
           "prompt": "You have a bag.",
           "acceptedAnswers": [
@@ -251,6 +253,7 @@ export const haveHasLesson: Lesson = {
         {
           "id": "hh-natasha-question",
           "type": "written",
+          "sentenceType": "question",
           "instruction": "Сделайте вопрос с do/does; сохраните имя Natasha",
           "prompt": "Natasha has a bike.",
           "acceptedAnswers": [
@@ -262,6 +265,7 @@ export const haveHasLesson: Lesson = {
         {
           "id": "hh-phone-negative",
           "type": "written",
+          "sentenceType": "negative",
           "instruction": "Сделайте предложение отрицательным; можно использовать сокращение",
           "prompt": "I have a phone.",
           "acceptedAnswers": [
@@ -274,6 +278,7 @@ export const haveHasLesson: Lesson = {
         {
           "id": "hh-short-yes",
           "type": "written",
+          "sentenceType": "short-affirmative",
           "instruction": "Дайте короткий утвердительный ответ с Yes, she…",
           "prompt": "Does she have a sister?",
           "acceptedAnswers": [

@@ -1,6 +1,6 @@
 # Greg Public Study
 
-Version 1.1: ten complete original A1 lessons on the approved design and existing learning engine. The public website is <https://megarediska22.github.io/greg-public-study/>. React + TypeScript + Vite, plain CSS, no router or testing dependency.
+Greg Public Study v1.1 provides 16 complete A1 lessons (10 preserved grammar lessons + 6 integrated vocabulary lessons) on the approved design and existing learning engine. The public website is <https://megarediska22.github.io/greg-public-study/>. React + TypeScript + Vite, plain CSS, no router or testing dependency.
 
 ## Local development
 
@@ -17,21 +17,21 @@ npm run preview
 
 ## Scope
 
-- Ten production lessons in order: to be; Present Simple affirmatives/negatives; do/does questions; have/has; articles; demonstratives; there is/are; can/can’t; Present Continuous; was/were. Each has seven sequential steps and 15 questions (five per exercise type): **70 steps and 150 questions total**, including seven new lessons and 105 questions over v1.0. The original three lesson files remain intact.
+- Integrated course: **16 lessons, 112 steps, 330 questions**. Ten grammar lessons retain their original 150 questions; six vocabulary lessons add 60 target words/expressions and 180 questions (10 recognition, 10 recall/spelling, 10 contextual writing per lesson). See `docs/VOCABULARY_EXPANSION_REVIEW.md` for the exact sequence and inventory.
 - Multiple choice, fill-in-the-blank and written answers with deterministic grading, configured variants, explanations, retries and preserved mistake history.
 - Reading/review steps require acknowledgement; exercise sections require all answers correct; the summary requires an explicit Finish action.
 - Completed steps remain accessible for review and cannot lose earned completion through retries.
 - Versioned local progress stores completed lessons/steps, answer outcomes and attempts, retry state and last visited lesson/step. Scores are calculated from persisted answer outcomes.
 - Malformed-data recovery, visible storage notices and a two-action reset confirmation that preserves the theme.
-- Only Lesson 1 is initially available. Finishing each summary unlocks the next lesson, through Lesson 10. Users who completed the v1.0 course retain those three completions and can start Lesson 4 immediately. No reset or migration is needed. Summaries and catalog totals follow the actual ten-lesson catalog.
+- New learners follow all 16 lessons sequentially. Existing grammar completion, attempts and the previously unlocked grammar frontier are preserved through a validated read-only migration. New vocabulary is never automatically completed; it must be backfilled before progressing beyond that retained frontier. Storage keys remain unchanged, with exact raw backups before the first migrated write.
 - Existing theme storage (`gps.theme.v1`) and pre-render restoration are preserved. Progress uses `gps.progress.v1`. Neither is uploaded.
 - Complete light and dark themes are available; the selected theme is stored locally in the browser.
-- Demo progress is revalidated against the full curriculum: compatible readings and answers are retained, but new questions must be solved before later steps or lessons unlock. No broad localStorage reset or schema migration is needed; the separate theme key is untouched. See `docs/LESSON_SCHEMA.md` for the exact policy.
+- Demo progress is revalidated against the full curriculum: compatible readings and answers are retained, but new questions must be solved before later steps or lessons unlock. A validated migration retains compatible progress; the separate theme key is untouched. See `docs/LESSON_SCHEMA.md` for the exact policy.
 - No authentication, backend, AI grading or new dependencies.
 
 ## MVP limitations
 
-- The local v1.1 course is A1 with ten lessons; A2, B1 and B2 content is not included.
+- The integrated course is A1 with sixteen lessons; A2, B1 and B2 content is not included.
 - Progress and theme preferences stay in the current browser and do not sync across devices.
 - There is no account system, backend or AI tutor.
 - The production site is static and requires no server-side services.
@@ -43,7 +43,7 @@ npm run preview
 - `src/components/lessons`: content renderer, navigation and reset confirmation.
 - `src/components/exercises`: reusable accessible exercise form.
 - `src/types/lesson.ts`: typed lesson, step and question schema.
-- `src/content/course.ts` and `src/content/a1/`: ordered catalog and ten typed lessons, separate from UI.
+- `src/content/course.ts`, `src/content/a1/` and `src/content/vocabulary/`: integrated catalog, ten grammar lessons and six vocabulary lessons, separate from UI.
 - `src/lib/grading.ts`, `progress.ts`, `validation.ts`: framework-independent engine.
 - `src/lib/ProgressContext.tsx`: shared React state and localStorage integration.
 - `src/lib/router.ts`: unchanged hash routing with Back/Forward support.
@@ -79,7 +79,9 @@ Additional lessons/levels and later phases require separate approval.
 
 ## Verification
 
-The v1.1 localization/persistence maintenance is documented in `docs/LOCALIZATION_PROGRESS_REVIEW.md`: correct Russian Григорий/Григория translations, guarded startup persistence with raw-data backups, 209 passing tests and an isolated development-only QA mode.
+The current vocabulary expansion, 304 passing tests and browser verification are documented in `docs/VOCABULARY_EXPANSION_REVIEW.md`.
+
+The earlier v1.1 localization/persistence maintenance is documented in `docs/LOCALIZATION_PROGRESS_REVIEW.md`: correct Russian Григорий/Григория translations, guarded startup persistence with raw-data backups, 209 passing tests and an isolated development-only QA mode.
 
 See `docs/A1_EXPANSION_REVIEW.md` for the v1.1 curriculum, all 150 questions, preservation of existing progress, 188 passing automated tests, production build and complete ten-lesson browser journey. Earlier reports below describe historical scopes.
 
@@ -96,6 +98,6 @@ npm run qa
 
 Alternatively double-click `Start Local QA.command`. The launcher starts the installed Vite **development** server as a detached process with output in ignored `.local-qa/vite.log`. It reuses its running dev server on subsequent launches. Ports already occupied by another server are left untouched: it prefers 5173, then 5175/5176. The current QA URL is `http://127.0.0.1:5175/?qa=1#/course/a1` because 5173 is occupied by an existing production preview.
 
-All ten lessons and seven steps per lesson are open immediately. Use the toolbar's lesson selector, the catalog or the step navigation (expand it on mobile). Questions are unanswered and feedback works normally. To repeat a lesson from scratch, click “Очистить ответы этого урока”; this clears only that lesson's QA answers/history and opens its introduction. Completion ticks are synthetic access flags, not earned results. Give an intentionally incorrect answer to populate mistake review. The QA data and theme survive refresh in separate keys and never replace normal learning progress.
+All sixteen lessons and seven steps per lesson are open immediately. Use the toolbar's lesson selector, the catalog or the step navigation (expand it on mobile). Questions are unanswered and feedback works normally. To repeat a lesson from scratch, click “Очистить ответы этого урока”; this clears only that lesson's QA answers/history and opens its introduction. Completion ticks are synthetic access flags, not earned results. Give an intentionally incorrect answer to populate mistake review. The QA data and theme survive refresh in separate keys and never replace normal learning progress.
 
 The launcher exits while the detached server continues running; closing its terminal does not issue a stop command. Restart after logout/reboot or external process termination with the same command/launcher. No system startup service is installed. Production builds ignore `?qa=1`; `npm run verify:production` checks the built files for QA code/keys.

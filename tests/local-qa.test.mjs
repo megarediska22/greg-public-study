@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { lessons, questionCount } from '../src/content/course.ts';
+import { grammarLessons as lessons } from '../src/content/course.ts';
+const questionCount = lessons.reduce((n, {lesson}) => n + lesson.steps.flatMap(s => s.type === 'exercise' ? s.questions : []).length, 0);
 import { createQaProgress, restoreQaProgress, restartQaLesson, loadQaProgress, saveQaProgress, QA_PROGRESS_KEY, QA_THEME_KEY } from '../src/dev/qaState.ts';
 import { emptyProgress, isLessonUnlocked, isStepUnlocked, updateProgress, getScore, PROGRESS_KEY } from '../src/lib/progress.ts';
 

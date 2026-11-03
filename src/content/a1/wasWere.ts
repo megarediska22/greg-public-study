@@ -226,6 +226,7 @@ export const wasWereLesson: Lesson = {
         {
           "id": "past-home-negative",
           "type": "written",
+          "sentenceType": "negative",
           "instruction": "Сделайте предложение отрицательным; можно использовать сокращение",
           "prompt": "He was at home yesterday.",
           "acceptedAnswers": [
@@ -238,6 +239,7 @@ export const wasWereLesson: Lesson = {
         {
           "id": "past-they-question",
           "type": "written",
+          "sentenceType": "question",
           "instruction": "Сделайте вопрос, сохранив остальные слова",
           "prompt": "They were tired last night.",
           "acceptedAnswers": [
@@ -249,6 +251,7 @@ export const wasWereLesson: Lesson = {
         {
           "id": "past-you-question",
           "type": "written",
+          "sentenceType": "question",
           "instruction": "Сделайте вопрос; сохраните местоимение you",
           "prompt": "You were at school yesterday.",
           "acceptedAnswers": [
@@ -260,6 +263,7 @@ export const wasWereLesson: Lesson = {
         {
           "id": "past-she-yes",
           "type": "written",
+          "sentenceType": "short-affirmative",
           "instruction": "Дайте короткий утвердительный ответ с Yes, she…",
           "prompt": "Was Natasha at work yesterday?",
           "acceptedAnswers": [
@@ -272,6 +276,7 @@ export const wasWereLesson: Lesson = {
         {
           "id": "past-they-no",
           "type": "written",
+          "sentenceType": "short-negative",
           "instruction": "Дайте короткий отрицательный ответ с No, they…",
           "prompt": "Were they ready?",
           "acceptedAnswers": [

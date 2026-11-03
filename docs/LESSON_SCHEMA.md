@@ -1,14 +1,14 @@
 # Lesson engine contract
 
-The local v1.1 catalog supplies ten production A1 lessons under `src/content/a1/`, each with seven steps and 15 questions: 70 steps and 150 questions total. The original `toBe.ts`, `presentSimple.ts` and `doDoes.ts` are unchanged; seven lessons are appended after them in the catalog. The historical three-question Phase 2 sample is a test-only fixture at `tests/fixtures/sampleLesson.ts`. It is never imported by the production catalog. The authoritative TypeScript types are in `src/types/lesson.ts`.
+The integrated A1 catalog contains 16 production lessons: ten unchanged grammar lessons under `src/content/a1/` (150 questions) and six interleaved vocabulary lessons under `src/content/vocabulary/` (180 questions, 60 target words/expressions). Each lesson has seven steps: **112 steps / 330 questions**. The historical three-question Phase 2 sample remains test-only. The authoritative types are in `src/types/lesson.ts`. See `VOCABULARY_EXPANSION_REVIEW.md` for exact ordering and inventory.
 
 ## Lesson and catalog
 
-`Lesson` contains `id`, `level` (`A1`, `A2`, `B1`, `B2`), `title`, `sample`, `objectives` and ordered `steps`. Keep `sample: true` for demonstrations. Text is plain text, never executable HTML.
+`Lesson` contains `id`, `level` (`A1`, `A2`, `B1`, `B2`), `title`, `sample`, `objectives` and ordered `steps`. Optional `kind` is `grammar` (the legacy default) or `vocabulary`. Keep `sample: true` for demonstrations. Text is plain text, never executable HTML.
 
-The ordered `CourseEntry[]` in `src/content/course.ts` supplies card metadata (`id`, `title`, `subtitle`, `objective`) and an optional `lesson`. The lesson ID must match its catalog ID. An entry without content can unlock, but cannot award completion. All preceding entries must be completed before a lesson opens.
+The ordered `CourseEntry[]` in `src/content/course.ts` supplies card metadata (`id`, `title`, `subtitle`, `objective`) and an optional `lesson`. The lesson ID must match its catalog ID. An entry without content can unlock, but cannot award completion. New learners must complete all preceding entries. Validated retained grammar access for returning learners is described below.
 
-IDs are stable lowercase URL-safe slugs (`to-be`, `ready-question`), unique within their owner. Production question IDs must be unique across the course. Routes use `#/lesson/{lessonId}/{stepId}`; no component depends on particular lesson or step IDs. All ten production lessons use `sample: false`.
+IDs are stable lowercase URL-safe slugs (`to-be`, `ready-question`), unique within their owner. Production question IDs must be unique across the course. Routes use `#/lesson/{lessonId}/{stepId}`; no component depends on particular lesson or step IDs. All sixteen production lessons use `sample: false`.
 
 ## Steps
 
@@ -17,12 +17,13 @@ Every step has `id`, `title`, `description`, `type` and `completion`.
 | Type | Content | Completion |
 | --- | --- | --- |
 | `intro` | `heading`, `text`, `example`, `translation` | `acknowledge` |
+| `vocabulary` | `heading`, `text`, `items`, `note` (vocabulary lessons only) | `acknowledge` |
 | `theory` | `heading`, `text`, `tableCaption`, `rows`, optional `blocks`, `noteTitle`, `note` | `acknowledge` |
 | `exercise` | Nonempty `questions` array | `all-correct` |
 | `review` | Mistakes derived from saved attempts | `acknowledge` |
 | `summary` | Scores derived from saved attempts | `acknowledge` |
 
-Each theory row has `subject`, `form`, `example`, `translation`. Theory text is rendered as paragraphs separated by a blank line; no HTML is accepted. Production validation enforces exactly seven ordered steps: intro, theory, choice exercise, blank exercise, written exercise, review, summary. Each exercise must contain at least five questions of the specified type; all must be solved before that section completes. Translated introductory examples, theory table rows and common-mistake explanations are required.
+Each theory row has `subject`, `form`, `example`, `translation`. Theory text is rendered as paragraphs separated by a blank line; no HTML is accepted. Production validation enforces exactly seven ordered steps: intro, theory (or vocabulary discovery), choice exercise, blank exercise, written exercise, review, summary. Each exercise must contain at least five questions of the specified type; all must be solved before that section completes. Translated introductory examples, theory table rows and common-mistake explanations are required.
 
 ### Compact theory presentation
 
@@ -46,7 +47,9 @@ Text normalization applies Unicode NFC, trims outer whitespace, collapses repeat
 
 Contractions and uncontracted equivalents must be explicitly listed in `acceptedAnswers`; normalization does not infer grammar or paraphrases. The first variant is displayed as the reference answer. Prompts must constrain the intended response. This engine is not a general English sentence grader. Text inputs have a 2,000-character limit.
 
-An incorrect answer shows its explanation and reference, then requires the Retry action before another submission. Retry clears the input, restores focus and keeps all attempts. There is no configured attempt limit. Correct answers are retained for review; restarting a correct question does not erase completion.
+Each exercise has one `Проверить ответы` button below all questions. Drafts remain editable and ungraded until submission. If any unresolved answer is empty, the entire batch is withheld: missing fields are identified and no attempts are recorded. Entered values remain intact.
+
+The `check-exercise` action atomically validates all unresolved questions. Correct answers are marked and locked; incorrect answers retain their text and remain editable, with explanations and reference answers. The same button rechecks unresolved questions without an extra Retry action or automatic clearing. All attempts are kept; there is no configured attempt limit. The section completes only when every answer is correct. `Продолжить` then becomes enabled without automatic navigation. Per-question `answer`/`retry` actions remain available internally for existing stored-history replay and compatibility; the UI no longer submits individual questions.
 
 ## Progress and storage
 
@@ -55,6 +58,8 @@ An incorrect answer shows its explanation and reference, then requires the Retry
 ```ts
 {
   version: 1,
+  curriculumVersion?: 2,
+  legacyUnlockedLessons?: string[],
   completedLessons: string[],
   lessons: {
     [lessonId]: {
@@ -79,7 +84,7 @@ The production React provider now opens a read-only session through `src/lib/pro
 
 The legacy pure `loadProgress`/`saveProgress` helpers remain for compatibility and low-level tests; application startup must use the guarded session. A future ID/schema change still needs a deliberate migration: backups preserve evidence, but do not infer mappings between unrelated IDs.
 
-Append new lesson IDs only after approval, preserving existing order and progress. Preserve IDs and question meaning when editing content; changing IDs means those records can no longer be restored.
+Add or interleave lesson IDs only after approval and explicit progress compatibility tests; preserve existing IDs and earned progress. Preserve IDs and question meaning when editing content; changing IDs means those records can no longer be restored.
 
 ### v1.0 → v1.1 course expansion
 
@@ -87,7 +92,7 @@ The original three lessons and all existing lesson/step/question IDs stay intact
 
 ### Phase 2 demo compatibility policy
 
-No blanket reset, content-version flag or new progress key is introduced. The existing replay/validation loader scopes recovery to each lesson and its accessible steps. The production `to-be` retains the same lesson/step IDs and the three unchanged question IDs: `choose-am`, `negative-blank`, `ready-question`.
+The historical demo compatibility policy introduces no blanket reset or new progress key. The existing replay/validation loader scopes recovery to each lesson and its accessible steps. The production `to-be` retains the same lesson/step IDs and the three unchanged question IDs: `choose-am`, `negative-blank`, `ready-question`.
 
 For a completed three-question demo, `intro` and `theory` acknowledgement and the compatible `choose-am` answer remain. The four newly required choice questions keep that exercise incomplete. Consequently, later exercise attempts/acknowledgements are not replayed while those steps are locked; the old demo completion and any unearned later-lesson completion are discarded. Lesson 2 remains locked. The learner completes the full production practice, review and summary to earn completion. In other partially completed states, only valid, reachable records survive. Completed production lessons round-trip without resetting.
 
@@ -99,18 +104,41 @@ The separate existing `gps.theme.v1` key remains authoritative for theme selecti
 
 Run `npm run qa` and open the printed loopback URL with `?qa=1`. The development entrypoint imports `src/dev/qa.tsx` only when Vite's `import.meta.env.DEV` is true and the hostname is localhost/loopback. That entire module tree, CSS and QA keys are absent from production output; every `npm run build` verifies this.
 
-QA uses only `gps.qa.progress.v1` for synthetic lesson/step completion flags and test attempts, plus `gps.qa.theme.v1` for its theme. All lessons/steps open immediately while all questions initially remain unanswered. Test answers still go through the unchanged production reducer/grader. Completion marks in this mode are explicitly artificial; scores reflect actual test attempts. The QA toolbar opens any lesson and clears just its disposable answers/history to start at introduction again, retaining access to all steps. Normal learning keys and behavior are unaffected.
+QA uses only `gps.qa.progress.v1` for synthetic lesson/step completion flags and test attempts, plus `gps.qa.theme.v1` for its theme. All lessons/steps open immediately while all questions initially remain unanswered. Test answers go through the production batch reducer and unchanged grader. Synthetic access remains open, while each exercise’s Continue button still requires its real answers to be correct. Completion marks in this mode are explicitly artificial; scores reflect actual test attempts. The QA toolbar opens any lesson and clears just its disposable answers/history to start at introduction again, retaining access to all steps. Normal learning keys and behavior are unaffected.
 
 ## Adding content after approval
 
 1. Create a typed lesson content file, with explanations before the relevant exercises and configured accepted alternatives.
 2. Attach it to the appropriate entry in `src/content/course.ts`. Preserve the catalog order and stable IDs.
 3. Follow the seven-step sequence. Add questions to the existing exercise arrays without changing UI components.
-4. Run `npm run typecheck`, `npm test` and `npm run build`. `validateCourse` runs when the catalog loads and in content unit tests, reporting lesson/step/question paths for invalid IDs, keys, normalized duplicate alternatives, incomplete theory, incorrect step order/type or exercises with fewer than five questions. The content tests also enforce the approved ten-lesson order and exactly 150 current questions, and check each question against an independently specified expected answer and a specific grammatical error.
+4. Run `npm run typecheck`, `npm test` and `npm run build`. `validateCourse` runs when the catalog loads and in content unit tests, reporting lesson/step/question paths for invalid IDs, keys, normalized duplicate alternatives, incomplete theory, incorrect step order/type or exercises with fewer than five questions. Grammar regression tests retain the original ten-lesson/150-question oracle. Integrated tests independently enforce the 16-lesson order, 330 questions, 60 vocabulary entries, all 180 new keys, full progression and legacy migration.
 5. Check the learner flow, error review, refresh, both themes and small screens.
 
 The level union anticipates later levels without adding any content. A future level needs its own catalog/page and progress scope; only the A1 catalog is currently wired to the interface. Phase 3 does not create A2–B2 courses.
 
 ## Accessibility
 
-Exercises use native forms, fieldsets/legends, labeled inputs and radio groups. Enter submits; radio controls retain native arrow/Space behavior. Feedback includes text and an icon rather than color alone, lives in a polite status region and receives focus after submission. Retry returns focus to the answer control. Locked navigation is non-interactive and explains its prerequisite. The inline reset confirmation focuses Cancel, supports Escape and returns focus to its trigger.
+Each exercise uses one native form with labeled fieldsets/inputs and radio groups. Enter submits the group; radio controls retain native arrow/Space behavior. The aggregate summary is a polite status region. Feedback includes text and an icon rather than color alone. Explicit checking focuses and scrolls to the first missing/incorrect fieldset, without reopening a mobile keyboard; all-correct checking focuses the summary at the bottom. Editing never triggers grading, scrolling or focus changes. Locked navigation is non-interactive and explains its prerequisite. The inline reset confirmation focuses Cancel, supports Escape and returns focus to its trigger.
+
+## Authored sentence intent (UX extension)
+
+Written questions may supply optional `sentenceType`: `affirmative`, `negative`, `question`, `short-affirmative` or `short-negative`. It describes the **requested output**, including short answers whose source prompt is a question. The renderer shows a neutral icon and Russian label before the instruction and prompt. Do not derive this value from text patterns or use it as a grading flag. Leave it absent for article corrections, plural transformations and other tasks where a sentence-form badge would obscure the teaching goal. Validation rejects unsupported values and metadata on non-written questions. Legacy questions without this field remain valid. IDs, grading, answers, progression and storage are unchanged.
+
+
+## Integrated vocabulary schema
+
+A vocabulary lesson has `kind: 'vocabulary'` and the same seven-step structure, replacing theory with `type: 'vocabulary'`. Discovery has 6–12 validated cards; the current lessons have 10 each. Every `VocabularyItem` supplies stable lesson-local `id`, `term`, Russian `partOfSpeech`, `meaningRu`, `example`, `exampleTranslation`, and optional `usage`. All fields are plain text. Cards support individual keyboard-operated translation reveals and show/hide all. There is no audio control without a checked local recording; this expansion ships no audio.
+
+Existing `choice`, `blank`, and `written` question types remain unchanged. Optional `vocabularyId` references a discovery card and is mandatory in vocabulary practice. Optional `promptLanguage` and choice-only `optionsLanguage` are `en` or `ru`; omitted values default to English. Recognition options are Russian; recall and contextual clues are Russian. Reference answers and spelling tips stay out of practice until checking. Recall asks for the complete taught expression, not guessed missing letters. Written prompts constrain the target word, subject, frame and time-word placement; configured full forms and contractions are accepted. No automatic translation or general paraphrase grader is used.
+
+Vocabulary review derives the unique words associated with actual incorrect attempts. An optional extra drill reuses the existing recall questions and `ExerciseStep` batch UI in a disposable nested progress context. Its temporary subset is never registered as a new course section or written to storage. It preserves original scores and mistakes; leaving/reloading restarts this optional drill. All required mistakes were already corrected in the normal practice before review unlocks. Summary lists target words and separate recognition/recall/contextual scores; it makes no long-term mastery claim.
+
+## Grammar-only → integrated curriculum migration
+
+`gps.progress.v1` and `version: 1` remain stable. Newly initialized normal progress includes `curriculumVersion: 2`. For an older record without this field, the decoder first replays its attempts against the grammar-only view, applying the existing grading and prerequisite guards. That validated result defines `legacyUnlockedLessons`: completed grammar lessons and the next formerly unlocked grammar lesson, identified by stable IDs. This retained frontier does not expand as new work is completed. Stored completion flags alone do not grant access.
+
+The decoder then replays the full integrated catalog with these retained grammar entitlements. Earlier grammar prerequisites still apply; only newly inserted vocabulary prerequisites are waived for the retained grammar IDs. All original completion, valid answers, wrong-attempt history, pending retry and accessible last location survive. New vocabulary is not marked complete. For example, someone who completed `to-be`, `present-simple` and `do-does` retains access to `have-has`; they must complete `people-feelings` and `daily-routines` before progressing beyond that frontier to `articles`. Someone who completed all ten grammar lessons retains all ten; the course shows 10/16 until the six vocabulary lessons are completed in order. A fresh user must complete all sixteen in the integrated order.
+
+On subsequent loads, version-2 curriculum metadata preserves only known grammar IDs; the decoder does not infer new legacy rights from current progress. Explicit reset drops the entitlements and creates a fresh integrated learner. New completions are stored in catalog order so backfilling vocabulary round-trips deterministically. Object-key insertion order does not falsely signal recovery; invalid/unknown data still does.
+
+Migration is in memory and read-only at startup. The unchanged guarded storage session preserves exact original bytes before the first migrated write, blocks that write if backup fails, and retains stale-tab/read-failure/explicit-reset protections. Theme keys are unchanged. Old releases do not understand the retained-access metadata: do not use an older build to write the same origin after adopting this expansion; keep the raw backup for deliberate rollback. No user Chrome profile was used for migration tests.

@@ -230,6 +230,7 @@ export const presentContinuousLesson: Lesson = {
         {
           "id": "pc-he-negative",
           "type": "written",
+          "sentenceType": "negative",
           "instruction": "Сделайте предложение отрицательным; сохраните остальные слова",
           "prompt": "He is reading a book.",
           "acceptedAnswers": [
@@ -243,6 +244,7 @@ export const presentContinuousLesson: Lesson = {
         {
           "id": "pc-they-question",
           "type": "written",
+          "sentenceType": "question",
           "instruction": "Сделайте вопрос, сохранив остальные слова",
           "prompt": "They are watching TV.",
           "acceptedAnswers": [
@@ -254,6 +256,7 @@ export const presentContinuousLesson: Lesson = {
         {
           "id": "pc-i-negative",
           "type": "written",
+          "sentenceType": "negative",
           "instruction": "Сделайте предложение отрицательным; можно использовать сокращение",
           "prompt": "I am working now.",
           "acceptedAnswers": [
@@ -266,6 +269,7 @@ export const presentContinuousLesson: Lesson = {
         {
           "id": "pc-natasha-question",
           "type": "written",
+          "sentenceType": "question",
           "instruction": "Сделайте вопрос, сохранив имя Natasha",
           "prompt": "Natasha is cooking.",
           "acceptedAnswers": [
@@ -277,6 +281,7 @@ export const presentContinuousLesson: Lesson = {
         {
           "id": "pc-run-now",
           "type": "written",
+          "sentenceType": "affirmative",
           "instruction": "Скажите, что действие происходит сейчас: замените runs на is + форму run на -ing и добавьте now",
           "prompt": "He runs.",
           "acceptedAnswers": [

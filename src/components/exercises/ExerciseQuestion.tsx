@@ -1,48 +1,49 @@
-import { useEffect, useRef, useState } from 'react';
 import type { Question } from '../../types/lesson';
-import { useProgress } from '../../lib/ProgressContext';
-import { questionSolved } from '../../lib/progress';
+import type { QuestionProgress } from '../../lib/progress';
+import { getQuestionState } from '../../lib/exercise';
+import { SentenceTypeBadge } from './SentenceTypeBadge';
 
-export function ExerciseQuestion({ question, lessonId, stepId, index }: { question: Question; lessonId: string; stepId: string; index: number }) {
-  const { progress, dispatch } = useProgress();
-  const saved = progress.lessons[lessonId]?.answers[question.id];
-  const last = saved?.attempts.at(-1);
-  const solved = questionSolved(saved);
-  const checked = !!last && !saved?.retrying;
-  const [value, setValue] = useState(saved?.retrying ? '' : last?.answer ?? '');
-  const inputRef = useRef<HTMLInputElement>(null);
-  const feedbackRef = useRef<HTMLDivElement>(null);
-  const previousAttempts = useRef(saved?.attempts.length ?? 0);
-  const count = saved?.attempts.length ?? 0;
+type Props = {
+  question: Question;
+  index: number;
+  value: string;
+  saved?: QuestionProgress;
+  missing: boolean;
+  onChange: (value: string) => void;
+};
+
+/** Controlled question: checking and focus are owned by the exercise group. */
+export function ExerciseQuestion({ question, index, value, saved, missing, onChange }: Props) {
+  const { locked, feedback, edited } = getQuestionState(saved, value);
   const feedbackId = `${question.id}-feedback`;
-  useEffect(() => {
-    if (count > previousAttempts.current) feedbackRef.current?.focus();
-    previousAttempts.current = count;
-  }, [count]);
-  useEffect(() => { if (saved?.retrying) inputRef.current?.focus(); }, [saved?.retrying]);
+  const instructionId = `${question.id}-instruction`;
+  const missingId = `${question.id}-missing`;
+  const descriptionIds = [instructionId, feedback ? feedbackId : '', missing ? missingId : ''].filter(Boolean).join(' ');
+  const answerLabel = question.type !== 'written' ? question.vocabularyId ? 'Ваш ответ — слово или выражение' : 'Ваш ответ — пропущенные слова'
+    : question.sentenceType === 'short-affirmative' || question.sentenceType === 'short-negative'
+      ? 'Ваш короткий ответ' : 'Ваш ответ — предложение целиком';
+  const invalid = missing || feedback === 'incorrect';
 
-  return <form onSubmit={event => {
-    event.preventDefault();
-    dispatch({ type: 'answer', lessonId, stepId, questionId: question.id, answer: value });
-  }}>
-    <fieldset className="exercise-card" disabled={checked} aria-describedby={checked ? feedbackId : undefined}>
-      <legend>Вопрос {index + 1} · {question.instruction}</legend>
-      <p className="exercise-prompt" lang="en">{question.prompt}</p>
-      {question.type === 'choice' ? <div className="choice-options">{question.options.map((option, optionIndex) =>
+  return <div className={`question-card ${feedback ? `question-${feedback}` : ''} ${missing ? 'question-missing' : ''}`}>
+    <fieldset id={`${question.id}-question`} className="exercise-card" disabled={locked} tabIndex={-1} aria-describedby={descriptionIds} aria-invalid={invalid || undefined}>
+      <legend>Задание {index + 1}{feedback ? locked ? ' · ✓ Верно' : ' · ✕ Исправьте ответ' : ''}</legend>
+      {question.sentenceType && <SentenceTypeBadge type={question.sentenceType} />}
+      <p id={instructionId} className="question-instruction">{question.instruction}</p>
+      <p className="exercise-prompt" lang={question.promptLanguage ?? 'en'}>{question.prompt}</p>
+      {question.type === 'choice' ? <div className="choice-options">{question.options.map(option =>
         <label className={`choice-option ${value === option ? 'selected' : ''}`} key={option}>
-          <input ref={optionIndex === 0 ? inputRef : undefined} type="radio" name={question.id} value={option} checked={value === option} required onChange={() => setValue(option)} />
-          <span lang="en">{option}</span>
-        </label>)}</div> : <label className="answer-label">Ваш ответ
-          <input ref={inputRef} className="answer-input" type="text" lang="en" value={value} onChange={event => setValue(event.target.value)} placeholder={question.placeholder} required maxLength={2000} autoComplete="off" autoCapitalize="none" spellCheck={false} aria-invalid={checked && !solved ? true : undefined} aria-describedby={checked ? feedbackId : undefined} />
+          <input type="radio" name={question.id} value={option} checked={value === option} required onChange={() => onChange(option)} aria-describedby={descriptionIds} aria-invalid={invalid || undefined} />
+          <span lang={question.optionsLanguage ?? 'en'}>{option}</span>
+        </label>)}</div> : <label className="answer-label">{answerLabel}
+          <input className="answer-input" type="text" lang="en" value={value} onChange={event => onChange(event.target.value)} placeholder={question.placeholder} required maxLength={2000} enterKeyHint="done" autoComplete="off" autoCapitalize="none" spellCheck={false} aria-invalid={invalid || undefined} aria-describedby={descriptionIds} />
         </label>}
+      {missing && <p id={missingId} className="missing-answer">Ответьте на это задание. Попытка не засчитана.</p>}
     </fieldset>
-    {!checked && <button className="button button-primary" type="submit" disabled={!value.trim()}>Проверить ответ</button>}
-    <div ref={feedbackRef} id={feedbackId} role="status" aria-live="polite" aria-atomic="true" tabIndex={-1} className={checked ? `answer-feedback ${solved ? 'is-correct' : 'is-incorrect'}` : 'retry-feedback'}>
-      {checked ? <><strong>{solved ? '✓ Верно' : 'Попробуйте ещё раз'}</strong><p>{question.explanation}</p><p>Образец ответа: <span lang="en">{question.acceptedAnswers[0]}</span></p><small>Попыток: {count}</small></> : saved?.retrying ? 'Новая попытка. Предыдущий результат сохранён в истории.' : null}
-    </div>
-    {checked && !solved && <button className="button button-secondary" type="button" onClick={() => {
-      setValue('');
-      dispatch({ type: 'retry', lessonId, stepId, questionId: question.id });
-    }}>Попробовать снова</button>}
-  </form>;
+    {feedback && <div id={feedbackId} className={`answer-feedback ${locked ? 'is-correct' : 'is-incorrect'}`}>
+      <strong>{locked ? '✓ Верно' : '✕ Пока неверно'}</strong>
+      {edited && !locked && <p>Ответ изменён. Нажмите «Проверить ответы», чтобы проверить исправление.</p>}
+      <p>{question.explanation}</p><p>Образец ответа: <span lang={question.type === 'choice' ? question.optionsLanguage ?? 'en' : 'en'}>{question.acceptedAnswers[0]}</span></p>
+      <small>Попыток: {saved?.attempts.length ?? 0}</small>
+    </div>}
+  </div>;
 }

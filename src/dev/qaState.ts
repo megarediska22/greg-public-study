@@ -4,7 +4,7 @@ import { updateProgress, type Progress } from '../lib/progress.ts';
 export const QA_PROGRESS_KEY = 'gps.qa.progress.v1';
 export const QA_THEME_KEY = 'gps.qa.theme.v1';
 
-/** Synthetic completion flags open the UI; all 150 questions start unanswered. */
+/** Synthetic completion flags open the UI; all questions start unanswered. */
 export function createQaProgress(course: readonly CourseEntry[]): Progress {
   return {
     version: 1,

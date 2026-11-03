@@ -263,6 +263,7 @@ export const demonstrativesLesson: Lesson = {
         {
           "id": "dem-bag-question",
           "type": "written",
+          "sentenceType": "question",
           "instruction": "Сделайте вопрос, сохранив остальные слова",
           "prompt": "This is a bag.",
           "acceptedAnswers": [
@@ -274,6 +275,7 @@ export const demonstrativesLesson: Lesson = {
         {
           "id": "dem-apples-negative",
           "type": "written",
+          "sentenceType": "negative",
           "instruction": "Сделайте предложение отрицательным; сохраните остальные слова",
           "prompt": "These are apples.",
           "acceptedAnswers": [
@@ -286,6 +288,7 @@ export const demonstrativesLesson: Lesson = {
         {
           "id": "dem-car-negative",
           "type": "written",
+          "sentenceType": "negative",
           "instruction": "Сделайте предложение отрицательным; можно использовать сокращение",
           "prompt": "That is a car.",
           "acceptedAnswers": [

@@ -230,6 +230,7 @@ export const canCantLesson: Lesson = {
         {
           "id": "can-he-negative",
           "type": "written",
+          "sentenceType": "negative",
           "instruction": "Сделайте предложение отрицательным; можно использовать сокращение",
           "prompt": "He can swim.",
           "acceptedAnswers": [
@@ -243,6 +244,7 @@ export const canCantLesson: Lesson = {
         {
           "id": "can-you-question",
           "type": "written",
+          "sentenceType": "question",
           "instruction": "Сделайте вопрос, сохранив местоимение you",
           "prompt": "You can cook.",
           "acceptedAnswers": [
@@ -254,6 +256,7 @@ export const canCantLesson: Lesson = {
         {
           "id": "can-natasha-question",
           "type": "written",
+          "sentenceType": "question",
           "instruction": "Сделайте вопрос, сохранив имя Natasha",
           "prompt": "Natasha can read English.",
           "acceptedAnswers": [
@@ -265,6 +268,7 @@ export const canCantLesson: Lesson = {
         {
           "id": "can-i-short-yes",
           "type": "written",
+          "sentenceType": "short-affirmative",
           "instruction": "Дайте короткий утвердительный ответ о себе с Yes, I…",
           "prompt": "Can you help?",
           "acceptedAnswers": [
@@ -277,6 +281,7 @@ export const canCantLesson: Lesson = {
         {
           "id": "can-she-short-no",
           "type": "written",
+          "sentenceType": "short-negative",
           "instruction": "Дайте короткий отрицательный ответ с No, she…",
           "prompt": "Can she play tennis?",
           "acceptedAnswers": [

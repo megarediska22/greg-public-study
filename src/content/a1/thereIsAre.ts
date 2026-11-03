@@ -222,6 +222,7 @@ export const thereIsAreLesson: Lesson = {
         {
           "id": "there-desk-negative",
           "type": "written",
+          "sentenceType": "negative",
           "instruction": "Сделайте предложение отрицательным; сохраните остальные слова",
           "prompt": "There is a desk in the room.",
           "acceptedAnswers": [
@@ -235,6 +236,7 @@ export const thereIsAreLesson: Lesson = {
         {
           "id": "there-book-question",
           "type": "written",
+          "sentenceType": "question",
           "instruction": "Сделайте вопрос, сохранив остальные слова",
           "prompt": "There is a book on the table.",
           "acceptedAnswers": [
@@ -246,6 +248,7 @@ export const thereIsAreLesson: Lesson = {
         {
           "id": "there-chairs-question",
           "type": "written",
+          "sentenceType": "question",
           "instruction": "Сделайте вопрос, сохранив остальные слова",
           "prompt": "There are two chairs in the kitchen.",
           "acceptedAnswers": [
@@ -257,6 +260,7 @@ export const thereIsAreLesson: Lesson = {
         {
           "id": "there-short-no",
           "type": "written",
+          "sentenceType": "short-negative",
           "instruction": "Дайте короткий отрицательный ответ с No, there…",
           "prompt": "Is there a lamp?",
           "acceptedAnswers": [
@@ -273,6 +277,7 @@ export const thereIsAreLesson: Lesson = {
         {
           "id": "there-short-yes-plural",
           "type": "written",
+          "sentenceType": "short-affirmative",
           "instruction": "Дайте короткий утвердительный ответ с Yes, there…",
           "prompt": "Are there books on the table?",
           "acceptedAnswers": [

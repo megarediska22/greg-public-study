@@ -7,6 +7,8 @@ export type QuestionProgress = { attempts: Attempt[]; retrying: boolean };
 export type LessonProgress = { completedSteps: string[]; answers: Record<string, QuestionProgress> };
 export type Progress = {
   version: 1;
+  curriculumVersion?: 2;
+  legacyUnlockedLessons?: string[];
   completedLessons: string[];
   lessons: Record<string, LessonProgress>;
   lastVisited: { lessonId: string; stepId: string } | null;
@@ -14,15 +16,21 @@ export type Progress = {
 export type ProgressAction =
   | { type: 'visit'; lessonId: string; stepId: string }
   | { type: 'complete'; lessonId: string; stepId: string }
+  | { type: 'check-exercise'; lessonId: string; stepId: string; answers: Readonly<Record<string, string>> }
   | { type: 'answer'; lessonId: string; stepId: string; questionId: string; answer: string }
   | { type: 'retry'; lessonId: string; stepId: string; questionId: string };
 
 export function emptyProgress(): Progress {
-  return { version: 1, completedLessons: [], lessons: {}, lastVisited: null };
+  return { version: 1, curriculumVersion: 2, completedLessons: [], lessons: {}, lastVisited: null };
 }
 
 export function isLessonUnlocked(progress: Progress, course: readonly CourseEntry[], lessonId: string): boolean {
   const index = course.findIndex(lesson => lesson.id === lessonId);
+  // A validated pre-vocabulary frontier retains grammar access. It never earns
+  // completion or exempts vocabulary/new grammar from the integrated sequence.
+  if (index >= 0 && course[index].lesson?.kind !== 'vocabulary' && progress.legacyUnlockedLessons?.includes(lessonId)) {
+    return course.slice(0, index).filter(entry => entry.lesson?.kind !== 'vocabulary').every(entry => progress.completedLessons.includes(entry.id));
+  }
   return index >= 0 && course.slice(0, index).every(entry => progress.completedLessons.includes(entry.id));
 }
 
@@ -71,6 +79,25 @@ export function updateProgress(progress: Progress, course: readonly CourseEntry[
     // Exercise completion is earned by correct answers, never by Next.
     if (step.completion !== 'acknowledge' || current.completedSteps.includes(step.id)) return progress;
     current.completedSteps.push(step.id);
+  } else if (action.type === 'check-exercise') {
+    if (step.type !== 'exercise') return progress;
+    const unresolved = step.questions.filter(question => !questionSolved(current.answers[question.id]));
+    // Validate the whole submission before recording any attempts. Missing/invalid
+    // fields never produce partial scores or consume attempts for other answers.
+    if (!unresolved.length || unresolved.some(question => {
+      const answer = action.answers[question.id];
+      return typeof answer !== 'string' || !answer.trim() || answer.length > 2000 ||
+        (question.type === 'choice' && !question.options.includes(answer));
+    })) return progress;
+    for (const question of unresolved) {
+      const answer = action.answers[question.id];
+      const saved = current.answers[question.id];
+      current.answers[question.id] = {
+        attempts: [...(saved?.attempts ?? []), { answer, correct: gradeAnswer(question, answer) }],
+        retrying: false,
+      };
+    }
+    if (step.questions.every(question => questionSolved(current.answers[question.id])) && !current.completedSteps.includes(step.id)) current.completedSteps.push(step.id);
   } else {
     if (step.type !== 'exercise') return progress;
     const question = step.questions.find(item => item.id === action.questionId);
@@ -91,7 +118,9 @@ export function updateProgress(progress: Progress, course: readonly CourseEntry[
   return {
     ...progress,
     lessons: { ...progress.lessons, [lesson.id]: current },
-    completedLessons: completed && !progress.completedLessons.includes(lesson.id) ? [...progress.completedLessons, lesson.id] : progress.completedLessons,
+    completedLessons: completed && !progress.completedLessons.includes(lesson.id)
+      ? course.filter(entry => entry.id === lesson.id || progress.completedLessons.includes(entry.id)).map(entry => entry.id)
+      : progress.completedLessons,
   };
 }
 
@@ -101,6 +130,12 @@ function record(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
 
+function comparableJson(value: unknown): string {
+  // Completing an inserted lesson changes map insertion order, not earned data.
+  return JSON.stringify(value, (_key, item: unknown) => record(item)
+    ? Object.fromEntries(Object.entries(item).sort(([a], [b]) => a.localeCompare(b))) : item);
+}
+
 /** Rebuild earned progress from known content and validated attempts, never trust stored scores. */
 export function decodeProgress(raw: string | null, course: readonly CourseEntry[]): { progress: Progress; recovered: boolean } {
   let clean = emptyProgress();
@@ -108,6 +143,20 @@ export function decodeProgress(raw: string | null, course: readonly CourseEntry[
   try {
     const data: unknown = JSON.parse(raw);
     if (!record(data) || data.version !== 1 || !record(data.lessons)) return { progress: clean, recovered: true };
+    if (course.some(entry => entry.lesson?.kind === 'vocabulary')) {
+      const grammar = course.filter(entry => entry.lesson?.kind !== 'vocabulary');
+      let retained: string[] = [];
+      if (data.curriculumVersion === undefined) {
+        // Replay the former grammar curriculum first; stored completion booleans
+        // alone cannot grant access. No storage writes occur during migration.
+        const legacy = decodeProgress(raw, grammar).progress;
+        const frontier = grammar.findIndex(entry => !legacy.completedLessons.includes(entry.id));
+        retained = grammar.slice(0, frontier < 0 ? grammar.length : frontier + 1).map(entry => entry.id);
+      } else if (data.curriculumVersion === 2 && Array.isArray(data.legacyUnlockedLessons)) {
+        retained = grammar.filter(entry => (data.legacyUnlockedLessons as unknown[]).includes(entry.id)).map(entry => entry.id);
+      }
+      if (retained.length) clean.legacyUnlockedLessons = retained;
+    }
     for (const entry of course) {
       const lesson = entry.lesson;
       const saved = data.lessons[entry.id];
@@ -138,7 +187,7 @@ export function decodeProgress(raw: string | null, course: readonly CourseEntry[
     if (record(visited) && typeof visited.lessonId === 'string' && typeof visited.stepId === 'string') {
       clean = updateProgress(clean, course, { type: 'visit', lessonId: visited.lessonId, stepId: visited.stepId });
     }
-    return { progress: clean, recovered: JSON.stringify(data) !== JSON.stringify(clean) };
+    return { progress: clean, recovered: comparableJson(data) !== comparableJson(clean) };
   } catch {
     return { progress: clean, recovered: true };
   }
