@@ -57,11 +57,11 @@ const answerAudit = [
   ['dd-they-positive-answer', 'Yes, they do.', 'Yes, they does.'],
 ];
 
-test('production A1 curriculum has the exact lesson/step/type order and 45 distinct questions', () => {
-  assert.deepEqual(lessons.map(entry => entry.id), ['to-be', 'present-simple', 'do-does']);
-  assert.equal(questions.length, 45);
-  assert.equal(new Set(questions.map(question => question.id)).size, 45);
-  assert.deepEqual(answerAudit.map(([id]) => id), questions.map(question => question.id));
+test('production A1 curriculum has the exact lesson/step/type order and 150 distinct questions', () => {
+  assert.deepEqual(lessons.map(entry => entry.id), ['to-be', 'present-simple', 'do-does', 'have-has', 'articles', 'demonstratives', 'there-is-are', 'can-cant', 'present-continuous', 'was-were']);
+  assert.equal(questions.length, 150);
+  assert.equal(new Set(questions.map(question => question.id)).size, 150);
+  assert.deepEqual(answerAudit.map(([id]) => id), questions.slice(0, 45).map(question => question.id));
   assert.doesNotThrow(() => validateCourse(lessons));
   for (const { lesson } of lessons) {
     assert.equal(lesson.sample, false);

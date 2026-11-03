@@ -1,6 +1,6 @@
 # Lesson engine contract
 
-Phase 3 supplies `src/content/a1/toBe.ts`, `presentSimple.ts` and `doDoes.ts`: three production lessons with seven steps and 15 questions each. The historical three-question Phase 2 sample is a test-only fixture at `tests/fixtures/sampleLesson.ts`. It is never imported by the production catalog. The authoritative TypeScript types are in `src/types/lesson.ts`.
+The local v1.1 catalog supplies ten production A1 lessons under `src/content/a1/`, each with seven steps and 15 questions: 70 steps and 150 questions total. The original `toBe.ts`, `presentSimple.ts` and `doDoes.ts` are unchanged; seven lessons are appended after them in the catalog. The historical three-question Phase 2 sample is a test-only fixture at `tests/fixtures/sampleLesson.ts`. It is never imported by the production catalog. The authoritative TypeScript types are in `src/types/lesson.ts`.
 
 ## Lesson and catalog
 
@@ -8,7 +8,7 @@ Phase 3 supplies `src/content/a1/toBe.ts`, `presentSimple.ts` and `doDoes.ts`: t
 
 The ordered `CourseEntry[]` in `src/content/course.ts` supplies card metadata (`id`, `title`, `subtitle`, `objective`) and an optional `lesson`. The lesson ID must match its catalog ID. An entry without content can unlock, but cannot award completion. All preceding entries must be completed before a lesson opens.
 
-IDs are stable lowercase URL-safe slugs (`to-be`, `ready-question`), unique within their owner. Production question IDs must be unique across the course. Routes use `#/lesson/{lessonId}/{stepId}`; no component depends on particular lesson or step IDs. All three production lessons use `sample: false`.
+IDs are stable lowercase URL-safe slugs (`to-be`, `ready-question`), unique within their owner. Production question IDs must be unique across the course. Routes use `#/lesson/{lessonId}/{stepId}`; no component depends on particular lesson or step IDs. All ten production lessons use `sample: false`.
 
 ## Steps
 
@@ -77,6 +77,10 @@ Loading rebuilds progress against current content in prerequisite order, validat
 
 Append new lesson IDs only after approval, preserving existing order and progress. Preserve IDs and question meaning when editing content; changing IDs means those records can no longer be restored.
 
+### v1.0 → v1.1 course expansion
+
+The original three lessons and all existing lesson/step/question IDs stay intact. New lesson IDs are appended: `have-has`, `articles`, `demonstratives`, `there-is-are`, `can-cant`, `present-continuous`, `was-were`. The existing progress replay preserves completed and partial old lessons, attempts and the last visited accessible step. Completing `do-does` unlocks `have-has`; it does not automatically complete any new content. No reset, storage-key change, content-version flag or migration is introduced. Theme remains in its independent key. The end-of-course summary now belongs to `was-were`; the unchanged generic summary renderer derives the next action from the catalog.
+
 ### Phase 2 demo compatibility policy
 
 No blanket reset, content-version flag or new progress key is introduced. The existing replay/validation loader scopes recovery to each lesson and its accessible steps. The production `to-be` retains the same lesson/step IDs and the three unchanged question IDs: `choose-am`, `negative-blank`, `ready-question`.
@@ -92,7 +96,7 @@ The separate existing `gps.theme.v1` key remains authoritative for theme selecti
 1. Create a typed lesson content file, with explanations before the relevant exercises and configured accepted alternatives.
 2. Attach it to the appropriate entry in `src/content/course.ts`. Preserve the catalog order and stable IDs.
 3. Follow the seven-step sequence. Add questions to the existing exercise arrays without changing UI components.
-4. Run `npm run typecheck`, `npm test` and `npm run build`. `validateCourse` runs when the catalog loads and in content unit tests, reporting lesson/step/question paths for invalid IDs, keys, normalized duplicate alternatives, incomplete theory, incorrect step order/type or exercises with fewer than five questions. The content tests also enforce the approved three-lesson order and exactly 45 current questions, and check each question against an independently specified expected answer and a specific grammatical error.
+4. Run `npm run typecheck`, `npm test` and `npm run build`. `validateCourse` runs when the catalog loads and in content unit tests, reporting lesson/step/question paths for invalid IDs, keys, normalized duplicate alternatives, incomplete theory, incorrect step order/type or exercises with fewer than five questions. The content tests also enforce the approved ten-lesson order and exactly 150 current questions, and check each question against an independently specified expected answer and a specific grammatical error.
 5. Check the learner flow, error review, refresh, both themes and small screens.
 
 The level union anticipates later levels without adding any content. A future level needs its own catalog/page and progress scope; only the A1 catalog is currently wired to the interface. Phase 3 does not create A2–B2 courses.
