@@ -42,7 +42,7 @@ export const presentContinuousLesson: Lesson = {
           "subject": "He / She / It",
           "form": "is + -ing",
           "example": "Gregory is cooking.",
-          "translation": "Грегори готовит."
+          "translation": "Григорий готовит."
         },
         {
           "subject": "You / We / They",

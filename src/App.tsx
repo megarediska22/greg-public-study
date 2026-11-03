@@ -8,7 +8,7 @@ import { LessonPage } from './pages/LessonPage';
 import { lessons } from './content/course';
 import { LinkButton } from './components/LinkButton';
 
-export function App() {
+export function App({ themeStorageKey }: { themeStorageKey?: string } = {}) {
   const route = useRoute();
   const mainRef = useRef<HTMLElement>(null);
   const previousRoute = useRef(route);
@@ -24,5 +24,5 @@ export function App() {
       previousRoute.current = route;
     }
   }, [route, title]);
-  return <><a className="skip-link" href="#main-content" onClick={event => { event.preventDefault(); mainRef.current?.focus(); }}>Перейти к содержимому</a><Header route={route} /><main id="main-content" className="main-container" tabIndex={-1} ref={mainRef}>{route === '/' ? <HomePage /> : route === '/course/a1' ? <CoursePage /> : entry && match ? <LessonPage key={entry.id} entry={entry} stepId={match[2]} /> : <section className="not-found"><h1>Здесь пока нет страницы</h1><p>Вернитесь к программе и выберите доступный урок.</p><LinkButton href="#/course/a1">К курсу A1</LinkButton></section>}</main><Footer /></>;
+  return <><a className="skip-link" href="#main-content" onClick={event => { event.preventDefault(); mainRef.current?.focus(); }}>Перейти к содержимому</a><Header route={route} themeStorageKey={themeStorageKey} /><main id="main-content" className="main-container" tabIndex={-1} ref={mainRef}>{route === '/' ? <HomePage /> : route === '/course/a1' ? <CoursePage /> : entry && match ? <LessonPage key={entry.id} entry={entry} stepId={match[2]} /> : <section className="not-found"><h1>Здесь пока нет страницы</h1><p>Вернитесь к программе и выберите доступный урок.</p><LinkButton href="#/course/a1">К курсу A1</LinkButton></section>}</main><Footer /></>;
 }

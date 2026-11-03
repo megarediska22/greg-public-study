@@ -7,7 +7,9 @@
     "dev": "vite --host 127.0.0.1",
     "typecheck": "tsc --noEmit",
     "test": "node --experimental-strip-types --test tests/*.test.mjs",
-    "build": "npm run typecheck && vite build",
+    "build": "npm run typecheck && vite build && node scripts/verify-production.mjs",
+    "qa": "node scripts/start-local-qa.mjs",
+    "verify:production": "node scripts/verify-production.mjs",
     "preview": "vite preview --host 127.0.0.1"
   },
   "dependencies": { "react": "^19.2.0", "react-dom": "^19.2.0" },

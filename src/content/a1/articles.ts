@@ -61,7 +61,7 @@ export const articlesLesson: Lesson = {
           "title": "Уже знакомы? Тогда the",
           "text": "После первого упоминания можно сказать the. Например, сначала a bag, а затем the bag — уже понятно, какая сумка.",
           "example": "Gregory has a bag. The bag is red.",
-          "translation": "У Грегори есть сумка. Эта сумка красная."
+          "translation": "У Григория есть сумка. Эта сумка красная."
         },
         {
           "title": "Слова для практики",

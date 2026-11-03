@@ -28,7 +28,7 @@ export const toBeLesson: Lesson = {
           "subjectTranslation": "я",
           "form": "am",
           "example": "I am Gregory.",
-          "translation": "Я Грегори."
+          "translation": "Я Григорий."
         },
         {
           "subject": "You / We / They",
@@ -51,7 +51,7 @@ export const toBeLesson: Lesson = {
           "text": "I всегда пишется с большой буквы. Апостроф заменяет пропущенные буквы: I am → I’m.",
           "formula": "I'm · you're · we're · they're · he's · she's · it's",
           "example": "I'm Gregory.",
-          "translation": "Я Грегори."
+          "translation": "Я Григорий."
         },
         {
           "title": "Чтобы сказать «не»",

@@ -3,7 +3,7 @@ import logo from '../../../assets/brand/Greg Public Study Logo.png';
 import lightLogo from '../../../assets/brand/greg-public-study-logo-light.png';
 import { Icon } from '../Icon';
 
-export function Header({ route }: { route: string }) {
+export function Header({ route, themeStorageKey = 'gps.theme.v1' }: { route: string; themeStorageKey?: string }) {
   const [theme, setTheme] = useState(() => document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light');
   const [menuOpen, setMenuOpen] = useState(false);
   const [storageUnavailable, setStorageUnavailable] = useState(false);
@@ -13,7 +13,7 @@ export function Header({ route }: { route: string }) {
     document.documentElement.style.colorScheme = next;
     document.querySelector('meta[name="theme-color"]')?.setAttribute('content', next === 'dark' ? '#121212' : '#F7F7F7');
     setTheme(next);
-    try { localStorage.setItem('gps.theme.v1', next); } catch { setStorageUnavailable(true); }
+    try { localStorage.setItem(themeStorageKey, next); } catch { setStorageUnavailable(true); }
   }
   return <header className="site-header">
     <div className="header-inner">

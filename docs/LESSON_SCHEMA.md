@@ -75,6 +75,10 @@ Exercise and lesson scores are calculated from persisted outcomes: solved questi
 
 Loading rebuilds progress against current content in prerequisite order, validates every saved attempt and recalculates correctness. Invalid or unearned later completion is discarded while valid earlier progress is kept. Missing data starts fresh; invalid JSON or an unsupported schema version recovers safely with a visible notice. Unknown IDs are discarded. A future incompatible schema needs an explicit migration or recovery policy; do not silently reinterpret versions.
 
+The production React provider now opens a read-only session through `src/lib/progressStorage.ts`. It never writes the normalized initial state merely because the application mounted. Only subsequent changes are persisted. If initial storage reading fails, that session stays memory-only. Before persisting a recovered state, the exact original raw value is archived under a new `gps.progress.v1.backup.<timestamp>[.<suffix>]` key; failure to archive blocks replacement. Existing backup keys are not overwritten. A stale tab whose expected raw value has changed is blocked from overwriting the new value. Replacing earned progress with an empty state requires the existing explicit reset confirmation and also retains a backup. Unknown records are filtered out of active validated progress, but their original bytes remain available rather than being silently destroyed.
+
+The legacy pure `loadProgress`/`saveProgress` helpers remain for compatibility and low-level tests; application startup must use the guarded session. A future ID/schema change still needs a deliberate migration: backups preserve evidence, but do not infer mappings between unrelated IDs.
+
 Append new lesson IDs only after approval, preserving existing order and progress. Preserve IDs and question meaning when editing content; changing IDs means those records can no longer be restored.
 
 ### v1.0 → v1.1 course expansion
@@ -90,6 +94,12 @@ For a completed three-question demo, `intro` and `theory` acknowledgement and th
 This is the existing schema-v1 recovery mechanism, not a one-time destructive migration: it is idempotent after the normalized state is saved. The UI explains that saved data was checked against the current program and new/unfinished tasks remain. Recovery neither enumerates nor clears unrelated storage; `gps.theme.v1` is not read or written by the progress adapter. A regression test covers a completed demo, normalization on the next load and preserved dark theme.
 
 The separate existing `gps.theme.v1` key remains authoritative for theme selection and pre-render restoration. Reset clears learning progress after an inline confirmation, preserving the theme. Storage access/quota failures show a notice and leave the app usable in memory. Data is browser-local; no cross-device or live cross-tab synchronization is implemented.
+
+## Local development QA
+
+Run `npm run qa` and open the printed loopback URL with `?qa=1`. The development entrypoint imports `src/dev/qa.tsx` only when Vite's `import.meta.env.DEV` is true and the hostname is localhost/loopback. That entire module tree, CSS and QA keys are absent from production output; every `npm run build` verifies this.
+
+QA uses only `gps.qa.progress.v1` for synthetic lesson/step completion flags and test attempts, plus `gps.qa.theme.v1` for its theme. All lessons/steps open immediately while all questions initially remain unanswered. Test answers still go through the unchanged production reducer/grader. Completion marks in this mode are explicitly artificial; scores reflect actual test attempts. The QA toolbar opens any lesson and clears just its disposable answers/history to start at introduction again, retaining access to all steps. Normal learning keys and behavior are unaffected.
 
 ## Adding content after approval
 

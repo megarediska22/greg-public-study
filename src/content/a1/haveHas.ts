@@ -20,7 +20,7 @@ export const haveHasLesson: Lesson = {
       "heading": "Что у вас в сумке?",
       "text": "Книга, телефон, яблоко? С have легко рассказать, что у вас есть. Правила do и does уже знакомы — теперь они пригодятся для разговора о вещах.",
       "example": "Gregory has a book.",
-      "translation": "У Грегори есть книга."
+      "translation": "У Григория есть книга."
     },
     {
       "id": "theory",
@@ -58,7 +58,7 @@ export const haveHasLesson: Lesson = {
           "text": "С I/you/we/they нужен do, с he/she/it — does. В коротком ответе повторяем do/does.",
           "formula": "Do/Does + кто + have + вещь?",
           "example": "Does Gregory have a bike? — Yes, he does. / No, he doesn’t.",
-          "translation": "У Грегори есть велосипед? — Да. / Нет."
+          "translation": "У Григория есть велосипед? — Да. / Нет."
         },
         {
           "title": "Слова для практики",
@@ -162,7 +162,7 @@ export const haveHasLesson: Lesson = {
         {
           "id": "hh-gregory-has",
           "type": "blank",
-          "instruction": "Вставьте have или has: «У Грегори есть брат»",
+          "instruction": "Вставьте have или has: «У Григория есть брат»",
           "prompt": "Gregory ___ a brother.",
           "acceptedAnswers": [
             "has"

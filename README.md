@@ -79,9 +79,23 @@ Additional lessons/levels and later phases require separate approval.
 
 ## Verification
 
+The v1.1 localization/persistence maintenance is documented in `docs/LOCALIZATION_PROGRESS_REVIEW.md`: correct Russian Григорий/Григория translations, guarded startup persistence with raw-data backups, 209 passing tests and an isolated development-only QA mode.
+
 See `docs/A1_EXPANSION_REVIEW.md` for the v1.1 curriculum, all 150 questions, preservation of existing progress, 188 passing automated tests, production build and complete ten-lesson browser journey. Earlier reports below describe historical scopes.
 
 
 See `PHASE3_REVIEW.md` for the file manifest, question/grammar audit, demo-progress policy, 76 executed tests, subpath production build, complete browser journey and limitations. Browser evidence is in `docs/qa/`. Historical `PHASE1_REVIEW.md` and `PHASE2_REVIEW.md` describe their respective baselines.
 
 The subsequent focused theory revision is documented in `docs/THEORY_REVISION_REVIEW.md`: shorter theory for all three lessons, backward-compatible rule blocks, 77 passing tests and visual checks of both themes at 360px and 1280px. Lesson objectives, questions and progress rules are preserved. Published in commit `38e3c02`.
+
+## Persistent local QA
+
+```sh
+npm run qa
+```
+
+Alternatively double-click `Start Local QA.command`. The launcher starts the installed Vite **development** server as a detached process with output in ignored `.local-qa/vite.log`. It reuses its running dev server on subsequent launches. Ports already occupied by another server are left untouched: it prefers 5173, then 5175/5176. The current QA URL is `http://127.0.0.1:5175/?qa=1#/course/a1` because 5173 is occupied by an existing production preview.
+
+All ten lessons and seven steps per lesson are open immediately. Use the toolbar's lesson selector, the catalog or the step navigation (expand it on mobile). Questions are unanswered and feedback works normally. To repeat a lesson from scratch, click “Очистить ответы этого урока”; this clears only that lesson's QA answers/history and opens its introduction. Completion ticks are synthetic access flags, not earned results. Give an intentionally incorrect answer to populate mistake review. The QA data and theme survive refresh in separate keys and never replace normal learning progress.
+
+The launcher exits while the detached server continues running; closing its terminal does not issue a stop command. Restart after logout/reboot or external process termination with the same command/launcher. No system startup service is installed. Production builds ignore `?qa=1`; `npm run verify:production` checks the built files for QA code/keys.

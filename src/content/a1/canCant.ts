@@ -20,7 +20,7 @@ export const canCantLesson: Lesson = {
       "heading": "Что вы умеете?",
       "text": "Плавать, готовить или помогать друзьям? Can расскажет об умении или возможности. Хорошая новость: для всех местоимений форма одна.",
       "example": "Gregory can cook. Natasha can swim.",
-      "translation": "Грегори умеет готовить. Наташа умеет плавать."
+      "translation": "Григорий умеет готовить. Наташа умеет плавать."
     },
     {
       "id": "theory",
@@ -197,7 +197,7 @@ export const canCantLesson: Lesson = {
         {
           "id": "can-help-question",
           "type": "blank",
-          "instruction": "Дополните вопрос о возможности словом из этого урока: «Грегори может помочь?»",
+          "instruction": "Дополните вопрос о возможности словом из этого урока: «Григорий может помочь?»",
           "prompt": "___ Gregory help?",
           "acceptedAnswers": [
             "Can"

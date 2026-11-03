@@ -20,7 +20,7 @@ export const wasWereLesson: Lesson = {
       "heading": "А что было вчера?",
       "text": "Сегодня вы дома, а вчера были в школе? У to be есть формы для прошлого: was и were. Начнём с мест и состояний — без новых глаголов действия.",
       "example": "Gregory was at school yesterday.",
-      "translation": "Грегори вчера был в школе."
+      "translation": "Григорий вчера был в школе."
     },
     {
       "id": "theory",

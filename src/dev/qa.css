@@ -1,0 +1,6 @@
+.qa-bar { margin: 16px auto; padding: 18px 24px; max-width: 1280px; color: var(--text); background: var(--surface-secondary); border: 1px solid var(--border); border-radius: 12px; }
+.qa-bar p { margin: 8px 0; max-width: 85ch; font-size: .9rem; }
+.qa-controls { display: flex; align-items: end; flex-wrap: wrap; gap: 12px 20px; }
+.qa-controls label { display: grid; gap: 6px; min-width: 0; }
+.qa-controls select { padding: 12px; max-width: 100%; color: var(--text); background: var(--surface); border: 1px solid var(--muted); border-radius: 8px; font: inherit; }
+@media (max-width: 600px) { .qa-bar { margin: 10px; padding: 16px; } .qa-controls, .qa-controls label, .qa-controls .button { width: 100%; } .qa-controls select { width: 100%; } }

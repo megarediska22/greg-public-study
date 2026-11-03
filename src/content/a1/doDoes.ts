@@ -53,7 +53,7 @@ export const doDoesLesson: Lesson = {
           "text": "Where — где или куда; What — что. Поставьте это слово перед do/does.",
           "formula": "Where/What + do/does + кто + глагол + остальное?",
           "example": "Where does Gregory work?",
-          "translation": "Где работает Грегори?"
+          "translation": "Где работает Григорий?"
         }
       ],
       "noteTitle": "Не путайте с to be",

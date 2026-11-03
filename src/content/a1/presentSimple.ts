@@ -33,7 +33,7 @@ export const presentSimpleLesson: Lesson = {
           "subject": "He / She / It",
           "form": "works",
           "example": "Gregory works every day.",
-          "translation": "Грегори работает каждый день."
+          "translation": "Григорий работает каждый день."
         }
       ],
       "blocks": [
