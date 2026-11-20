@@ -1,0 +1,40 @@
+{
+  "number": 58,
+  "title": "Крайний срок и напоминание",
+  "subtitle": "Deadlines and reminders",
+  "goal": "Определить точный крайний срок, проверить два времени отправки и написать напоминание о сдаче файла вовремя.",
+  "intro": "В учебном центре ждут ваш файл. В заметке указана точная граница приёма. Вы выбираете время отправки с запасом и оставляете себе напоминание.",
+  "example": "Task note: The map file is due on Tuesday at noon. Submissions at 12:00 p.m. are accepted; later submissions are not.\nMy plan: I'll submit the map file at 11:30 a.m. on Tuesday.",
+  "translation": "Заметка о задании: файл с картой нужно сдать во вторник в полдень. Отправки в 12:00 принимаются; более поздние — нет.\nМой план: Я отправлю файл с картой во вторник в 11:30.",
+  "theory": "Deadline — крайний срок, submit — отправить или сдать файл, reminder — напоминание. The file is due означает «файл нужно сдать». Due on Monday указывает день, due at 5:00 p.m. — время. Их можно соединить: The file is due on Monday at 5:00 p.m.\n\nBy + граница означает «не позднее»: submit by noon — отправьте не позднее полудня. В этих заданиях by включает саму указанную минуту: 12:00 принимается. Before означает «раньше»: submit before noon — отправьте раньше 12:00; ровно 12:00 уже не подходит. В каждом объявлении граница приёма указана явно.\n\nNoon — полдень, 12:00 p.m., не полночь. Американская запись даты June 8 означает 8 июня; в ответах сохраняйте порядок месяц + число. Для напоминания используйте Submit the file by … или Submit the file before … . Чтобы запланировать отправку заранее, скажите I'll submit the file at 10:00 a.m.\n\nВспомните until из #30: The office is open until noon описывает, до какого времени длится работа. Для разовой сдачи файла используйте by или before согласно объявлению, а не submit until noon.",
+  "rows": [
+    ["due on + day", "The form is due on Thursday.", "Форму нужно сдать в четверг."],
+    ["due at + time", "The file is due at 2:00 p.m.", "Файл нужно сдать к 14:00."],
+    ["by noon", "Submit the photo by noon.", "Отправьте фотографию не позднее полудня."],
+    ["before noon", "Submit the photo before noon.", "Отправьте фотографию раньше полудня."]
+  ],
+  "tip": "By noon допускает 12:00, before noon требует более раннего времени. Не путайте due on Friday с due at Friday: перед днём нужен on, перед временем — at.",
+  "review": "Из #22 вспомните чтение часов, из #30 — until для длительности, из #49 — by и at, из #53 — дату и время. Для каждого задания сначала выпишите границу, затем проверьте, включена ли сама минута срока.",
+  "summary": "Я могу отличить by от before, выбрать отправку с запасом и указать срок в напоминании. Выходная проверка: первые два задания выбора — 2 из 2, последнее письменное — напоминание с точным сроком.",
+  "choice": [
+    ["noon-inclusive", "Определите, принимается ли указанная отправка.", "Audio file: submit by noon on Monday. The portal accepts 12:00 p.m. exactly. Sam submits on Monday at 12:00 p.m.", ["On time", "Too late", "A day early"], 0, "By noon включает 12:00, и портал явно подтверждает приём ровно в полдень."],
+    ["strict-before-cutoff", "Определите, принимается ли указанная отправка.", "Poster file: submit before 4:00 p.m. on Wednesday. The portal rejects 4:00 p.m. and later. Liv submits on Wednesday at 4:00 p.m.", ["On time", "A day late", "Too late"], 2, "Before 4:00 p.m. требует времени раньше 16:00. Ровно 16:00 исключено условием."],
+    ["date-and-clock", "Выберите точный срок из заметки.", "Reminder: The menu file is due on June 8 at 9:00 a.m. Files at that time are accepted.", ["June 9 at 8:00 a.m.", "June 8 at 9:00 a.m.", "June 8 at 9:00 p.m."], 1, "On June 8 задаёт дату, at 9:00 a.m. — утреннее время. Ни следующий день, ни вечер не подходят."],
+    ["plan-with-margin", "Выберите время отправки до срока с запасом в 30 минут.", "Badge file: submit by 2:00 p.m. on Friday; 2:00 is accepted. All options are on Friday.", ["1:30 p.m.", "2:00 p.m.", "2:30 p.m."], 0, "1:30 p.m. на 30 минут раньше срока. 2:00 допустимо, но запаса уже нет; 2:30 поздно."],
+    ["until-versus-submit", "Выберите напоминание о сдаче, соответствующее заметке.", "Office hours: open until 6:00 p.m. Upload deadline: 5:00 p.m.; that minute is included.", ["Submit the file by 6:00 p.m.", "Submit the file until 5:00 p.m.", "Submit the file by 5:00 p.m."], 2, "Сдача файла — отдельное действие со сроком 5:00 p.m. Часы работы офиса до 6:00 его не продлевают; until не обозначает крайний срок разовой отправки."]
+  ],
+  "blank": [
+    ["inclusive-word", "Вставьте только предлог со значением «не позднее».", "Slide file: 10:00 a.m. is accepted; 10:01 is too late. Submit ___ 10:00 a.m.", ["by"], "By включает указанную границу 10:00 a.m."],
+    ["exclusive-word", "Вставьте только предлог со значением «раньше».", "Survey file: 3:00 p.m. is not accepted. Submit ___ 3:00 p.m.", ["before"], "Before исключает саму границу 3:00 p.m."],
+    ["july-date", "Впишите только дату в порядке английский месяц + число цифрами.", "Task card: The reading file is due on July 14 at noon. Reminder: submit by noon on ___.", ["July 14"], "После on здесь нужна дата July 14. Noon уже указан отдельно."],
+    ["due-clock-link", "Вставьте только предлог перед точным временем.", "The drawing is due on Tuesday ___ 8:30 a.m.", ["at"], "On вводит день Tuesday, а at — время 8:30 a.m."],
+    ["noon-meaning", "Впишите одно английское слово: «полдень».", "Checklist: submit by 12:00 p.m. Reminder: submit by ___.", ["noon"], "Noon соответствует 12:00 p.m.; это полдень, а не полночь."]
+  ],
+  "written": [
+    ["remind-friday-noon", "Напишите напоминание: начните с Submit the file, затем by, затем время noon и день после on.", "Logo file deadline: Friday, 12:00 p.m. Exactly 12:00 is accepted.", ["Submit the file by noon on Friday."], "By noon передаёт включённую границу, on Friday уточняет день."],
+    ["remind-exclusive-time", "Напишите напоминание: начните с Submit the photo, используйте before, время цифрами с p.m., затем on Tuesday.", "Photo upload: Tuesday. Last accepted minute: 2:59 p.m. The portal rejects 3:00 p.m.", ["Submit the photo before 3:00 p.m. on Tuesday.", "Submit the photo before 3:00 pm on Tuesday."], "Первая недопустимая минута — 3:00 p.m., поэтому before 3:00 точно передаёт правило."],
+    ["report-due-date", "Сообщите срок: начните с The file is due, сначала день с on, затем время с at. Используйте noon.", "Practice file: Thursday, 12:00 p.m.", ["The file is due on Thursday at noon."], "Due on Thursday at noon соединяет день и время сдачи: on перед днём, at перед noon."],
+    ["plan-early-upload", "Напишите план: I will или I'll + submit the file; сначала время с at, затем день с on. Время цифрами с a.m.", "Deadline: Monday at noon. Your chosen upload time: Monday at 11:15 a.m.", ["I'll submit the file at 11:15 a.m. on Monday.", "I will submit the file at 11:15 a.m. on Monday.", "I'll submit the file at 11:15 am on Monday.", "I will submit the file at 11:15 am on Monday."], "At задаёт время вашего плана. 11:15 a.m. на 45 минут раньше полудня."],
+    ["dated-reminder", "Напишите точное напоминание. Начните с Submit the map file, выберите by или before, затем укажите время цифрами с p.m. и дату после on (название месяца и число цифрами).", "Map upload: August 19. Deadline: 5:30 p.m.; submissions at 5:30 are accepted.", ["Submit the map file by 5:30 p.m. on August 19.", "Submit the map file by 5:30 pm on August 19."], "Ровно в 17:30 файл принимают, поэтому нужно by, а before исключило бы эту минуту. Полный срок: August 19, 5:30 p.m."]
+  ]
+}

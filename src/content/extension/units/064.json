@@ -1,0 +1,39 @@
+{
+  "number": 64,
+  "title": "Разрешение в общем пространстве",
+  "subtitle": "Permission in a shared room",
+  "goal": "Определить два разрешённых действия по правилам общей комнаты и задать вопрос о разрешении с правильным исполнителем и предметом.",
+  "intro": "В общей комнате можно пользоваться частью оборудования, но у некоторых вещей есть владелец. Сначала прочитайте правила, затем уточните разрешение на конкретное действие.",
+  "example": "Guest: Could I plug in my laptop here?\nHost: Yes, go ahead. That outlet is for guests.\nGuest: Can I borrow this charger?\nHost: Sorry, that is my personal charger.",
+  "translation": "Гость: Можно здесь подключить ноутбук к розетке?\nОтветственный за комнату: Да, пожалуйста. Эта розетка для гостей.\nГость: Можно взять на время эту зарядку?\nОтветственный за комнату: Извини, это моя личная зарядка.",
+  "theory": "Shared room — общая комната. Allowed означает «разрешено»: Food is allowed — в комнате можно есть или приносить еду, в зависимости от правила. Food is not allowed — еда в комнате запрещена. Permission — разрешение. Borrow — взять на время, с намерением вернуть. Plug in — подключить к электропитанию. Outlet — обычное американское слово для электрической розетки; charger — зарядное устройство. Personal означает «личный», shared — «общий».\n\nCan I + начальная форма глагола? спрашивает разрешения на ваше действие. Could I …? — более вежливый вариант: Can I borrow this charger? / Could I borrow this charger? После обоих модальных глаголов нет to. Could you …? просит действовать другого человека, а не разрешает ваше действие.\n\nYes, go ahead — «да, можно, действуйте». Go ahead не всегда означает физическое движение вперёд. Для вежливого отказа: Sorry, you can't use that outlet. Can't = cannot. Не считайте личные вещи общими: правило You can use the shared charger не разрешает брать personal charger. У plug in допустимы plug in my laptop и plug my laptop in; с местоимением — plug it in.",
+  "rows": [
+    ["Can I borrow …?", "Can I borrow the shared charger?", "Можно взять на время общую зарядку?"],
+    ["Could I plug in …?", "Could I plug in my laptop?", "Можно подключить мой ноутбук к питанию?"],
+    ["Yes, go ahead.", "Yes, go ahead. You can use that outlet.", "Да, пожалуйста. Этой розеткой можно пользоваться."]
+  ],
+  "tip": "Can I borrow your charger? — взять зарядку хочу я. Can you borrow …? спрашивает о действии собеседника и меняет смысл. После can и could не добавляйте to.",
+  "review": "Вспомните can/can't из №12 и №19, правила общественных мест из №23 и №27. Как в №63, сначала определите исполнителя: I просит разрешение себе, you просит другого действовать.",
+  "summary": "Выходная проверка: выберите разрешённое действие в каждом из первых двух заданий выбора. Затем в первом письменном задании спросите, можно ли вам взять разрешённую вещь.",
+  "choice": [
+    ["room-rule-laptop", "По правилам выберите разрешённое действие с ноутбуком.", "Shared-room rules: Guests can plug in laptops at the outlets marked GUEST. The outlet under the host's desk is for staff only.", ["Use the outlet under the host's desk.", "Use an outlet marked GUEST for your laptop.", "Use any outlet without checking."], 1, "Для ноутбуков гостей подходят только розетки с пометкой GUEST. Розетка под столом предназначена для сотрудников."],
+    ["room-rule-borrow", "По правилам выберите вещь, которую разрешено взять на время.", "Shared-room rules: You can borrow the blue shared charger. The black charger is personal. Do not take it.", ["The blue shared charger.", "The black personal charger.", "Both chargers."], 0, "Разрешение относится только к синей общей зарядке. Личная чёрная зарядка исключена."],
+    ["go-ahead-result", "Определите, что разрешил хозяин.", "Guest: Could I move this chair? Host: Yes, go ahead.", ["The host must move the chair.", "The guest must leave the room.", "The guest can move the chair."], 2, "Yes, go ahead даёт гостю разрешение выполнить его действие — передвинуть стул."],
+    ["personal-item-refusal", "Выберите ответ, который соответствует правилу.", "Rule: Do not borrow personal headphones. Guest: Can I borrow your personal headphones?", ["Yes, go ahead.", "Sorry, you can't borrow them.", "Yes, they are shared."], 1, "Правило запрещает брать личные наушники. Sorry смягчает отказ, а can't выражает запрет."],
+    ["permission-not-help", "Выберите вопрос, в котором гость просит разрешения самому подключить ноутбук.", "The guest will connect the laptop. The host only needs to give permission.", ["Could I plug in my laptop?", "Could you plug in my laptop?", "Could you borrow my laptop?"], 0, "I сохраняет гостя исполнителем. Could you просило бы хозяина подключить ноутбук."]
+  ],
+  "blank": [
+    ["allowed-rule", "Вставьте только allowed или not allowed по правилу.", "Rule: You can eat in the shared room. Food is ___.", ["allowed"], "You can eat означает разрешение, поэтому еда allowed."],
+    ["borrow-verb", "Вставьте только borrow или keep: вещь нужно вернуть.", "I will return the shared charger in ten minutes. Can I ___ it?", ["borrow"], "Borrow — взять на время и вернуть; keep означало бы оставить у себя."],
+    ["outlet-us-word", "Вставьте изученное американское слово на o со значением «розетка».", "This wall ___ is for guest laptops. You can plug yours in here.", ["outlet"], "Outlet — американское название электрической розетки. Это точка подключения, а не зарядное устройство."],
+    ["permission-go", "Вставьте только слово после go в формуле разрешения.", "Guest: Can I use this chair? Host: Yes, go ___.", ["ahead"], "Go ahead в ответе на просьбу о разрешении означает «можно, действуйте»."],
+    ["plug-particle", "Вставьте только частицу после plug.", "Could I plug ___ my tablet at the wall outlet?", ["in"], "Plug in означает подключить прибор к электропитанию; частица in обязательна."]
+  ],
+  "written": [
+    ["borrow-shared-charger", "Спросите разрешения взять на время разрешённую правилами вещь. Начните Can I или Could I, используйте borrow и название вещи с the, сохранив цвет и тип зарядки.", "The shared room has two chargers. Rule: You can borrow the blue shared charger. The black personal charger stays on the desk. Your phone battery is low.", ["Can I borrow the blue shared charger?", "Could I borrow the blue shared charger?"], "Borrow означает взять на время, а Can I и Could I спрашивают разрешения для вас. Правила разрешают взять синюю общую зарядку."],
+    ["connect-own-laptop", "Спросите разрешения с Can I или Could I. Используйте plug, in и my laptop; других слов не добавляйте.", "Вы хотите сами подключить свой ноутбук к питанию в общей комнате.", ["Can I plug in my laptop?", "Could I plug in my laptop?", "Can I plug my laptop in?", "Could I plug my laptop in?"], "Can I и Could I подходят для разрешения. С my laptop частица in может стоять до предмета или после него."],
+    ["allow-chair-use", "Дайте разрешение только фразой из трёх слов, начиная с Yes.", "Guest: Could I use the empty chair? Rule: Guests can use empty chairs.", ["Yes, go ahead."], "Yes, go ahead — установленная формула разрешения; правило позволяет пользоваться свободными стульями."],
+    ["deny-private-outlet", "Откажите: начните Sorry, затем you can't или you cannot, затем use that outlet.", "Rule: The outlet behind the desk is private. Guest: Can I use that outlet?", ["Sorry, you can't use that outlet.", "Sorry, you cannot use that outlet."], "Can't и cannot равнозначно выражают запрет. That outlet отсылает к конкретной личной розетке."],
+    ["fix-permission-role", "Замените только you на I, чтобы гость просил разрешение для себя. Напишите весь вопрос.", "The guest wants to borrow the lamp. Draft: Could you borrow the lamp?", ["Could I borrow the lamp?"], "Could I спрашивает о разрешении говорящему. Could you делало бы адресата исполнителем."]
+  ]
+}

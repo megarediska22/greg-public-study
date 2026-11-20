@@ -1,0 +1,40 @@
+{
+  "number": 43,
+  "title": "Что есть и чего нет",
+  "subtitle": "Pantry stock",
+  "goal": "Сопоставить запасы с заказом, найти недостающее и написать два сообщения о наличии и отсутствии продуктов.",
+  "intro": "Перед небольшим ужином вы проверяете кладовую. Пустая полка и полный пакет — разные сообщения для человека, который идёт в магазин.",
+  "example": "A: Is there any rice left?\nB: Yes, there is some rice, but we are out of milk.\nA: We need milk for dinner.",
+  "translation": "А: Остался ли рис?\nБ: Да, рис есть, но молоко у нас закончилось.\nА: Нам нужно молоко для ужина.",
+  "theory": "Stock — запас продуктов; in stock — в наличии. Empty — пустой, left — оставшийся: There is some rice left — рис ещё остался. We are out of milk означает, что молоко закончилось. Enough — достаточно для конкретной цели: We have enough eggs for breakfast. Если нужно шесть яиц и есть шесть, их достаточно.\n\nSome употребляем в обычном утверждении о неопределённом количестве: There is some milk; There are some eggs. Any употребляем в обычном вопросе и отрицании: Is there any milk? There isn't any milk. Are there any eggs? There aren't any eggs. С milk и rice выбираем is, с eggs или bags — are. В этих заданиях сравниваем обычные сообщения о запасах, без предложений и просьб, где some тоже возможно.\n\nA lot of — много; это обычный вариант в утверждении и для неисчисляемого, и для множественного существительного: a lot of rice, a lot of bottles. Наличие ещё не означает достаточность: some milk может быть меньше, чем нужно по заказу. Для точного вывода сравнивайте количество в запасе и заказе.\n\nВ американской разговорной речи естественны сокращения isn't, aren't и we're. Полные формы is not, are not и we are сохраняют тот же смысл.",
+  "rows": [
+    ["some + mass noun", "There is some rice left.", "Ещё остался рис."],
+    ["not any + plural noun", "There aren't any bottles of water.", "Нет ни одной бутылки воды."],
+    ["out of", "We're out of milk.", "У нас закончилось молоко."],
+    ["enough for", "We have enough eggs for lunch.", "У нас достаточно яиц для обеда."]
+  ],
+  "tip": "Не пишите There aren't any rice: rice здесь неисчисляемое. Правильно There isn't any rice. Но с упаковками: There aren't any bags of rice.",
+  "review": "Из №34 вспомните отрицание, а из №42 — названия упаковок. Сравните There is some rice и There are some bags of rice, затем сделайте оба предложения отрицательными с any. В первых двух письменных заданиях используйте одну записку: сначала сообщите, что рис есть, затем укажите, какого продукта из заказа нет.",
+  "summary": "Вы можете отличить «есть», «нет» и «достаточно», сопоставить запас с заказом и сообщить о наличии и отсутствии продуктов.",
+  "choice": [
+    ["supper-shortage", "Выберите продукт, которого нет для ужина.", "Pantry: rice — 1 bag; milk — 0 cartons; eggs — 6. Supper needs rice and milk.", ["rice", "eggs", "milk"], 2, "В запасах milk — 0 cartons: молока нет. Рис для ужина уже есть."],
+    ["empty-shelf", "Выберите верное сообщение по записи.", "Water shelf: 0 bottles. The shelf is empty.", ["There aren't any bottles of water.", "There are some bottles of water.", "There is a lot of water left."], 0, "Empty и ноль бутылок означают отсутствие: aren't any bottles."],
+    ["egg-enough", "Выберите точное сообщение о яйцах.", "Breakfast order: 8 eggs. Pantry: 5 eggs.", ["We are out of eggs.", "We don't have enough eggs.", "We have enough eggs."], 1, "Пять яиц есть, поэтому out of неверно; для заказа из восьми их недостаточно."],
+    ["rice-left", "Выберите сообщение, которое подтверждается записью.", "Pantry check: rice — half a bag left; milk — none.", ["There isn't any rice.", "There is some milk.", "There is some rice left."], 2, "Половина пакета означает, что рис ещё есть: some rice left. Молока нет."],
+    ["big-stock", "Выберите сообщение со значением «много».", "Community kitchen note: 40 bags of rice in stock — a large supply.", ["There is a lot of rice.", "There isn't any rice.", "We are out of rice."], 0, "A lot of передаёт большое количество; запись о сорока пакетах подтверждает этот смысл."]
+  ],
+  "blank": [
+    ["affirmative-milk", "Впишите только some или any для обычного утверждения.", "Fridge check: milk is available. There is ___ milk.", ["some"], "В обычном утвердительном сообщении об имеющемся молоке используем some."],
+    ["negative-eggs", "Впишите только some или any для отрицания.", "Egg tray: empty. There aren't ___ eggs.", ["any"], "После aren't в сообщении об отсутствии используем any."],
+    ["rice-question", "Впишите только some или any в нейтральном вопросе о запасе.", "The rice jar is closed. Is there ___ rice in it?", ["any"], "В нейтральном вопросе о наличии неисчисляемого rice используем any."],
+    ["out-gap", "Впишите только пропущенный предлог.", "Milk stock: zero. We are out ___ milk.", ["of"], "Out of — цельное выражение «закончилось»: out of milk."],
+    ["enough-gap", "Впишите только enough или empty по числам.", "Lunch needs 4 eggs. We have 6 eggs. We have ___ eggs for lunch.", ["enough"], "Шесть больше четырёх, поэтому яиц достаточно: enough eggs. Empty описывает пустую ёмкость."]
+  ],
+  "written": [
+    ["pantry-rice-present", "Начните с There и сообщите, что рис есть. Выберите форму be и some или any. Количество и место не добавляйте. Сокращение допустимо.", "Dinner order: rice, milk and eggs. Pantry: rice — half a bag; milk — 0 cartons; eggs — 4.", ["There is some rice.", "There's some rice."], "Rice неисчисляемое, поэтому there is some rice. There's — сокращение there is."],
+    ["pantry-milk-absent", "Начните с There и сообщите, чего из заказа совсем нет. Используйте отрицательную форму be и some или any. Место не добавляйте. Сокращение допустимо.", "Dinner order: rice, milk and eggs. Pantry: rice — half a bag; milk — 0 cartons; eggs — 4.", ["There isn't any milk.", "There is not any milk.", "There's not any milk."], "В заказе есть молоко, а в запасе 0 упаковок. С milk нужна форма is, а в отрицании ставим any. Подходят There isn’t any milk, There is not any milk и There’s not any milk."],
+    ["bottles-present", "Сообщите о наличии бутылок: начните с There are, используйте some и bottles of water; без числа и места.", "Garage stock card: bottles of water — available.", ["There are some bottles of water."], "Грамматическое число задаёт bottles: множественное are, хотя water неисчисляемое."],
+    ["eggs-absent", "Сообщите об отсутствии яиц: начните с There, используйте отрицательную форму are, any и eggs; без места.", "Blue tray inventory: eggs — zero.", ["There aren't any eggs.", "There are not any eggs."], "Eggs — множественное число; отсутствие выражаем aren't any или are not any."],
+    ["kitchen-out", "Напишите, что молоко закончилось: начните с We, используйте форму are и выражение out of milk; без дополнительных слов.", "Kitchen message: milk — none left.", ["We are out of milk.", "We're out of milk."], "Out of milk означает, что молока больше нет; we're равно we are."]
+  ]
+}

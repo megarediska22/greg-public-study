@@ -1,0 +1,39 @@
+{
+  "number": 87,
+  "title": "Обсуждение книги или фильма",
+  "subtitle": "Book and movie club",
+  "goal": "Сопоставить два мнения с авторами и написать мнение о книге или фильме с заданной причиной.",
+  "intro": "В клубе обсуждают вымышленный фильм о поездке к озеру. Участники могут соглашаться о событиях, но по-разному оценивать фильм. Вы читаете их отзывы и добавляете свой.",
+  "example": "Mia: The main character takes a bus to the lake. I liked the movie because the ending was funny.\nJoel: I didn't like the movie because the plot was slow.",
+  "translation": "Мия: Главный герой едет к озеру на автобусе. Мне понравился фильм, потому что концовка была смешной.\nДжоэл: Мне не понравился фильм, потому что сюжет развивался медленно.",
+  "theory": "В разговорном американском английском movie — обычное слово для фильма; film тоже употребляется. Plot — сюжет, character — персонаж, main character — главный герой, ending — концовка. Funny означает «смешной», slow в отзыве — «медленный, затянутый». Recommend — рекомендовать: I recommend this book — «Я рекомендую эту книгу».\n\nОтделяйте событие от оценки. The character leaves town — факт сюжета: персонаж уезжает из города. The ending was funny — мнение о концовке. Оценки разных людей могут отличаться; ищите имя и точную причину.\n\nДля отзыва о прочитанном или просмотренном используйте I liked the book because the plot was interesting — «Мне понравилась книга, потому что сюжет был интересным». Because вводит причину. Для отрицательной оценки: I didn't like the movie because the ending was sad — «Мне не понравился фильм, потому что концовка была грустной». После didn't нужна начальная форма like. Полная форма — did not. This movie обозначает «этот фильм», the movie — уже известный фильм. Для мнения с причиной достаточно одной связки: I liked … because ….",
+  "rows": [
+    ["I liked … because …", "I liked the book because the main character was kind.", "Мне понравилась книга, потому что главный герой был добрым."],
+    ["I didn't like … because …", "I didn't like the movie because the plot was slow.", "Мне не понравился фильм, потому что сюжет был затянутым."],
+    ["I recommend …", "I recommend this movie.", "Я рекомендую этот фильм."]
+  ],
+  "tip": "Не пишите I didn't liked: прошедшее время уже выражено в didn't. Правильно I didn't like. Funny — «смешной», а interesting — «интересный»; это разные оценки.",
+  "review": "Вспомните реакции из #17 и интересы из #21. Найдите положительный и отрицательный отзыв. Из #38 восстановите didn't like, из #83 — seen. Проверьте, кто дал каждый из двух отзывов, в заданиях 1 и 2 раздела «Выбор ответа». Затем в задании 1 раздела «Письменная практика» соедините оценку и причину из своей заметки через because (#73).",
+  "summary": "Я различаю факт сюжета и мнение, нахожу автора нужного отзыва и объясняю свою оценку книги или фильма через because.",
+  "choice": [
+    ["club-positive", "Кто оценил фильм положительно именно из-за смешной концовки?", "Ava: I liked the movie because the ending was funny. Ben: I liked the main character, but the ending was sad. Cara: I didn't like the movie because the plot was slow.", ["Ben", "Ava", "Cara"], 1, "Ava связывает liked с ending was funny. Ben хвалит персонажа, но называет концовку грустной."],
+    ["club-negative", "Кто не рекомендует книгу из-за затянутого сюжета?", "Nora: I recommend the book because the characters are funny. Eli: I don't recommend the book because the plot is slow. Sam: I don't recommend the book because the ending is sad.", ["Nora", "Sam", "Eli"], 2, "У Eli причина — slow plot. Sam тоже не рекомендует книгу, но по другой причине: sad ending."],
+    ["plot-fact", "Выберите событие сюжета, а не личную оценку.", "Club notes about The Blue Bus: The plot is slow. The main character finds a dog. The ending is funny.", ["The main character finds a dog.", "The plot is slow.", "The ending is funny."], 0, "Находка собаки — событие, которое можно проверить по сюжету. Slow и funny здесь выражают оценку."],
+    ["reason-not-event", "Почему Луису понравился фильм?", "Luis: I've seen Lake Road. The main character travels by train. I liked the movie because the characters were funny.", ["The main character traveled by train.", "The characters were funny.", "The ending was slow."], 1, "Причина стоит после because: персонажи были смешными. Поездка на поезде — отдельный факт сюжета."],
+    ["recommendation-meaning", "Какую фразу можно передать как «Я советую прочитать эту книгу»?", "Вы оставляете короткую положительную рекомендацию в книжном клубе.", ["I've finished this book.", "I didn't like this book.", "I recommend this book."], 2, "Recommend выражает рекомендацию; finished сообщает о завершении чтения, но не об оценке."]
+  ],
+  "blank": [
+    ["funny-ending", "Вставьте изученное прилагательное со значением «смешная».", "I liked Desert Bus because the ending was ___.", ["funny"], "Funny описывает то, что вызывает смех. Для оценки концовки прилагательное стоит после was."],
+    ["slow-plot", "Вставьте изученное прилагательное со значением «затянутый».", "The plot of Winter Station was ___, so I didn't like the movie.", ["slow"], "Slow в отзыве описывает медленное развитие сюжета, а не низкую скорость просмотра."],
+    ["reason-link", "Вставьте изученный союз со значением «потому что».", "I liked The Green Door ___ the main character was kind.", ["because"], "Because связывает оценку с причиной: добрый герой объясняет положительный отзыв."],
+    ["recommend-verb", "Вставьте только глагол со значением «рекомендую».", "I ___ this book to our reading club.", ["recommend"], "После I в Present Simple используется recommend без окончания -s."],
+    ["seen-retrieval", "Вставьте только третью форму see из #83.", "Have you ___ the movie about the red boat?", ["seen"], "В вопросе об опыте после have нужна третья форма seen; saw используется в Past Simple."]
+  ],
+  "written": [
+    ["lake-opinion", "Добавьте свой отзыв в ветку. Начните I liked the movie; после изученного союза «потому что» объясните оценку, начав причину с the ending was. Возьмите прилагательное из заметки.", "Club thread — Amy: The main character takes a boat to the lake. Ron: The plot was slow. Your note: The ending was funny.", ["I liked the movie because the ending was funny."], "I liked the movie because the ending was funny. Смешная концовка — причина из вашей заметки. Поездка на лодке — факт сюжета, а затянутый сюжет — мнение Рона."],
+    ["book-negative", "Начните I, используйте отрицание в Past Simple с like the book и because; причину начните the plot was и используйте slow.", "Книга North Window не понравилась: сюжет был затянутым.", ["I didn't like the book because the plot was slow.", "I did not like the book because the plot was slow."], "После didn't или did not нужен like. Причина касается сюжета — the plot, а не персонажа."],
+    ["character-opinion", "Начните I liked the book; через because добавьте причину, начиная с the main character was и заканчивая kind.", "Книга The Small Garden понравилась вам из-за доброго главного героя.", ["I liked the book because the main character was kind."], "Main character — один главный герой, поэтому was. Because объясняет вашу оценку книги."],
+    ["movie-recommendation", "Напишите рекомендацию из четырёх слов: начните I, используйте recommend и this movie.", "Вы советуете участникам посмотреть фильм Night Picnic.", ["I recommend this movie."], "I recommend this movie — естественная краткая рекомендация. This указывает на обсуждаемый фильм."],
+    ["sad-ending", "Начните I, используйте отрицание в Past Simple с like the movie, затем because the ending was и sad.", "Фильм Last Ferry не понравился вам: концовка была грустной.", ["I didn't like the movie because the ending was sad.", "I did not like the movie because the ending was sad."], "Sad означает «грустный». В отрицании like сохраняет начальную форму; was относится к ending."]
+  ]
+}

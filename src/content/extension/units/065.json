@@ -1,0 +1,40 @@
+{
+  "number": 65,
+  "title": "В кафе: уточняем выбор",
+  "subtitle": "Choosing at a cafe",
+  "goal": "Соотнести два предложения официанта с пожеланиями гостя и ответить, сохранив напиток и нужный вариант.",
+  "intro": "В кафе вы уже выбрали напиток, но сотрудник уточняет температуру и кофеин. Короткий ответ должен сохранить именно тот вариант, который вы хотите.",
+  "example": "Server: Would you like regular or decaf coffee?\nGuest: I'd like decaf coffee.\nServer: Hot or iced?\nGuest: Hot, please.",
+  "translation": "Сотрудник: Вам обычный кофе или кофе без кофеина?\nГость: Я бы хотел кофе без кофеина.\nСотрудник: Горячий или со льдом?\nГость: Горячий, пожалуйста.",
+  "theory": "Would you like …? — вежливое предложение или вопрос о выборе: Would you like hot or iced tea? Здесь сотрудник выясняет желание гостя. Это отличается от подтверждения: So, one iced tea? проверяет уже выбранный заказ. I'd like … = I would like … — «я бы хотел». I like … описывает обычное предпочтение, а не конкретный заказ.\n\nВ этом уроке regular coffee — обычный кофе с кофеином, decaf coffee (сокращение от decaffeinated coffee) — декофеинизированный кофе («кофе без кофеина» в меню, хотя небольшое количество кофеина может остаться). В американских кафе эти слова различают кофеин, если именно такой выбор назван в вопросе. Hot — горячий, iced — со льдом. Either — любой из двух: Either is fine — подойдёт любой. Neither is right for me — мне не подходит ни один. Instead — вместо этого: I'd like tea instead. Это замена, а не дополнительный напиток.\n\nНа предложение одной вещи Would you like a cookie? можно ответить Yes, please или No, thanks / No, thank you. При выборе hot or iced назовите один вариант, если у вас есть предпочтение: I'd like iced tea. После would like существительное обозначает желаемую вещь. После would you like с действием нужна форма to + глагол: Would you like to sit here? В упражнениях выбираем напитки и закуски, поэтому достаточно существительных. With milk — с молоком, without milk — без молока.",
+  "rows": [
+    ["Would you like … or …?", "Would you like hot or iced tea?", "Вам горячий чай или чай со льдом?"],
+    ["I'd like …", "I'd like regular coffee with milk.", "Я бы хотел обычный кофе с молоком."],
+    ["No, thanks.", "No, thanks. I'd like tea instead.", "Нет, спасибо. Вместо этого я бы хотел чай."],
+    ["Either is fine.", "Either is fine. Hot or iced tea is OK.", "Подойдёт любой. Можно горячий чай или со льдом."]
+  ],
+  "tip": "Не теряйте уточнение: если нужен decaf coffee, ответ I'd like coffee не сообщает выбор по кофеину. I like coffee описывает вкус вообще; для заказа используйте I'd like coffee.",
+  "review": "Сравните I'd like и I like из №19. Повторите with/without из №45, ситуацию у стойки из №50 и роли собеседников из №63: сотрудник предлагает, гость выбирает.",
+  "summary": "Выходная проверка: в первых двух заданиях выбора соотнесите предложение сотрудника с пожеланиями гостя. В первом письменном задании сами назовите напиток и оба уточнения.",
+  "choice": [
+    ["offer-caffeine-choice", "Выберите ответ, который сохраняет пожелание гостя.", "Guest's note: The decaffeinated option, please. Server: Would you like regular or decaf coffee?", ["I'd like regular coffee.", "Either is fine.", "I'd like decaf coffee."], 2, "Гость просит именно decaf. Regular меняет выбор, а Either is fine разрешает принести и обычный кофе."],
+    ["offer-temperature-choice", "Выберите ответ по пожеланию гостя.", "Guest's note: A cold drink with ice. Server: Would you like hot or iced tea?", ["I'd like iced tea.", "I'd like hot tea.", "No tea, thanks."], 0, "Iced tea — чай со льдом. Hot tea не соответствует запросу на холодный напиток."],
+    ["offer-or-confirm", "Определите функцию реплики сотрудника.", "The guest has not chosen a drink. Server: Would you like coffee or tea?", ["Confirming an order already placed.", "Offering a choice of drinks.", "Asking for the guest's name."], 1, "Would you like coffee or tea? предлагает выбор. Заказ ещё не сделан, поэтому подтверждать нечего."],
+    ["either-two-options", "Выберите смысл ответа гостя.", "Server: Hot or iced coffee? Guest: Either is fine.", ["The guest wants two coffees.", "The guest refuses coffee.", "Both temperatures are acceptable."], 2, "Either is fine означает, что подойдёт любой из двух вариантов, а не что нужны оба напитка."],
+    ["instead-replacement", "Выберите итоговый напиток.", "Server: Would you like regular coffee? Guest: No, thanks. I'd like decaf coffee instead.", ["Regular coffee only.", "Decaf coffee only.", "Regular coffee and decaf coffee."], 1, "Instead обозначает замену: гость отказался от обычного кофе и выбрал decaf."]
+  ],
+  "blank": [
+    ["decaf-modifier", "Вставьте только regular или decaf по заметке гостя.", "Note: Decaffeinated coffee, please. Guest: I'd like ___ coffee, please.", ["decaf"], "Decaf — короткое название decaffeinated coffee. В этом выборе regular означает обычный кофе с кофеином."],
+    ["iced-modifier", "Вставьте только hot или iced по пожеланию.", "Guest wants tea with ice: I'd like ___ tea.", ["iced"], "Iced описывает напиток со льдом. Hot, наоборот, означает горячий."],
+    ["offer-would", "Вставьте только модальный глагол, образующий вежливое предложение с like.", "Server: ___ you like a cookie with your coffee?", ["Would"], "Would you like …? предлагает вещь сейчас. Do you like …? обычно спрашивает о предпочтениях вообще."],
+    ["either-word", "Вставьте только Either или Neither по пояснению гостя.", "Server: Hot or iced coffee? Guest: ___ is fine. I like both.", ["Either"], "Either is fine допускает любой из двух вариантов. Neither означало бы, что не подходит ни один."],
+    ["instead-switch", "Вставьте только слово со значением «вместо этого».", "Guest: I don't want coffee today. I'd like hot tea ___.", ["instead"], "Instead показывает замену кофе чаем, а не добавление второго напитка."]
+  ],
+  "written": [
+    ["choose-decaf-with-milk", "Ответьте одним предложением. Начните с I'd like или I would like. Назовите один из предложенных напитков и добавьте нужное уточнение с with или without. Других слов не добавляйте.", "Server: Regular or decaf coffee? With or without milk? Your note: The decaffeinated option, please. Add milk.", ["I'd like decaf coffee with milk.", "I would like decaf coffee with milk."], "Decaf выбирает декофеинизированный кофе, а with milk передаёт просьбу добавить молоко. I’d like и I would like равнозначны."],
+    ["choose-iced-tea", "Начните с I'd like или I would like. Назовите напиток и выбранный вариант температуры. Других слов не добавляйте.", "Server: Would you like hot or iced tea? You want tea with ice.", ["I'd like iced tea.", "I would like iced tea."], "Iced tea точно отвечает на выбор температуры. Общее tea не уточнило бы нужный вариант."],
+    ["decline-cookie", "Откажитесь короткой формулой: начните No и добавьте thanks или thank you; других слов не добавляйте.", "Server: Would you like a cookie? You do not want one.", ["No, thanks.", "No, thank you."], "Обе формулы вежливо отклоняют предложенную вещь. Yes, please означало бы согласие."],
+    ["accept-water", "Примите предложение формулой из двух слов: начните Yes, затем please.", "Server: Would you like some water? You want water.", ["Yes, please."], "Yes, please принимает предложение воды; повторять название напитка в этом коротком ответе не нужно."],
+    ["replace-with-hot-tea", "Напишите новое пожелание. Начните с I'd like или I would like, назовите напиток и температуру, затем добавьте instead.", "Server: Would you like iced coffee? You have already said No, thanks. You want tea, served hot.", ["I'd like hot tea instead.", "I would like hot tea instead."], "Hot tea сохраняет напиток и температуру, instead показывает замену предложенного iced coffee."]
+  ]
+}

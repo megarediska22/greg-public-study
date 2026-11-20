@@ -1,0 +1,193 @@
+{
+  "number": 102,
+  "title": "Инструкция к общему принтеру",
+  "subtitle": "Shared printer instructions",
+  "goal": "Выбрать ветку инструкции по коду ошибки, сохранить порядок трёх действий и передать первое действие однокурснику.",
+  "intro": "В учебной комнате общий принтер остановился. На карточке есть разные инструкции для пустого лотка и ошибки соединения. Сначала сверьте код.",
+  "example": "Printer help: P4 — paper tray empty. First, load paper. Then press Start. Finally, wait for the green light. N2 — connection error. Restart the printer. For P4, do not restart the printer.",
+  "translation": "Памятка по принтеру: P4 — пустой лоток для бумаги. Сначала загрузите бумагу. Затем нажмите Start. В конце дождитесь зелёного индикатора. N2 — ошибка соединения. Перезапустите принтер. При P4 не перезапускайте принтер.",
+  "theory": "Printer — принтер; paper tray — лоток для бумаги; load paper — загрузить бумагу; press — нажать; restart — перезапустить; error code — код ошибки. Start, Continue (продолжить), Cancel (отмена) и Resume (возобновить) — надписи на кнопках. Green light — зелёный индикатор.\nИнструкция начинается с глагола без подлежащего: Load paper. First отмечает первое действие, then — следующее, finally — последнее. Сначала выбирайте ветку по коду, затем сохраняйте её порядок.\nЗапрет: do not + начальная форма, или don’t + начальная форма: Don’t restart the printer. Это не команда перезапустить. В американской инструкции обычно пишут press Start: нажмите кнопку Start.",
+  "rows": [
+    [
+      "First + command",
+      "First, open the paper tray.",
+      "Сначала откройте лоток для бумаги."
+    ],
+    [
+      "Then + command",
+      "Then load paper.",
+      "Затем загрузите бумагу."
+    ],
+    [
+      "Do not + verb",
+      "Do not restart the printer.",
+      "Не перезапускайте принтер."
+    ]
+  ],
+  "tip": "Не пишите Then presses Start. В команде нет окончания -s: Then press Start.",
+  "review": "Вспомните команды из #23, порядок из #36 и точный объект действия из #72. Перед ответом назовите код, первый глагол и его объект.",
+  "summary": "Я могу найти нужную ветку по коду принтера, выполнить три действия по порядку и сообщить первое действие.",
+  "choice": [
+    [
+      "paper-branch",
+      "Выберите первое действие для показанного кода.",
+      "Display: P8. Card: P8 — first load paper in tray 4, then press Resume, finally wait. N2 — restart the printer.",
+      [
+        "Restart the printer.",
+        "Load paper in tray 4.",
+        "Wait."
+      ],
+      1,
+      "Код P8 указывает на лоток 4. Нажатие Resume и ожидание идут позже; перезапуск относится к N2."
+    ],
+    [
+      "ordered-card",
+      "Выберите порядок для R6.",
+      "R6 card: First open the tray. Then load paper. Finally press Start.",
+      [
+        "Load paper → open the tray → press Start",
+        "Press Start → load paper → open the tray",
+        "Open the tray → load paper → press Start"
+      ],
+      2,
+      "First, then и finally задают порядок: открыть, загрузить, нажать."
+    ],
+    [
+      "no-reset",
+      "Выберите запрещённое действие.",
+      "Paper warning: Load paper. Press Start. Do not restart the printer.",
+      [
+        "Restart the printer.",
+        "Load paper.",
+        "Press Start."
+      ],
+      0,
+      "Do not перед restart запрещает перезапуск."
+    ],
+    [
+      "button-object",
+      "Выберите кнопку, указанную для T8.",
+      "T8: Load paper in tray 2. Then press Continue. Do not press Cancel.",
+      [
+        "Cancel",
+        "Start",
+        "Continue"
+      ],
+      2,
+      "После then указана кнопка Continue; Cancel явно запрещена."
+    ],
+    [
+      "relevant-code",
+      "Выберите подходящую ветку.",
+      "Display: E3. Card: E3 — open tray 1, load paper, press Start. E9 — restart, wait, press Start.",
+      [
+        "E9: restart → wait → press Start",
+        "E3: open tray 1 → load paper → press Start",
+        "E3: press Start → restart → wait"
+      ],
+      1,
+      "Нужна ветка E3 и именно её последовательность."
+    ]
+  ],
+  "blank": [
+    [
+      "tray-object",
+      "Впишите только пропущенное название предмета из карточки.",
+      "Card: Open the paper tray. Command: Open the ___.",
+      [
+        "paper tray"
+      ],
+      "Paper tray — весь лоток; слово paper отдельно означает бумагу."
+    ],
+    [
+      "load-command",
+      "Впишите только глагол со значением «загрузите».",
+      "Tray 3 is empty. ___ paper before you press Start.",
+      [
+        "Load"
+      ],
+      "Команда Load paper обозначает загрузку бумаги."
+    ],
+    [
+      "press-command",
+      "Впишите только глагол со значением «нажмите».",
+      "The paper is ready. Now ___ Start.",
+      [
+        "press"
+      ],
+      "Перед названием кнопки используется press без -s."
+    ],
+    [
+      "negative-command",
+      "Впишите только отрицание do not или его сокращение.",
+      "Запрет перезапуска при P7: ___ restart the printer.",
+      [
+        "do not",
+        "don't"
+      ],
+      "Do not и don’t превращают команду в запрет."
+    ],
+    [
+      "second-marker",
+      "Впишите только then или finally. Укажите второй шаг из трёх.",
+      "First, load paper in tray 4. ___ press Continue. Wait for the green light after that.",
+      [
+        "Then"
+      ],
+      "Then связывает второе действие с уже выполненным первым."
+    ]
+  ],
+  "written": [
+    [
+      "relay-first",
+      "Передайте только первое действие: начните с First и используйте команду из карточки.",
+      "Help card M5: 1. Open tray 2. 2. Load paper. 3. Press Start.",
+      [
+        "First, open tray 2.",
+        "First open tray 2."
+      ],
+      "Первое действие — открыть tray 2; бумагу загружают после этого."
+    ],
+    [
+      "relay-load",
+      "Передайте первое действие командой с First; сохраните номер лотка.",
+      "Help card L3: 1. Load paper in tray 1. 2. Press Continue. 3. Wait.",
+      [
+        "First, load paper in tray 1.",
+        "First load paper in tray 1."
+      ],
+      "Нужно передать и действие load paper, и точный объект tray 1."
+    ],
+    [
+      "relay-prohibition",
+      "Передайте запрет одной командой. Начните с Do not или Don’t и используйте restart the printer.",
+      "P9 notice: Перезапускать принтер запрещено.",
+      [
+        "Do not restart the printer.",
+        "Don't restart the printer.",
+        "Don’t restart the printer."
+      ],
+      "После do not/don’t используется начальная форма restart."
+    ],
+    [
+      "relay-second",
+      "Передайте только второе действие командой с Then.",
+      "S4 card: 1. Load paper. 2. Press Resume. 3. Wait for the green light.",
+      [
+        "Then, press Resume.",
+        "Then press Resume."
+      ],
+      "Resume — кнопка второго действия, а не Start из других карточек."
+    ],
+    [
+      "relay-branch",
+      "Однокурсник хочет перезапустить принтер. Посмотрите на код и передайте только правильное первое действие. Начните с First и дословно используйте команду из нужной ветки.",
+      "Display: B2. B2: 1. Open tray 3. 2. Load paper. 3. Press Start. C2: 1. Restart the printer. 2. Wait. 3. Press Start.",
+      [
+        "First, open tray 3.",
+        "First open tray 3."
+      ],
+      "Код B2 выбирает ветку с tray 3; перезапуск относится к C2."
+    ]
+  ]
+}

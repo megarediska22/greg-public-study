@@ -1,0 +1,40 @@
+{
+  "number": 78,
+  "title": "Что уже сделано в проекте",
+  "subtitle": "Project status and next steps",
+  "goal": "Найти готовую задачу в таблице проекта и написать, кто выполнит следующее действие.",
+  "intro": "Группа готовит выставку. Таблица проекта помогает отличить готовый файл от черновика и передать следующую задачу нужному человеку.",
+  "example": "Project tracker: poster. Status: draft. Nora finished the draft on Monday. Next step: Eli will check it on Tuesday. The final version is not ready.",
+  "translation": "Таблица проекта: плакат. Состояние: черновик. Нора закончила черновик в понедельник. Следующий шаг: Илай проверит его во вторник. Окончательная версия не готова.",
+  "theory": "Status — состояние задачи; draft — черновик; final version — окончательная версия; ready — готовый. Готовый черновик ещё не означает готовую окончательную версию. В таблице читайте название версии и её status вместе.\n\nAssigned to означает «поручено»: Assigned to: Eli — задача поручена Илаю. Next step — следующее действие. Исполнитель следующего действия может отличаться от автора готовой работы.\n\nЗаконченное действие передаём Past Simple: Nora finished the draft. Для следующего запланированного действия используем will + начальную форму: Eli will check it. Will одинаково с I, he, she и they; I'll = I will. Finished — закончил, checked — проверил; send — отправить, check — проверить.\n\nIt заменяет один уже названный предмет или файл: Eli will check the draft → Eli will check it. Если рядом несколько файлов, повторите нужное название. В американском английском говорим on Monday, on Tuesday: перед днём недели ставим on.",
+  "rows": [
+    ["finished + item", "Nora finished the draft.", "Нора закончила черновик."],
+    ["name + will + verb", "Eli will check the draft on Tuesday.", "Илай проверит черновик во вторник."],
+    ["assigned to + name", "The poster is assigned to Eli.", "Плакат поручен Илаю."],
+    ["ready / not ready", "The final version is not ready.", "Окончательная версия не готова."]
+  ],
+  "tip": "Не пишите Eli will checked it: после will нужна начальная форма check. И не приравнивайте Draft: ready к Final version: ready — это разные версии.",
+  "review": "Из №32 и №34 вспомните finished и различие готового и незавершённого действия. Из №56 восстановите I will + глагол. Из №72 вспомните точное название файла: назовите готовую версию, затем исполнителя следующего шага и его действие.",
+  "summary": "Вы умеете читать состояние версии, находить исполнителя следующего действия и связывать завершённую работу с будущим шагом в коротком сообщении.",
+  "choice": [
+    ["ready-version", "Выберите готовый к отправке материал.", "Tracker: map draft — ready; map final version — not ready; photo final version — ready. Send only a final version.", ["The map draft", "The map final version", "The photo final version"], 2, "Нужна именно окончательная версия. Она готова только у photo; готовность map draft не делает map final version готовой."],
+    ["next-owner", "Кто отвечает за следующий шаг?", "Task: event list. Ada finished the draft. Next step: check the draft. Assigned to: Miles.", ["Miles", "Ada", "Ada and Miles"], 0, "Следующая задача check the draft поручена Miles. Ada уже закончила предыдущий этап."],
+    ["finished-action", "Выберите уже завершённое действие.", "Status note: Owen checked the list on Monday. Priya will send it on Tuesday.", ["Priya sent the list.", "Owen checked the list.", "Owen will check the list."], 1, "Checked — прошедшее время: проверка уже состоялась. Will send обозначает следующий шаг, а не завершённую отправку."],
+    ["pronoun-target", "Что заменяет it в сообщении?", "Mina finished the poster. Jay will check it tomorrow.", ["Mina", "Jay", "The poster"], 2, "It заменяет один предмет — the poster. Для Mina или Jay потребовалось бы местоимение человека."],
+    ["next-verb", "Выберите правильную строку о следующем действии.", "Task: class photos. Next step: send the final version. Assigned to: Rose.", ["Rose will send the final version.", "Rose will sent the final version.", "Rose sent the final version."], 0, "После will используем send. Sent — прошедшая форма; она не подходит для обозначения следующего действия с will."]
+  ],
+  "blank": [
+    ["recover-owner", "Перенесите только имя исполнителя следующего шага.", "Task: lunch list. Draft by Theo. Next step: check it. Assigned to: Lena.\nNext step owner: ___", ["Lena"], "Assigned to указывает исполнителя следующей задачи — Lena. Автор черновика Theo не назначен на проверку."],
+    ["recover-item", "Перенесите название нужной версии целиком, без артикля. Только пропущенная часть.", "Tracker: room plan draft — not ready; room plan final version — ready.\nReady item: ___", ["room plan final version"], "Готова окончательная версия плана комнаты. Слова final version отличают её от незавершённого черновика."],
+    ["finished-check", "Поставьте check в прошедшее время. Только пропущенная часть.", "Completed on Thursday: Ben — check the photos.\nBen ___ the photos on Thursday.", ["checked"], "Завершённая проверка требует Past Simple: check → checked."],
+    ["future-send", "Впишите изученный вспомогательный глагол для будущего действия. Только пропущенная часть.", "Next step for Eva: send the map on Friday.\nEva ___ send the map on Friday.", ["will"], "Следующее действие выражаем через will send. Will не меняется по лицам."],
+    ["replace-draft", "Замените повторное название одним местоимением. Только пропущенная часть.", "Cal finished the draft. Bea will check the draft.\nBea will check ___.", ["it"], "Один уже названный предмет the draft заменяется на it."]
+  ],
+  "written": [
+    ["draft-done", "Напишите предложение о готовом действии: имя + finished + предмет из записи. Ничего не добавляйте.", "Completed: Hana — finish the photo list.", ["Hana finished the photo list."], "Завершённое действие передаём finished. Предмет действия — the photo list."],
+    ["assigned-check", "Напишите следующий шаг: имя + will + действие + on Friday. Используйте название предмета, не местоимение.", "Next step: check the room plan. Assigned to: Victor. Day: Friday.", ["Victor will check the room plan on Friday."], "Исполнитель — Victor; после will идёт check, перед Friday — on."],
+    ["personal-send", "Возьмите задачу на себя: начните с I will, затем действие и on Monday. Используйте точное имя файла. Можно сократить I will.", "Your next step: send the final version. File: poster-final.pdf. Day: Monday.", ["I will send poster-final.pdf on Monday.", "I'll send poster-final.pdf on Monday."], "Своё следующее действие передаём через I will send или I'll send. Имя poster-final.pdf и день Monday переносим из записи."],
+    ["two-stage-update", "Напишите два предложения. Сначала сообщите, кто и что уже закончил: имя + finished + предмет. Затем передайте следующее действие: имя + will + действие из таблицы. Повторите название нужной версии, поскольку их две. Даты не добавляйте. Используйте полную форму will.", "Project tracker\nPoster draft: ready. Finished by June.\nPoster final version: not ready.\nNext step: check the poster draft. Assigned to: Sam.", ["June finished the poster draft. Sam will check the poster draft."], "Готов только черновик. Джун его закончила, а Сэм будет проверять именно черновик. Повторяем the poster draft, чтобы проверку не приняли за проверку окончательной версии."],
+    ["version-not-ready", "Напишите отрицательное предложение о состоянии. Начните с The final version и используйте ready. Можно сократить is not.", "Task: museum map. Status of final version: not ready.", ["The final version is not ready.", "The final version isn't ready."], "Отрицание состояния строится с is not ready или isn't ready. Это не сообщение о готовом черновике."]
+  ]
+}

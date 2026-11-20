@@ -6,6 +6,7 @@ export type Normalization = {
 export type SentenceType = 'affirmative' | 'negative' | 'question' | 'short-affirmative' | 'short-negative';
 
 type BaseQuestion = {
+  task?: import('../lib/taskIndicators.ts').TaskMetadata;
   vocabularyId?: string;
   promptLanguage?: 'en' | 'ru';
   optionsLanguage?: 'en' | 'ru';
@@ -44,13 +45,14 @@ export type TheoryBlock = {
 export type LessonStep = BaseStep & (
   | { type: 'intro'; completion: 'acknowledge'; heading: string; text: string; example: string; translation: string }
   | { type: 'vocabulary'; completion: 'acknowledge'; heading: string; text: string; items: readonly VocabularyItem[]; note: string }
-  | { type: 'theory'; completion: 'acknowledge'; heading: string; text: string; tableCaption: string; rows: readonly { subject: string; subjectTranslation?: string; form: string; example: string; translation: string }[]; blocks?: readonly TheoryBlock[]; noteTitle: string; note: string }
+  | { type: 'theory'; completion: 'acknowledge'; heading: string; text: string; tableCaption: string; patternTable?: boolean; subjectHeading?: string; rows: readonly { subject: string; subjectTranslation?: string; form: string; example: string; translation: string }[]; blocks?: readonly TheoryBlock[]; noteTitle: string; note: string }
   | { type: 'exercise'; completion: 'all-correct'; questions: readonly Question[] }
   | { type: 'review'; completion: 'acknowledge' }
   | { type: 'summary'; completion: 'acknowledge' }
 );
 
 export type Lesson = {
+  band?: string;
   kind?: 'grammar' | 'vocabulary';
   id: string;
   level: 'A1' | 'A2' | 'B1' | 'B2';
@@ -61,6 +63,11 @@ export type Lesson = {
 };
 
 export type CourseEntry = {
+  number?: number;
+  level?: Lesson['level'];
+  band?: string;
+  stepCount?: number;
+  questionCount?: number;
   id: string;
   title: string;
   subtitle: string;

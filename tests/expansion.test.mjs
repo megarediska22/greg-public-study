@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { grammarLessons as lessons } from '../src/content/course.ts';
+import { grammarLessons as lessons } from '../src/content/historicalCourse.ts';
 const questionCount = lessons.reduce((n, {lesson}) => n + lesson.steps.flatMap(s => s.type === 'exercise' ? s.questions : []).length, 0);
 import { gradeAnswer } from '../src/lib/grading.ts';
 import { validateCourse } from '../src/lib/validation.ts';

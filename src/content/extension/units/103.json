@@ -1,0 +1,190 @@
+{
+  "number": 103,
+  "title": "Сообщаем о неисправности в квартире",
+  "subtitle": "Apartment maintenance",
+  "goal": "Сообщить незакрытую неисправность, комнату и время доступа и попросить ремонт.",
+  "intro": "Сравните список выполненного ремонта и свежую записку жильца. Для заявки нужна оставшаяся проблема.",
+  "example": "Checklist: kitchen faucet already fixed; bedroom heater not fixed yet. Note: The bedroom heater doesn’t work. Access: Friday, 2–4 p.m. Could you schedule a repair visit?",
+  "translation": "Список: кухонный кран уже починен; обогреватель спальни ещё не починен. Записка: Обогреватель в спальне не работает. Доступ: пятница, с 14 до 16. Не могли бы вы назначить визит мастера?",
+  "theory": "Maintenance — обслуживание и ремонт; leak — протечка; faucet — кран (обычное слово в США); heater — обогреватель; repair visit — визит для ремонта; access time — время доступа в квартиру. Fixed и repaired означают «починен». Drips — капает, turned off — выключен или закрыт, как кран.\nThe heater doesn’t work — обогреватель не работает. После doesn’t нужен work без -s. The faucet is leaking — кран сейчас протекает: is + leaking описывает текущую проблему.\nAlready — уже; not … yet — ещё не: The heater is already fixed; The heater is not fixed yet. Свежая записка может сообщать, что проблема появилась снова (again).\nВ заявке укажите неисправность вместе с комнатой, время доступа и просьбу. I’m available on Friday from 2 to 4 p.m. — Я могу принять мастера в пятницу с 14 до 16. Просьба Could you schedule a repair visit? просит назначить визит; после Could you используйте начальную форму schedule.",
+  "rows": [
+    [
+      "doesn’t work",
+      "The bedroom heater doesn’t work.",
+      "Обогреватель в спальне не работает."
+    ],
+    [
+      "is leaking",
+      "The kitchen faucet is leaking.",
+      "Кран на кухне протекает."
+    ],
+    [
+      "not … yet",
+      "The heater is not fixed yet.",
+      "Обогреватель ещё не починен."
+    ]
+  ],
+  "tip": "Не пишите doesn’t works: правильно doesn’t work. Уже выполненный ремонт не включайте в новую заявку.",
+  "review": "Вспомните is + -ing из #14, сообщение и просьбу из #67, временной интервал из #68 и already/yet из #89. Сначала сверьте статус.",
+  "summary": "Я могу назвать оставшуюся неисправность и комнату, сообщить время доступа и попросить визит мастера.",
+  "choice": [
+    [
+      "pending-heater",
+      "Выберите оставшуюся неисправность.",
+      "Checklist: kitchen faucet already fixed; bedroom heater not fixed yet. Note: I turn the bedroom heater on, but it doesn’t heat up.",
+      [
+        "The kitchen faucet is leaking.",
+        "The bedroom heater doesn’t work.",
+        "The bedroom faucet is leaking."
+      ],
+      1,
+      "Not fixed yet относится к обогревателю спальни; кухонный кран уже починен."
+    ],
+    [
+      "fresh-note",
+      "Выберите неисправность по последней записке.",
+      "Monday: bathroom faucet fixed. Tuesday: The bathroom faucet is leaking again. The kitchen heater works.",
+      [
+        "The kitchen heater doesn’t work.",
+        "The bathroom heater doesn’t work.",
+        "The bathroom faucet is leaking."
+      ],
+      2,
+      "Более поздняя записка сообщает о повторной протечке крана."
+    ],
+    [
+      "access-window",
+      "Выберите разрешённое время визита.",
+      "Tenant: Access on Friday from 9 to 11 a.m. No access after 11.",
+      [
+        "Friday at 10 a.m.",
+        "Friday at noon",
+        "Thursday at 10 a.m."
+      ],
+      0,
+      "10 утра пятницы входит в окно 9–11."
+    ],
+    [
+      "yet-status",
+      "Выберите значение отметки.",
+      "Maintenance: Living room heater — not repaired yet.",
+      [
+        "The repair is complete.",
+        "The repair is still needed.",
+        "The repair is canceled."
+      ],
+      1,
+      "Not repaired yet означает, что ремонт ещё не выполнен."
+    ],
+    [
+      "complete-request",
+      "Выберите заявку с верными данными.",
+      "Note: kitchen faucet leaking; bedroom heater fixed. Access: Monday, 3–5 p.m.",
+      [
+        "Bedroom heater doesn’t work. Monday, 3–5 p.m. Could you schedule a repair visit?",
+        "The kitchen faucet is leaking. Monday, 9–11 a.m. Could you schedule a repair visit?",
+        "The kitchen faucet is leaking. Monday, 3–5 p.m. Could you schedule a repair visit?"
+      ],
+      2,
+      "Кран протекает на кухне, доступ в понедельник с 15 до 17. Обогреватель уже починен."
+    ]
+  ],
+  "blank": [
+    [
+      "room-field",
+      "Впишите только комнату.",
+      "Note: The bathroom faucet is leaking. Room: ___.",
+      [
+        "bathroom"
+      ],
+      "Bathroom — комната с протекающим краном."
+    ],
+    [
+      "access-day",
+      "Впишите только день из записки.",
+      "Access note: Tuesday, 1–3 p.m. Day: ___.",
+      [
+        "Tuesday"
+      ],
+      "Tuesday — день доступа, указанный жильцом."
+    ],
+    [
+      "fault-form",
+      "Впишите только форму work.",
+      "The hall heater doesn’t ___.",
+      [
+        "work"
+      ],
+      "После doesn’t нужен work без окончания."
+    ],
+    [
+      "current-leak",
+      "Впишите только is или are.",
+      "The kitchen faucet ___ leaking right now.",
+      [
+        "is"
+      ],
+      "Один кран: the faucet is leaking."
+    ],
+    [
+      "pending-marker",
+      "Впишите только already или yet.",
+      "The bedroom heater is not fixed ___.",
+      [
+        "yet"
+      ],
+      "Yet в конце отрицания означает «ещё не»."
+    ]
+  ],
+  "written": [
+    [
+      "fault-sentence",
+      "Начните с The bedroom heater и сообщите неисправность через doesn’t или does not и глагол work.",
+      "Checklist: bedroom heater not fixed yet; kitchen faucet fixed. Tenant note: The bedroom heater is on, but it still gives no heat.",
+      [
+        "The bedroom heater doesn’t work.",
+        "The bedroom heater doesn't work.",
+        "The bedroom heater does not work."
+      ],
+      "Doesn’t/does not work сообщает о неисправности обогревателя."
+    ],
+    [
+      "leak-sentence",
+      "Поле 1 из 3. Сообщите, что сейчас протекает. Начните с The, назовите комнату и предмет по-английски в этом порядке, затем используйте is leaking.",
+      "Checklist: kitchen heater already fixed; bathroom faucet not fixed yet. Tenant note: Water still drips from the bathroom faucet when it’s turned off. Access: Wednesday, 8–10 a.m.",
+      [
+        "The bathroom faucet is leaking."
+      ],
+      "Протекает кран в ванной даже после выключения. Обогреватель на кухне уже починен."
+    ],
+    [
+      "access-sentence",
+      "Поле 2 из 3. Укажите время, когда можете принять мастера. Начните с I’m available on или I am available on. Перепишите день и числа из записки по схеме from … to … с a.m. в конце.",
+      "Checklist: kitchen heater already fixed; bathroom faucet not fixed yet. Tenant note: Water still drips from the bathroom faucet when it’s turned off. Access: Wednesday, 8–10 a.m.",
+      [
+        "I'm available on Wednesday from 8 to 10 a.m.",
+        "I’m available on Wednesday from 8 to 10 a.m.",
+        "I am available on Wednesday from 8 to 10 a.m."
+      ],
+      "Мастер может прийти в среду с 8 до 10 утра. From … to … передаёт обе границы интервала."
+    ],
+    [
+      "visit-request",
+      "Поле 3 из 3. Попросите назначить визит мастера. Начните с Could you и используйте schedule a repair visit.",
+      "Checklist: kitchen heater already fixed; bathroom faucet not fixed yet. Tenant note: Water still drips from the bathroom faucet when it’s turned off. Access: Wednesday, 8–10 a.m.",
+      [
+        "Could you schedule a repair visit?"
+      ],
+      "Жилец просит службу ремонта назначить визит. После Could you следует начальная форма schedule."
+    ],
+    [
+      "three-fields",
+      "Перенесите навык в новую ситуацию. Напишите два предложения: The + комната + предмет + is leaking. Затем попросите назначить визит через Could you schedule a repair visit?",
+      "Checklist: bedroom heater already repaired; kitchen faucet not fixed yet. Tenant note: The faucet in the kitchen still drips even when it’s off.",
+      [
+        "The kitchen faucet is leaking. Could you schedule a repair visit?"
+      ],
+      "Нужно описать протечку на кухне и попросить визит. Обогреватель в спальне уже починен."
+    ]
+  ]
+}

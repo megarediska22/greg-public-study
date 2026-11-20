@@ -1,0 +1,186 @@
+{
+  "number": 105,
+  "title": "Вещь нашлась: уточняем детали",
+  "subtitle": "Checking a found item",
+  "goal": "Сопоставить вещь по двум признакам и спросить только об одном недостающем признаке до получения.",
+  "intro": "На стойке появилась новая находка. Цвет и узор совпадают с заявкой, но одного признака в объявлении нет. Уточните его до поездки.",
+  "example": "Lost report: blue striped bag, two pockets; left on a bus. Found notice: blue striped bag, now at the front desk; pocket count not listed. How many pockets does it have?",
+  "translation": "Заявка: синяя полосатая сумка, два кармана; оставлена в автобусе. Объявление: синяя полосатая сумка теперь у администратора; число карманов не указано. Сколько у неё карманов?",
+  "theory": "Description — описание; striped — полосатый; plain — однотонный, без узора; pocket — карман; claim — забрать найденную вещь, подтвердив, что она ваша; identifying detail — отличительный признак. Front desk — стойка администратора. Claim ticket — талон для получения.\nIt has two pockets — у вещи два кармана. There is a name inside — внутри есть имя. Has описывает принадлежность предмета, there is — наличие в месте. It was on a bus сообщает прошлое место; it is at the front desk — нынешнее.\nСначала сравните два названных признака, затем спросите только о неизвестном. Which pocket has the key? — В каком кармане ключ? What color is it? — Какого она цвета? Which color подходит, когда выбираем из названных цветов: Which color is it, blue or gray? Для количества: How many pockets does it have? После does используйте have, не has. Для надписи: What name is inside? — Какое имя внутри? Не спрашивайте заново уже указанный цвет. В объявлении могут попросить initials (инициалы) или имя, указанное внутри. Item ID — номер находки.",
+  "rows": [
+    [
+      "It has …",
+      "It has a red pocket.",
+      "У неё красный карман."
+    ],
+    [
+      "There is …",
+      "There is a name inside the bag.",
+      "Внутри сумки есть имя."
+    ],
+    [
+      "Which …?",
+      "Which pocket has the key?",
+      "В каком кармане ключ?"
+    ]
+  ],
+  "tip": "Не делайте вывод о нынешнем месте из was: вещь могла переместиться. После does it правильно have, а не has.",
+  "review": "Вспомните has из #6 и there is из #10. Из #25 и #37 возьмите точность описания, из #49 — правила получения. Отметьте два совпадения и один пробел.",
+  "summary": "Я могу найти вероятное совпадение по двум признакам и задать вопрос только о недостающей детали.",
+  "choice": [
+    [
+      "striped-match",
+      "Выберите вероятную находку по цвету и узору.",
+      "Lost: green striped scarf; initials inside. Found list: A — green plain scarf; B — green striped scarf; C — blue striped scarf.",
+      [
+        "A",
+        "B",
+        "C"
+      ],
+      1,
+      "B совпадает по двум признакам: green и striped; инициалы ещё надо уточнить."
+    ],
+    [
+      "missing-detail",
+      "Выберите вопрос только о неизвестном признаке.",
+      "Report: black plain backpack with three pockets. Notice: black plain backpack; number of pockets not listed.",
+      [
+        "Where was it found?",
+        "What color is it?",
+        "How many pockets does it have?"
+      ],
+      2,
+      "Цвет и узор известны; не указано только число карманов."
+    ],
+    [
+      "present-location",
+      "Выберите нынешнее место вещи.",
+      "Report: The bag was on bus 12. Update: It is at the library front desk now.",
+      [
+        "The library front desk",
+        "Bus 12",
+        "The bus station"
+      ],
+      0,
+      "Was указывает прошлое место, is … now — нынешнее."
+    ],
+    [
+      "pocket-question",
+      "Выберите вопрос о недостающей детали.",
+      "Report: red striped coat; key in the left pocket. Notice: red striped coat with a key; pocket location not listed.",
+      [
+        "What color is the coat?",
+        "Which pocket has the key?",
+        "Is the coat striped?"
+      ],
+      1,
+      "Нужно узнать карман с ключом; цвет и узор уже названы."
+    ],
+    [
+      "claim-rule",
+      "Выберите нужное действие перед получением.",
+      "Found notice: Yellow plain bag. To claim it, tell us the name inside. Do not send a photo.",
+      [
+        "Send a photo.",
+        "Ask about the yellow color.",
+        "Give the name inside."
+      ],
+      2,
+      "Правило требует имя внутри как identifying detail; фото прямо запрещено."
+    ]
+  ],
+  "blank": [
+    [
+      "notice-id",
+      "Впишите только идентификатор находки. Перепишите букву и цифры из объявления.",
+      "Notice F18: orange striped umbrella, at the front desk. Item ID: ___.",
+      [
+        "F18"
+      ],
+      "F18 — идентификатор находки, а не место хранения."
+    ],
+    [
+      "pattern-word",
+      "Впишите только слово со значением «однотонная».",
+      "No stripes or other pattern: a ___ bag.",
+      [
+        "plain"
+      ],
+      "Plain описывает вещь без узора."
+    ],
+    [
+      "has-form",
+      "Впишите только has или have.",
+      "The found jacket is easy to identify: it ___ one blue pocket.",
+      [
+        "has"
+      ],
+      "С it в утверждении используется has."
+    ],
+    [
+      "inside-form",
+      "Впишите только is или are.",
+      "There ___ a name inside the lunch bag.",
+      [
+        "is"
+      ],
+      "A name — один предмет, поэтому there is."
+    ],
+    [
+      "old-location",
+      "Впишите только прошлое место из заявки.",
+      "Report: left at the pool. Notice: now at the school office. Previous location: the ___.",
+      [
+        "pool"
+      ],
+      "Заявка называет прошлое место pool, объявление — нынешнее school office."
+    ]
+  ],
+  "written": [
+    [
+      "ask-pocket-count",
+      "Спросите только о количестве карманов. Начните How many pockets и используйте does it have.",
+      "Report: tan plain bag, four pockets. Notice: tan plain bag; pocket count unknown.",
+      [
+        "How many pockets does it have?"
+      ],
+      "Вопрос проверяет единственный неизвестный признак; после does используется have."
+    ],
+    [
+      "ask-key-pocket",
+      "Спросите только о кармане с ключом. Начните Which pocket и используйте has the key.",
+      "Lost: gray striped jacket, key in right pocket. Found: gray striped jacket, key present; pocket unspecified.",
+      [
+        "Which pocket has the key?"
+      ],
+      "Which pocket уточняет место ключа, а не уже известные цвет и узор."
+    ],
+    [
+      "ask-inside-name",
+      "Спросите только об имени, указанном внутри. Начните с What name и используйте is inside.",
+      "Lost: purple plain pouch, name Nina inside. Found: purple plain pouch; inside name not shown.",
+      [
+        "What name is inside?"
+      ],
+      "Фиолетовый цвет и отсутствие узора совпадают. По имени внутри можно проверить, та ли это вещь."
+    ],
+    [
+      "describe-pocket",
+      "Опишите вещь одним предложением с It has; используйте one и red pocket.",
+      "Verified detail: один красный карман.",
+      [
+        "It has one red pocket."
+      ],
+      "Has связывает вещь с её карманом; one сохраняет точное количество."
+    ],
+    [
+      "ask-color",
+      "Найдите объявление, где совпадают два признака и нет противоречий. Затем одним вопросом с What и is it уточните только недостающий признак этой находки.",
+      "Lost report: blue striped bag with two pockets. Found A: striped bag with two pockets; color not listed. Found B: blue plain bag with one pocket. Found C: gray striped bag with one pocket.",
+      [
+        "What color is it?"
+      ],
+      "В A совпадают полоски и число карманов. У C другой цвет и всего один карман, у B другой узор и один карман. В объявлении A не указан только цвет."
+    ]
+  ]
+}

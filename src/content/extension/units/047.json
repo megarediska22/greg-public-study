@@ -1,0 +1,40 @@
+{
+  "number": 47,
+  "title": "Размер и примерка",
+  "subtitle": "Sizes and fitting rooms",
+  "goal": "Выбрать единственную доступную пару размера и цвета и попросить вещь с обоими параметрами.",
+  "intro": "Перед встречей вы ищете рубашку. Продавец показывает остатки: нужный цвет есть не во всех размерах.",
+  "example": "Customer: Do you have this shirt in medium?\nClerk: Yes, in green.\nCustomer: Can I try it on?\nClerk: Sure. The fitting room is on the left.",
+  "translation": "Покупатель: У вас есть эта рубашка размера M?\nПродавец: Да, зелёная.\nПокупатель: Можно её примерить?\nПродавец: Конечно. Примерочная слева.",
+  "theory": "Size — размер. Small, medium, large — маленький, средний, большой размер; на бирках часто S, M, L. Color — цвет; это американское написание. Fitting room — примерочная. Fit означает «подходить по размеру»: It fits — вещь впору; It doesn't fit — не подходит по размеру.\n\nDo you have it in medium? — У вас есть это размера M? После in можно назвать размер или цвет: in blue. Два параметра сохраняйте вместе: Do you have this shirt in blue, size medium? Размер можно назвать без артикля (in medium) или с ним (in a medium, то есть in a medium size). Another size — другой размер.\n\nTry on — примерить. С местоимением it порядок только try it on: Can I try it on? С существительным возможны try on this shirt и try this shirt on.\n\nOne заменяет одно уже названное исчисляемое существительное: this one — эта вещь. Ones заменяет несколько: these ones — эти вещи, the white ones — белые. В американской разговорной речи these ones допустимо, но обычно достаточно these. Для пары обуви используйте them: Can I try them on? Сверяйте цвет и размер по одной строке наличия, а не по разным товарам.",
+  "rows": [
+    ["in + size", "Do you have it in large?", "У вас есть это размера L?"],
+    ["try it on", "Can I try it on?", "Можно это примерить?"],
+    ["this one / these ones", "This one fits, but these ones don't.", "Эта вещь впору, а эти не подходят."],
+    ["size and color", "Do you have this shirt in red, size small?", "У вас есть эта рубашка размера S красного цвета?"]
+  ],
+  "tip": "Не говорите try on it: местоимение ставится между try и on — try it on. Размер M не означает наличие любого цвета.",
+  "review": "Вспомните this и these из №9, Can I из №12 и вопрос о наличии из №43. Прочитайте каждую строку остатков целиком. В последнем письменном задании сохраните и размер, и цвет.",
+  "summary": "Вы можете прочитать остатки, назвать размер и цвет, попросить нужную вещь и разрешение на примерку.",
+  "choice": [
+    ["only-stock-pair", "Выберите единственную доступную пару.", "Shirt stock: small blue — 0; medium blue — 2; medium red — 0.", ["Small, blue", "Medium, blue", "Medium, red"], 1, "Только у medium blue остаток больше нуля: две рубашки."],
+    ["fitting-room-sign", "Выберите место для примерки.", "Store map: fitting room — upstairs; checkout — downstairs; exit — straight ahead.", ["Downstairs", "Straight ahead", "Upstairs"], 2, "Fitting room — примерочная; на плане она upstairs, наверху."],
+    ["shoe-reference", "Выберите просьбу примерить названные туфли.", "These shoes are size eight. You want to try the pair.", ["Can I try them on?", "Can I try it on?", "Can I try on them?"], 0, "Shoes — множественное число, поэтому them; местоимение стоит между try и on."],
+    ["fit-report", "Выберите сообщение о подходящем размере.", "The small jacket is too tight. The medium jacket fits.", ["The small one fits.", "The medium one fits.", "Both jackets fit."], 1, "Fits относится к medium jacket; one заменяет jacket."],
+    ["color-match", "Выберите доступную вещь по обоим условиям.", "Need: a large black coat. Stock: large black — 1; small black — 3; large gray — 4.", ["A small black coat", "A large gray coat", "A large black coat"], 2, "Нужны одновременно large и black; в этой строке есть одно пальто."]
+  ],
+  "blank": [
+    ["medium-tag", "Впишите только размер полным английским словом.", "Tag: M. Do you have it in ___?", ["medium"], "M обозначает medium, средний размер."],
+    ["pronoun-placement", "Впишите только местоимение для одной юбки.", "This skirt looks nice. Can I try ___ on?", ["it"], "Одна юбка заменяется it; try it on — правильный порядок."],
+    ["plural-ones", "Впишите только one или ones.", "There are blue shirts and white shirts on the table. I want to try on both white shirts. Can I try on the white ___?", ["ones"], "Речь о двух белых рубашках, поэтому the white ones. Для одной рубашки было бы the white one."],
+    ["size-preposition", "Впишите только предлог перед размером.", "The blue sweater is too small. Do you have it ___ large?", ["in"], "В вопросе о размере используем in large."],
+    ["fit-negative", "Впишите только fit или fits.", "These pants are too long. They don't ___.", ["fit"], "После don't нужна начальная форма fit; pants заменяется they."]
+  ],
+  "written": [
+    ["try-single", "Попросите примерить одну вещь: начните с Can I, используйте try, it, on в нужном порядке; других слов не добавляйте.", "You are holding a brown jacket.", ["Can I try it on?"], "Одну куртку заменяет it; в try it on местоимение стоит внутри выражения."],
+    ["ask-large", "Спросите о другом размере. Начните с Do you have it и добавьте in и название размера полным словом. Перед размером можно поставить a.", "This sweater is medium. You need size L.", ["Do you have it in large?", "Do you have it in a large?"], "Размер L — large; вопрос о наличии строится с Do you have it in."],
+    ["identify-one", "Сообщите, что эта вещь впору. Используйте только This, one и fit в нужной форме.", "You are pointing to one shirt. Its size is right.", ["This one fits."], "This one — единственное число, поэтому fits с -s."],
+    ["ask-room", "Спросите, где примерочная: начните с Where, затем is (можно сокращение), the fitting room; без других слов.", "You want a place to try on your jeans.", ["Where is the fitting room?", "Where's the fitting room?"], "В вопросе с be ставим is перед the fitting room; fitting room означает примерочную."],
+    ["preserve-stock-pair", "Попросите доступную рубашку. Начните с Do you have this shirt in, назовите цвет, затем size и полное название размера, как в примере.", "Stock: small white — 0; large white — 0; medium green — 1. You need the available pair.", ["Do you have this shirt in green, size medium?", "Do you have this shirt in green size medium?"], "В наличии только зелёная рубашка размера M. In green сохраняет цвет, size medium — размер."]
+  ]
+}

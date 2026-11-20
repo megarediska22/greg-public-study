@@ -1,0 +1,79 @@
+[
+  {
+    "number": 117,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "write-final-weather-message: rain triggers the move to South Hall, which can be ready by 12:45 p.m. North Room holds the group but cannot be ready before 12:55 p.m. Also verified the separate capacity check in usable-rain-room.",
+    "correctedIds": [
+      "usable-rain-room",
+      "access-before-preparation",
+      "preparation-time-gap",
+      "notification-chunk-gap",
+      "write-final-weather-message"
+    ],
+    "sha256": "f4bd567e9ea77b4a4566134e62664f9c4a71112639f39c73f5da77d3ee9f0afc"
+  },
+  {
+    "number": 118,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "relay-three-fields: the first update supplies Studio Hall, the second assigns Marcus cup duty, and the original 3:15 p.m. deadline still applies. Gallery Room is superseded. Both comma variants of the second sentence preserve the three fields.",
+    "correctedIds": [
+      "combine-two-updates",
+      "relevant-to-absent-helper",
+      "retained-deadline",
+      "still-needed-meaning",
+      "latest-owner-gap",
+      "retained-location-gap",
+      "unchanged-time-gap",
+      "relay-three-fields",
+      "name-new-owner",
+      "relay-place-and-time"
+    ],
+    "sha256": "5a3c43f29c0941254803feb6b2c97bf3440aab0e9a77700ec753a4226bc0fd0d"
+  },
+  {
+    "number": 119,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "write-outcome-followup: 21 attended, check-in went well because nobody waited, and Celia still needs to send the thank-you message. The log gives 25 expected, and the feedback gives no evidence about room comfort.",
+    "correctedIds": [
+      "supported-evaluation",
+      "went-well-gap",
+      "write-pending-message",
+      "write-outcome-followup"
+    ],
+    "sha256": "f991b97124c327d628a332b401cdd31553c4473432b1e91cf589194b802a92f7"
+  },
+  {
+    "number": 120,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "write-improvement-and-request: shorten the talk and ask to confirm Friday at 4 p.m., the only slot that works for Ezra and Ana. Starting earlier ignores the positive timing feedback. Also verified the going-to intention and the availability reply.",
+    "correctedIds": [
+      "intention-not-suggestion",
+      "shared-day-gap",
+      "shared-time-gap",
+      "supplied-reason-gap",
+      "state-room-intention",
+      "write-improvement-and-request"
+    ],
+    "sha256": "6b86863e33530ff4682f380c4b4de77d0dfa1c34343214e40deca1f341eea5f5"
+  },
+  {
+    "number": 121,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "Three stages use local sources. The six first-attempt items include the mandatory Blue Hall, Marco, 15 actual attendees and Nina’s pending thank-you message. Red Room held the early estimate of 10 but cannot hold the planned 17. The 5/6 target is a self-check; all items must be correct after retries for platform completion.",
+    "correctedIds": [
+      "stage-one-viable-plan",
+      "stage-one-task-owner",
+      "stage-two-current-room",
+      "stage-two-current-owner",
+      "stage-two-kept-deadline",
+      "stage-two-notify-trigger",
+      "stage-two-notify-volunteer"
+    ],
+    "sha256": "9d56ec6bc632a16a99fee0973df36d63144f6908e541dcdb05bdf1468d184f1c"
+  }
+]

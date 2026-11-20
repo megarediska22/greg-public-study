@@ -18,8 +18,9 @@ export function ExerciseQuestion({ question, index, value, saved, missing, onCha
   const feedbackId = `${question.id}-feedback`;
   const instructionId = `${question.id}-instruction`;
   const missingId = `${question.id}-missing`;
-  const descriptionIds = [`${question.id}-task`, instructionId, feedback ? feedbackId : '', missing ? missingId : ''].filter(Boolean).join(' ');
-  const answerLabel = question.type !== 'written' ? question.vocabularyId ? 'Ваш ответ — слово или выражение' : 'Ваш ответ — пропущенные слова'
+  const duplicateInstruction = question.id.startsWith('unit-') && question.task?.label === question.instruction;
+  const descriptionIds = [`${question.id}-task`, duplicateInstruction ? '' : instructionId, feedback ? feedbackId : '', missing ? missingId : ''].filter(Boolean).join(' ');
+  const answerLabel = question.type === 'written' && question.task ? 'Ваш ответ по условию задания' : question.type !== 'written' ? question.vocabularyId ? 'Ваш ответ — слово или выражение' : 'Ваш ответ — пропущенные слова'
     : question.sentenceType === 'short-affirmative' || question.sentenceType === 'short-negative'
       ? 'Ваш короткий ответ' : question.vocabularyId ? 'Ваш ответ — фраза целиком' : 'Ваш ответ — предложение целиком';
   const invalid = missing || feedback === 'incorrect';
@@ -27,8 +28,8 @@ export function ExerciseQuestion({ question, index, value, saved, missing, onCha
   return <div className={`question-card ${feedback ? `question-${feedback}` : ''} ${missing ? 'question-missing' : ''}`}>
     <fieldset id={`${question.id}-question`} className="exercise-card" disabled={locked} tabIndex={-1} aria-describedby={descriptionIds} aria-invalid={invalid || undefined}>
       <legend>Задание {index + 1}{feedback ? locked ? ' · ✓ Верно' : ' · ✕ Исправьте ответ' : ''}</legend>
-      <TaskIndicator questionId={question.id} />
-      <p id={instructionId} className="question-instruction">{question.instruction}</p>
+      <TaskIndicator questionId={question.id} metadata={question.task} />
+      {!duplicateInstruction && <p id={instructionId} className="question-instruction">{question.instruction}</p>}
       <p className="exercise-prompt" lang={question.promptLanguage ?? 'en'}>{question.prompt}</p>
       {question.type === 'choice' ? <div className="choice-options">{question.options.map(option =>
         <label className={`choice-option ${value === option ? 'selected' : ''}`} key={option}>

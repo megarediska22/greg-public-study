@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { grammarLessons as lessons } from '../src/content/course.ts';
+import { grammarLessons as lessons } from '../src/content/historicalCourse.ts';
 import { validateCourse } from '../src/lib/validation.ts';
 
 const questions = lessons.flatMap(({lesson}) => lesson.steps.flatMap(step => step.type === 'exercise' ? step.questions : []));

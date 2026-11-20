@@ -1,0 +1,145 @@
+[
+  {
+    "number": 57,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "east-replacement-arrival: Bus B8 reaches Elm at 4:50 p.m. The 4:05 p.m. option gives departure. relay-late-shuttle crosses the hour from 3:45 to 4:15.",
+    "correctedIds": [
+      "benton-active-ride",
+      "ferry-clock-update",
+      "cedar-on-time",
+      "east-replacement-arrival",
+      "duration-preposition",
+      "report-ten-minute-delay"
+    ],
+    "sha256": "d8ac5af181b4b7cb3f862693b8c6060978ed03e736fc05369914eb0f8eb9828d"
+  },
+  {
+    "number": 58,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "noon-inclusive is on time and strict-before-cutoff is too late. dated-reminder requires by at 5:30 p.m. on August 19 because the portal accepts that exact minute. Before would exclude it.",
+    "correctedIds": [
+      "strict-before-cutoff",
+      "dated-reminder"
+    ],
+    "sha256": "c6327d422587109e418ce8f3a3a01d493ee24967ee03757008509232b7b9c541"
+  },
+  {
+    "number": 59,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "choir-rain-room and choir-dry-garden give Room 12 and Birch Garden respectively. transfer-use-backup gives 'If it rains, we'll use Room 15.' The outdoor tables are for dry weather.",
+    "correctedIds": [
+      "inside-adverb",
+      "rain-library-message",
+      "indoor-event-message",
+      "transfer-use-backup"
+    ],
+    "sha256": "2881b48eaa08aa7cc4c67e87816f8815273d6993e7f2285184e429571c981ca8"
+  },
+  {
+    "number": 60,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "rsvp-at-deadline: 4:50 p.m. meets the 5:00 deadline. final-guest-field is 2 for the father and sister. Three would include the attendee. final-confirmation states attendance and both guests.",
+    "correctedIds": [
+      "attendance-verb",
+      "rsvp-at-deadline",
+      "reply-cutoff-preposition",
+      "final-guest-field",
+      "confirm-alone",
+      "remind-reply-deadline",
+      "final-confirmation"
+    ],
+    "sha256": "87fec0e9545a9289535376aa6ba66200fba07a4ff04ea052227952a3241c4e4b"
+  },
+  {
+    "number": 61,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "exit-viable-slot is 2:00 p.m. because 10:30 conflicts with availability and 1:00 is unavailable. Rain routes the visit through the west entrance. exit-actionable-confirmation adds July 18 and offers to help with the bags.",
+    "correctedIds": [
+      "dated-alert-gap",
+      "exit-reply-deadline",
+      "confirm-arrangement",
+      "exit-offer-help",
+      "exit-actionable-confirmation"
+    ],
+    "sha256": "53799a74d9eabe0295bf71e36d774efc7f074eb4cc982215082936df8fbe35e4"
+  },
+  {
+    "number": 62,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "usable-repair-slot and book-name-and-time resolve to 1 p.m. for Iris Bell. A 2:30 p.m. repair would end at 3:30, after the customer has to leave.",
+    "correctedIds": [
+      "usable-repair-slot",
+      "customer-books",
+      "name-from-card",
+      "confirm-full-name",
+      "book-name-and-time"
+    ],
+    "sha256": "cec30ea8822fe2311c33e09e957670522083209f78a8fa4963ebb6bdf793968f"
+  },
+  {
+    "number": 63,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "who-moves-cart is Mia → Jay and speaker-permission is Sam → Sam. ask-map-file accepts 'Could you send the floor map over?' The schedule does not supply the location.",
+    "correctedIds": [
+      "hands-full-door",
+      "who-moves-cart",
+      "speaker-permission",
+      "need-schedule",
+      "ask-map-file"
+    ],
+    "sha256": "24734fc7a108ee892f06720a100d528cc552eac048f8c2f3a98ac95bbd10f55d"
+  },
+  {
+    "number": 64,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "room-rule-laptop permits an outlet marked GUEST, with the outlet under the desk reserved for staff. room-rule-borrow permits the blue shared charger. Both Can I and Could I are accepted in the follow-up question.",
+    "correctedIds": [
+      "room-rule-laptop",
+      "outlet-us-word",
+      "borrow-shared-charger"
+    ],
+    "sha256": "4dfa81541af4e0e799ecd6f95d1d99458e34fc1ec9e67424e3bf96e957360dd2"
+  },
+  {
+    "number": 65,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "offer-caffeine-choice calls for decaf coffee and offer-temperature-choice for iced tea. choose-decaf-with-milk preserves the coffee choice and the added milk. 'Either is fine' could result in regular coffee.",
+    "correctedIds": [
+      "offer-caffeine-choice",
+      "decaf-modifier",
+      "either-word",
+      "choose-decaf-with-milk",
+      "choose-iced-tea",
+      "replace-with-hot-tea"
+    ],
+    "sha256": "ab4150261e72c72bb8afe04a6b7646e59ddc74f85bd19d6aadaaee0f39bc869a"
+  },
+  {
+    "number": 66,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "record-order-id and record-status give S480 and 'has shipped'. query-revised-arrival asks 'When will order S480 arrive?' ZZ712 is the tracking number, and the delivery address is already supplied.",
+    "correctedIds": [
+      "missing-arrival-detail",
+      "signature-from-faq",
+      "focused-tracking-query",
+      "record-order-id",
+      "record-status",
+      "query-missing-arrival",
+      "query-missing-window",
+      "query-missing-tracking",
+      "query-missing-address",
+      "query-revised-arrival"
+    ],
+    "sha256": "f2a577bc8497a7d68d7dfdfaa40951f0ce44243978da65900da81114cc266858"
+  }
+]

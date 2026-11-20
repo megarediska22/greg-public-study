@@ -1,0 +1,39 @@
+{
+  "number": 75,
+  "title": "Обмен сменами",
+  "subtitle": "Trading shifts",
+  "goal": "Сопоставить доступность двух сотрудников, предложить возможный обмен и запросить одобрение менеджера.",
+  "intro": "Сотруднику магазина нужна свободная суббота. Нужно найти коллегу, которому подходит обмен, а затем обратиться к менеджеру.",
+  "example": "Ava: Could you cover my Saturday opening shift, Leo? I have a class.\nLeo: Yes. Can you cover my Sunday closing shift?\nAva: Yes. Let's ask our manager to approve the swap.",
+  "translation": "Ава: Лео, ты можешь выйти вместо меня в субботнюю смену к открытию? У меня занятие.\nЛео: Да. Ты можешь выйти вместо меня в воскресную смену к закрытию?\nАва: Да. Давай попросим менеджера одобрить обмен.",
+  "theory": "Swap и trade shifts — обмениваться сменами. Opening shift — смена к открытию, closing shift — смена к закрытию; точные часы ищите в расписании. Cover my shift — выйти в мою смену вместо меня. Cover for me — подменить меня. Approve — одобрить: The manager has to approve the swap. В американском рабочем разговоре trade shifts — обычное выражение для обмена.\nCould you cover my Saturday shift? — вежливая просьба к коллеге выйти вместо вас. После could you идет начальная форма cover. Can we swap shifts? — предложение обмена. My обозначает мою смену, your — смену собеседника.\nBecause + простое предложение объясняет причину: Can we swap shifts? I need to swap because I have a class. Не оставляйте после because только существительное: because I have a class, а не because a class.\nДля обмена проверьте оба направления: коллега свободен в вашу смену, а вы — в его смену. Согласие коллеги не заменяет одобрение менеджера. Просьба менеджеру: Could you approve our swap? — можете одобрить наш обмен?",
+  "rows": [
+    ["Could you cover my …?", "Could you cover my Friday opening shift?", "Ты можешь выйти вместо меня в пятничную смену к открытию?"],
+    ["Can we swap shifts?", "Can we swap shifts? I need to swap because I have a class.", "Можем обменяться сменами? Мне нужно поменяться, потому что у меня занятие."],
+    ["approve our swap", "Could you approve our swap?", "Вы можете одобрить наш обмен?"]
+  ],
+  "tip": "Не путайте cover my shift и cover for me: верно Could you cover my shift? или Could you cover for me? Вариант cover for my shift здесь не нужен.",
+  "review": "Вспомните перенос времени из №55, адресата просьбы из №63 и обязанности из №74. Сначала назовите обе смены, затем проверьте, кто свободен в каждой.",
+  "summary": "Я могу выбрать возможный обмен, назвать обе смены, попросить коллегу о подмене и менеджера об одобрении.",
+  "choice": [
+    ["viable-partner", "Кому Миа может предложить взаимный обмен?", "Mia has the Saturday opening shift, 8 a.m.–noon, but has a class then. She is free on Sunday from 4 to 8 p.m. Jay and Kim each have a Sunday closing shift from 4 to 8 p.m. Jay is free Saturday morning. Kim is busy then.", ["Jay", "Kim", "Neither coworker"], 0, "Джею подходит субботняя смена Мии, а Мия может выйти вместо него в воскресенье. Ким в субботу утром занята."],
+    ["correct-recipient", "К кому обращена просьба об одобрении?", "Dana and Rob agree to trade shifts. Store rule: The manager, Ms. Hall, must approve every swap.", ["Rob, the coworker", "Ms. Hall, the manager", "A customer"], 1, "По правилу обмен одобряет менеджер Ms. Hall; согласия коллеги недостаточно."],
+    ["cover-request", "Выберите просьбу к коллеге выйти в вашу смену.", "You work the Tuesday closing shift. Ask Pat to take that shift.", ["Could you approve our swap?", "Could I cover your Monday shift?", "Could you cover my Tuesday closing shift?"], 2, "Could you обращено к Pat, а my Tuesday closing shift обозначает вашу смену."],
+    ["blocked-direction", "Почему обмен не подходит?", "Zoe works Monday morning and is free Tuesday evening. Finn works Tuesday evening but is busy Monday morning.", ["Finn cannot cover Zoe's shift.", "Zoe cannot cover Finn's shift.", "Both are free Monday morning."], 0, "Finn занят в понедельник утром, когда нужно заменить Zoe."],
+    ["approval-status", "Можно ли считать обмен одобренным по этому правилу?", "Rule: Manager approval is required. Message from coworker: Yes, I can trade. No message from the manager yet.", ["Yes, the coworker approved it.", "No, manager approval is still needed.", "Yes, approval is optional."], 1, "Согласие коллеги есть, но обязательного одобрения менеджера пока нет."]
+  ],
+  "blank": [
+    ["opening-role", "Впишите только opening или closing по карточке.", "Roster: Opening, 6–10 a.m.; Closing, 6–10 p.m. Nia works 6–10 a.m. Nia has the ___ shift.", ["opening"], "Утренняя смена в этой карточке обозначена Opening."],
+    ["cover-time", "Впишите только время окончания с p.m. Допустим вариант pm без точек.", "Troy's shift: Friday, 2 p.m. to 7 p.m. Could you cover for Troy from 2 p.m. to ___?", ["7 p.m.", "7 pm"], "Смена Troy заканчивается в 7 p.m., то есть в 19:00."],
+    ["cover-person", "Впишите только предлог для «подменить меня».", "Could you cover ___ me on Wednesday?", ["for"], "Перед человеком используем cover for me; перед shift предлог for не нужен."],
+    ["swap-reason", "Впишите только союз, вводящий причину.", "Can we swap shifts? I need to swap ___ I have a class that evening.", ["because"], "Because связывает I need to swap с причиной I have a class."],
+    ["manager-action", "Впишите только approve в нужной форме.", "Could you ___ our swap, Ms. Hill?", ["approve"], "После could you используем начальную форму approve."]
+  ],
+  "written": [
+    ["ask-coworker", "Начните Could you cover my; добавьте день и closing shift. Без имени адресата.", "Ask Rosa to take your Thursday closing shift.", ["Could you cover my Thursday closing shift?"], "My указывает на смену автора просьбы; you — на коллегу, которого просят."],
+    ["offer-both", "Выберите коллегу, которому подходит обмен. Напишите ему два предложения по рамкам I can cover your … и Can you cover my …? Для обеих смен укажите день и тип, без имени и часов.", "You have the Friday opening shift, 7–11 a.m., but have a class then. You are free from 4 to 8 p.m. on Saturday only. Lee has the Saturday closing shift, 4–8 p.m., and is free Friday morning. Pat has the Sunday closing shift, 4–8 p.m., and is also free Friday morning.", ["I can cover your Saturday closing shift. Can you cover my Friday opening shift?"], "Оба коллеги могут выйти в пятницу, но вы можете подменить только Ли. Предложите Ли закрытие в субботу взамен своей смены к открытию в пятницу."],
+    ["give-class-reason", "Объясните, зачем вам обмен. Начните I need to swap и соедините объяснение с причиной через because. Используйте изученную фразу о занятии.", "Вы объясняете коллеге, зачем вам нужно поменяться сменами: у вас занятие.", ["I need to swap because I have a class."], "После because назовите причину полным предложением с I и have: because I have a class."],
+    ["ask-manager", "Обратитесь к менеджеру одним вопросом Could you + approve + our swap, без имени.", "Your coworker agrees. The manager's approval is required.", ["Could you approve our swap?"], "Approve our swap просит одобрить обмен; cover my shift просит о подмене."],
+    ["offer-cover", "Напишите предложение I can cover for + имя + on + день.", "You are available to replace Omar on Sunday.", ["I can cover for Omar on Sunday."], "Cover for Omar обозначает подмену человека; on Sunday уточняет день."]
+  ]
+}

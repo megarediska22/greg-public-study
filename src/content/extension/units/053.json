@@ -1,0 +1,194 @@
+{
+  "number": 53,
+  "title": "Бронь на среду",
+  "subtitle": "Confirmed arrangements",
+  "goal": "Отличить подтверждённую встречу от действия сейчас и передать имя, время и место брони.",
+  "intro": "Вы получили подтверждение записи на среду. Нужно сообщить другу, кто придёт, куда и во сколько, не перепутав будущую встречу с происходящим сейчас.",
+  "example": "Confirmation: Rosa — this Wednesday, 4 p.m., Oak Cafe.\nRosa: I'm meeting Dan at Oak Cafe at 4 p.m. this Wednesday.\nDan: Great. I'm working now.",
+  "translation": "Подтверждение: Роза — в эту среду, 16:00, кафе Oak.\nРоза: Я встречаюсь с Дэном в кафе Oak в 16:00 в эту среду.\nДэн: Отлично. Сейчас я работаю.",
+  "theory": "Reservation — бронь, например столика; appointment — назначенная встреча или запись на приём. Confirmed — подтверждено: время уже согласовано. Slot — временное окно для записи. This Wednesday — в эту среду; перед this не нужен on.\n\nPresent Continuous строится как am/is/are + глагол с -ing. Он описывает действие сейчас: She is working now. Но с явным будущим временем он также передаёт согласованную договорённость: She is meeting Jo this Wednesday. В подтверждении встречи ищите участника, время и место.\n\nДля I используется am, для he/she — is, для we/they — are. Meet превращается в meeting: I'm meeting Jo. У have убирается конечная e: having. We're having lunch at noon this Wednesday — мы обедаем в полдень в эту среду; в контексте подтверждения это договорённость.\n\nСравните: I am going to visit Jo — моё намерение; I am meeting Jo at two this Wednesday — встреча на конкретное будущее время. Сама форма -ing не означает «прямо сейчас»: проверьте now или будущую дату. В американской записи 4 p.m. — 16:00, а 12 p.m. (noon) — полдень. В примерах at вводит и точное время, и место встречи: at Oak Cafe at 4 p.m.",
+  "rows": [
+    [
+      "am/is/are + -ing + now",
+      "She is working now.",
+      "Она сейчас работает."
+    ],
+    [
+      "am/is/are + -ing + future time",
+      "She is meeting Jo this Wednesday.",
+      "Она встречается с Джо в эту среду."
+    ],
+    [
+      "confirmed lunch",
+      "We are having lunch at noon this Wednesday.",
+      "Мы обедаем в полдень в эту среду."
+    ]
+  ],
+  "tip": "Не делайте вывод о настоящем времени только по -ing. В I'm meeting Jo this Wednesday слова this Wednesday указывают на будущую встречу. Не пишите I meeting: нужно am.",
+  "review": "Из №14 вспомните am/is/are + -ing для now. Из №24 повторите a.m./p.m., а из №52 — going to для намерений. В подтверждении подчеркните отдельно участника, время и место.",
+  "summary": "Вы различаете действие сейчас и будущую договорённость по контексту и можете точно передать данные подтверждённой встречи.",
+  "choice": [
+    [
+      "wednesday-confirmation",
+      "Определите, о каком времени говорит Кейт.",
+      "Today is Monday. Booking confirmed: Kate and Luis, Pine Cafe, this Wednesday at 6 p.m. Kate: I'm meeting Luis at Pine Cafe this Wednesday.",
+      [
+        "A future arrangement.",
+        "An action happening now.",
+        "A daily habit."
+      ],
+      0,
+      "Сегодня понедельник, встреча подтверждена на среду. Present Continuous здесь обозначает будущую договорённость."
+    ],
+    [
+      "working-right-now",
+      "Определите, о каком времени говорит сотрудник.",
+      "It is Tuesday morning. Max: I'm checking your reservation now.",
+      [
+        "A future arrangement.",
+        "A weekly habit.",
+        "An action happening now."
+      ],
+      2,
+      "Now прямо указывает на действие в момент сообщения: Макс проверяет бронь сейчас."
+    ],
+    [
+      "booking-details",
+      "Выберите точный пересказ подтверждения.",
+      "Appointment confirmed: Erin; this Wednesday; 10 a.m.; Cedar Studio.",
+      [
+        "Erin is visiting Cedar Studio at 10 p.m. this Wednesday.",
+        "Erin is visiting Cedar Studio at 10 a.m. this Wednesday.",
+        "Erin is visiting Cedar Studio at 10 a.m. this Thursday."
+      ],
+      1,
+      "В подтверждении среда, 10 утра, Cedar Studio. Is visiting с будущим днём передаёт согласованный визит."
+    ],
+    [
+      "lunch-arrangement",
+      "Выберите предложение о согласованном будущем обеде.",
+      "Today is Sunday. Table confirmed for Mina and Paul: this Wednesday, noon, River Cafe.",
+      [
+        "They are having lunch at River Cafe now.",
+        "They have lunch at River Cafe every day.",
+        "They are having lunch at River Cafe at noon this Wednesday."
+      ],
+      2,
+      "Будущая среда и подтверждённый столик делают are having lunch договорённостью; now и every day меняют смысл."
+    ],
+    [
+      "available-slot",
+      "Выберите время подтверждённой записи, а не свободного окна.",
+      "West Studio: Wednesday 2 p.m. — free slot; Wednesday 3 p.m. — appointment confirmed for Noah; Wednesday 4 p.m. — free slot.",
+      [
+        "Wednesday, 3 p.m.",
+        "Wednesday, 2 p.m.",
+        "Wednesday, 4 p.m."
+      ],
+      0,
+      "Confirmed относится только к записи Ноа на 15:00. Free slot означает, что окно ещё свободно."
+    ]
+  ],
+  "blank": [
+    [
+      "appointment-time-field",
+      "Заполните поле времени из подтверждения. Впишите только время цифрами с a.m. или am.",
+      "Confirmed: Zoe / this Wednesday / 9 a.m. / Elm Studio. Appointment time: ___.",
+      [
+        "9 a.m.",
+        "9 am"
+      ],
+      "9 a.m. — девять утра; поле времени не включает имя и место."
+    ],
+    [
+      "singular-meeting-be",
+      "Впишите только полную форму be.",
+      "Confirmed for this Wednesday: Owen and Mel, 2 p.m. Owen ___ meeting Mel this Wednesday.",
+      [
+        "is"
+      ],
+      "Owen — один человек, поэтому в Present Continuous нужно is meeting."
+    ],
+    [
+      "meeting-ing-form",
+      "Впишите только форму meet для Present Continuous.",
+      "Booking for two confirmed for Wednesday evening. We are ___ at Birch Cafe this Wednesday.",
+      [
+        "meeting"
+      ],
+      "После are в Present Continuous нужна форма meeting; начальная meet здесь не подходит."
+    ],
+    [
+      "this-no-on",
+      "Впишите только слово со значением «в эту» перед Wednesday.",
+      "Today is Monday. The appointment is two days from now. I'm meeting the teacher ___ Wednesday.",
+      [
+        "this"
+      ],
+      "This Wednesday означает «в эту среду» и употребляется без on."
+    ],
+    [
+      "place-field",
+      "Заполните поле места. Впишите только название из подтверждения.",
+      "Reservation confirmed: Ada; this Wednesday; noon; Harbor Cafe. Place: ___.",
+      [
+        "Harbor Cafe"
+      ],
+      "Harbor Cafe — место; noon — время. При переносе брони эти поля нельзя менять местами."
+    ]
+  ],
+  "written": [
+    [
+      "relay-june-booking",
+      "Передайте договорённость в Present Continuous. Начните с June, используйте meet и назовите второго участника. Затем укажите место, время цифрой с p.m. или pm и день в формате this + день недели.",
+      "Booking confirmed: June and Pat / Wednesday (this week) / 5 p.m. / Maple Cafe.",
+      [
+        "June is meeting Pat at Maple Cafe at 5 p.m. this Wednesday.",
+        "June's meeting Pat at Maple Cafe at 5 p.m. this Wednesday.",
+        "June is meeting Pat at Maple Cafe at 5 pm this Wednesday.",
+        "June's meeting Pat at Maple Cafe at 5 pm this Wednesday."
+      ],
+      "June is meeting Pat сохраняет обоих участников. At Maple Cafe — место, at 5 p.m. — время, this Wednesday — день подтверждённой встречи."
+    ],
+    [
+      "relay-own-lunch",
+      "Сообщите о договорённости от I в Present Continuous с have lunch. Затем назовите место, время одним словом после at и день как в подтверждении.",
+      "Table reservation confirmed for you: lunch / Green Cafe / 12 p.m. / this Wednesday.",
+      [
+        "I am having lunch at Green Cafe at noon this Wednesday.",
+        "I'm having lunch at Green Cafe at noon this Wednesday."
+      ],
+      "Have меняется на having: конечная e убирается. Noon обозначает полдень."
+    ],
+    [
+      "relay-two-visitors",
+      "Начните с They и передайте договорённость в Present Continuous с visit the museum. Завершите словами this Wednesday.",
+      "Подтверждение группового визита: два друга посещают музей в эту среду.",
+      [
+        "They are visiting the museum this Wednesday.",
+        "They're visiting the museum this Wednesday."
+      ],
+      "С they нужно are visiting. Подтверждённый визит и будущий день задают договорённость."
+    ],
+    [
+      "contrast-present-work",
+      "Напишите одно предложение от I в Present Continuous с work; now поставьте в конце.",
+      "Chat: Our meeting is this Wednesday. Can you talk right now? Вы сейчас работаете.",
+      [
+        "I am working now.",
+        "I'm working now."
+      ],
+      "Now закрепляет настоящее значение working, в отличие от сообщения о встрече в среду."
+    ],
+    [
+      "retrieve-unconfirmed-intention",
+      "Передайте только намерение от He с going to и visit the studio; день поставьте в конце.",
+      "Он собирается посетить студию в среду, но запись ещё не подтверждена. Речь о ближайшей среде: используйте this Wednesday.",
+      [
+        "He is going to visit the studio this Wednesday.",
+        "He's going to visit the studio this Wednesday."
+      ],
+      "Going to + visit передаёт намерение из №52. Отсутствие подтверждения не позволяет утверждать, что запись уже согласована."
+    ]
+  ]
+}

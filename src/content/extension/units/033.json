@@ -1,0 +1,39 @@
+{
+  "number": 33,
+  "title": "Поездка выходного дня",
+  "subtitle": "A weekend trip log",
+  "goal": "Соотнести людей и события с днями поездки и восстановить неправильные формы глаголов по подсказкам.",
+  "intro": "После короткой поездки друзья заполняют общий дневник. У каждого свой день и своё дело: важно не перепутать, кто куда поехал и что увидел.",
+  "example": "Saturday: Maya went to Austin. She took the bus.\nSunday: Eli came to Austin. He bought a map. They saw the river.",
+  "translation": "Суббота: Майя поехала в Остин. Она поехала на автобусе.\nВоскресенье: Илай приехал в Остин. Он купил карту. Они увидели реку.",
+  "theory": "Некоторые частые глаголы образуют прошлое без -ed. Запомните шесть пар: go → went (пошёл, поехал), come → came (пришёл, приехал), take → took (взял; воспользовался транспортом), get → got (получил, добрался), see → saw (увидел), buy → bought (купил). Одна форма подходит для всех: I went, she went, they went.\n\nВ поездке go to означает «поехать в»: went to Austin. Come to — «приехать туда, где находится говорящий или участник рассказа»: came to Austin. Take the bus — поехать на автобусе; took a photo — сделал фотографию. Get to the hotel — добраться до отеля; got a ticket — получил билет. Saw the river — увидел реку; bought a map — купил карту.\n\nНачинайте чтение журнала с дня, затем ищите имя и действие. Saturday — суббота, Sunday — воскресенье; on Saturday — в субботу. В журнале прошедшей поездки эти дни обозначают прошлое. Сравните: walked — правильная форма с -ed, went — отдельная неправильная форма. В американском английском для «поехал на автобусе» естественно сказать took the bus; форма taked неверна.",
+  "rows": [
+    ["go → went; come → came", "I went to Dallas, and Jo came with me.", "Я поехал в Даллас, и Джо поехала со мной."],
+    ["take → took; get → got", "We took the bus and got to the hotel at six.", "Мы поехали на автобусе и добрались до отеля в шесть."],
+    ["see → saw; buy → bought", "He saw the park and bought a map.", "Он увидел парк и купил карту."]
+  ],
+  "tip": "Не добавляйте -ed к неправильной форме: не wented и не buyed. Используйте went и bought: We went to town. We bought a map.",
+  "review": "Вспомните дни из урока №22 и транспорт из №24. Скажите took the bus, затем сравните с walked из №32: оба действия в прошлом, но только одно имеет -ed.",
+  "summary": "Я нахожу в журнале день, человека и действие и сообщаю о поездке с went, came, took, got, saw и bought.",
+  "choice": [
+    ["saturday-traveler", "Кто поехал в Сейлем в субботу?", "Weekend log: Sunday — Max went to Salem and bought a ticket. Saturday — Ruth went to Salem and saw the park.", ["Max", "Ruth and Max", "Ruth"], 2, "В строке Saturday в Сейлем поехала Ruth. Поездка Max относится к Sunday."],
+    ["sunday-purchase", "Что купили в воскресенье?", "Weekend log: Sunday — Max went to Salem and bought a ticket. Saturday — Ruth went to Salem and saw the park.", ["A map", "A ticket", "A photo"], 1, "В воскресной строке после bought стоит a ticket. A map и a photo в журнале не упомянуты."],
+    ["bus-person", "Кто поехал на автобусе?", "Noah walked to the hotel. Iris took the bus to the hotel.", ["Noah", "Iris", "Noah and Iris"], 1, "Took the bus означает поездку на автобусе; walked указывает на путь пешком."],
+    ["came-day", "В какой день Пол приехал к рассказчику?", "I was in Denver. Paul came to Denver on Friday. We saw the park on Saturday.", ["Sunday", "Saturday", "Friday"], 2, "Came to Denver on Friday сообщает о приезде в пятницу. Парк они увидели в субботу."],
+    ["ticket-result", "Что произошло с билетом?", "Trip log: I got a ticket at the station yesterday.", ["Я получил билет.", "Я увидел билет.", "Я купил карту."], 0, "Got a ticket здесь означает «получил билет». Saw означало бы «увидел», bought a map — «купил карту»."]
+  ],
+  "blank": [
+    ["portland-go", "Поставьте go в прошедшее время. Введите только пропуск.", "Milo ___ to Portland on Saturday.", ["went"], "Go → went; форма goed не используется."],
+    ["friend-come", "Поставьте come в прошедшее время. Введите только пропуск.", "My friend ___ to my hotel on Sunday.", ["came"], "Come → came: изменяется гласная, окончание -ed не добавляем."],
+    ["tram-take", "Поставьте take в прошедшее время. Введите только пропуск.", "We ___ the bus to the park yesterday.", ["took"], "Take the bus → took the bus: воспользовались автобусом."],
+    ["hotel-get", "Поставьте get в прошедшее время. Введите только пропуск.", "Trip log for last weekend: Saturday — They took the bus. They ___ to the hotel at nine. Sunday — They saw the river.", ["got"], "Get → got. В сочетании got to the hotel речь о том, что они добрались до отеля."],
+    ["lake-see", "Поставьте see в прошедшее время. Введите только пропуск.", "Trip log for last weekend: Saturday — I bought a map. Sunday — I ___ the lake.", ["saw"], "See → saw. Saw the lake сообщает, что человек увидел озеро в прошедшую пятницу."]
+  ],
+  "written": [
+    ["map-buy", "Найдите день покупки карты. Напишите Lena + buy a map в прошлом + on и нужный день. Больше слов не добавляйте.", "Trip log: Saturday — Lena: get a ticket. Sunday — Lena: buy a map.", ["Lena bought a map on Sunday."], "Buy → bought. Карту Лена купила в воскресенье. В субботу она получила билет."],
+    ["station-trip", "Напишите строку в порядке We / go to the station / on Saturday. Измените только время глагола.", "Мы поехали на станцию в субботу.", ["We went to the station on Saturday."], "Прошедшая форма go — went для любого действующего лица."],
+    ["park-photo", "Найдите, где сделано фото. Начните с I, используйте take a photo в прошлом и добавьте at the + нужное место из журнала. Время опустите.", "Yesterday’s trip log: 11 a.m. at the park — take a photo. 2 p.m. at the station — buy a ticket.", ["I took a photo at the park."], "Take a photo — сделать фотографию. Форма прошлого — took. Фотографию сделали в парке, а на станции купили билет."],
+    ["river-sighting", "Найдите день, когда Бен увидел реку. Напишите Ben + see the river в прошлом + on и нужный день. Не добавляйте других слов.", "Trip notes: Thursday — Ben: buy a map. Friday — Ben: see the river.", ["Ben saw the river on Friday."], "See → saw. Реку Бен увидел в пятницу. В четверг он купил карту."],
+    ["hotel-arrival", "Найдите, во сколько друзья добрались до отеля. Напишите They + get to the hotel в прошлом + at и нужный час словом. Больше слов не добавляйте.", "Sunday trip notes: 5:00 — take the bus; 6:00 — get to the hotel.", ["They got to the hotel at six."], "Get меняется на got. В отель друзья добрались в шесть, а в пять сели в автобус."]
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "number": 68,
+  "title": "Оставить сообщение",
+  "subtitle": "Leaving a callback message",
+  "goal": "Оставить сообщение с правильными адресатом, вымышленным телефоном и временем для обратного звонка.",
+  "intro": "Нужного сотрудника сейчас нет. Администратор может передать короткую записку: кто звонил, кому и когда перезвонить.",
+  "example": "Desk: Lena is out right now. Can I take a message?\nBen: Yes, please. This message is for Lena.\nMessage: Hi Lena, this is Ben. Can you call me after 10 a.m. and before noon? You can reach me at 202-555-0146.",
+  "translation": "Администратор: Лены сейчас нет. Могу я принять сообщение?\nБен: Да, пожалуйста. Это сообщение для Лены.\nСообщение: Привет, Лена! Это Бен. Можешь позвонить мне после 10:00 и до полудня? Со мной можно связаться по номеру 202-555-0146.",
+  "theory": "Caller — тот, кто звонит. A message for Lena — сообщение для Лены: после for стоит получатель, а не автор. Callback — обратный звонок. Take a message значит принять сообщение для другого человека. This is Ben — обычный способ представиться по телефону в американском английском. Все телефоны в уроке вымышленные.\n\nВ самой записке Can you call me …? обращено к адресату записки. Если вы обращаетесь к администратору, назовите того, кому поручаете звонок: Please ask Lena to call me. Back at 10 a.m. значит «вернусь в 10:00», а available after 10 a.m. задаёт время для звонка после 10:00. You can reach me at + номер сообщает, по какому телефону связаться с автором. At вводит номер: at 202-555-0146. Не заменяйте его на in.\n\nAvailable after 3 p.m. значит «доступен после 15:00». Before noon — до полудня, то есть до 12:00 дня. After задаёт нижнюю границу, before — верхнюю: after 9 a.m. and before noon. В этом уроке выбирайте время строго внутри указанного промежутка. Для точного часа используйте at: Can you call me at 10 a.m.? В сообщении сначала проверьте получателя, затем телефон и время; только после этого формулируйте просьбу.",
+  "rows": [
+    ["a message for", "I have a message for Omar.", "У меня сообщение для Омара."],
+    ["Can you call me after …?", "Can you call me after 4 p.m.?", "Можешь позвонить мне после 16:00?"],
+    ["reach me at", "You can reach me at 202-555-0172.", "Со мной можно связаться по номеру 202-555-0172."],
+    ["after … and before …", "I am available after 8 a.m. and before noon.", "Я доступен после 08:00 и до полудня."]
+  ],
+  "tip": "В Message for Kim from Alex получатель — Kim, автор — Alex. Не меняйте их местами. Can you call me before noon? просит звонок до полудня; after noon означало бы после полудня.",
+  "review": "Из №25 повторите точную запись имени и цифр, из №30 — сообщение о времени возвращения, из №58 — before как верхнюю границу. Для каждой записки отдельно выпишите: кому, по какому номеру, когда звонить.",
+  "summary": "Вы можете различить автора и получателя сообщения, передать вымышленный телефон и попросить обратный звонок в нужное время.",
+  "choice": [
+    ["message-recipient", "Выберите получателя записки.", "Desk note: Message for Priya. Caller: Noah. Please call Noah after 2 p.m.", ["Priya", "Noah", "The desk clerk"], 0, "После for указана Priya: записка адресована ей. Noah — caller, автор просьбы о звонке."],
+    ["message-caller", "Выберите того, кому нужно перезвонить.", "Desk: Eva is out. Caller: This is Miles. Please ask Eva to call me at 202-555-0183.", ["Eva", "The desk clerk", "Miles"], 2, "Me относится к говорящему Miles. Eva должна получить сообщение и позвонить ему."],
+    ["inside-callback-window", "Выберите время, подходящее для звонка.", "Message from June: I am available after 9 a.m. and before noon. Please call during that time.", ["8:30 a.m.", "10:30 a.m.", "12:30 p.m."], 1, "10:30 находится после 09:00 и до 12:00. Два остальных времени выходят за границы окна."],
+    ["requested-action", "Выберите действие, о котором просит автор.", "Note for Victor from Anne: Can you call me before noon? You can reach me at 202-555-0118.", ["Anne should call Victor after noon.", "Victor should visit Anne before noon.", "Victor should call Anne before noon."], 2, "Автор Anne просит адресата Victor позвонить ей до полудня. Просьбы прийти лично в записке нет."],
+    ["copy-callback-number", "Выберите телефон для обратного звонка.", "Desk note: Building phone 202-555-0104. Caller Rosa: You can reach me at 202-555-0140 after 5 p.m.", ["202-555-0140", "202-555-0104", "202-555-0410"], 0, "Rosa дала свой номер после reach me at: 202-555-0140. Телефон здания указан отдельно."]
+  ],
+  "blank": [
+    ["phone-preposition", "Вставьте только предлог перед телефонным номером.", "Message from Derek: You can reach me ___ 202-555-0191.", ["at"], "В выражении reach me at номер телефона вводится предлогом at."],
+    ["recipient-from-header", "Вставьте только имя получателя из заголовка.", "Header: For Zoe; from Finn. Desk: I have a message for ___.", ["Zoe"], "For Zoe обозначает получателя, from Finn — автора. В пропуске нужно имя Zoe."],
+    ["lower-time-bound", "Вставьте только after или before по расписанию автора.", "Caller: I work until 4 p.m. I can answer from 4:15 p.m. I am available ___ 4 p.m., not before.", ["after"], "Автор сможет ответить после 16:00: в примере это 16:15. Выберите after."],
+    ["copy-contact-digits", "Вставьте только вымышленный телефон автора, сохранив дефисы.", "Caller card: Leah, 202-555-0167. Old number: 202-555-0176. Leah writes: You can reach me at ___.", ["202-555-0167"], "В актуальной карточке указан 202-555-0167. Old number — старый номер, его переносить нельзя."],
+    ["noon-upper-bound", "Вставьте только before или after.", "Caller: I leave at noon and cannot answer later. Can you call me ___ noon?", ["before"], "Автор уходит в полдень и позже ответить не сможет, поэтому просит звонок before noon — до полудня."]
+  ],
+  "written": [
+    ["request-afternoon-callback", "Напишите вопрос с Can you call me, затем after и время в формате 6 p.m. Других деталей не добавляйте.", "Сообщение от вас: вы доступны для звонка после 18:00.", ["Can you call me after 6 p.m.?"], "После Can you идёт call, me обозначает автора сообщения, after 6 p.m. задаёт нижнюю границу."],
+    ["state-callback-phone", "Напишите одно предложение: You can reach me at + актуальный номер с дефисами.", "Your fictional caller card: Alex, current phone 202-555-0129; old phone 202-555-0192.", ["You can reach me at 202-555-0129."], "Reach me at вводит актуальный телефон автора. В карточке это 202-555-0129."],
+    ["preserve-message-recipient", "Напишите короткую строку A message for + имя адресата. Без приветствия и подписи.", "Desk: Who is the message for? You: I'm Clara. I need to leave a message for Felix.", ["A message for Felix."], "Адресат Felix стоит после for. Clara — автор, её имя здесь не заменяет имя получателя."],
+    ["morning-window-request", "Напишите вопрос: Can you call me, затем after + нижняя граница в формате 8 a.m., затем and before noon.", "Вы просите обратный звонок: доступны после 08:00 и до полудня.", ["Can you call me after 8 a.m. and before noon?"], "After 8 a.m. задаёт начало окна, before noon — его конец. Оба ограничения нужны в просьбе."],
+    ["complete-three-field-note", "Напишите записку из трёх предложений: A message for + адресат; Can you call me + обе границы через after … and before …; You can reach me at + актуальный номер с дефисами. Час запишите в формате a.m., полдень — словом noon.", "Desk log: Morgan called for Alice. Morgan said: I get back at 9 a.m. and leave again at noon. Please have Alice call between those times. My new number is 202-555-0153. My old number is 202-555-0135.", ["A message for Alice. Can you call me after 9 a.m. and before noon? You can reach me at 202-555-0153."], "Адресат — Alice. Звонок нужен после возвращения Моргана в 09:00 и до ухода в полдень. Используйте новый телефон 202-555-0153."]
+  ]
+}

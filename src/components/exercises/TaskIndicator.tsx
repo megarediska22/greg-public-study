@@ -1,8 +1,9 @@
 import { questionTasks } from '../../content/questionTasks';
+import type { TaskMetadata } from '../../lib/taskIndicators';
 import { taskPresentation } from '../../lib/taskIndicators';
 
-export function TaskIndicator({ questionId }: { questionId: string }) {
-  const task = questionTasks[questionId];
+export function TaskIndicator({ questionId, metadata }: { questionId: string; metadata?: TaskMetadata }) {
+  const task = metadata ?? questionTasks[questionId];
   if (!task) throw Error(`Missing task indicator: ${questionId}`);
   const view = taskPresentation(task);
   return <div id={`${questionId}-task`} className="task-indicator" data-task-question={questionId} data-task-action={task.action} data-task-form={task.form}>

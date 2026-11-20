@@ -1,0 +1,39 @@
+{
+  "number": 73,
+  "title": "Письмо преподавателю",
+  "subtitle": "Emailing an instructor",
+  "goal": "Составить короткое письмо с названием задания, причиной и просьбой о конкретной дате.",
+  "intro": "Вы пишете вымышленному преподавателю: ноутбук сломан, и для одного задания нужен дополнительный день.",
+  "example": "Subject: City Map extension\nHi Professor Reed,\nI need an extension for City Map because my laptop is broken. Could I submit it on Friday?\nThanks for your help.\nAlex",
+  "translation": "Тема: продление срока для City Map\nЗдравствуйте, профессор Рид!\nМне нужно продлить срок для City Map, потому что мой ноутбук сломан. Можно мне сдать задание в пятницу?\nСпасибо за помощь.\nАлекс",
+  "theory": "Subject line — строка темы письма; укажите в ней задание. Due date — срок сдачи. Extension — продление срока, не само вложение: attachment означает файл при письме. I need an extension for + название сообщает, для какого задания нужен дополнительный срок.\nВ коротком американском учебном письме Hi Professor Reed, — обычное вежливое приветствие; Professor + фамилия. Затем назовите проблему, задайте конкретный вопрос и завершите Thanks for your help. — «Спасибо за помощь».\nBecause соединяет сообщение с причиной: I need an extension because I am sick. После because здесь нужна часть с подлежащим и глаголом: because my laptop is broken. My internet is down означает «у меня не работает интернет».\nCould I submit City Map on Friday? — вежливая просьба разрешить мне сдать задание в пятницу. После Could I используйте начальную форму submit. Для переноса найдите исходный срок (например, Due Thursday) и укажите новый день. On Friday обозначает сдачу в пятницу, by Friday — не позднее пятницы. Extension можно запросить рамкой Could I have an extension until Friday? — можно продлить срок до пятницы?",
+  "rows": [
+    ["Hi Professor + surname", "Hi Professor Lane,", "Здравствуйте, профессор Лейн!"],
+    ["issue + because + reason", "I need an extension because I am sick.", "Мне нужно продлить срок, потому что я болею."],
+    ["Could I submit … on …?", "Could I submit Tree Survey on Monday?", "Можно мне сдать Tree Survey в понедельник?"]
+  ],
+  "tip": "Не пишите Could I submitted: после could нужна начальная форма — Could I submit? Назовите дату: Could I submit it on Tuesday? точнее, чем просьба без срока.",
+  "review": "Из №39 вспомните объяснение отсутствия, из №58 — due date, из №62–63 — просьбы с could. Из №72 вспомните разницу между вложением и отправкой.",
+  "summary": "Я могу написать приветствие, назвать задание и причину, а затем попросить разрешение сдать его в указанную дату.",
+  "choice": [
+    ["specific-request", "Выберите просьбу с нужным заданием и датой.", "Brief: Ask to submit Bird Log on Thursday.", ["Could I submit Bird Log on Tuesday?", "Could I submit Bird Log on Thursday?", "Could I submit Tree Log on Thursday?"], 1, "В просьбе должны совпасть и Bird Log, и Thursday."],
+    ["reason-in-email", "Что объясняет задержку?", "Hi Professor Cole, I need an extension for Bridge Notes because my internet is down. Could I submit it on Monday?", ["The internet is down.", "The assignment has no name.", "The professor is absent."], 0, "Причина идет после because: интернет не работает."],
+    ["subject-match", "Выберите подходящую тему письма.", "Message: I need two more days for Water Report.", ["Classroom address", "Lunch plans", "Water Report extension"], 2, "Тема Water Report extension называет задание и просьбу о продлении."],
+    ["polite-opening", "Выберите приветствие преподавателю по фамилии.", "Recipient: Professor Green.", ["Thanks for your help.", "Hi Professor Green,", "Could I submit it?"], 1, "Hi Professor + фамилия подходит для начала короткого учебного письма."],
+    ["missing-date", "Какой информации не хватает для согласования нового срока?", "Hi Professor Fox, I need an extension for Bus Survey because I am sick. Could I submit it later? Thanks for your help.", ["The assignment name", "The reason", "The requested date"], 2, "Later не задает конкретную дату; название и причина уже есть."]
+  ],
+  "blank": [
+    ["request-verb", "Впишите только submit в нужной форме.", "Could I ___ Lab Notes on Wednesday?", ["submit"], "После Could I глагол остается в начальной форме."],
+    ["reason-link", "Впишите только союз «потому что».", "I need an extension ___ my computer is broken.", ["because"], "Because вводит причину; my computer is broken — полная часть предложения."],
+    ["extra-time", "Впишите только слово «продление».", "Could I have an ___ until Tuesday?", ["extension"], "An extension — дополнительное время на выполнение задания."],
+    ["weekday-preposition", "Впишите только предлог для сдачи именно в пятницу.", "Could I submit the photo essay ___ Friday?", ["on"], "On Friday — в пятницу; by Friday — не позднее пятницы."],
+    ["closing-help", "Дополните только словом «помощь».", "Thanks for your ___.", ["help"], "Thanks for your help — вежливое завершение письма с просьбой."]
+  ],
+  "written": [
+    ["greet-instructor", "Напишите только строку приветствия с Hi и обращением Professor + фамилия.", "Write to Professor Bell.", ["Hi Professor Bell,", "Hi, Professor Bell,"], "После обращения Professor используем фамилию Bell."],
+    ["explain-laptop", "Напишите строку о проблеме по рамке I need an extension for + название задания + because + причина. Используйте изученную фразу про ноутбук, от первого лица.", "From Professor Reed: Park Sketch is due Wednesday. Reply if you need more time. Your notes: The laptop you use for class is broken. You can finish by Thursday.", ["I need an extension for Park Sketch because my laptop is broken."], "В части после for укажите Park Sketch из письма. После because назовите причину от своего лица: my laptop is broken."],
+    ["ask-new-date", "Теперь напишите отдельную строку с просьбой. Начните Could I submit, затем укажите название задания и on + новый день.", "From Professor Reed: Park Sketch is due Wednesday. Reply if you need more time. Your notes: You can submit one day after the original deadline.", ["Could I submit Park Sketch on Thursday?"], "Исходный срок — среда, а вы просите сдать на день позже, то есть в четверг. Обе детали, Park Sketch и Thursday, нужны в просьбе."],
+    ["state-illness", "Объясните проблему рамкой I need an extension because + I am sick. Сокращение разрешено.", "You are sick and need more time.", ["I need an extension because I am sick.", "I need an extension because I'm sick."], "I am и I'm равнозначны; после because остается полная причина."],
+    ["request-until", "Попросите продление рамкой Could I have an extension until + день.", "You want a new deadline on Saturday.", ["Could I have an extension until Saturday?"], "Until Saturday называет день, до которого вы просите продлить срок. После could ставьте have в начальной форме."]
+  ]
+}

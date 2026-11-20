@@ -1,0 +1,129 @@
+[
+  {
+    "number": 37,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "brown-wallet-record: A matches the brown wallet at the station; B has the wrong color. nina-exact-place and nina-time-report preserve at the station and 5 p.m.; 6 p.m. is the finding time.",
+    "correctedIds": [
+      "brown-wallet-record",
+      "nina-exact-place",
+      "nina-time-report",
+      "lost-wallet-event"
+    ],
+    "sha256": "c72413014c73fcb18b260580a3c4ed4357c94af0ecb4c58cf171dba26f4ecf36"
+  },
+  {
+    "number": 38,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "hall-state-detail and visitor-action-detail recover quiet and watched a short movie from one slip; noisy describes the cafe. two-feedback-facts gives were hard for the seats and watched the movie for the event.",
+    "correctedIds": [
+      "visitor-action-detail",
+      "state-library-event",
+      "action-poetry-night",
+      "two-feedback-facts",
+      "hall-state-detail"
+    ],
+    "sha256": "b0b77c0a04e999f7077eed789108bfb2e66bfd1988a08b4cbb38353129c67820"
+  },
+  {
+    "number": 39,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "alex-missed-session: writing on Tuesday was missed; reading on Monday was attended. absence-day-activity reports reading on Wednesday from the new note; negative-writing-update accepts both did not attend and didn’t attend.",
+    "correctedIds": [
+      "reason-sick",
+      "absence-day-activity"
+    ],
+    "sha256": "441e5424c4f5eb68f9be8fe063d84570833b8813fbc32618bedf178d16050a75"
+  },
+  {
+    "number": 40,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "picnic-visible-now uses are having for the scene; had describes a completed event. finished-photo-event uses took for yesterday. caption-three-facts preserves Ava, Chicago and last summer; Boston belongs to another photo.",
+    "correctedIds": [
+      "caption-three-facts",
+      "caption-photographer"
+    ],
+    "sha256": "93d98bb89d33a4b39f5f6280ad4e42b41f6ee3167232bf72732c85c4f0605dd3"
+  },
+  {
+    "number": 41,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "room-state-at-arrival uses 9:15 from Mia’s message and wasn’t ready from the hotel note; arrived refers to the train. negative-bus-report takes didn’t take, not didn’t took. trip-two-fact-report combines all three sources; six designated items include both required checks.",
+    "correctedIds": [
+      "room-state-at-arrival",
+      "wallet-at-cafe",
+      "wallet-before-trip",
+      "routine-versus-trip",
+      "yesterday-breakfast",
+      "followup-wallet-question",
+      "before-after-trip",
+      "trip-two-fact-report"
+    ],
+    "sha256": "78bc4d490574c72200eb086692561f391a232552eeceefb279147eb5724e0867"
+  },
+  {
+    "number": 42,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "guesthouse-milk, soup-bread and camp-rice yield 3 cartons of milk, 3 loaves of bread and 2 bags of rice from one pantry note. milk-cartons: four cartons is the target stock, not the shopping quantity.",
+    "correctedIds": [
+      "guesthouse-milk",
+      "soup-bread",
+      "camp-rice",
+      "cake-eggs"
+    ],
+    "sha256": "eb5ac080d9cb2bf88074855ea7e005f2b32b89c271e2204a2353c619b0dea283"
+  },
+  {
+    "number": 43,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "pantry-rice-present and pantry-milk-absent report some rice and no milk from the same order. egg-enough: five eggs for eight means not enough; out of would mean zero.",
+    "correctedIds": [
+      "pantry-rice-present",
+      "pantry-milk-absent",
+      "rice-question"
+    ],
+    "sha256": "3be53789822d020dc7da3d815d45a25069a19335c5a67c02f8442441da3746df"
+  },
+  {
+    "number": 44,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "juice-liter-field requires How many liters of juice; bottles changes the requested unit. drink-price-field asks How much is the bottle of water? rather than how much water is needed. hike-water-liters transfers the quantity pattern.",
+    "correctedIds": [
+      "workshop-cups",
+      "festival-rice",
+      "hike-water-liters"
+    ],
+    "sha256": "f9cc6b446e26e84bfbe3f8c98ff5d85f641bcc3f7b51f9394947663b929a5d3f"
+  },
+  {
+    "number": 45,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "nina-order-line and omar-order-line preserve soup without bread for Nora and salad with dressing for Luis, four facts from ticket 24. dressing-separate requires on the side; without dressing removes the dressing.",
+    "correctedIds": [
+      "nina-order-line",
+      "omar-order-line",
+      "refill-owner"
+    ],
+    "sha256": "93798071a77668ff3aae52a31fd0fc6f18fcb4a9c158f842670c0a0f80b24795"
+  },
+  {
+    "number": 46,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "milk-presence identifies milk on C and sugar-number retrieves 8 g per serving; 90 g is the serving size. low-sugar-evidence picks Maple at 2 g rather than Birch at 5 g. elm-sugar-question asks for the missing per-serving amount.",
+    "correctedIds": [
+      "brook-milk-question",
+      "elm-sugar-question",
+      "no-milk-evidence"
+    ],
+    "sha256": "da4941d87f6593a54395cd16ee12ae41674771bb35e2617afe4abea2ca3012a2"
+  }
+]

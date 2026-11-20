@@ -1,0 +1,39 @@
+{
+  "number": 28,
+  "title": "Разовый график и закрытие",
+  "subtitle": "Temporary Hours",
+  "goal": "Отличить обычное расписание от исключения на указанную дату и сообщить новое время визита.",
+  "intro": "Вы договорились зайти в магазин вечером, но на двери появилась записка только на сегодня. Сверьте дату, прежде чем менять план.",
+  "example": "Regular hours: 9 a.m.–7 p.m.\nToday only, May 6: We close at 4 p.m.\nMia: The store closes at 4 p.m. today. Let's meet at 3 p.m.",
+  "translation": "Обычные часы: с 9 утра до 7 вечера.\nТолько сегодня, 6 мая: мы закрываемся в 4 часа дня.\nМия: Магазин сегодня закрывается в 4 часа дня. Давай встретимся в 3 часа дня.",
+  "theory": "Regular hours — обычные часы работы; today only — только сегодня. Датированное исключение действует на указанную дату, а не на все дни. Early — рано или раньше обычного; late — поздно или позже обычного. Если обычно магазин закрывается в 7 p.m., а сегодня в 4 p.m., он закрывается early.\nThe store closes at 4 p.m. — магазин закрывается в 4 часа дня. После единственного числа the store у closes окончание -s; после we: We close at 4 p.m. Closes at указывает момент закрытия. Closed означает «закрыт»: The store is closed until noon — магазин закрыт до полудня. Noon = 12 p.m.\nReopen — снова открываться: We reopen at 2 p.m. — мы снова открываемся в 2 часа дня. Closed until 2 p.m. описывает период закрытия до этого времени; это не закрытие в 2 часа. В учебных табличках Reopen at прямо подтверждает момент открытия.\nВ США 9 a.m. — 9 утра, 4 p.m. — 4 дня. Сохраняйте a.m./p.m. в сообщении: одно число не показывает часть суток. Для визита выбирайте время после открытия и до закрытия, а не сам момент закрытия.",
+  "rows": [
+    ["closes at", "The store closes at 5 p.m. today.", "Магазин сегодня закрывается в 5 часов дня."],
+    ["closed until", "The store is closed until 1 p.m.", "Магазин закрыт до часа дня."],
+    ["reopen at", "We reopen at 1 p.m.", "Мы снова открываемся в час дня."]
+  ],
+  "tip": "Closed until 3 p.m. — закрыто до трёх, а не закрытие в три. Для «закрывается в три» нужно closes at 3 p.m. Сначала найдите closes или closed until.",
+  "review": "Вспомните a.m./p.m. из №22 и Let's meet at из №20. Перед выбором часа назовите дату исключения и сравните её с датой вашего визита.",
+  "summary": "Вы можете выбрать действующее расписание, отличить закрытие от повторного открытия и передать исправленное время встречи.",
+  "choice": [
+    ["dated-closing", "Когда магазин закрывается в день визита?", "Visit: June 8. Regular hours: 10 a.m.–8 p.m. June 8 only: closes at 5 p.m.", ["At 5 p.m.", "At 8 p.m.", "At 10 a.m."], 0, "Дата визита совпадает с June 8 only, поэтому действует закрытие в 5 p.m., а не обычное в 8 p.m."],
+    ["reopen-meaning", "Выберите верное понимание записки.", "Today, July 2: Closed until 11 a.m. Reopen at 11 a.m. Close at 6 p.m.", ["It closes at 11 a.m.", "It opens at 6 p.m.", "It opens again at 11 a.m."], 2, "Closed until описывает закрытый период. Reopen at 11 a.m. подтверждает открытие в 11 утра."],
+    ["expired-notice", "Какой час закрытия относится к визиту?", "Visit: August 13. Regular hours: 9 a.m.–6 p.m. August 12 only: closes at 2 p.m.", ["2 p.m.", "6 p.m.", "9 a.m."], 1, "Исключение относится только к 12 августа; визит 13 августа, поэтому действует обычное закрытие в 6 p.m."],
+    ["early-or-late", "Как сегодня закрывается магазин по сравнению с обычным расписанием?", "Regular closing: 5 p.m. Today only, September 4: closing at 8 p.m.", ["Early", "At noon", "Late"], 2, "8 p.m. позже обычных 5 p.m., поэтому late. Early означало бы раньше."],
+    ["exit-valid-visit", "Выберите время, когда магазин точно открыт.", "Visit: October 9. Regular hours: 8 a.m.–7 p.m. October 9 only: Closed until noon. Reopen at noon. Close at 3 p.m.", ["10 a.m.", "1 p.m.", "4 p.m."], 1, "1 p.m. находится после открытия в полдень и до закрытия в 3 p.m. В 10 a.m. ещё закрыто, в 4 p.m. уже закрыто."]
+  ],
+  "blank": [
+    ["only-marker", "Впишите только пропущенное слово со значением «только».", "March 3, today ___: We close at 2 p.m. Regular closing: 6 p.m.", ["only"], "Today only ограничивает исключение одним днём; это не новое постоянное расписание."],
+    ["closing-at", "Впишите только пропущенный предлог.", "April 7 notice: The shop closes ___ 4 p.m. today.", ["at"], "Closes at + время обозначает точный момент закрытия."],
+    ["until-marker", "Впишите только слово со значением «до».", "Door note: We reopen at 10 a.m. We are closed ___ 10 a.m.", ["until"], "Closed until 10 a.m. описывает период, когда вход закрыт; at не передаёт этот промежуток."],
+    ["reopen-verb", "Впишите только глагол со значением «снова открываемся».", "Lunch break: closed 1–2 p.m. We ___ at 2 p.m.", ["reopen"], "Reopen значит открыться снова после перерыва. После we нет окончания -s."],
+    ["exit-corrected-hour", "Из двух друзей только один может зайти в магазин в своё время. Впишите это время цифрами с p.m.", "Visit: November 5. Regular closing: 7 p.m. November 5 only: open 1–4 p.m. Val can come at 3 p.m. Max can come at 5 p.m. The visit is at ___.", ["3 p.m.", "3 pm", "3:00 p.m.", "3:00 pm"], "5 ноября магазин закроется в 4 p.m. В 3 p.m. Вэл успеет зайти. В 5 p.m. магазин уже закрыт."]
+  ],
+  "written": [
+    ["notify-closing", "Сообщите новое закрытие: The shop closes at + время цифрой с p.m. + today.", "Visit: December 2. Regular closing: 9 p.m. December 2 only: closing at 6 p.m.", ["The shop closes at 6 p.m. today.", "The shop closes at 6:00 p.m. today.", "The shop closes at 6 pm today.", "The shop closes at 6:00 pm today."], "Сегодня действует исключение 6 p.m.; closes согласуется с the shop."],
+    ["reschedule-meeting", "Предложите единственный подходящий час. Начните с Let's meet at, запишите время цифрами и сохраните a.m. или p.m. из расписания. Больше слов не добавляйте.", "Today: opens at noon; closes at 3 p.m. Your old plan: 4 p.m. Your friend: “Can we meet at 11 a.m. or 2 p.m.?”", ["Let's meet at 2 p.m.", "Let's meet at 2:00 p.m.", "Let's meet at 2 pm.", "Let's meet at 2:00 pm."], "В 11 a.m. ещё закрыто, в 4 p.m. уже закрыто. В 2 p.m. магазин открыт."],
+    ["closed-period", "Переведите: начните с The store is или сокращения; время цифрой с a.m.", "Магазин закрыт до 11 утра.", ["The store is closed until 11 a.m.", "The store's closed until 11 a.m.", "The store is closed until 11:00 a.m.", "The store's closed until 11:00 a.m.", "The store is closed until 11 am.", "The store's closed until 11 am.", "The store is closed until 11:00 am.", "The store's closed until 11:00 am."], "Closed until передаёт состояние до указанного часа. Closes at изменило бы смысл на момент закрытия."],
+    ["exit-normal-day", "Выберите из двух вариантов подходящее время визита. Ответьте одной фразой: I can come at + время цифрами. Сохраните a.m. или p.m. из расписания.", "Visit: February 15. Regular hours: noon–8 p.m. February 14 only: closed all day. Proposed times: 11 a.m. or 6 p.m.", ["I can come at 6 p.m.", "I can come at 6:00 p.m.", "I can come at 6 pm.", "I can come at 6:00 pm."], "15 февраля действуют обычные часы. В 11 утра ещё закрыто, а в 6 вечера магазин открыт."],
+    ["exit-replanned-visit", "Подтвердите единственный подходящий час: I can come at + время цифрами. Сохраните a.m. или p.m. из расписания.", "Visit: January 16. Regular hours: 10 a.m.–8 p.m. January 16 only: Reopen at 2 p.m. Close at 5 p.m. Choose one: 1 p.m., 3 p.m., or 6 p.m.", ["I can come at 3 p.m.", "I can come at 3:00 p.m.", "I can come at 3 pm.", "I can come at 3:00 pm."], "16 января окно для визита с 2 до 5 p.m. Из предложенных часов подходит лишь 3 p.m.: в час ещё закрыто, в шесть уже закрыто."]
+  ]
+}

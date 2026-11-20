@@ -1,0 +1,39 @@
+{
+  "number": 82,
+  "title": "Бывали ли вы здесь?",
+  "subtitle": "Places you have visited",
+  "goal": "Понять, бывал ли собеседник в названном месте, и задать вопрос об опыте посещения.",
+  "intro": "В чате перед встречей участники обсуждают знакомые места. Вы хотите узнать, кто уже бывал в городе, а не когда состоялась поездка.",
+  "example": "Maya: Have you ever been to Denver?\nLeo: Yes, I've been there once. Have you been abroad?\nMaya: No, I've never been abroad.",
+  "translation": "Майя: Ты когда-нибудь бывал в Денвере?\nЛео: Да, я был там один раз. А ты бывала за границей?\nМайя: Нет, я никогда не была за границей.",
+  "theory": "Чтобы спросить об опыте до настоящего момента, используйте have/has + been. С I, you, we, they нужно have, с he, she и именем одного человека — has: Nina has been to Boston. Been — форма be в этой конструкции. I've = I have, she's = she has перед been.\nВопрос: Have you ever been to Denver? Порядок: have + человек + ever + been + to + место. Ever — «когда-нибудь». Для she: Has she ever been to Denver? Здесь не указывают законченное время вроде last year; о конкретной прошлой поездке говорят с went.\nBeen to означает опыт посещения места; это само по себе не сообщает, где человек сейчас. Before — «раньше, прежде», once — «один раз», never — «никогда»: I've never been to Miami. С never дополнительное not не нужно. Краткий ответ: Yes, I have / No, I haven't.\nAbroad — «за границей / за границу»: I've been abroad. Перед abroad и there не ставьте to: been there. В американском английском можно услышать и вопросы с did о прошлом опыте; здесь тренируем have/has + been, чтобы отличать общий опыт от датированной поездки.",
+  "rows": [
+    ["Have you ever been to …?", "Have you ever been to Portland?", "Ты когда-нибудь бывал в Портленде?"],
+    ["has been to", "Owen has been to Dallas once.", "Оуэн был в Далласе один раз."],
+    ["have never been abroad", "We have never been abroad.", "Мы никогда не бывали за границей."]
+  ],
+  "tip": "Не пишите Have you ever went to Austin? После have нужна форма been: Have you ever been to Austin? Для поездки в прошлом году: Did you go to Austin last year?",
+  "review": "Вспомните have/has из №6 и порядок вопросов из №35. Сопоставьте I've been to Reno с I went to Reno last year из №33. Затем, как в №21, задайте дружелюбный вопрос о втором месте, которое упомянул собеседник.",
+  "summary": "Вы можете понять ответы once, before и never, отличить опыт от датированной поездки и спросить Have you ever been to …?",
+  "choice": [
+    ["tampa-before", "Выберите верное описание опыта Рут.", "Meetup chat\nRuth: I've been to Tampa before. I know a small cafe there.\nEli: I've never been to Tampa. I can meet there or in Phoenix.", ["Ruth has never visited Tampa.", "Ruth has visited Tampa.", "Ruth lives in Tampa now."], 1, "Before означает, что посещение уже было раньше. О нынешнем месте жительства сообщение ничего не говорит."],
+    ["eli-never", "Определите, бывал ли Эли в Тампе.", "Meetup chat\nRuth: I've been to Tampa before. I know a small cafe there.\nEli: I've never been to Tampa. I can meet there or in Phoenix.", ["Eli has been to Tampa once.", "Eli has been to Tampa many times.", "Eli has never been to Tampa."], 2, "I've never been to Tampa прямо отрицает опыт посещения. Готовность встретиться в Тампе или Финиксе ничего не говорит о прошлых поездках."],
+    ["ask-phoenix", "Выберите вопрос об опыте без даты.", "You want to know whether your new teammate has visited Phoenix at any time in her life.", ["Have you ever been to Phoenix?", "When did you go to Phoenix?", "Are you in Phoenix now?"], 0, "Have you ever been to …? спрашивает о посещении когда-либо. When запрашивает время, а are — нынешнее местонахождение."],
+    ["once-count", "Сколько посещений указано в сообщении?", "Ben: I've been to Savannah once. I'd like to go again.", ["None.", "One.", "Two."], 1, "Once означает один раз. Would like to go again выражает желание, а не второе состоявшееся посещение."],
+    ["dated-trip", "Выберите предложение о поездке в законченное время.", "The trip to Tucson happened last summer. You are reporting that trip, not asking about life experience.", ["I have been to Tucson last summer.", "Have I ever been to Tucson?", "I went to Tucson last summer."], 2, "Last summer задаёт законченный период прошлого, поэтому для этой поездки нужно went, а не have been."]
+  ],
+  "blank": [
+    ["salem-been", "Впишите только форму be для вопроса об опыте.", "Have you ever ___ to Salem?", ["been"], "После have в вопросе о посещении нужна форма been; went относится к Past Simple."],
+    ["ivy-auxiliary", "Впишите только вспомогательный глагол.", "___ Ivy ever been to Detroit?", ["Has"], "Ivy — один человек, как she, поэтому вопрос начинается с has."],
+    ["we-auxiliary", "Впишите только вспомогательный глагол.", "We ___ been to Baltimore before.", ["have"], "С we используется have; has подходит к he, she, it."],
+    ["negative-experience", "Впишите только слово «никогда».", "I have ___ been to Alaska.", ["never"], "Never ставится между have и been и уже содержит отрицание."],
+    ["place-preposition", "Впишите только предлог перед названием города.", "Has your cousin ever been ___ Cleveland?", ["to"], "В конструкции been to название места следует после to. С abroad или there этого предлога нет."]
+  ],
+  "written": [
+    ["ask-milwaukee", "Кейси предлагает два города для встречи. Задайте один вопрос о посещении того города, о поездках в который Кейси ещё не рассказал. Используйте Have you ever + нужная форма be + to + название города.", "Casey: We can meet in Chicago or Milwaukee. I've been to Chicago once.", ["Have you ever been to Milwaukee?"], "О Чикаго Кейси уже сообщил: once значит «один раз». Поэтому спрашиваем о Милуоки. В вопросе об опыте после ever ставим been to и название города."],
+    ["ask-nora", "Спросите об опыте Норы. Начните с Has Nora ever и используйте been to.", "Place: San Diego.", ["Has Nora ever been to San Diego?"], "С именем Nora требуется has; после ever сохраняется been."],
+    ["own-never", "Напишите от первого лица, что никогда не бывали в Бойсе. Используйте I, never и been to; без других деталей.", "Place: Boise.", ["I have never been to Boise.", "I've never been to Boise."], "Never занимает место после have. Полная форма I have и сокращение I've равнозначны."],
+    ["ask-abroad", "Спросите собеседника, бывал ли он за границей. Начните с Have you ever и используйте been abroad.", "Context: a language exchange chat; ask about foreign travel.", ["Have you ever been abroad?"], "Abroad употребляется без to: been abroad, а не been to abroad."],
+    ["omar-once", "Сообщите об Омаре: одно посещение Чикаго. Начните с Omar, используйте been to и поставьте once в конце.", "Travel card: Omar — Chicago — one visit.", ["Omar has been to Chicago once.", "Omar's been to Chicago once."], "Omar требует has. Сокращение Omar's перед been означает Omar has; once сообщает число посещений."]
+  ]
+}

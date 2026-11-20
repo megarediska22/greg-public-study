@@ -1,0 +1,39 @@
+{
+  "number": 42,
+  "title": "Список покупок",
+  "subtitle": "A grocery list",
+  "goal": "Перенести три недостающих количества из заметки о запасах в список покупок с правильными названиями упаковок.",
+  "intro": "Вы собираете продукты для завтрака в гостевом доме. В заметке указаны продукты и упаковки: нужно отличить количество хлеба от количества буханок.",
+  "example": "We need three cartons of milk for breakfast. We have one carton, so we need to buy two cartons of milk.",
+  "translation": "На завтрак нам нужны три картонные упаковки молока. Одна у нас есть, поэтому нужно купить две.",
+  "theory": "В списке покупок считают отдельные предметы или упаковки. A carton — картонная упаковка, a bag — пакет, a bottle — бутылка, a loaf — буханка. После упаковки ставим of и продукт: a carton of milk, a bag of rice, a bottle of water, a loaf of bread. Rice — рис, bread — хлеб; здесь это неисчисляемые названия продуктов, без окончания -s.\n\nМеняется название упаковки: two cartons of milk, three bags of rice, two bottles of water. У loaf особое множественное число: two loaves of bread. A dozen — дюжина, то есть двенадцать: a dozen eggs. Между dozen и eggs не нужно of; само dozen после числа не получает -s: two dozen eggs.\n\nWe have означает «у нас есть», we need — «нам нужно». Сравните нужное количество с запасом и запишите только недостающее. Если нужно три бутылки, а есть одна, купить нужно две. В американском магазине продукты покупают в cartons, bags и bottles; grocery list — обычное название списка продуктов.",
+  "rows": [
+    ["a bag of rice", "We need a bag of rice.", "Нам нужен пакет риса."],
+    ["two loaves of bread", "There are two loaves of bread on the table.", "На столе две буханки хлеба."],
+    ["a dozen eggs", "I have a dozen eggs.", "У меня дюжина яиц."]
+  ],
+  "tip": "Не пишите two breads, если речь о двух буханках: two loaves of bread. В названии упаковки сохраняйте of: two bottles of water.",
+  "review": "Вспомните have/has из №6 и there is/are из №10: скажите, что у вас есть, затем назовите недостающее количество упаковок. Проверьте a перед одной упаковкой и -s у нескольких. Первые три задания письменной практики проверяют одну заметку: все три строки должны передавать только недостающее количество.",
+  "summary": "Вы можете прочитать заметку о запасах и записать три недостающих количества: упаковки молока, буханки хлеба и пакеты риса.",
+  "choice": [
+    ["breakfast-bread", "Выберите строку покупки по заметке.", "Breakfast note: bread — buy 2 loaves.", ["two bottles of bread", "two loaves of bread", "two cartons of bread"], 1, "Loaf — буханка; во множественном числе loaf превращается в loaves."],
+    ["rice-package", "Выберите упаковку, указанную в заметке.", "Dinner note: rice — buy 1 bag, not a box.", ["a carton of rice", "a bottle of rice", "a bag of rice"], 2, "Bag обозначает пакет. Количество относится к пакету, а не к отдельным рисинкам."],
+    ["egg-total", "Выберите строку с нужным количеством яиц.", "Baking note: eggs — buy 12.", ["a dozen eggs", "two dozen eggs", "six eggs"], 0, "A dozen означает двенадцать; two dozen — уже двадцать четыре."],
+    ["milk-cartons", "Выберите только недостающее количество.", "Milk for the weekend: need 4 cartons; have 1 carton.", ["four cartons of milk", "one carton of milk", "three cartons of milk"], 2, "Из четырёх нужных упаковок одна уже есть: купить нужно три cartons of milk."],
+    ["picnic-bottles", "Выберите строку по заметке для пикника.", "Picnic water: buy 5 bottles.", ["five bags of water", "five bottles of water", "five loaves of water"], 1, "Bottle — бутылка; после пяти нужно множественное bottles, затем of water."]
+  ],
+  "blank": [
+    ["carton-gap", "Впишите только название упаковки в единственном числе.", "Milk comes in a paper carton. Buy one ___ of milk.", ["carton"], "После one требуется carton без -s; of milk уже стоит после пропуска."],
+    ["loaves-gap", "Впишите только форму слова loaf для двух буханок.", "For the soup: buy two ___ of bread.", ["loaves"], "У loaf множественное число loaves, а не loafs."],
+    ["rice-phrase", "Впишите только словосочетание «три пакета риса»; число напишите словом.", "Dinner shopping: ___.", ["three bags of rice"], "Three требует bags; продукт присоединяется через of, а rice не получает -s."],
+    ["dozen-gap", "Впишите только слово, обозначающее двенадцать.", "Cookies: buy a ___ eggs (12 eggs).", ["dozen"], "A dozen eggs — двенадцать яиц; после dozen здесь нет of."],
+    ["water-phrase", "Впишите только словосочетание «одна бутылка воды» с one.", "Train trip shopping: ___.", ["one bottle of water"], "После one используем bottle в единственном числе и of перед water."]
+  ],
+  "written": [
+    ["guesthouse-milk", "Запишите строку списка для молока: недостающее число цифрой и название упаковки с of и продуктом. Без глагола.", "Guesthouse pantry note: milk (cartons) — need 5, have 2; bread (loaves) — need 4, have 1; rice (bags) — need 6, have 4.", ["3 cartons of milk"], "Пять минус две — три. Во множественном числе: cartons of milk."],
+    ["soup-bread", "Запишите строку списка для хлеба: недостающее число цифрой и название упаковки с of и продуктом. Без глагола.", "Guesthouse pantry note: milk (cartons) — need 5, have 2; bread (loaves) — need 4, have 1; rice (bags) — need 6, have 4.", ["3 loaves of bread"], "Нужны ещё три буханки; множественное число loaf — loaves."],
+    ["camp-rice", "Запишите строку списка для риса: недостающее число цифрой и название упаковки с of и продуктом. Без глагола.", "Guesthouse pantry note: milk (cartons) — need 5, have 2; bread (loaves) — need 4, have 1; rice (bags) — need 6, have 4.", ["2 bags of rice"], "Осталось купить два пакета: 6 − 4 = 2. Считаем bags, а не rice."],
+    ["cake-eggs", "Запишите только покупку в виде строки списка: начните с a dozen, затем продукт, без глагола.", "Cake note: buy 12 eggs. There are no eggs at home.", ["a dozen eggs", "A dozen eggs"], "Двенадцать яиц — a dozen eggs; of между dozen и eggs не ставится."],
+    ["walk-water", "Запишите только недостающее в виде строки списка: число цифрой, bottles of water, без глагола.", "Long walk note: need 7 bottles of water; have 5 bottles.", ["2 bottles of water"], "Нужны ещё две бутылки. Water остаётся без -s, множественное число получает bottles."]
+  ]
+}

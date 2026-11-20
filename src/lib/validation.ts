@@ -62,6 +62,7 @@ export function validateCourse(course: readonly CourseEntry[]): void {
       } else if (step.completion !== 'acknowledge') fail(path, 'reading/review/summary needs acknowledgement');
       if (step.type === 'intro' && [step.heading, step.text, step.example, step.translation].some(value => !value.trim())) fail(path, 'introduction needs a heading, explanation and translated example');
       if (step.type === 'theory' && ([step.heading, step.text, step.tableCaption, step.noteTitle, step.note].some(value => !value.trim()) || !step.rows.length || step.rows.some(row => [row.subject, row.form, row.example, row.translation].some(value => !value.trim())))) fail(path, 'theory needs explanations, translated table rows and a common-mistake note');
+      if (step.type === 'theory' && step.subjectHeading !== undefined && !step.subjectHeading.trim()) fail(path, 'theory subjectHeading must be nonempty');
       if (step.type === 'theory' && step.blocks) {
         const titles = new Set<string>();
         for (const block of step.blocks) {

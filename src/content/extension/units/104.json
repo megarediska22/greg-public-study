@@ -1,0 +1,186 @@
+{
+  "number": 104,
+  "title": "Перенос отменённой записи",
+  "subtitle": "Replacing a canceled appointment",
+  "goal": "Выбрать допустимую замену отменённой записи и сохранить услугу, имя, дату и время в ответе.",
+  "intro": "Салон отменил запись вымышленной клиентки. Из двух предложений подходит только одно: проверьте услугу и доступность.",
+  "example": "For Maya Reed: Your haircut on June 8 at 10 a.m. is canceled. Offers: June 9, 11 a.m. — haircut, available; June 9, 2 p.m. — color service only. Could I move my haircut to June 9 at 11 a.m.?",
+  "translation": "Для Майи Рид: Стрижка 8 июня в 10 утра отменена. Варианты: 9 июня, 11 утра — стрижка, доступно; 9 июня, 14 часов — только окрашивание. Могу я перенести запись на стрижку на 9 июня в 11 утра?",
+  "theory": "Canceled appointment — отменённая запись; replacement slot — новое время взамен; available — доступно; keep — сохранить; same service — та же услуга; notice period — срок предварительного уведомления. Haircut — стрижка, color service — окрашивание, full — свободных мест нет. В американском английском обычно пишут canceled с одной l.\nCould I move my haircut to June 9 at 11 a.m.? — вежливый запрос переноса. После move назовите запись, после to — новую дату, после at — время. Same ставится перед существительным с the: the same service. Keep the same service — сохраните ту же услугу.\nBecause вводит причину: My appointment is canceled because the stylist is sick. Sick — болен. Не переносите исходную дату в поле новой записи. Если в уведомлении есть срок ответа, учитывайте и его: Reply by noon — ответьте не позже полудня. Reply before noon — ответьте раньше полудня.",
+  "rows": [
+    [
+      "Could I move … to …?",
+      "Could I move my haircut to July 2 at 3 p.m.?",
+      "Могу я перенести запись на стрижку на 2 июля в 15 часов?"
+    ],
+    [
+      "the same + noun",
+      "Please keep the same service.",
+      "Пожалуйста, сохраните ту же услугу."
+    ],
+    [
+      "because",
+      "My appointment is canceled because the stylist is sick.",
+      "Моя запись отменена, потому что парикмахер болен."
+    ]
+  ],
+  "tip": "Не путайте исходное время с replacement slot. После at пишите время, а после to в запросе переноса — новую дату.",
+  "review": "Вспомните точное имя из #25, старое и новое время из #55, услугу из #62 и проверку полей из #70. Сверьте четыре поля перед отправкой.",
+  "summary": "Я могу выбрать допустимую замену и попросить перенос, сохранив имя, услугу и новую дату со временем.",
+  "choice": [
+    [
+      "same-service",
+      "Выберите подходящую замену.",
+      "Nora Bell: haircut canceled. Offers: August 4 at 9 a.m., haircut available; August 4 at 1 p.m., color service only.",
+      [
+        "August 4 at 1 p.m.",
+        "August 4 at 9 a.m.",
+        "The canceled appointment"
+      ],
+      1,
+      "Только 9 утра доступно для исходной услуги haircut."
+    ],
+    [
+      "available-slot",
+      "Выберите доступное время той же услуги.",
+      "Massage canceled. Replacement offers: September 6 at 2 p.m., massage, full; September 7 at 10 a.m., massage, available.",
+      [
+        "September 6 at 2 p.m.",
+        "September 7 at 2 p.m.",
+        "September 7 at 10 a.m."
+      ],
+      2,
+      "Full означает, что мест нет; доступен второй вариант в 10 утра."
+    ],
+    [
+      "notice-deadline",
+      "Выберите время, когда ответ ещё успеет к установленному сроку.",
+      "Notice: Keep the replacement slot by replying before noon on May 3.",
+      [
+        "May 3 at 11 a.m.",
+        "May 3 at 1 p.m.",
+        "May 4 at 9 a.m."
+      ],
+      0,
+      "Before noon требует ответить раньше 12 часов дня 3 мая. 11 утра подходит, час дня и следующий день — поздно."
+    ],
+    [
+      "preserve-name",
+      "Выберите точные данные переноса.",
+      "Client: Eli Park. Service: haircut. Old: April 2, 4 p.m., canceled. New: April 3, 9 a.m.",
+      [
+        "Eli Park; color service; April 3, 9 a.m.",
+        "Eli Park; haircut; April 3, 9 a.m.",
+        "Ellie Park; haircut; April 2, 4 p.m."
+      ],
+      1,
+      "Имя Eli Park и услуга haircut сохраняются; меняются дата и время."
+    ],
+    [
+      "reason-meaning",
+      "Выберите причину отмены.",
+      "Your appointment is canceled because the stylist is sick. A replacement is available tomorrow.",
+      [
+        "The client is late.",
+        "The salon has no replacement.",
+        "The stylist is sick."
+      ],
+      2,
+      "Because связывает отмену с болезнью парикмахера."
+    ]
+  ],
+  "blank": [
+    [
+      "new-date",
+      "Впишите только новую дату словами из уведомления.",
+      "Old: October 1, canceled. Replacement: October 3 at 2 p.m. New date: ___.",
+      [
+        "October 3"
+      ],
+      "Нужна дата replacement, а не отменённой записи."
+    ],
+    [
+      "service-field",
+      "Впишите только услугу из записи.",
+      "Client: Joy Lane. Service: haircut. Keep the same service: ___.",
+      [
+        "haircut"
+      ],
+      "Same service сохраняет haircut."
+    ],
+    [
+      "move-link",
+      "Впишите только to или at.",
+      "Could I move my massage ___ November 5 at 10 a.m.?",
+      [
+        "to"
+      ],
+      "To вводит новую дату; at уже стоит перед временем."
+    ],
+    [
+      "same-word",
+      "Впишите только слово со значением «ту же».",
+      "Please keep the ___ service when you move my booking.",
+      [
+        "same"
+      ],
+      "The same service — та же услуга."
+    ],
+    [
+      "reason-link",
+      "Впишите только because или then.",
+      "The visit is canceled ___ the stylist is sick.",
+      [
+        "because"
+      ],
+      "Because вводит причину, then — последовательность."
+    ]
+  ],
+  "written": [
+    [
+      "move-haircut",
+      "Попросите перенести стрижку на подходящее время. Начните с Could I move my haircut to и перепишите дату и время из подходящего предложения.",
+      "Client: Owen Hill. Original service: haircut. Old: July 6 at 1 p.m., canceled. Offers: July 7 at 10 a.m., haircut available; July 7 at 4 p.m., color service only.",
+      [
+        "Could I move my haircut to July 7 at 10 a.m.?"
+      ],
+      "На 10 утра доступна стрижка. На 16 часов предлагают только окрашивание, а 6 июля запись уже отменена."
+    ],
+    [
+      "keep-service",
+      "Попросите сохранить исходную услугу. Напишите короткую просьбу с Please keep и the same service, без добавлений.",
+      "The desk offers a different treatment, but you want the original service.",
+      [
+        "Please keep the same service."
+      ],
+      "Перед same service нужен the."
+    ],
+    [
+      "name-field",
+      "Напишите только значение поля Client; точно сохраните вымышленное имя.",
+      "Cancellation for Lena Fox. Replacement confirmed for the same client. Client:",
+      [
+        "Lena Fox"
+      ],
+      "Перенос не меняет имя клиентки."
+    ],
+    [
+      "cancel-reason",
+      "Начните My appointment is canceled because; укажите причину через the stylist.",
+      "Notice: Stylist sick. Appointment canceled.",
+      [
+        "My appointment is canceled because the stylist is sick."
+      ],
+      "После because нужна полная часть the stylist is sick."
+    ],
+    [
+      "reply-fields",
+      "Заполните три поля новой записи в формате Client: …; Service: …; New: … . Скопируйте имя, услугу, дату и время из карточки.",
+      "Client: Owen Hill. Original service: haircut. Old: July 6 at 1 p.m., canceled. Offers: July 7 at 10 a.m., haircut available; July 7 at 4 p.m., color service only.",
+      [
+        "Client: Owen Hill; Service: haircut; New: July 7 at 10 a.m."
+      ],
+      "Подходит стрижка 7 июля в 10 утра; имя и услуга сохраняются."
+    ]
+  ]
+}

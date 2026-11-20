@@ -1,0 +1,39 @@
+{
+  "number": 62,
+  "title": "Запись на услугу",
+  "subtitle": "Booking a repair appointment",
+  "goal": "Выбрать единственное подходящее время ремонта, попросить о записи и указать вымышленное имя без ошибки.",
+  "intro": "В чате ремонтной мастерской нужно согласовать время: не каждый свободный интервал подходит вашему расписанию. Имя для записи вы берёте из карточки клиента.",
+  "example": "Customer: Is there an opening on Thursday?\nService desk: Yes, 10:30 a.m. is available.\nCustomer: Could I book a time at 10:30 a.m. under the name Maya Cole?",
+  "translation": "Клиент: Есть свободное время в четверг?\nСотрудник мастерской: Да, есть время на 10:30.\nКлиент: Можно записаться на 10:30 на имя Майи Коул?",
+  "theory": "В американской мастерской service desk — стойка или служба приёма клиентов. Available значит «свободный, доступный»: Is 10:30 available? Opening в расписании — свободное место для записи, а не время открытия. Earliest — самый ранний: the earliest opening — ближайшее свободное время. Book a time — записаться на определённое время.\n\nCould I + начальная форма глагола — вежливый способ попросить о записи: Could I book a time? Вы хотите записаться, поэтому используется I. После could не нужны to и окончание -s. Is there an opening on Friday? спрашивает, есть ли свободное время в пятницу. Для дня используйте on, для времени — at.\n\nUnder the name + имя означает «на имя»: The appointment is under the name Ben Ross. Переносите имя из карточки полностью. Сначала сравните часы работы, свободные интервалы и доступность клиента: свободное время ещё не обязательно подходит клиенту. В американских расписаниях 2 p.m. — 14:00, 9 a.m. — 09:00.",
+  "rows": [
+    ["Could I book a time at …?", "Could I book a time at 2 p.m.?", "Можно записаться на 14:00?"],
+    ["Is there an opening on …?", "Is there an opening on Monday?", "Есть свободное время в понедельник?"],
+    ["under the name", "The appointment is under the name Nina Park.", "Запись оформлена на имя Нины Парк."]
+  ],
+  "tip": "Не пишите Could I to book: после could нужна начальная форма без to — Could I book? Не путайте opening в расписании и opening hours — часы работы.",
+  "review": "Вспомните просьбы с can из №19, часы работы из №22, точную передачу имени из №25 и согласование времени из №53 и №55. Перед записью сверяйте день, время и имя.",
+  "summary": "Выходная проверка: выберите единственное подходящее время в первом задании выбора, перенесите имя из карточки в задании с пропуском и в предпоследнем письменном задании попросите записать вас.",
+  "choice": [
+    ["usable-repair-slot", "Выберите единственный подходящий интервал.", "Repair desk: Friday openings — 9 a.m., 1 p.m., 2:30 p.m. Customer: I work until noon and have to leave by 3 p.m. The repair takes one hour.", ["Friday at 9 a.m.", "Friday at 1 p.m.", "Friday at 2:30 p.m."], 1, "В 09:00 клиент работает. В 14:30 он свободен, но ремонт закончится в 15:30, после его ухода. Запись на 13:00 подходит: ремонт закончится в 14:00."],
+    ["earliest-saturday", "Выберите самое раннее свободное время.", "Saturday service desk: 8:30 a.m. is booked. Openings: 10 a.m. and 11:30 a.m.", ["11:30 a.m.", "8:30 a.m.", "10 a.m."], 2, "Earliest означает самое раннее из доступных времён. 08:30 занято, поэтому первое свободное — 10:00."],
+    ["customer-books", "Выберите просьбу клиента записать его на ремонт.", "You are the customer. You want to book a repair appointment for yourself.", ["Could I book a time?", "Could I check my appointment?", "Could I booking a time?"], 0, "Could I book a time? просит о новой записи. Check my appointment — проверить уже существующую запись. После could используется book без -ing."],
+    ["correct-booking-name", "Выберите имя, которое нужно подтвердить.", "Customer card: Lee Grant. Message: Your repair appointment is Tuesday at 2 p.m. Please confirm the name on the card.", ["Grant Lee", "Lee Green", "Lee Grant"], 2, "Имя и фамилия переносятся в том же порядке: Lee Grant. Похожая фамилия Green не подходит."],
+    ["opening-meaning", "Выберите значение слова opening в сообщении.", "The shop opens at 8 a.m. There is one opening for a repair at 3 p.m.", ["The shop closes at 3 p.m.", "A repair appointment is available at 3 p.m.", "The shop opens at 3 p.m."], 1, "Opening for a repair — свободное место для ремонта; часы открытия уже указаны отдельно: 08:00."]
+  ],
+  "blank": [
+    ["polite-modal", "Вставьте только вежливый модальный глагол на C.", "___ I book a repair for Monday morning?", ["Could"], "Could I — вежливая просьба клиента. Следом стоит начальная форма book."],
+    ["base-book", "Вставьте только форму глагола book.", "Could I ___ a time for a screen repair?", ["book"], "После could нужен book, без to и без окончания -ing."],
+    ["name-from-card", "Перенесите только полное имя из карточки.", "Customer card: Iris Bell. Please book the repair under the name ___.", ["Iris Bell"], "После under the name перенесите полное имя из карточки: Iris Bell."],
+    ["existence-question", "Вставьте только is или are.", "___ there an opening for a bike repair on Wednesday?", ["Is"], "An opening — единственное число, поэтому вопрос начинается с Is there."],
+    ["available-status", "Вставьте только available или booked по сообщению.", "Desk: Nobody has taken the 11 a.m. appointment. It is still ___.", ["available"], "Nobody has taken означает, что время никто не занял: оно available, а не booked."]
+  ],
+  "written": [
+    ["request-only-slot", "Напишите вопрос с Could I book a time, затем at и подходящее время в формате 2 p.m.; не добавляйте день.", "Repair openings: 10 a.m., 2 p.m., 5 p.m. You are free from 1 p.m. to 4 p.m. Each repair takes one hour.", ["Could I book a time at 2 p.m.?"], "Только 14:00 попадает в свободный промежуток клиента. После Could I используется book."],
+    ["confirm-full-name", "Подтвердите запись одним предложением: начните The appointment is under the name и добавьте имя из карточки.", "Repair card: Owen Blake. The desk asks you to check the name on your existing appointment.", ["The appointment is under the name Owen Blake."], "Under the name связывает запись с указанным именем; порядок Owen Blake сохраняется."],
+    ["ask-tuesday-opening", "Спросите о свободном времени: начните Is there an opening, затем укажите день через on.", "Вам нужен ремонт во вторник; конкретного времени ещё нет.", ["Is there an opening on Tuesday?"], "Is there an opening спрашивает о наличии свободного места. Перед Tuesday нужен on."],
+    ["book-name-and-time", "Попросите записать вас на ремонт в пятницу. Начните Could I book a time, затем at + подходящее время в формате 9 a.m., затем under the name + имя. День уже указан в переписке, в ответе его не повторяйте.", "Friday chat. Desk: 9 a.m., 1 p.m. or 2:30 p.m. The repair takes one hour. You work until noon and have to leave by 3 p.m. Customer card: Iris Bell.", ["Could I book a time at 1 p.m. under the name Iris Bell?"], "Только запись на 13:00 позволит закончить часовой ремонт до 15:00 после работы. В просьбе сохраняется полное имя Iris Bell."],
+    ["check-specific-time", "Уточните доступность: начните Is, затем время в формате 4 p.m., затем available.", "Вы хотите узнать, свободно ли время 16:00 для ремонта; записи пока нет.", ["Is 4 p.m. available?"], "Вопрос Is … available? проверяет доступность конкретного времени, не утверждая, что запись уже сделана."]
+  ]
+}

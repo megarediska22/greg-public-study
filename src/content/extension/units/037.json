@@ -1,0 +1,40 @@
+{
+  "number": 37,
+  "title": "Потерянная вещь",
+  "subtitle": "Lost and found",
+  "goal": "Сопоставить сообщение с единственной записью о находке и сообщить вещь, последнее место и время.",
+  "intro": "После поездки Нина не находит кошелёк. В бюро находок есть похожие вещи: нужно сверить цвет, место и время, а затем оставить точное сообщение.",
+  "example": "Nina: I lost my wallet yesterday. I left it on the bus at 6 p.m.\nClerk: Was it brown?\nNina: Yes.\nClerk: We found a brown wallet on the bus at 7 p.m.",
+  "translation": "Нина: Вчера я потеряла кошелёк. Я оставила его в автобусе в шесть вечера.\nСотрудник: Он был коричневый?\nНина: Да.\nСотрудник: Мы нашли коричневый кошелёк в автобусе в семь вечера.",
+  "theory": "Wallet — кошелёк, umbrella — зонт. Lost and found — обычное в американском английском название бюро находок: Ask at the lost and found — спросите в бюро находок. В записях сначала сверяйте вещь и цвет, затем место и время. Время находки может отличаться от времени потери.\nLose — терять, find — находить, leave — оставлять. Их прошедшие формы: lost, found, left. I lost my wallet сообщает о потере; I left my wallet at the cafe уточняет, где человек оставил вещь. После первого упоминания wallet или umbrella можно заменить на it.\nWhere did you leave it? — Где ты это оставил? После did нужна начальная форма leave. Where was it? — Где это было? Здесь спрашиваем о местонахождении, поэтому используем was без did.\nAt обозначает место как точку: at the station, at the cafe. On используем для поверхности и общественного транспорта: on the table, on the bus. Время: at 6 p.m.; день: on Monday. В американской записи 6 p.m. — шесть вечера, 6 a.m. — шесть утра.",
+  "rows": [
+    ["lost / found", "I lost a wallet, but I found my umbrella.", "Я потерял кошелёк, но нашёл свой зонт."],
+    ["left + object + place", "Rosa left her umbrella at the station.", "Роза оставила свой зонт на станции."],
+    ["Where did ... leave ...?", "Where did Ben leave his wallet?", "Где Бен оставил свой кошелёк?"],
+    ["Where was ...?", "Where was the blue umbrella?", "Где был синий зонт?"]
+  ],
+  "tip": "Не говорите Where did you left it? После did: Where did you leave it? Для места без действия: Where was it?, без did.",
+  "review": "Вспомните названия вещей из №8 и сочетания места из №23. Из №35 восстановите вопрос с Where did. Затем отдельно назовите вещь Нины, место, где она её оставила, и время потери, не подменяя его временем находки.",
+  "summary": "Я могу выбрать запись по вещи, цвету и месту, отличить время потери от времени находки и сообщить, где и когда оставил вещь.",
+  "choice": [
+    ["brown-wallet-record", "Выберите единственную запись, которая совпадает с сообщением по вещи, цвету и месту.", "Report: Nina lost a brown wallet at the station at 5 p.m. yesterday. Register: A — brown wallet, at the station, found at 6 p.m.; B — black wallet, at the station, found at 6 p.m.; C — brown wallet, on the bus, found at 6 p.m.", ["Record B", "Record A", "Record C"], 1, "В записи A совпадают вещь, цвет и место: коричневый кошелёк на станции. В 5 p.m. Нина его потеряла, а в 6 p.m. его нашли."],
+    ["umbrella-last-place", "Выберите последнее известное место зонта.", "Evan: I had my green umbrella at the hotel. Then I went to the library. I left it on a chair there.", ["At the hotel", "On the bus", "On a chair at the library"], 2, "There относится к библиотеке, названной перед ним. Последнее действие — оставил зонт на стуле в библиотеке."],
+    ["ask-leaving-action", "Выберите вопрос о том, где человек оставил вещь.", "You want to ask Leo about leaving his bag yesterday.", ["Where did you leave your bag?", "Where did you left your bag?", "Where was you leave your bag?"], 0, "Для действия в прошлом используем did + you + leave. Left после did не употребляется."],
+    ["found-status", "Выберите верное утверждение по записи бюро находок.", "Lost and found: blue umbrella — found at the museum on Tuesday. Owner: unknown.", ["The owner found the umbrella at home.", "The umbrella was at the museum on Tuesday.", "The umbrella was at the museum on Monday."], 1, "Запись подтверждает место и день: at the museum on Tuesday. О владельце известно только то, что он не установлен."],
+    ["loss-versus-find-time", "Выберите время, когда Омар оставил вещь.", "Omar: I left my black wallet at the pool at 10 a.m. The staff found it at noon.", ["At noon", "At 10 p.m.", "At 10 a.m."], 2, "Left связано с 10 a.m., десятью утра. At noon — в полдень, время находки."]
+  ],
+  "blank": [
+    ["nina-exact-place", "Впишите место, где Нина оставила вещь. Используйте предлог at.", "Nina's report: left my wallet at the station; found later by the station staff.\nI left my wallet ___ at 5 p.m. yesterday.", ["at the station"], "Нина оставила кошелёк на станции: at the station. Station staff — сотрудники станции."],
+    ["leave-past-form", "Впишите только прошедшую форму leave.", "Maya ___ her red bag at the bakery yesterday. (leave)", ["left"], "Leave — неправильный глагол: в утвердительном сообщении о прошлом нужна форма left."],
+    ["find-past-form", "Впишите только прошедшую форму find.", "The driver ___ a yellow umbrella under a seat on Friday. (find)", ["found"], "Прошедшая форма find — found. Under a seat означает «под сиденьем»."],
+    ["location-question-was", "Впишите только форму be для вопроса о месте в прошлом.", "Where ___ your silver key at 8 a.m. yesterday?", ["was"], "Your silver key — одна вещь; для её места в прошлом используем was."],
+    ["bus-question-base", "Впишите только форму leave после did.", "Where did Tessa ___ her phone after the bus ride? (leave)", ["leave"], "Did уже обозначает прошлое, поэтому смысловой глагол остаётся в начальной форме leave."]
+  ],
+  "written": [
+    ["nina-time-report", "Напишите одно предложение от лица Нины. Начните с I left my wallet, затем укажите место, время цифрой с p.m. и слово yesterday.", "Nina's report: brown wallet; last place — station; yesterday, five in the evening. Register: found at 6 p.m.", ["I left my wallet at the station at 5 p.m. yesterday."], "Из сообщения берём at the station и at 5 p.m. Yesterday ставим в конце. Время находки 6 p.m. к действию left не относится."],
+    ["ask-umbrella-owner", "Спросите собеседника, где он оставил зонт. Начните с Where did you; используйте leave и your umbrella, без дополнительных слов.", "Situation: an umbrella owner is at your desk.", ["Where did you leave your umbrella?"], "Порядок вопроса: Where + did + you + leave + your umbrella. После did используем leave."],
+    ["station-wallet-state", "Составьте предложение, начав с My wallet; затем используйте was, место с at и yesterday в конце.", "Мой кошелёк был на станции вчера. Станция — the station.", ["My wallet was at the station yesterday."], "Сообщаем о месте, а не о действии: My wallet was. Для станции как точки используем at the station."],
+    ["found-item-report", "Сообщите о находке. Начните с We found; затем назовите вещь с a, место и день в этом порядке.", "Вещь: blue umbrella. Место: the park. День: Monday.", ["We found a blue umbrella at the park on Monday.", "We found a blue umbrella in the park on Monday."], "Found — прошедшая форма find. At the park обозначает место встречи или находки, in the park — внутри парка; оба варианта подходят. Перед Monday ставим on."],
+    ["lost-wallet-event", "Напишите о потере, начав с I lost; используйте my wallet и last night, без дополнительных слов.", "Вы потеряли кошелёк прошлой ночью.", ["I lost my wallet last night."], "Прошедшая форма lose — lost. Перед last night предлог не нужен."]
+  ]
+}

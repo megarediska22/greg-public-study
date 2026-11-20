@@ -1,0 +1,39 @@
+{
+  "number": 88,
+  "title": "История о первом дне",
+  "subtitle": "A first-day story",
+  "goal": "Восстановить порядок трёх событий первого дня и соединить действие с заданной причиной через because.",
+  "intro": "Вы пишете другу о первом дне в фотокружке. Важно показать, что случилось сначала, а что стало причиной вашего чувства облегчения.",
+  "example": "On my first day at the photo club, I got lost. Then I met Rosa. She showed me the room. At the end, I felt relieved because I knew where to go.",
+  "translation": "В первый день в фотокружке я заблудился. Затем я встретил Розу. Она показала мне комнату. В конце я почувствовал облегчение, потому что знал, куда идти.",
+  "theory": "First day — первый день; on my first day — в мой первый день. Get lost означает «заблудиться», в прошлом — got lost. Meet — встретить, познакомиться; прошедшая форма met. Show — показать; showed me the room — показал(а) мне комнату. Relieved — почувствовавший облегчение; I felt relieved — «Я почувствовал облегчение». Knew — прошедшая форма know, «знал». At the end — в конце истории или события.\n\nВ коротком рассказе о закончившемся дне используйте Past Simple: I met Rosa. She showed me the room. Неправильные формы got, met, felt, knew нужно вспомнить целиком; у show здесь обычное окончание -ed: showed.\n\nThen — «затем»: сообщает о следующем событии. I got lost. Then I called a friend — «Я заблудился. Затем я позвонил другу». Because — «потому что»: вводит причину. I called a friend because I got lost — «Я позвонил другу, потому что заблудился». Порядок слов после because обычный: кто + действие. В рассказе причина может стоять позже действия, хотя по времени возникла раньше.\n\nВ разговорном американском английском естественно I got lost — «Я заблудился». After that — «после этого». В одном предложении можно связать два действия через and then: I found the room and then I sat down — «Я нашёл комнату, а затем сел». Sit в Past Simple меняется на sat.",
+  "rows": [
+    ["Then + past event", "I arrived early. Then I met the teacher.", "Я пришёл рано. Затем я познакомился с преподавателем."],
+    ["Action + because + reason", "I asked for help because I got lost.", "Я попросил помощи, потому что заблудился."],
+    ["At the end", "At the end, I felt relieved.", "В конце я почувствовал облегчение."]
+  ],
+  "tip": "Then показывает очередность, а because объясняет причину. I felt relieved because I found the room объясняет облегчение; then в этой позиции означало бы «затем» и не выражало бы нужную причину.",
+  "review": "Из #2 вспомните чувства, из #33 — got, из #36 — порядок событий, из #84 — вопросы о прошлом. Назовите все три события первого дня в правильном порядке в задании 1 раздела «Выбор ответа». В задании 1 раздела «Письменная практика» проверьте, что после because вы указали причину обращения за помощью. Событие, которое произошло уже после просьбы, не объясняет её.",
+  "summary": "Я восстанавливаю три события первого дня, использую met и showed в рассказе и различаю then для очередности и because для причины.",
+  "choice": [
+    ["library-order", "Выберите правильный порядок всех трёх событий.", "My first day at the library club: I got lost near the stairs. Then I met Dean. After that, Dean showed me the room.", ["Met Dean → got lost → Dean showed me the room", "Dean showed me the room → met Dean → got lost", "Got lost → met Dean → Dean showed me the room"], 2, "Сначала рассказчик заблудился, затем встретил Дина. After that вводит последнее событие: Дин показал комнату."],
+    ["reason-for-call", "Почему рассказчица позвонила Kim?", "On my first day at the art club, I called Kim because I got lost. Then Kim met me outside.", ["She got lost.", "Kim called her.", "The club finished."], 0, "После because прямо указана причина звонка: got lost. Встреча с Kim произошла позже."],
+    ["next-after-meeting", "Что случилось сразу после знакомства с Omar?", "I arrived at the music club. Then I met Omar. He showed me the room. At the end, we played a song.", ["I arrived at the club.", "Omar showed me the room.", "We played a song."], 1, "He относится к Omar. Показ комнаты следует сразу за встречей; песню сыграли в конце."],
+    ["relieved-meaning", "Как чувствовал себя человек в конце?", "I got lost on my first day. A teacher showed me the room. At the end, I felt relieved because I was in the right place.", ["Angry", "Bored", "Relieved"], 2, "Relieved — с облегчением: человек нашёл нужное место и больше не тревожился из-за дороги."],
+    ["chronology-link", "Выберите связку со значением «затем», без утверждения причины.", "I met the club leader. ___ I sat next to Nina.", ["Then", "Because", "But"], 0, "Then выстраивает два действия по времени. Because вводит причину, а but — противопоставление."]
+  ],
+  "blank": [
+    ["lost-past", "Вставьте только прошедшую форму get.", "On my first day at the chess club, I ___ lost near the office.", ["got"], "Прошедшая форма get — got; целое выражение got lost означает «заблудился»."],
+    ["met-past", "Вставьте только прошедшую форму meet.", "I ___ the new teacher outside the science room yesterday.", ["met"], "Meet — неправильный глагол: в Past Simple met, без -ed."],
+    ["showed-past", "Вставьте только прошедшую форму show.", "The club leader ___ me the kitchen on my first day.", ["showed"], "Здесь нужен Past Simple: show + ed = showed. Me обозначает того, кому показали кухню."],
+    ["reason-connector", "Вставьте изученный союз со значением «потому что».", "I felt relieved ___ my friend was there to help me.", ["because"], "Присутствие друга объясняет облегчение, поэтому нужна причинная связка because."],
+    ["sequence-connector", "Вставьте изученную однословную связку со значением «затем».", "I put my bag on a chair. ___ I went to meet the group.", ["Then"], "Then вводит следующее действие: сначала оставил сумку, затем пошёл знакомиться с группой."]
+  ],
+  "written": [
+    ["help-reason", "Закончите запись одним предложением. Начните I asked for help и добавьте через because причину на английском. Возьмите из заметки событие, которое объясняет просьбу.", "First-day notes: I got lost. I asked for help. A club member showed me the room.", ["I asked for help because I got lost."], "I asked for help because I got lost. Вы заблудились до просьбы о помощи. Комнату вам показали после просьбы."],
+    ["two-events", "Соедините два действия в одно предложение через and then. Начните I и используйте Past Simple; перед вторым действием повторите I. Запятая перед and допустима.", "Сначала вы познакомились с Leo, затем сели.", ["I met Leo and then I sat down.", "I met Leo, and then I sat down."], "Met и sat — прошедшие формы meet и sit. And then сохраняет заданную очередность без объяснения причины."],
+    ["relief-cause", "Начните I felt relieved, добавьте because; затем she и show me the room в Past Simple.", "Вы почувствовали облегчение, потому что сотрудница показала вам комнату.", ["I felt relieved because she showed me the room."], "Felt описывает чувство, showed — действие, которое его вызвало. Because связывает их по причине."],
+    ["first-day-frame", "Начните On my first day, затем I; используйте meet и the teacher в Past Simple. Запятая после day допустима.", "Вы познакомились с преподавателем в свой первый день.", ["On my first day, I met the teacher.", "On my first day I met the teacher."], "После начального указания времени идёт I met the teacher. У meet форма прошлого времени — met."],
+    ["past-when-retrieval", "Задайте вопрос из #84: начните When did, обращайтесь к собеседнику через you и используйте meet Sara. Других слов не добавляйте.", "Собеседник рассказал, что познакомился с Sara в кружке. Уточните, когда это произошло.", ["When did you meet Sara?"], "После did нужна начальная форма meet. When спрашивает время знакомства, а не его причину."]
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "number": 32,
+  "title": "Что я сделал вчера",
+  "subtitle": "Yesterday's activity log",
+  "goal": "Найти два завершённых действия в дневнике и добавить две записи о прошлом по подсказкам.",
+  "intro": "Вы помогаете Мии восстановить дневник за вчерашний день. Сначала прочитайте готовые записи, затем добавьте пропущенные действия.",
+  "example": "Mia's log — last Tuesday\nI walked to the store in the morning. I cleaned my room in the afternoon. I called Dad in the evening.",
+  "translation": "Дневник Мии — прошлый вторник\nУтром я дошла до магазина пешком. Днём я убрала свою комнату. Вечером я позвонила папе.",
+  "theory": "Чтобы назвать завершённое действие в прошлом, поставьте после действующего лица глагол в Past Simple: I walked — я прошёл пешком. Форма одинакова для I, he, she, we и they: She walked yesterday. Слова yesterday (вчера), last night (вчера вечером или ночью) и названия прошедших дней показывают, когда действие завершилось. В дневнике заранее указано, что день уже прошёл.\n\nУ правильных глаголов прибавляем -ed: walk → walked (ходил пешком), clean → cleaned (убрал), call → called (позвонил), watch → watched (посмотрел), finish → finished (закончил). Если глагол уже заканчивается на e, добавляем только -d: live → lived (жил). Здесь walk to означает «дойти пешком до», watch a show — «посмотреть передачу», finish a task — «закончить задачу».\n\nПорядок слов: кто + действие в прошлом + что или куда + когда: We cleaned the kitchen yesterday. Можно начать с времени: Yesterday, we cleaned the kitchen. Для кратких записей в этих заданиях ставьте время в конце. Не добавляйте am или was перед walked: was описывает состояние, а walked уже само обозначает действие в прошлом. В американском английском last night обычно охватывает и вчерашний вечер: I watched a show last night.",
+  "rows": [
+    ["walk → walked", "Ben walked to work yesterday.", "Бен вчера дошёл до работы пешком."],
+    ["finish → finished", "We finished the task last night.", "Мы закончили задачу вчера вечером."],
+    ["live → lived", "She lived in Denver last year.", "В прошлом году она жила в Денвере."]
+  ],
+  "tip": "Не пишите She clean yesterday или She was cleaned, если хотите сказать «Она убрала вчера». Для действия нужен cleaned: She cleaned yesterday.",
+  "review": "Вспомните из урока №5 два обычных дела и назовите их с yesterday. Затем сравните с уроком №16: I was at home — состояние; I cleaned my room — действие.",
+  "summary": "Я нахожу завершённые действия в дневнике и записываю, кто что сделал в указанный прошедший день, с формами на -ed или -d.",
+  "choice": [
+    ["monday-floor", "Какое дело Лео выполнил в понедельник?", "Last week, Leo wrote: Tuesday: I cleaned the kitchen. Monday: I walked to the store. Wednesday: I watched a show.", ["He cleaned the kitchen.", "He walked to the store.", "He watched a show."], 1, "В строке Monday записано walked to the store. Уборка кухни относится ко вторнику, а передача — к среде."],
+    ["tuesday-call", "Что Нина сделала во вторник?", "Last week, Nina wrote: Wednesday: I called Dad. Monday: I cleaned my room. Tuesday: I called my sister.", ["She called her sister.", "She called her dad.", "She cleaned her room."], 0, "Во вторник Нина позвонила сестре. Звонок папе был в среду. My sister в записи Нины становится her sister в сообщении о ней."],
+    ["finished-time", "Выберите предложение о завершённом вчера действии.", "Запись в дневнике: вчера Оуэн закончил задачу.", ["Owen finishes the task every day.", "Owen is at work now.", "Owen finished the task yesterday."], 2, "Yesterday указывает на завершённое прошлое; finish получает -ed. Every day описывает привычку, now — настоящее."],
+    ["lived-spelling", "Выберите правильную форму live для записи о прошлом.", "Last year, we ___ in Boston.", ["liveed", "lived", "lives"], 1, "В live уже есть конечная e, поэтому добавляем только d: lived."],
+    ["night-viewing", "Выберите запись о просмотре передачи вчера вечером.", "Ситуация: Эйва посмотрела передачу вчера вечером.", ["Ava watched a show last night.", "Ava watches a show every night.", "Ava called a friend last night."], 0, "Watched a show — посмотрела передачу; last night задаёт прошедший вечер. Watches описывает привычку."]
+  ],
+  "blank": [
+    ["river-walk", "Поставьте walk в прошедшее время. Введите только пропуск.", "We ___ to the river yesterday.", ["walked"], "Walk — правильный глагол: walk + ed = walked. Yesterday указывает на прошлое."],
+    ["desk-cleaning", "Поставьте clean в прошедшее время. Введите только пропуск.", "I ___ my desk on Monday.", ["cleaned"], "К clean добавляем -ed: cleaned. Форма с I такая же, как с he или we."],
+    ["aunt-call", "Поставьте call в прошедшее время. Введите только пропуск.", "Sam ___ his aunt last night.", ["called"], "Call → called. Удвоенная l уже есть в исходном слове; добавляем ed."],
+    ["movie-watching", "Поставьте watch в прошедшее время. Введите только пропуск.", "They ___ a movie yesterday.", ["watched"], "Watch → watched: для утверждения о прошлом окончание -s не нужно даже после he или she."],
+    ["homework-finish", "Поставьте finish в прошедшее время. Введите только пропуск.", "Ella ___ her homework last night.", ["finished"], "Finish → finished. Last night означает вчера вечером или ночью, поэтому нужна прошедшая форма."]
+  ],
+  "written": [
+    ["diary-room", "Добавьте строку от I: clean my room в прошлом; yesterday поставьте в конце. Не добавляйте других слов.", "Дневник: вчера я убрал свою комнату.", ["I cleaned my room yesterday."], "Порядок: I + cleaned + my room + yesterday. Cleaned уже выражает прошлое."],
+    ["diary-mom", "Добавьте строку от I: call Mom в прошлом; last night поставьте в конце. Не добавляйте других слов.", "Дневник: вчера вечером я позвонил маме.", ["I called Mom last night."], "Call получает -ed: called. В американском английском Mom без my употребляется как семейное имя."],
+    ["leo-store", "Составьте строку в порядке Leo / walk to the store / yesterday. Измените только время глагола.", "Лео вчера сходил до магазина пешком.", ["Leo walked to the store yesterday."], "После Leo нужна та же прошедшая форма walked, что и после I; walks относится к настоящему."],
+    ["group-task", "Добавьте запись за нужный день. Начните с We, используйте finish the task в прошлом, в конце поставьте on + день недели. Больше слов не добавляйте.", "Last week: Thursday — start the task; Friday — finish the task. Добавьте запись о завершении.", ["We finished the task on Friday."], "Finish получает -ed. Задачу начали в четверг, а закончили в пятницу: on Friday."],
+    ["tess-show", "Добавьте запись за нужный день. Начните с Tess, используйте watch a show в прошлом, в конце поставьте on + день недели. Больше слов не добавляйте.", "Last week: Saturday — call Nina; Sunday — watch a show. Добавьте запись о просмотре.", ["Tess watched a show on Sunday."], "Просмотр относится к Sunday, а звонок — к Saturday. Измените watch на watched и поставьте перед Sunday предлог on."]
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "number": 106,
+  "title": "Сумма в счёте не совпадает",
+  "subtitle": "A duplicate charge",
+  "goal": "Найти повторное начисление в вымышленном счёте, выписать верную сумму и попросить проверку конкретной услуги.",
+  "intro": "После ремонта велосипеда вы сравниваете прайс и счёт. Услуга выполнена один раз, но одна строка повторилась. Сохраните верные факты в обращении.",
+  "example": "Price list: tire repair $18; chain cleaning $12. Work completed: one of each. Bill: tire repair $18; chain cleaning $12; chain cleaning $12. Total $42. I was charged twice for chain cleaning. Could you check the charge for chain cleaning?",
+  "translation": "Прайс: ремонт шины 18 долларов; чистка цепи 12 долларов. Выполнено: по одной услуге. Счёт: ремонт шины 18; чистка цепи 12; чистка цепи 12. Итого 42 доллара. Вы дважды взяли с меня плату за чистку цепи. Не могли бы вы проверить начисление за чистку цепи?",
+  "theory": "Charge — начисление или начислять плату; charged twice — начислили дважды; a duplicate charge — повторное начисление; correct amount — верная сумма; check the bill — проверить счёт. Price list — прайс; quoted amount — названная цена; displayed total — показанный итог.\nYou charged me twice for chain cleaning — сообщение о прошлом: charged, затем me, twice и for + услуга. I was charged twice for chain cleaning — «с меня дважды взяли плату за чистку цепи». Эта готовая формулировка описывает проблему без указания, кто внёс начисление. Сохраните название услуги в просьбе: Could you check the charge for chain cleaning? После Could you нужен check без -ed.\nСравните выполненную работу, цену за одну услугу и строки счёта. Две одинаковые строки не всегда ошибка: нужно знать, что услуга выполнена один раз. Суммируйте только нужные услуги. В США $18 означает 18 долларов, $18.50 — 18 долларов 50 центов; десятичный разделитель — точка. The correct total is $30 — верный итог 30 долларов.",
+  "rows": [
+    [
+      "charged … twice for …",
+      "You charged me twice for chain cleaning.",
+      "Вы дважды начислили мне плату за чистку цепи."
+    ],
+    [
+      "Could you check …?",
+      "Could you check the charge for tire repair?",
+      "Не могли бы вы проверить начисление за ремонт шины?"
+    ],
+    [
+      "The correct total is …",
+      "The correct total is $30.",
+      "Верный итог — 30 долларов."
+    ]
+  ],
+  "tip": "Не пишите Could you checked: правильно Could you check. Сохраняйте верную цену единицы; ошибка может быть в числе строк, а не в цене.",
+  "review": "Из #26 вспомните $ и точку, из #50 — цену за единицу и итог, из #63 — кто выполняет просьбу, из #99 — исправление только ошибочного факта. Сверьте услугу и количество.",
+  "summary": "Я могу найти дублированную строку, назвать верную сумму и попросить проверить счёт, сохранив название услуги.",
+  "choice": [
+    [
+      "duplicate-line",
+      "Выберите повторно начисленную услугу.",
+      "Work: one tire repair, one chain cleaning. Prices: $18 and $12. Bill: tire repair $18; chain cleaning $12; chain cleaning $12.",
+      [
+        "Tire repair",
+        "Chain cleaning",
+        "Both services"
+      ],
+      1,
+      "Chain cleaning указана дважды при одной выполненной чистке."
+    ],
+    [
+      "correct-total",
+      "Выберите верный итог по прайсу и объёму работы.",
+      "Work: one key copy and one lock check. Price list: key copy $6; lock check $14. Bill total: $26, with key copy listed twice.",
+      [
+        "$26",
+        "$14",
+        "$20"
+      ],
+      2,
+      "6 + 14 = 20; лишние 6 долларов появились из повторной строки."
+    ],
+    [
+      "preserve-price",
+      "Выберите верное описание ошибки.",
+      "One screen cleaning completed. Quoted price: $9. Bill: screen cleaning $9; screen cleaning $9.",
+      [
+        "The price is correct, but the service is listed twice.",
+        "The service costs $18 each.",
+        "The service was not completed."
+      ],
+      0,
+      "Цена одной чистки совпадает с прайсом; ошибка в повторе начисления."
+    ],
+    [
+      "targeted-request",
+      "Выберите просьбу о нужном начислении.",
+      "Work: one brake check and one tire repair. Bill: brake check $15; tire repair $20; tire repair $20.",
+      [
+        "Could you check the charge for the brake check?",
+        "Could you check the charge for tire repair?",
+        "Could you cancel the brake check?"
+      ],
+      1,
+      "Дублирован tire repair; просьба должна называть именно эту услугу."
+    ],
+    [
+      "two-valid-items",
+      "Выберите вывод по количеству.",
+      "Work: two key copies. Price: $5 each. Bill: key copy $5; key copy $5. Total $10.",
+      [
+        "One charge is a duplicate.",
+        "The correct total is $5.",
+        "The bill matches the work."
+      ],
+      2,
+      "Две выполненные копии оправдывают две строки по $5."
+    ]
+  ],
+  "blank": [
+    [
+      "quoted-price",
+      "Впишите только цену одной услуги со знаком $. Перепишите её из прайса или добавьте .00.",
+      "Price list: zipper repair $16. Work: one zipper repair. Bill: zipper repair $16; zipper repair $16. Total: $32. Correct charge for one zipper repair: ___.",
+      [
+        "$16",
+        "$16.00"
+      ],
+      "Прайс задаёт цену одной услуги $16; $32 — показанный итог."
+    ],
+    [
+      "correct-sum",
+      "Впишите только верный итог со знаком $.",
+      "Work: one bag repair at $24 and one strap adjustment at $8. Bill repeats strap adjustment. Correct total: ___.",
+      [
+        "$32",
+        "$32.00"
+      ],
+      "24 + 8 = 32; повторную регулировку не добавляем."
+    ],
+    [
+      "twice-word",
+      "Впишите только слово со значением «дважды».",
+      "One watch cleaning completed; two watch cleaning charges. You charged me ___ for watch cleaning.",
+      [
+        "twice"
+      ],
+      "Twice обозначает два начисления за одну выполненную услугу."
+    ],
+    [
+      "request-verb",
+      "Впишите только форму check.",
+      "Could you ___ the bill for my shoe repair?",
+      [
+        "check"
+      ],
+      "После Could you нужен глагол без окончаний."
+    ],
+    [
+      "decimal-price",
+      "Впишите только цену из прайса в американской записи со знаком $.",
+      "Price list: battery test $8; phone cleaning $14.50. Work: one of each. Bill: battery test $8; phone cleaning $14.50; phone cleaning $14.50. Correct charge for one phone cleaning: ___.",
+      [
+        "$14.50"
+      ],
+      "Одна чистка телефона стоит $14.50 по прайсу. Точка отделяет доллары от центов."
+    ]
+  ],
+  "written": [
+    [
+      "report-cleaning",
+      "Начните You charged me twice for; назовите повторную услугу словами из счёта.",
+      "Work: one lens cleaning. Bill: lens cleaning $11; lens cleaning $11.",
+      [
+        "You charged me twice for lens cleaning."
+      ],
+      "Charged сообщает о прошлом; for вводит услугу lens cleaning."
+    ],
+    [
+      "check-duplicate",
+      "Начните Could you check the charge for; назовите только повторную услугу.",
+      "Work: one wheel alignment, one brake adjustment. Bill: wheel alignment $25; brake adjustment $10; brake adjustment $10.",
+      [
+        "Could you check the charge for brake adjustment?"
+      ],
+      "Повторяется brake adjustment, а wheel alignment начислен один раз."
+    ],
+    [
+      "state-total",
+      "Начните The correct total is; используйте сумму со знаком $.",
+      "Work: one keyboard cleaning at $13 and one cable check at $7. Bill adds cable check twice.",
+      [
+        "The correct total is $20.",
+        "The correct total is $20.00."
+      ],
+      "13 + 7 = 20; лишняя строка cable check не входит в верный итог."
+    ],
+    [
+      "check-bill",
+      "Напишите только короткую просьбу проверить весь счёт. Используйте Could you check и the bill, без добавлений.",
+      "The service desk asks what help you need with a duplicate charge.",
+      [
+        "Could you check the bill?"
+      ],
+      "Could you check the bill? — просьба выполнить проверку, а не утверждение о её результате."
+    ],
+    [
+      "report-and-request",
+      "Напишите два предложения. Начните с I was charged twice for или You charged me twice for и назовите услугу. Затем начните с Could you check the charge for и повторите название услуги из счёта.",
+      "Price list: battery test $8; phone cleaning $14.50. Work: one of each. Bill: battery test $8; phone cleaning $14.50; phone cleaning $14.50.",
+      [
+        "I was charged twice for phone cleaning. Could you check the charge for phone cleaning?",
+        "You charged me twice for phone cleaning. Could you check the charge for phone cleaning?"
+      ],
+      "Чистка телефона начислена дважды, хотя её сделали один раз. Оба предложения должны называть phone cleaning. Проверка батареи начислена верно."
+    ]
+  ]
+}

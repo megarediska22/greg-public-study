@@ -25,13 +25,13 @@ export function HomePage() {
       </div>
     </section>
     <section className="levels-section" aria-labelledby="levels-title">
-      <div className="section-heading"><div><h2 id="levels-title">Ваш путь в английском</h2><p>Начните с основ. Остальные уровни появятся позже.</p></div><span className="muted">4 уровня · один понятный путь</span></div>
+      <div className="section-heading"><div><h2 id="levels-title">Ваш путь в английском</h2><p>Начните с основ и двигайтесь к повседневным задачам A2.</p></div><span className="muted">4 уровня · один понятный путь</span></div>
       <div className="level-grid">
-        {['A1', 'A2', 'B1', 'B2'].map((level, i) => <article className={`level-card ${i === 0 ? 'level-available' : ''}`} key={level}>
-          <div className="level-card-top"><span className="level-number">{level}</span><span className={`pill ${i === 0 ? 'pill-accent' : ''}`}>{i === 0 ? 'Доступен' : 'Скоро'}</span></div>
+        {['A1', 'A2', 'B1', 'B2'].map((level, i) => <article className={`level-card ${i < 2 ? 'level-available' : ''}`} key={level}>
+          <div className="level-card-top"><span className="level-number">{level}</span><span className={`pill ${i < 2 ? 'pill-accent' : ''}`}>{i === 0 ? 'Доступен' : i === 1 ? 'По порядку после A1' : 'Скоро'}</span></div>
           <h3>{['Самое начало', 'Больше уверенности', 'Свобода общения', 'Новый горизонт'][i]}</h3>
           <p>{['Базовая грамматика и первые фразы о себе.', 'Повседневные ситуации и простые диалоги.', 'Разговоры, мнения и самостоятельность.', 'Точные формулировки и сложные темы.'][i]}</p>
-          {i === 0 ? <a className="text-link" href="#/course/a1">Посмотреть {formatLessonCount(lessons.length)} <Icon name="arrow" /></a> : <span className="upcoming"><Icon name="lock" /> В разработке</span>}
+          {i < 2 ? <a className="text-link" href={`#/course/${level.toLowerCase()}`}>Посмотреть {formatLessonCount(lessons.filter(entry => (entry.level ?? entry.lesson?.level) === level).length)} <Icon name="arrow" /></a> : <span className="upcoming"><Icon name="lock" /> В разработке</span>}
         </article>)}
       </div>
     </section>

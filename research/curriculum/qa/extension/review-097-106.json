@@ -1,0 +1,145 @@
+[
+  {
+    "number": 97,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "cool-pier: the light jacket meets the stated cold-weather need; an adapter addresses the outlet problem in outlet-shape. advise-jacket transfers the match to a written should + pack recommendation.",
+    "correctedIds": [
+      "cool-pier",
+      "cool-cabin",
+      "advise-jacket",
+      "advise-sister"
+    ],
+    "sha256": "1c2a0275b0852d28568df230a86eb7a1b3936c12c995f2f86ebc0b659b66841f"
+  },
+  {
+    "number": 98,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "propose-art-time-reason: the indoor art museum starts at noon within both schedules, and both like art. The sculpture garden is outdoors and the photo gallery starts too early.",
+    "correctedIds": [
+      "shared-saturday",
+      "museum-alternative",
+      "shared-reason-gap",
+      "propose-garden-time",
+      "propose-art-time-reason"
+    ],
+    "sha256": "7c0c6db62ccd5078ad43d123c9939213a0847791d8a53f50287c37375f9c6278"
+  },
+  {
+    "number": 99,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "preserve-equal-price: keep as cheap as at $88 each and replace closer with farther or further, because 4 miles exceeds 2.",
+    "correctedIds": [
+      "preserve-equal-price",
+      "state-equal-cost"
+    ],
+    "sha256": "598f1db4e1d1c8228234292b360e33e654b2602fc3898ce18b92d628a1e2f88a"
+  },
+  {
+    "number": 100,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "message-choice-field / message-reason-field / message-action-field: Cedar has four beds and costs $185 within $200; Hill costs $240. The request preserves Thursday and leaves booking to the sender.",
+    "correctedIds": [
+      "clear-reference",
+      "message-choice-field",
+      "message-reason-field",
+      "message-action-field"
+    ],
+    "sha256": "f25147a176c2d3485b2c6392a69b9046b332a3ba5e84d386a2001761afbd8ef7"
+  },
+  {
+    "number": 101,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "Each marked item is independently solvable from its own prompt. (1) exit-feasible-trip: B alone meets the $400 budget, 6 p.m. cutoff and four-bed requirement. (2) exit-capacity-check: B has four beds and C has only three. (3) exit-budget-remainder: $400 minus $395 leaves $5. (4) exit-actionable-recommendation: recommend B for its capacity and request a reply by noon. (5) exit-preserve-late-contrast: A is cheaper by $60 but arrives 30 minutes late. (6) exit-request-reply: ask to book D, since cheaper E misses the new deadline. The intro and summary give a first-attempt self-check of at least 5/6 including 1, 2 and 4, with instructions for recording results and matching mistake-review answer samples. Verified that progression requires all 15 correct, including after retries, and completion of the review and summary even when the first-attempt target is missed. Question tuples and previously corrected IDs are preserved.",
+    "correctedIds": [
+      "compare-three-costs",
+      "arrival-cutoff",
+      "budget-vs-capacity",
+      "exit-feasible-trip",
+      "exit-capacity-check",
+      "trip-cost-direction",
+      "beds-gap",
+      "advice-choose-form",
+      "cheap-late-link",
+      "exit-budget-remainder",
+      "repair-cheapest-claim",
+      "arrival-request",
+      "exit-actionable-recommendation",
+      "exit-preserve-late-contrast",
+      "exit-request-reply"
+    ],
+    "sha256": "1da2187d0b5cf13734406958b8d6898d85b0be69cbd0a0db3b5328a1dc652b00"
+  },
+  {
+    "number": 102,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "relevant-code: E3 opens tray 1, loads paper and presses Start in order; E9 is the restart branch. relay-branch independently requires opening tray 3 for B2.",
+    "correctedIds": [
+      "paper-branch",
+      "second-marker",
+      "relay-prohibition",
+      "relay-branch"
+    ],
+    "sha256": "973af747f5275b207885dfa947a13e0a9a17c07f46b7affd836291551e37f1e4"
+  },
+  {
+    "number": 103,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "leak-sentence / access-sentence / visit-request: the bathroom faucet drips while off; Wednesday 8–10 a.m. is the access window, followed by a repair visit request. The kitchen heater is already fixed.",
+    "correctedIds": [
+      "pending-heater",
+      "complete-request",
+      "fault-sentence",
+      "leak-sentence",
+      "access-sentence",
+      "visit-request",
+      "three-fields"
+    ],
+    "sha256": "f49e14986e02d3a0ac319f05b09aabe9c83150dda01e035687cd8e7ab2f96135"
+  },
+  {
+    "number": 104,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "move-haircut / reply-fields: Owen Hill keeps the haircut on July 7 at 10 a.m.; the 4 p.m. offer is color service only.",
+    "correctedIds": [
+      "notice-deadline",
+      "move-haircut",
+      "keep-service",
+      "reply-fields"
+    ],
+    "sha256": "bb4b71c9d9d68997b3efee37beaf41eebdaab44dfd03846822fbb1a16df9d4ad"
+  },
+  {
+    "number": 105,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "ask-color: A matches the stripes and two pockets; C has one pocket and a different color. What color is it? asks only for A’s missing detail.",
+    "correctedIds": [
+      "notice-id",
+      "ask-inside-name",
+      "ask-color"
+    ],
+    "sha256": "cd84fdb61388804e67b0ccf7a99fe41eddf7b1b4d864c05a253dbc62e889f02a"
+  },
+  {
+    "number": 106,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "decimal-price / report-and-request: the correctly quoted phone cleaning charge is $14.50 and the request names that duplicated service. The $8 battery test appears once and is valid.",
+    "correctedIds": [
+      "targeted-request",
+      "quoted-price",
+      "decimal-price",
+      "check-bill",
+      "report-and-request"
+    ],
+    "sha256": "cfab72abbf828ea7b5e3f7d71991ffb48c335df374d948dda158db59bcfc3cd8"
+  }
+]

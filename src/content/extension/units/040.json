@@ -1,0 +1,40 @@
+{
+  "number": 40,
+  "title": "Подпись к фотографии",
+  "subtitle": "A photo caption",
+  "goal": "Дважды различить описание снимка и прошлое событие, затем написать подпись, сохранив человека, место и время.",
+  "intro": "Вы готовите подписи к семейному альбому. Самих изображений в заданиях нет: все нужные детали даны в нумерованных описаниях фотографий.",
+  "example": "Photo 6: This is my cousin Rose. She is reading in the park. I took this photo last summer. That cafe in the background was closed that day.",
+  "translation": "Фото 6: Это моя двоюродная сестра Роуз. Она читает в парке. Я сделал этот снимок прошлым летом. То кафе на заднем плане в тот день было закрыто.",
+  "theory": "Snapshot — снимок, обычно неформальная фотография; photo — фотография; caption — подпись к ней; picnic — пикник. In the background — на заднем плане. Last summer — прошлым летом, без предлога. Take a photo — сфотографировать; took this photo — сделал этот снимок. Это обычные выражения американского английского.\nМожно описывать то, что видно на фотографии, в настоящем времени, даже если она старая: This is my cousin. She is reading. Для действия на изображении используем am/is/are + глагол с -ing: They are having a picnic — они на пикнике. Have a picnic → having a picnic.\nЕсли рассказываем о завершённом событии с last summer или yesterday, используем прошлое: We had a picnic last summer; I took this photo yesterday. Слова в задании определяют, описываем ли мы изображение сейчас или вспоминаем событие. Нельзя ставить is taking вместо took в сообщении о завершённой съёмке вчера.\nThis указывает на этот снимок или человека, которого показываем: This is my brother. That — на тот, более удалённый объект: That house in the background is small. Для подписи из трёх фактов удобно: человек + действие + место + время. Например, Leo played soccer at the park last Sunday. В американском английском soccer — футбол.",
+  "rows": [
+    ["This is ...", "This is my aunt at the beach.", "Это моя тётя на пляже."],
+    ["is/are + -ing", "They are having a picnic in the photo.", "На фотографии они на пикнике."],
+    ["took this photo", "I took this photo in Denver last summer.", "Я сделал этот снимок в Денвере прошлым летом."],
+    ["that ... in the background", "That building in the background is a school.", "То здание на заднем плане — школа."]
+  ],
+  "tip": "О завершённой съёмке: I took this photo last summer, а не I take this photo last summer. О том, что видно: She is reading in the photo. Выбирайте время по смыслу подписи.",
+  "review": "Повторите this/that из №9, is/are + -ing из №14 и указатели времени из №15. Из №21 вспомните занятия на отдыхе, из №33 — took и saw. Перед ответом выпишите три обязательных факта подписи: кто, где, когда.",
+  "summary": "Я могу выбрать время для описания снимка или прошлого события, указать объект через this/that и написать подпись с человеком, местом и временем.",
+  "choice": [
+    ["picnic-visible-now", "Выберите описание того, что видно на снимке. Используйте настоящее время.", "Photo 11: two friends; a picnic in a park. Describe the people in the photo, not the day the photo was taken.", ["They had a picnic last summer.", "They are having a picnic in the park.", "They have a picnic every Sunday."], 1, "Для действия на изображении подходит are having. Had рассказывает о прошлом событии, every Sunday — о привычке."],
+    ["finished-photo-event", "Выберите подпись о завершённой съёмке вчера.", "Photo 12: photographer — me; place — Boston; time — yesterday.", ["I take this photo in Boston every day.", "I am taking this photo in Boston now.", "I took this photo in Boston yesterday."], 2, "Yesterday обозначает завершённое событие, поэтому нужна форма took, а не take или am taking."],
+    ["background-reference", "Выберите подпись про удалённый объект на заднем плане.", "Photo 13: a small, distant white house in the background; no other buildings. Use that.", ["That white house in the background is small.", "This white house near me is small.", "Those white houses in the background are small."], 0, "That указывает на один удалённый дом. Those требует нескольких домов, this near me обозначает близкий объект."],
+    ["caption-preserve-facts", "Выберите подпись, которая сохраняет человека, место и время.", "Photo 14: person — Nora; place — Seattle; trip — last summer.", ["Nora was in Seattle yesterday.", "Nora was in Seattle last summer.", "Nora was in Boston last summer."], 1, "Только второй вариант сохраняет все три факта: Нора, Сиэтл, прошлое лето."],
+    ["snapshot-meaning", "Выберите значение слова snapshot в записке об альбоме.", "Album note: This snapshot shows our family at a picnic.", ["Расписание поездки", "Список гостей", "Снимок"], 2, "Snapshot — снимок, обычно неформальная фотография. В записке он показывает семью на пикнике."]
+  ],
+  "blank": [
+    ["took-denver-photo", "Впишите только прошедшую форму take.", "I ___ this photo in Denver last July. (take)", ["took"], "Last July указывает на завершённую съёмку. Прошедшая форма take — took."],
+    ["photo-action-reading", "Впишите только форму read с окончанием -ing.", "Photo 21: Mina is ___ under a tree. (read)", ["reading"], "После is для действия на снимке нужна форма reading: is reading — читает."],
+    ["summer-time-preposition", "Впишите только недостающее слово в выражении «прошлым летом».", "Photo 22: We visited the lake ___ summer. (last / in)", ["last"], "Last summer означает «прошлым летом». Предлог перед last не нужен; in summer означает просто «летом»."],
+    ["background-chunk", "Впишите только предлог в выражении «на заднем плане».", "Photo 23: That bus ___ the background is red.", ["in"], "Устойчивое сочетание — in the background. Оно обозначает расположение объекта на изображении."],
+    ["picnic-past-have", "Впишите только прошедшую форму have.", "Photo 24: We ___ a picnic by the river last Saturday. (have)", ["had"], "Last Saturday задаёт прошлое: have a picnic → had a picnic."]
+  ],
+  "written": [
+    ["caption-three-facts", "Напишите одну подпись к фото 31. Начните с имени; затем поставьте be в прошлом, город с in и время съёмки из записи, без дополнительных слов.", "Photo 31: Ava in Chicago; taken last summer. Photo 36: Ava in Boston; taken last Sunday.", ["Ava was in Chicago last summer."], "Подпись сохраняет Ava, in Chicago и last summer. Для места человека в прошлом используем was."],
+    ["caption-visible-soccer", "Опишите действие на изображении сейчас. Начните с My brother; используйте is, play с -ing, soccer и in the park, в этом порядке.", "Photo 32: ваш брат играет в футбол в парке.", ["My brother is playing soccer in the park."], "Действие на снимке описывается через is playing. Soccer — обычное американское слово для футбола."],
+    ["caption-photographer", "Сообщите о съёмке. Начните с I; используйте take в прошлом и this photo, после них укажите город с in и время из описания.", "Photo 33: I was the photographer. Place — Miami. Time — yesterday.", ["I took this photo in Miami yesterday."], "Завершённое действие с yesterday требует took. This photo указывает на снимок, который показываем."],
+    ["caption-distant-cafe", "Подпишите удалённый объект. Начните с That cafe; затем in the background, is и quiet, в этом порядке.", "Photo 34: кафе на заднем плане; подпись сообщает, что это тихое место.", ["That cafe in the background is quiet."], "That относится к удалённому кафе. In the background уточняет, где оно находится на снимке; is quiet описывает место."],
+    ["caption-past-picnic", "Напишите о прошлом событии. Начните с We; используйте have в прошлом, a picnic, at the beach и last Sunday, в этом порядке.", "Photo 35: вы с друзьями; пикник на пляже; прошлое воскресенье.", ["We had a picnic at the beach last Sunday."], "Прошедшая форма have — had. At the beach сообщает место, last Sunday — время без предлога."]
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "number": 45,
+  "title": "Заказ для компании",
+  "subtitle": "Ordering for two",
+  "goal": "Распределить блюда между двумя гостями и сохранить их пожелания в четырёх полях заказа.",
+  "intro": "Вы заказываете обед на двоих. Важно передать сотруднику кафе не только названия блюд, но и то, кому нужен соус, а кому еда с собой.",
+  "example": "A: I'd like one sandwich for each guest. One with cheese for Maya and one without cheese for Ben.\nB: For here?\nA: Maya's is for here. Ben's is to go.",
+  "translation": "А: Я хочу заказать по одному сэндвичу каждому гостю. Один с сыром для Майи и один без сыра для Бена.\nБ: Здесь будете есть?\nА: Майя будет есть здесь. Бен возьмёт с собой.",
+  "theory": "В американском кафе I'd like… — вежливое «я хотел бы заказать…»; полная форма I would like тоже верна. Can I have…? — ещё один обычный способ заказать. A bowl of soup — миска супа; bowl обозначает миску, в которой подают порцию. A refill — повторная порция напитка или долив; a side — гарнир или небольшое дополнение к блюду; dressing — заправка для салата. Условия и цена refill зависят от кафе: читайте конкретный заказ или меню.\n\nWith означает «с», without — «без»: a sandwich with cheese, a salad without dressing. On the side — отдельно, не внутри блюда: dressing on the side — заправка отдельно. Это не то же самое, что without dressing: при on the side заправку всё же дают.\n\nEach — каждый. One sandwich for each guest означает по одному сэндвичу каждому гостю. Для двух гостей это два сэндвича. Чтобы распределить разные блюда, добавляйте имя: soup for Nina, a salad for Omar.\n\nTo go — обычное американское выражение «с собой»; for here — «есть здесь». При записи заказа сохраняйте и имя, и изменение: a salad without dressing for Nina. Если в задании требуется строка талона без просьбы, достаточно такого словосочетания. Если требуется вежливая просьба, используйте заданное начало.",
+  "rows": [
+    ["one ... for each", "I'd like one cup of coffee for each guest.", "Я хотел бы заказать по чашке кофе каждому гостю."],
+    ["without", "A salad without dressing for Leo, please.", "Салат без заправки для Лео, пожалуйста."],
+    ["on the side", "Can I have the dressing on the side?", "Можно заправку отдельно?"],
+    ["to go", "I'd like a sandwich to go.", "Я хотел бы заказать сэндвич с собой."]
+  ],
+  "tip": "Не путайте without dressing и dressing on the side: в первом случае заправку не дают, во втором подают отдельно. To go относится к способу получения еды, а не к ингредиентам.",
+  "review": "Повторите просьбы I'd like и Can I have из №19. Из №42 вспомните количество порций: объясните, сколько чашек нужно двум гостям, если каждому нужна одна. В первых двух письменных заданиях проверьте четыре факта: блюдо и пожелание Норы, блюдо и пожелание Луиса.",
+  "summary": "Вы можете распределить заказ между двумя людьми, указать with/without, отличить заправку отдельно от её отсутствия и сохранить пометку to go.",
+  "choice": [
+    ["nina-item", "Выберите блюдо Нины с её изменением.", "Ticket 17 — Nina: salad, no dressing, for here. Omar: soup with bread, to go.", ["soup with bread", "salad with dressing", "salad without dressing"], 2, "У Нины salad и no dressing: это salad without dressing. Суп относится к Омару."],
+    ["omar-service", "Выберите способ получения заказа Омара.", "Service check, ticket 17 — Nina: salad without dressing, for here. Omar: soup with bread, to go.", ["to go", "for here", "on the side"], 0, "В строке Омара стоит to go — с собой. On the side относится к отдельной подаче компонента."],
+    ["two-guest-coffee", "Выберите общее число чашек кофе.", "Ticket 18 — guests: Ava and Luis. One cup of coffee for each guest.", ["one cup", "two cups", "three cups"], 1, "Гостей двое, каждому по одной чашке: всего two cups."],
+    ["dressing-separate", "Выберите просьбу, сохраняющую пожелание Эммы.", "Ticket 19 — Emma wants a salad. She wants dressing in a separate cup, not on the salad.", ["A salad without dressing, please.", "A salad with extra dressing, please.", "A salad with dressing on the side, please."], 2, "Отдельная ёмкость для заправки — dressing on the side; without исключило бы заправку совсем."],
+    ["refill-owner", "Выберите гостя, которому нужен долив кофе.", "Ticket 20 — Jo: a coffee refill. Pat: a side of rice. Kim: a bottle of water.", ["Jo", "Pat", "Kim"], 0, "Refill означает повторную порцию или долив напитка. Заказ Джо — coffee refill, заказ Пэт — гарнир из риса."]
+  ],
+  "blank": [
+    ["nina-modifier", "Впишите только with или without по талону.", "Ticket 17 — Nina: salad, no dressing. A salad ___ dressing for Nina.", ["without"], "No dressing означает отсутствие заправки, поэтому without."],
+    ["omar-modifier", "Впишите только with или without по талону.", "Ticket 17 — Omar: soup, include bread. Soup ___ bread for Omar.", ["with"], "Include bread означает добавить хлеб: with bread."],
+    ["go-gap", "Впишите только пропущенное слово в американском выражении «с собой».", "Ticket 21 — Alex will eat at the office, not in the cafe. The order is to ___.", ["go"], "To go — обычное американское обозначение еды с собой."],
+    ["each-gap", "Впишите только слово со значением «каждому».", "Ticket 22 — two guests, two sandwiches: one sandwich for ___ guest.", ["each"], "Each относится к каждому отдельному гостю: one sandwich for each guest."],
+    ["side-gap", "Впишите только пропущенное слово в выражении «отдельно».", "Ticket 23 — dressing in a separate cup. Dressing on the ___.", ["side"], "On the side означает отдельную подачу, а не полное отсутствие заправки."]
+  ],
+  "written": [
+    ["nina-order-line", "Запишите строку для Норы без глагола и please. Используйте схему «блюдо + with или without + добавка + for + имя». Пишите a salad или soup. Перед добавкой артикль не нужен.", "Ticket 24 — Nora: soup, no bread. Luis: salad, include dressing.", ["Soup without bread for Nora."], "Норе нужен суп, а no bread означает without bread. For Nora связывает блюдо и её пожелание."],
+    ["omar-order-line", "Запишите строку для Луиса без глагола и please. Используйте схему «блюдо + with или without + добавка + for + имя». Пишите a salad или soup. Перед добавкой артикль не нужен.", "Ticket 24 — Nora: soup, no bread. Luis: salad, include dressing.", ["A salad with dressing for Luis."], "У Луиса салат, и заправку нужно добавить: a salad with dressing. For Luis указывает получателя."],
+    ["tess-takeout", "Напишите просьбу: начните с I'd like или I would like, затем a sandwich и to go; без please и добавок.", "Tess's order: one sandwich, to eat at home.", ["I'd like a sandwich to go.", "I would like a sandwich to go."], "To go сохраняет пожелание забрать еду домой; I'd — сокращение I would."],
+    ["two-soups", "Напишите просьбу: начните с I'd like или I would like; используйте one bowl of soup for each guest; без please.", "Table 8: two guests. Each wants one bowl of soup.", ["I'd like one bowl of soup for each guest.", "I would like one bowl of soup for each guest."], "For each guest означает каждому по одной миске супа; для двух гостей получится две миски."],
+    ["dressing-request", "Попросите заправку отдельно: начните с Can I have, затем the dressing и on the side; без please.", "Your salad order: include dressing, but put it in a separate cup.", ["Can I have the dressing on the side?"], "On the side оставляет заправку в заказе, но просит подать её отдельно."]
+  ]
+}

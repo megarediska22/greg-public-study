@@ -1,0 +1,144 @@
+[
+  {
+    "number": 47,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "В only-stock-pair верно Medium, blue: две вещи в наличии. Medium, red совпадает по размеру, но остаток нулевой. В preserve-stock-pair новая просьба сохраняет зелёный цвет и размер M.",
+    "correctedIds": [
+      "plural-ones",
+      "ask-large",
+      "preserve-stock-pair"
+    ],
+    "sha256": "02b2e3e73943fabda95bc229e7d027df9a8b66ee246a340857308824b2e65813"
+  },
+  {
+    "number": 48,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "В exit-eligible Нора может обменять пальто: пять дней, чек и неношеная вещь. В exit-ineligible тот же чек не спасает Бена после 16 дней при лимите 12. В exit-item-reason причина извлекается из заметки о куртке.",
+    "correctedIds": [
+      "purchase-date-gap",
+      "within-period",
+      "scarf-exchange",
+      "exit-item-reason"
+    ],
+    "sha256": "fe602d56e2cc87192f4e68c63d655bddc7ebb310624825df39fdb8ef8714952a"
+  },
+  {
+    "number": 49,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "Для F-083 верны east counter, срок by 6 p.m. и вопрос о приезде в 5 p.m. В valid-arrival-question вариант noon слишком ранний: выдача начинается в час дня.",
+    "correctedIds": [
+      "show-imperative",
+      "exit-location",
+      "exit-deadline",
+      "exit-id",
+      "valid-arrival-question",
+      "release-question"
+    ],
+    "sha256": "e2cc136631e428ffcd8cd49500b7bf27f617f5527112d4d21c4a9ab07baee733"
+  },
+  {
+    "number": 50,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "Счёт 81 даёт $30 всего и $15 с каждого. $2 в exit-each — налог. Для двух оплат картой в separate-card-request подходят by card и with a card.",
+    "correctedIds": [
+      "exit-each",
+      "card-preposition",
+      "cash-preposition",
+      "split-verb",
+      "separate-card-request",
+      "report-person-share"
+    ],
+    "sha256": "723cf0dedf5c7916bc92d099e22aaf74556f3f9aaaf4004a63df0d18a8bb91c0"
+  },
+  {
+    "number": 51,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "Проверены шесть выходных заданий с порогом 5/6 и обязательными exit-product и exit-deadline. A даёт четыре бутылки без молока; B дешевле, но содержит молоко. Для K-584 срок 7 p.m.; стойка закрывается в 8 p.m.",
+    "correctedIds": [
+      "exit-product",
+      "exit-deadline",
+      "stock-and-quantity",
+      "receipt-exchange",
+      "exit-order-id",
+      "exit-unit",
+      "exit-pickup-time",
+      "exit-right-counter",
+      "request-available-pack"
+    ],
+    "sha256": "5629ef9cf1ec991d1a800d080ba4a7e3905825025f4c460e8cce5a64d77c3937"
+  },
+  {
+    "number": 52,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "В shared-saturday-slot оба свободны в воскресенье с 14:00 до 15:00; в субботу с 13:00 до 14:00 Бен занят. Два ответа по заметкам сохраняют музей Авы в субботу и намерение Бена остаться дома в воскресенье утром.",
+    "correctedIds": [
+      "shared-saturday-slot",
+      "home-chunk",
+      "report-ava-saturday",
+      "report-ben-sunday"
+    ],
+    "sha256": "74dc569e16e58e63abdfe2cebe8bfea755126379f78925d9661f34adda175f02"
+  },
+  {
+    "number": 53,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "В relay-june-booking подтверждение задаёт Джун, Пэт, Maple Cafe и 17:00 в среду. В booking-details вариант 10 p.m. меняет утро на вечер. В working-right-now слово now указывает на действие сейчас.",
+    "correctedIds": [
+      "this-no-on",
+      "relay-june-booking",
+      "relay-own-lunch",
+      "contrast-present-work"
+    ],
+    "sha256": "d3c30d0918f1929f45a3f0b464ce8c23e52a643f886a937b22e6362a8cd70da8"
+  },
+  {
+    "number": 54,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "В send-agreed-gate часы указывают на главные ворота; кафе соответствует боковому входу. В direct-from-side ведёт левая дорожка, правая ведёт к озеру. В direct-left-at-cafe проверен маршрут от восточных ворот.",
+    "correctedIds": [
+      "precise-pickup-point",
+      "walking-path-word",
+      "opposite-without-to",
+      "send-agreed-gate",
+      "send-clock-landmark",
+      "direct-from-side",
+      "direct-left-at-cafe"
+    ],
+    "sha256": "7ce61f952e9bb64a58c00a8b856c875bf6cf96923d09522ab9fd28921337e0a4"
+  },
+  {
+    "number": 55,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "В offer-only-grid-slot подходит четверг в 18:00: свободны оба. В current-not-canceled верна среда в 15:00; вторник лишь предложен, понедельник отменён.",
+    "correctedIds": [
+      "exception-grid",
+      "availability-negative",
+      "offer-only-grid-slot",
+      "report-tuesday-conflict",
+      "relay-updated-arrangement"
+    ],
+    "sha256": "c4b238ed086c8d18282c30ccd59ed69db87a94aecb2a09793e32247dc47a9359"
+  },
+  {
+    "number": 56,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "В offer-one-missing-cups подходят стаканчики, вода уже есть. В offer-two-desk-cover предложение cover the front desk отвечает просьбе подменить коллегу. Проверка расписания обещает ответ, а участие ещё не подтверждено.",
+    "correctedIds": [
+      "offer-one-missing-cups",
+      "recover-will-auxiliary",
+      "commit-water-offer",
+      "commit-check-and-reply"
+    ],
+    "sha256": "3ab93844a42becb175c8928966432040c34612a26789ea6b7c1afdaa9b4c8617"
+  }
+]

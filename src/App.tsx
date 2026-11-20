@@ -15,7 +15,7 @@ export function App({ themeStorageKey }: { themeStorageKey?: string } = {}) {
   const match = /^\/lesson\/([^/]+)\/([^/]+)$/.exec(route);
   const entry = lessons.find(item => item.id === match?.[1]);
   const step = entry?.lesson?.steps.find(item => item.id === match?.[2]);
-  const title = route === '/' ? 'Английский с понятного начала' : route === '/course/a1' ? 'Курс A1' : entry ? `${entry.title}${step ? ` — ${step.title}` : ''}` : 'Страница не найдена';
+  const title = route === '/' ? 'Английский с понятного начала' : route === '/course/a1' || route === '/course/a2' ? 'Курс A1 → A2' : entry ? `${entry.title}${step ? ` — ${step.title}` : ''}` : 'Страница не найдена';
   useEffect(() => {
     document.title = `${title} | Greg Public Study`;
     if (previousRoute.current !== route) {
@@ -24,5 +24,5 @@ export function App({ themeStorageKey }: { themeStorageKey?: string } = {}) {
       previousRoute.current = route;
     }
   }, [route, title]);
-  return <><a className="skip-link" href="#main-content" onClick={event => { event.preventDefault(); mainRef.current?.focus(); }}>Перейти к содержимому</a><Header route={route} themeStorageKey={themeStorageKey} /><main id="main-content" className="main-container" tabIndex={-1} ref={mainRef}>{route === '/' ? <HomePage /> : route === '/course/a1' ? <CoursePage /> : entry && match ? <LessonPage key={entry.id} entry={entry} stepId={match[2]} /> : <section className="not-found"><h1>Здесь пока нет страницы</h1><p>Вернитесь к программе и выберите доступный урок.</p><LinkButton href="#/course/a1">К курсу A1</LinkButton></section>}</main><Footer /></>;
+  return <><a className="skip-link" href="#main-content" onClick={event => { event.preventDefault(); mainRef.current?.focus(); }}>Перейти к содержимому</a><Header route={route} themeStorageKey={themeStorageKey} /><main id="main-content" className="main-container" tabIndex={-1} ref={mainRef}>{route === '/' ? <HomePage /> : route === '/course/a1' || route === '/course/a2' ? <CoursePage level={route === '/course/a2' ? 'A2' : undefined} /> : entry && match ? <LessonPage key={entry.id} entry={entry} stepId={match[2]} /> : <section className="not-found"><h1>Здесь пока нет страницы</h1><p>Вернитесь к программе и выберите доступный урок.</p><LinkButton href="#/course/a1">К курсу A1</LinkButton></section>}</main><Footer /></>;
 }

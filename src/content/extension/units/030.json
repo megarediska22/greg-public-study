@@ -1,0 +1,40 @@
+{
+  "number": 30,
+  "title": "Короткая записка о возвращении",
+  "subtitle": "Back-at Notes",
+  "goal": "Извлечь время возвращения и текущее место из записки и составить новую строку по другим данным.",
+  "intro": "На стойке никого нет, но лежит записка. Она поможет понять, где сотрудник сейчас и когда ждать его обратно.",
+  "example": "Desk note: I'm at the cafe until 1 p.m. Back at 1:15 p.m. — Kate\nVisitor: Kate is at the cafe. She'll be back at 1:15 p.m.",
+  "translation": "Записка на столе: Я в кафе до часа дня. Вернусь в 13:15. — Кейт\nПосетитель: Кейт в кафе. Она вернётся в 13:15.",
+  "theory": "Away — отсутствует, не на месте. Back at + время — короткая формула записки «Вернусь в…»: Back at 2 p.m. Если вы объясняете записку другому человеку, She'll be back at 2 p.m. означает «Она вернётся в два». Для своей короткой записки достаточно Back at 2 p.m.\nI'm at the cafe — я сейчас в кафе. At с местом обозначает местонахождение, а at со временем — точный момент: at 2 p.m. Until обозначает продолжительность до границы: I'm at the cafe until 1 p.m. Из этого нельзя вывести точный час возвращения к столу: дорога может занять время. Ищите отдельное Back at.\nBack soon — скоро вернусь; soon не сообщает точный час. Leave a note — оставьте записку. Если точного времени нет, не придумывайте его. В американском формате сохраняйте a.m. для утра и p.m. для времени после полудня.\nДля краткой новой записки сначала выберите нужный факт: текущее место — I'm at…; точное возвращение — Back at + время. Не копируйте время ухода вместо возвращения. Если просят только короткую строку Back at, не добавляйте имя или место.",
+  "rows": [
+    ["Back at + time", "Back at 3:20 p.m.", "Вернусь в 3:20 дня."],
+    ["I'm at + place", "I'm at the front desk.", "Я у стойки регистрации."],
+    ["until + time", "I'm at the store until 10 a.m.", "Я в магазине до 10 утра."],
+    ["back soon", "I'm away. Back soon.", "Меня нет на месте. Скоро вернусь."]
+  ],
+  "tip": "Не считайте until 2 p.m. обещанием вернуться ровно в 2: это конец пребывания в указанном месте. Если записка добавляет Back at 2:10 p.m., время возвращения — 2:10.",
+  "review": "Вспомните am/is из №1, at + время из №20 и a.m./p.m. из №22. Как в №24, отдельно найдите уход и возвращение; выпишите только тот факт, который спрашивают.",
+  "summary": "Вы можете отличить текущее место от часа возвращения, заметить отсутствие точного времени и оставить короткую записку по новым данным.",
+  "choice": [
+    ["return-not-until", "Когда Роза будет снова у стола?", "Rosa's desk: I'm at the store until 10 a.m. Back at 10:20 a.m.", ["At 10 a.m.", "At 10:20 a.m.", "At 10:20 p.m."], 1, "Back at указывает возвращение в 10:20 утра. Until 10 a.m. относится к пребыванию в магазине."],
+    ["current-place", "Где сейчас Дэн?", "Dan's note: I'm at the front desk until noon. Back at 12:10 p.m.", ["At the front desk", "At the cafe", "At his own desk"], 0, "I'm at the front desk сообщает текущее место. Возвращение к своему столу указано отдельно."],
+    ["soon-no-clock", "Что известно о возвращении?", "Desk note: Away. Back soon. Please leave a note.", ["Back at 2 p.m.", "Back at noon", "No exact return time"], 2, "Soon означает «скоро», но точного времени нет. Leave a note предлагает оставить записку."],
+    ["point-vs-span", "Какой смысл у until в этой записке?", "I'm at the library until 4 p.m. Back at 4:30 p.m.", ["Return at 4 p.m.", "At the library up to 4 p.m.", "Leave the desk at 4:30 p.m."], 1, "Until 4 p.m. задаёт границу пребывания в библиотеке. Возвращение — отдельно в 4:30 p.m."],
+    ["exit-time-place", "Выберите текущее место и время возвращения Ника.", "Nick's note: Away from my desk. I'm at the cafe until 2:10 p.m. Back at 2:25 p.m.", ["Cafe; 2:25 p.m.", "Cafe; 2:10 p.m.", "Desk; 2:25 a.m."], 0, "I'm at the cafe даёт место, Back at 2:25 p.m. — возвращение. 2:10 — конец пребывания в кафе."]
+  ],
+  "blank": [
+    ["back-preposition", "Впишите предлог для точного момента возвращения, указанного в записке.", "Desk note: Away for lunch. Back ___ 12:45 p.m.", ["at"], "Back at 12:45 p.m. означает возвращение ровно в 12:45. Back by означало бы «не позднее 12:45»."],
+    ["exact-return", "Впишите только время возвращения, цифрами с a.m.", "Leo's note: At the cafe until 9 a.m. Back at 9:15 a.m. Leo will be back at ___.", ["9:15 a.m.", "9:15 am"], "Back at 9:15 a.m. сообщает возвращение; 9 a.m. — граница пребывания в кафе."],
+    ["until-stay", "Впишите только пропущенное слово со значением «до».", "Current place: store. Stay there: 1–2 p.m. Return to desk: 2:15 p.m. I'm at the store ___ 2 p.m.", ["until"], "Until задаёт конец периода в магазине. Время возвращения к столу позже — 2:15 p.m."],
+    ["soon-marker", "Впишите только слово «скоро», без точного часа.", "No return time is given. Desk note: Away. Back ___.", ["soon"], "Back soon — короткая записка без обещания конкретного часа."],
+    ["exit-return-time", "Впишите только время возвращения Ника, цифрами с p.m.", "Nick's note: I'm at the cafe until 2:10 p.m. Back at 2:25 p.m. Nick will be back at ___.", ["2:25 p.m.", "2:25 pm"], "Возвращение — 2:25 p.m. Ориентир — Back at. В 2:10 Ник уходит из кафе."]
+  ],
+  "written": [
+    ["new-back-line", "Оставьте краткую строку: начните с Back at, затем только время цифрами с p.m.", "Your return to the desk: 3:40 p.m. Current place: store.", ["Back at 3:40 p.m.", "Back at 3:40 pm."], "Краткая записка Back at не требует I am. Возвращение задано как 3:40 p.m.; место в эту строку не входит."],
+    ["current-place-line", "Напишите только текущее место: I am at или сокращение, затем the library.", "Вы сейчас в библиотеке. К своему столу вернётесь позже.", ["I am at the library.", "I'm at the library."], "I am at the library сообщает, где вы сейчас; Back at потребовало бы время возвращения."],
+    ["full-return-line", "Сообщите о возвращении Тома: начните с Tom will be back at или Tom'll be back at; добавьте только время цифрами с a.m.", "Tom: at the cafe until 10:30 a.m.; return to desk at 10:45 a.m.", ["Tom will be back at 10:45 a.m.", "Tom'll be back at 10:45 a.m.", "Tom will be back at 10:45 am.", "Tom'll be back at 10:45 am."], "Will be back at сообщает, когда Том вернётся. Это 10:45 утра. В 10:30 он уходит из кафе."],
+    ["limited-stay-line", "Напишите о себе: I am at или сокращение + the cafe + until + время цифрами с p.m.", "Current location: cafe. Stay there until: 1:30 p.m. Return to desk: 1:50 p.m.", ["I am at the cafe until 1:30 p.m.", "I'm at the cafe until 1:30 p.m.", "I am at the cafe until 1:30 pm.", "I'm at the cafe until 1:30 pm."], "Until 1:30 p.m. описывает, до какого времени вы в кафе. Возвращение к столу позже."],
+    ["exit-other-person-note", "Подготовьте для Анны записку от её лица: только Back at + время её возвращения цифрами с p.m.", "Anna's new facts: at the store until 4:05 p.m.; return to her desk at 4:20 p.m. Nick's old note: Back at 2:25 p.m.", ["Back at 4:20 p.m.", "Back at 4:20 pm."], "Новая записка использует возвращение Анны в 4:20 p.m. Нельзя копировать старое время Ника или время ухода Анны из магазина."]
+  ]
+}

@@ -1,0 +1,148 @@
+[
+  {
+    "number": 87,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "club-positive: Ava cites the funny ending; Ben likes the character but calls the ending sad. club-negative: Eli cites the slow plot; Sam cites the ending. lake-opinion: use the learner’s funny-ending note after because; the boat trip is a plot fact. Replaced review slugs with Russian exercise references and verified positions (Choice 1/2, Written Practice 1).",
+    "correctedIds": [
+      "reason-not-event",
+      "funny-ending",
+      "slow-plot",
+      "reason-link",
+      "lake-opinion"
+    ],
+    "sha256": "4981ed0fac7d04d5b9f75db02e9fba4661682cfc8f0f91496c69a88821656bdc"
+  },
+  {
+    "number": 88,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "library-order: lost → met Dean → Dean showed the room; meeting him first reverses Then. help-reason: I asked for help because I got lost. Being shown the room happened later. two-events accepts both comma styles. Replaced review slugs with Russian exercise references and verified positions (Choice 1, Written Practice 1).",
+    "correctedIds": [
+      "library-order",
+      "reason-connector",
+      "sequence-connector",
+      "help-reason",
+      "two-events",
+      "first-day-frame"
+    ],
+    "sha256": "fcfcddddcc52d2545ae5a3889b5634023f4448f9867c88971e6f8a642413c05a"
+  },
+  {
+    "number": 89,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "list-done: the guest list is finished; the invitations are still pending. poster-pending: the poster is unfinished. The linked list/email reply checks both statuses; broad-photo-reply accepts I already sent it alongside the perfect. Replaced review slugs with Russian exercise references and verified positions (Choice 1/2, Written Practice 1/2).",
+    "correctedIds": [
+      "broad-us-status",
+      "ready-link",
+      "completed-list",
+      "pending-email"
+    ],
+    "sha256": "4b8d1ebd1e61cb80b206a4087ba24e35ff76faea84bd4011d11777ee204e19ac"
+  },
+  {
+    "number": 90,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "privacy-boundary protects Ivy’s income; asking again ignores her reply. topic-boundary accepts Owen’s pivot to running. volunteered-books accepts What books do you like to read? as a neutral response to the volunteered interest. Replaced review slugs with Russian exercise references and verified positions (Choice 1/2, Written Practice 1).",
+    "correctedIds": [
+      "privacy-boundary",
+      "movie-followup",
+      "rather-chunk",
+      "subject-pivot",
+      "volunteered-books"
+    ],
+    "sha256": "b485e6bcc616bfaa63a7f777d124957b0948fc0049b429e85552086ebeceddf2"
+  },
+  {
+    "number": 91,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "experience-person: Ada reports prior viewing without a date; dated-viewing: Cal watched Saturday, not Monday (notes). Six exit IDs specify 5/6 with the contrast and respectful follow-up required. The two written exit questions ask about film experience and volunteered book interests. Replaced review slugs with Russian exercise references and verified positions (Choice 1/2, Blanks 1/2, Written Practice 1/2). Verified 5/6 on the first attempt, with Choice 1/2 and Written Practice 2 required.",
+    "correctedIds": [
+      "experience-person",
+      "dated-viewing",
+      "diary-order",
+      "club-reason",
+      "boundary-pivot",
+      "status-sent",
+      "status-pending",
+      "diary-cause",
+      "experience-question",
+      "respectful-followup",
+      "pending-notes"
+    ],
+    "sha256": "192ee5d2ec95316cfbfb92a426f59b6a3aeb1ac0c589c6c517af58f5f6ea0807"
+  },
+  {
+    "number": 92,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "concert-final-ride: Maple arrives 6:25 p.m. for $6; Birch saves $3 but arrives late. The two comparisons on the same cards preserve both the price order ($3/$6) and the trip-time order (16/27 minutes). Replaced review slugs with Russian exercise references and verified positions (Written Practice 1/2/5).",
+    "correctedIds": [
+      "library-price-reason",
+      "library-speed-reason",
+      "revised-gallery-arrival",
+      "concert-final-ride"
+    ],
+    "sha256": "7cf59f7eec8bab610f6fbeaa55f30f1616f75e2b6718b9baaffc6f1c91170ac9"
+  },
+  {
+    "number": 93,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "two-guest-listings: Fern is $90, 20 m² and near the station; $99 belongs to Moss. In bay-room-selection both rooms meet budget and location, but Bay’s 22 m² meets the minimum and Reef’s 17 m² does not. elm-size-reason tests the supporting comparison. Replaced review slugs with Russian exercise references and verified positions (Written Practice 1/3).",
+    "correctedIds": [
+      "two-guest-listings",
+      "quiet-evidence",
+      "comfort-form",
+      "courtyard-quiet-gap",
+      "chair-comfort-gap",
+      "night-unit-gap",
+      "elm-size-reason",
+      "bay-room-selection"
+    ],
+    "sha256": "ddfc75c7072e2bc37980a144b5f83d909e9d1e6df64b4203a4a1ea6f64eaa258"
+  },
+  {
+    "number": 94,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "dance-two-extremes: Jump starts latest but Turn is shortest; reversing them is wrong. Join starts later than Cut among options of at most 40 minutes and is shortest at 35 minutes. Cloth ends exactly at 7, which before excludes.",
+    "correctedIds": [
+      "coding-shortest-gap",
+      "sewing-longest-gap",
+      "painting-shortest-reason",
+      "woodwork-final-choice",
+      "yoga-clock-retrieval"
+    ],
+    "sha256": "02da51db7f284ac2507d6c9c785656acd3d67e3b14b929204f56f99072264b2d"
+  },
+  {
+    "number": 95,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "workshop-room-fit: Beech has 16 seats and capacity for 16; Alder has space for 18 but only 14 seats. reading-capacity-fit permits exact equality. transfer-larger-room keeps 24 people even though Amber already has 24 chairs.",
+    "correctedIds": [
+      "enough-word-order",
+      "spare-count-gap",
+      "capacity-shortfall",
+      "transfer-larger-room"
+    ],
+    "sha256": "333aeeff2d10c69ad57d3f6a7017597ef42c592c3e5de862338b0466ce718193"
+  },
+  {
+    "number": 96,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "remote-work-plan: Forest includes 12 GB for $30, within the $32 cap. Meadow includes 8 GB; its extra charge is unknown. The two reports independently recover $30 per month and 12 GB from the same cards. Replaced review slugs with Russian exercise references and verified positions (Written Practice 1/2/5).",
+    "correctedIds": [
+      "fee-data-fields",
+      "maple-fee-report",
+      "elm-allowance-report",
+      "remote-work-plan"
+    ],
+    "sha256": "bebbf08d4e2941c9aeccfeec8a2c77f2d64004ab382bc62dfa8e92d7139d61cb"
+  }
+]

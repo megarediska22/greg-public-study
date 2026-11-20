@@ -1,0 +1,40 @@
+{
+  "number": 84,
+  "title": "Когда это было?",
+  "subtitle": "From experience to a date",
+  "goal": "Различить вопрос об опыте и вопрос о времени события, затем запросить датированную подробность с did.",
+  "intro": "Собеседник уже рассказал о необычном опыте. Теперь вы хотите узнать, когда именно это произошло. Для следующего вопроса понадобится другая форма глагола.",
+  "example": "Aria: Have you ever taken a sailing class?\nNoah: Yes, I have.\nAria: When did you take your first sailing class?\nNoah: Last year.\nAria: Tell me more!",
+  "translation": "Ария: Ты когда-нибудь посещал занятия по парусному спорту?\nНоа: Да.\nАрия: Когда ты впервые сходил на занятие по парусному спорту?\nНоа: В прошлом году.\nАрия: Расскажи подробнее!",
+  "theory": "Have you ever …? выясняет, был ли опыт вообще: Have you ever seen a whale? Когда опыт уже подтверждён, спросите о конкретном событии: When did you see it? Это переход от Present Perfect к Past Simple.\nВ вопросе о действии порядок такой: When + did + человек + начальная форма глагола. После did нужны see, take, try, go, а не saw, taken, tried, went: When did you take that class? В вопросе об опыте после have остаётся причастие: Have you ever taken a class?\nWhen exactly — «когда именно»: When exactly did you go? Last year — «в прошлом году», a few years ago — «несколько лет назад». Эти выражения называют законченное время, поэтому с ними используйте Past Simple: I went a few years ago. The first time — «в первый раз»: When did you go there for the first time?\nTell me more — дружелюбное «расскажи подробнее». Для вопроса о состоянии с be вспоминайте was/were: When were you there? Did здесь не нужен. В американском английском естественна связка Have you ever …? — Yes. — When did you …?; не добавляйте last year внутрь вопроса о жизненном опыте с have.",
+  "rows": [
+    ["Have you ever + participle?", "Have you ever tried surfing?", "Ты когда-нибудь пробовал серфинг?"],
+    ["When did you + base verb?", "When did you try surfing?", "Когда ты попробовал серфинг?"],
+    ["When exactly did …?", "When exactly did Mia go to Utah?", "Когда именно Мия поехала в Юту?"],
+    ["the first time", "I saw snow for the first time last year.", "Я впервые увидел снег в прошлом году."]
+  ],
+  "tip": "Не пишите When did you saw it? Вопрос уже отмечен did, поэтому нужен see: When did you see it? Вопрос Have you ever seen it? требует seen.",
+  "review": "Вспомните did из №35, законченное время из №40 и was/were из №16. Возьмите вопрос об опыте из №82 или №83 и после ответа Yes задайте отдельный вопрос с When did.",
+  "summary": "Вы можете спросить об опыте с Have you ever …?, а затем узнать время события с When did …? и начальной формой глагола.",
+  "choice": [
+    ["museum-experience", "Какую информацию запрашивает вопрос?", "Chat: Have you ever been to the science museum in Raleigh?", ["Whether the person has ever visited the museum.", "The exact date of a visit.", "The museum's opening time."], 0, "Have you ever been …? выясняет наличие опыта; дату посещения пришлось бы запрашивать отдельно."],
+    ["kayak-date", "Какую информацию запрашивает уточнение?", "Pat: I've tried kayaking. Jo: When exactly did you try it?", ["Whether Pat wants a kayak.", "Whether Jo has tried kayaking.", "The time of Pat's kayaking experience."], 2, "When exactly did …? относится к времени уже упомянутого события, а не к наличию опыта."],
+    ["dated-answer", "Выберите вопрос, на который отвечает реплика.", "Answer: I took my first cooking class last year.", ["Have you ever eaten rice?", "When did you take your first cooking class?", "Where is the cooking class?"], 1, "Last year отвечает на when. В вопросе после did форма took возвращается к take."],
+    ["after-yes", "Выберите грамматически верное уточнение времени.", "Rosa: I've seen the northern lights. Ask when using see. (northern lights — северное сияние)", ["When did you saw them?", "When have you seen them last year?", "When did you see them?"], 2, "После did нужен see. Событие уже названо, поэтому уточняем его время с Past Simple."],
+    ["ago-meaning", "Выберите значение выражения a few years ago.", "Miles: I visited that island a few years ago.", ["Несколько лет назад.", "В течение следующих нескольких лет.", "Каждый год."], 0, "Ago отсчитывает время назад от настоящего момента и указывает на прошлое событие."]
+  ],
+  "blank": [
+    ["ever-taken", "Впишите только форму take для вопроса об опыте.", "Have you ever ___ a photography class?", ["taken"], "После have нужна форма taken. В вопросе с did на этом месте была бы take."],
+    ["dated-did", "Впишите только вспомогательный глагол для вопроса о прошлом событии.", "You mentioned a trip in 2022. When ___ you go to Vermont?", ["did"], "Поездка уже отнесена к прошлому, а when спрашивает время события; вопрос строится с did."],
+    ["followup-see", "Впишите только форму see после did.", "You've seen a moose! When did you ___ it?", ["see"], "Did требует начальной формы see; seen используется после have, saw — в утвердительном Past Simple."],
+    ["first-time", "Впишите только артикль в выражении «в первый раз».", "When did you try skiing for ___ first time?", ["the"], "В устойчивом сочетании for the first time перед first используется the."],
+    ["years-ago", "Впишите только слово «назад».", "I joined that club a few years ___.", ["ago"], "Ago ставится после отрезка времени: a few years ago — несколько лет назад."]
+  ],
+  "written": [
+    ["ask-skating-experience", "Спросите об опыте собеседника. Начните с Have you ever, используйте try в нужной форме и ice skating.", "You do not know whether the person has tried ice skating at any time.", ["Have you ever tried ice skating?"], "Вопрос о наличии опыта требует have + tried, без указания законченного времени."],
+    ["ask-skating-date", "Напишите один вопрос, который поможет заполнить пустое поле в заметке. Обращайтесь к собеседнику на you, используйте try ice skating и не добавляйте других деталей.", "Reply: Yes, I have. I tried ice skating with my cousins.\nYour notes: Tried ice skating — yes. With whom — cousins. When — ___.", ["When did you try ice skating?"], "После подтверждения опыта спрашиваем о конкретном событии; did требует try."],
+    ["ask-exact-trip", "Спросите, когда именно состоялась поездка. Начните с When exactly did you и используйте go to Nashville.", "Reply: I've been to Nashville. It was a short trip.", ["When exactly did you go to Nashville?"], "Exactly уточняет when, а после did нужна начальная форма go, не went или been."],
+    ["ask-first-class", "Спросите о времени первого занятия. Начните с When did she и используйте take her first art class.", "You're talking to your brother about your sister. You know she has taken art classes, but you don't know when she started.", ["When did she take her first art class?"], "Did одинаков для she и you; take после него не получает окончания и не меняется на took."],
+    ["ask-past-state", "Спросите, когда собеседник был там. Используйте только When, форму be, you и there в вопросительном порядке.", "Reply: I've been to Memphis. I stayed near the river.", ["When were you there?"], "Для прошлого состояния с be вопрос строится перестановкой were и you. Did с were не используется."]
+  ]
+}

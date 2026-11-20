@@ -1,0 +1,146 @@
+[
+  {
+    "number": 77,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "form-name, form-start и form-contact дают Ruby Stone, November 9 и Ben West. В matched-profile две строки передают дату April 15 и умение, которое нужно магазину; write emails не отвечает задаче помощи покупателям.",
+    "correctedIds": [
+      "computer-experience",
+      "experience-preposition",
+      "matched-profile"
+    ],
+    "sha256": "3909d870fd84f26efaa59e6732e54e1305de8e72c396a096fc8c999d00069e5b"
+  },
+  {
+    "number": 78,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "ready-version — photo final version: map draft готов, но сдавать можно только окончательную версию. В two-stage-update June finished the poster draft, а Sam will check the poster draft; повтор версии исключает путаницу.",
+    "correctedIds": [
+      "future-send",
+      "personal-send",
+      "two-stage-update"
+    ],
+    "sha256": "297cc9dda888620842d624f8f3fcef042d27cf8a22f14a12ce38743e7d423051"
+  },
+  {
+    "number": 79,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "paired-handoff: Amy will check the photos by Tuesday, and Cole will send the map by Friday. Monday для фотографий только обсуждали, а принятое решение о билетах коллеге не нужно.",
+    "correctedIds": [
+      "handoff-owner",
+      "transfer-owner",
+      "transfer-deadline",
+      "join-decisions",
+      "recover-action",
+      "relay-printing",
+      "paired-handoff"
+    ],
+    "sha256": "3ef5fe698cba50622bc540a9ad6bd86f05402276827ee1c6ea348983cc98a83f"
+  },
+  {
+    "number": 80,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "ask-file-access: Could you give me access to stage-plan.pdf? Экран сообщает об отсутствии прав. В resend-draft-target права не помогут: файл по ссылке открывается, но нужно повторно отправить speech-draft.pdf.",
+    "correctedIds": [
+      "version-remedy",
+      "negative-open",
+      "resend-verb",
+      "ask-file-access",
+      "request-final",
+      "report-folder",
+      "file-and-remedy",
+      "resend-draft-target"
+    ],
+    "sha256": "618ff8624d908390fed49f81355574dd261decf8c20807e7d148f4f7a0d917e7"
+  },
+  {
+    "number": 81,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "В шести зачётных заданиях срок Friday, файл garden-plan-final.pdf и следующий шаг Leo will send garden-plan-final.pdf by Friday. Thursday относится к проверке Омара, а не к сдаче.",
+    "correctedIds": [
+      "draft-status",
+      "access-problem",
+      "exact-submission-day",
+      "exact-submission-file",
+      "exact-check-owner",
+      "owner-action-deadline",
+      "checkpoint-wrong-version"
+    ],
+    "sha256": "c24cc821641bb409a74253567b60ccb08377099161c738faf2bf155a4544550b"
+  },
+  {
+    "number": 82,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "tampa-before и eli-never: Рут уже была в Тампе, Эли там никогда не был. В ask-milwaukee уместно Have you ever been to Milwaukee?, потому что про поездку в Чикаго Кейси уже сказал.",
+    "correctedIds": [
+      "tampa-before",
+      "eli-never",
+      "ask-milwaukee"
+    ],
+    "sha256": "ecd682a7a5f706fb6f9e13cfbf8eb353899d759d3b62f18d8bce0380753a7910"
+  },
+  {
+    "number": 83,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "club-pottery и club-yoga дают Рэй и Луиса соответственно. В entry-taken ответ I've never taken a boxing class: YES относится к танцам, а took после have не подходит.",
+    "correctedIds": [
+      "club-yoga",
+      "food-card",
+      "entry-seen",
+      "entry-taken"
+    ],
+    "sha256": "173ee85a5b6a1e3c4838efd8faf4fa001c5c8ae3913962ae3664048345b3e7bb"
+  },
+  {
+    "number": 84,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "ask-skating-experience и ask-skating-date дают Have you ever tried ice skating? и When did you try ice skating? Для пустого поля нужно время уже подтверждённого события; tried после did не подходит.",
+    "correctedIds": [
+      "museum-experience",
+      "after-yes",
+      "ask-skating-date",
+      "ask-first-class"
+    ],
+    "sha256": "cd889e21c4e5d2f95090eff092611cc01fdfd84e30663bdedf1c62a7d039dd03"
+  },
+  {
+    "number": 85,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "team-print-return и team-bank-away помещают Петру в офис, Саймона на склад. В итоговом away-marcus нужен gone: Маркус ещё в магазине; been подходит для вернувшейся группы в return-us.",
+    "correctedIds": [
+      "team-print-return",
+      "team-bank-away",
+      "choose-return-form",
+      "return-supply",
+      "away-marcus",
+      "return-us",
+      "away-me",
+      "two-statuses"
+    ],
+    "sha256": "e621ae45ef226c1d92804fd533f32cdec79b3658c1361e9d13f65838ab8744f1"
+  },
+  {
+    "number": 86,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "retrieve-day и retrieve-skill дают Wednesday и mix colors. В warm-pool ученик отмечает learned to float и спрашивает Where did you practice? Вопрос What time повторил бы уже названное время.",
+    "correctedIds": [
+      "archery-followup",
+      "retrieve-day",
+      "retrieve-skill",
+      "coach-word",
+      "tennis-coach",
+      "pottery-date",
+      "warm-pool"
+    ],
+    "sha256": "31240d3e00a7562bc1fef686f8336730aeb30974fe110fd11b0a3379ae76ecdf"
+  }
+]

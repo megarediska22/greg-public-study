@@ -1,5 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { lessons } from '../content/course';
+import { loadLesson } from '../content/extension/registry';
+import type { Lesson } from '../types/lesson';
 import type { CourseEntry } from '../types/lesson';
 import { useProgress } from '../lib/ProgressContext';
 import { getScore, isLessonUnlocked, isStepComplete, isStepUnlocked, resumeStep } from '../lib/progress';
@@ -10,16 +12,24 @@ import { LessonContent } from '../components/lessons/LessonContent';
 
 export function LessonPage({ entry, stepId }: { entry: CourseEntry; stepId: string }) {
   const { progress, dispatch } = useProgress();
-  const lesson = entry.lesson;
+  const [lesson, setLesson] = useState<Lesson | undefined>(entry.lesson);
+  const [loadFailed, setLoadFailed] = useState(false);
+  const [retry, setRetry] = useState(0);
   const step = lesson?.steps.find(item => item.id === stepId);
   const unlocked = isLessonUnlocked(progress, lessons, entry.id);
+  useEffect(() => {
+    if (!unlocked || lesson) return;
+    let active = true;
+    loadLesson(entry.id).then(loaded => { if (active) setLesson(loaded); }).catch(() => { if (active) setLoadFailed(true); });
+    return () => { active = false; };
+  }, [entry.id, unlocked, lesson, retry]);
   const accessible = unlocked && lesson && step && isStepUnlocked(progress, lesson, step.id);
   useEffect(() => {
     if (accessible) dispatch({ type: 'visit', lessonId: entry.id, stepId });
   }, [accessible, entry.id, stepId, dispatch]);
 
-  if (!unlocked) return <section className="not-found"><h1>Урок пока заблокирован</h1><p>Завершите предыдущие уроки курса A1.</p><LinkButton href="#/course/a1">К программе курса</LinkButton></section>;
-  if (!lesson) return <section className="not-found"><h1>{entry.title}</h1><p>Содержание урока пока недоступно.</p><LinkButton href="#/course/a1">К программе курса</LinkButton></section>;
+  if (!unlocked) return <section className="not-found"><h1>Урок пока заблокирован</h1><p>Завершите предыдущие уроки программы.</p><LinkButton href="#/course/a1">К программе курса</LinkButton></section>;
+  if (!lesson) return <section className="notice" role="status"><h1>{entry.title}</h1><p>{loadFailed ? 'Не удалось загрузить урок. Прогресс сохранён.' : 'Загружаем урок…'}</p>{loadFailed && <button className="button button-secondary" onClick={() => { setLoadFailed(false); setRetry(value => value + 1); }}>Повторить загрузку</button>}<LinkButton href="#/course/a1">К программе курса</LinkButton></section>;
   if (!step) return <section className="not-found"><h1>Раздел не найден</h1><LinkButton href={`#/lesson/${lesson.id}/${resumeStep(progress, lesson)}`}>К доступному шагу</LinkButton></section>;
   if (!accessible) return <section className="not-found"><h1>Шаг пока заблокирован</h1><p>Сначала завершите предыдущие разделы урока.</p><LinkButton href={`#/lesson/${lesson.id}/${resumeStep(progress, lesson)}`}>Продолжить урок</LinkButton></section>;
 
@@ -36,8 +46,8 @@ export function LessonPage({ entry, stepId }: { entry: CourseEntry; stepId: stri
     dispatch({ type: 'complete', lessonId: lesson.id, stepId });
     if (index < lesson.steps.length - 1) window.location.hash = `/lesson/${lesson.id}/${lesson.steps[index + 1].id}`;
   }
-  return <div className="lesson-page"><a className="back-link" href="#/course/a1"><Icon name="back" /> К программе курса A1</a>
-    <div className="lesson-heading"><div><span className="muted">{lesson.level} / {lesson.kind === 'vocabulary' ? 'Словарь' : 'Грамматика'} / Урок {String(lessons.indexOf(entry) + 1).padStart(2, '0')}</span><h1>{entry.title} <span>{entry.subtitle}</span></h1></div>{lesson.sample && <span className="pill">Демонстрационный контент</span>}</div>
+  return <div className="lesson-page"><a className="back-link" href="#/course/a1"><Icon name="back" /> К программе курса</a>
+    <div className="lesson-heading"><div><span className="muted">{lesson.band ?? lesson.level} / {lesson.kind === 'vocabulary' ? 'Словарь' : 'Грамматика'} / Урок {String(lessons.indexOf(entry) + 1).padStart(2, '0')}</span><h1>{entry.title} <span>{entry.subtitle}</span></h1></div>{lesson.sample && <span className="pill">Демонстрационный контент</span>}</div>
     <div className="lesson-progress"><div><span>Прогресс урока</span><span aria-live="polite">{completedCount} из {lesson.steps.length} шагов пройдено</span></div><progress value={completedCount} max={lesson.steps.length} aria-label={`Прогресс урока: ${completedCount} из ${lesson.steps.length} шагов`} /></div>
     <div className="lesson-layout"><StepNavigation lesson={lesson} current={stepId} /><section className="lesson-panel" aria-label={step.title}><div className="lesson-panel-content"><LessonContent key={`${lesson.id}/${stepId}`} lesson={lesson} step={step} />{step.type === 'summary' && complete && <LinkButton href={nextAccessible ? `#/lesson/${nextLesson.id}/intro` : '#/course/a1'}>{nextAccessible ? 'К следующему уроку' : 'К программе курса'} <Icon name="arrow" /></LinkButton>}</div>
       <nav className="lesson-pagination" aria-label="Навигация по уроку">{index > 0 ? <LinkButton secondary href={`#/lesson/${lesson.id}/${lesson.steps[index - 1].id}`}><Icon name="back" /> Назад</LinkButton> : <LinkButton secondary href="#/course/a1"><Icon name="back" /> К курсу</LinkButton>}<span>{index + 1} из {lesson.steps.length}</span>

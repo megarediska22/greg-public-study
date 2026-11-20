@@ -1,0 +1,40 @@
+{
+  "number": 55,
+  "title": "Перенос встречи",
+  "subtitle": "Rescheduling a meeting",
+  "goal": "Отличить отменённое время от нового и предложить единственное общее свободное окно по таблице доступности.",
+  "intro": "Знакомый отменил встречу. Вы сравниваете два расписания и предлагаете новое время, которое подходит обоим.",
+  "example": "Jill: I can't meet on Tuesday. Can we move it to Thursday at 6 p.m. instead?\nMark: Yes. That works for both of us.",
+  "translation": "Джилл: Я не могу встретиться во вторник. Можем перенести встречу на четверг, на 18:00?\nМарк: Да. Это подходит нам обоим.",
+  "theory": "Cancel — отменить; canceled — отменено. В американском написании canceled обычно с одной l. Reschedule — перенести на другое время. Another time — другое время, а не обязательно другой день. Move a meeting to Thursday — перенести встречу на четверг; it может заменять уже названную встречу.\n\nПредложение переноса: Can we move it to Thursday at 6 p.m.? — Можем перенести на четверг, на 18:00? После can стоит начальная форма move, перед новым днём в этой конструкции — to, перед часом — at. Если переносится только время: Can we move it to 6 p.m.?\n\nInstead означает «вместо этого»: Can we move it to Friday instead? — Можем вместо этого перенести на пятницу? В этих коротких предложениях instead ставится в конце, без запятой. That works — подходит. That works for both of us — это подходит нам обоим.\n\nI can't meet at four / I cannot meet at four — я не могу встретиться в четыре. После can't/cannot нужен meet без to. В таблице free значит «свободен», busy — «занят». Исключение вроде free except at 3 p.m. означает, что именно в 15:00 человек занят.\n\nОтменённое время больше не действует. Proposed — предложено, но ещё не согласовано; confirmed — подтверждено и действует. Для переноса выберите строку, где свободны оба, и дождитесь согласия. Не называйте предложение подтверждённой встречей без ответа второго участника.",
+  "rows": [
+    ["Can we move it to ...?", "Can we move it to Friday at 5 p.m.?", "Можем перенести на пятницу, на 17:00?"],
+    ["can't + base verb", "I can't meet at four.", "Я не могу встретиться в четыре."],
+    ["instead", "Can we move it to Saturday instead?", "Можем вместо этого перенести на субботу?"],
+    ["works for both", "That works for both of us.", "Это подходит нам обоим."]
+  ],
+  "tip": "Не пишите Can we move it at Friday? Для переноса на новый день нужно to Friday: Can we move it to Friday? Но час после дня вводится через at: to Friday at five.",
+  "review": "Из №20 вспомните Can we…? и That works, из №22 — часы. Из №28 повторите except: исключённое окно не считается свободным. Сопоставьте новое подтверждение с записью из №53 и зачеркните отменённое время.",
+  "summary": "Вы можете найти единственное общее окно, предложить перенос через Can we move it to…? и отличить предложение от подтверждённого нового времени.",
+  "choice": [
+    ["mutual-replacement-grid", "Выберите единственное общее свободное время для переноса.", "Tuesday meeting canceled. Grid: Wednesday 4 p.m. — Inez free, Cole busy; Thursday 5 p.m. — Inez free, Cole free; Friday 6 p.m. — Inez busy, Cole free.", ["Wednesday at 4 p.m.", "Thursday at 5 p.m.", "Friday at 6 p.m."], 1, "Только в четверг в 17:00 оба отмечены free. Остальные строки подходят лишь одному человеку."],
+    ["current-not-canceled", "Выберите действующее подтверждённое время.", "Chat: Monday 11 a.m. — canceled. Tuesday 2 p.m. — proposed. Wednesday 3 p.m. — confirmed by both people.", ["Wednesday at 3 p.m.", "Monday at 11 a.m.", "Tuesday at 2 p.m."], 0, "Только среда подтверждена обоими. Понедельник отменён, вторник пока лишь предложен."],
+    ["exception-grid", "Выберите время, которое подходит обоим с учётом исключения.", "Friday: Tessa is free from 2 to 4 p.m. except at 3 p.m. Hugo is busy at 2 p.m. and free at 3 and 4 p.m.", ["Friday at 2 p.m.", "Friday at 3 p.m.", "Friday at 4 p.m."], 2, "Except исключает 15:00 из свободных часов Тессы. В 14:00 занят Хьюго, поэтому остаётся 16:00."],
+    ["replacement-question-form", "Выберите грамматически верное предложение переноса.", "Our lunch on Thursday is canceled. We are both free on Saturday at noon.", ["Can we move it at Saturday at noon?", "Can we move it to Saturday at noon?", "Can we moves it to Saturday at noon?"], 1, "Для нового дня нужен to, для часа — at. После can используется move без -s."],
+    ["proposal-not-confirmation", "Определите статус нового времени.", "Rae: I can't meet today. Can we move it to Friday at 10 a.m.? No reply yet.", ["The Friday time is confirmed.", "The Friday time is canceled.", "The Friday time is proposed."], 2, "Вопрос предлагает новое время. Пока ответа нет, пятницу нельзя считать подтверждённой."]
+  ],
+  "blank": [
+    ["saturday-time-field", "Впишите только новое время цифрами с a.m. или am.", "Old slot: Saturday 8 a.m., canceled. New slot: Saturday 9 a.m., confirmed. Updated time: ___.", ["9 a.m.", "9 am"], "Действует новая подтверждённая запись на 9 утра, а не отменённая на 8."],
+    ["move-preposition", "Впишите только предлог переноса на новый день.", "Tuesday doesn't work. Can we move it ___ Sunday at noon?", ["to"], "Move it to Sunday означает перенести на воскресенье; at вводит точное время, не новый день после move."],
+    ["availability-negative", "Впишите только отрицательную форму can: слитную полную форму или сокращение.", "Nell is busy at five. She ___ meet at five.", ["can't", "cannot"], "После can't или cannot нужна начальная форма meet. В пять Нелл занята."],
+    ["instead-word", "Впишите только слово со значением «вместо этого».", "The morning meeting is canceled. Can we meet in the afternoon ___?", ["instead"], "Instead в конце предложения показывает замену утра на вторую половину дня."],
+    ["both-agreement", "Впишите только слово со значением «обоим».", "You are free at noon, and I am free at noon. That works for ___ of us.", ["both"], "Both of us означает «мы оба»; новая договорённость должна подходить каждому из двух участников."]
+  ],
+  "written": [
+    ["offer-only-grid-slot", "Предложите перенос вопросом Can we move it to…? Укажите день, затем at и время цифрой с p.m./pm; без instead.", "Chat: Our Tuesday meeting is canceled. Can we pick another time?\nAvailability: Wednesday 4 p.m. — you free, Liv busy; Thursday 6 p.m. — both free; Friday 5 p.m. — you busy, Liv free.", ["Can we move it to Thursday at 6 p.m.?", "Can we move it to Thursday at 6 pm?"], "Общее окно — четверг в 18:00. Вопрос сохраняет порядок to + день, at + время."],
+    ["offer-noon-instead", "Предложите перенос вопросом Can we move it to…? Используйте только новое время noon и завершите instead.", "Встреча сегодня в 11:00 отменена. В полдень сегодня оба свободны; день менять не нужно.", ["Can we move it to noon instead?"], "Если меняется только час, после to сразу идёт noon. Вместе to at noon не употребляется."],
+    ["report-tuesday-conflict", "Начните с I, используйте сокращённую или слитную полную отрицательную форму can, затем meet. В конце назовите день с on.", "Во вторник вы заняты весь день. Назовите Tuesday, без времени и объяснений.", ["I can't meet on Tuesday.", "I cannot meet on Tuesday."], "После can't/cannot остаётся начальная форма meet; перед Tuesday здесь нужен on."],
+    ["accept-for-both", "Подтвердите, что предложение подходит вам обоим. Начните с That, используйте work и for both of us; без добавлений.", "Вы и ваш напарник проверили расписания: предложенное новое время удобно каждому.", ["That works for both of us."], "С that глагол Present Simple получает -s: works. For both of us явно включает обоих."],
+    ["relay-updated-arrangement", "Передайте новую договорённость от We в Present Continuous с meet. Затем назовите день с on и добавьте at noon.", "Calendar update: Monday at noon — canceled. Thursday at noon — proposed. Friday at noon — confirmed by both people.", ["We are meeting on Friday at noon.", "We're meeting on Friday at noon."], "Are meeting из №53 передаёт договорённость; пятница в полдень — действующее подтверждение."]
+  ]
+}

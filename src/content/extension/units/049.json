@@ -1,0 +1,40 @@
+{
+  "number": 49,
+  "title": "Получение заказа",
+  "subtitle": "Order pickup",
+  "goal": "Найти стойку выдачи, крайний срок и номер заказа в подтверждении и задать допустимый вопрос о получении.",
+  "intro": "Вам пришло подтверждение заказа. Перед поездкой нужно проверить, готов ли он и до какого времени его держат.",
+  "example": "Confirmation: Order number P-318. Ready for pickup at the west counter. We hold orders until 6 p.m. Bring this confirmation.\nCustomer: Can I pick up my order at 5 p.m.?\nClerk: Yes. Show your order number.",
+  "translation": "Подтверждение: Номер заказа P-318. Готов к выдаче у западной стойки. Мы храним заказы до 18:00. Принесите это подтверждение.\nПокупатель: Можно забрать мой заказ в 17:00?\nСотрудник: Да. Покажите номер заказа.",
+  "theory": "Order number — номер заказа; confirmation — подтверждение. Ready for pickup — готов к выдаче. Pick up — забрать: Can I pick up my order? Hold until — хранить до определённого времени. Номер переносите точно, включая буквы и дефис: это не цена и не номер стойки.\n\nReady согласуется с be: Your order is ready for pickup. Прилагательное ready не заменяет глагол is. В короткой заметке Order ready for pickup слово is могут опустить.\n\nShow your confirmation — покажите подтверждение; bring your receipt — принесите чек. Это повелительные формы: глагол стоит в начале без you. Show относится к предъявлению, bring — к тому, что нужно взять с собой.\n\nAt 4 p.m. — в четыре часа; by 4 p.m. — не позднее четырёх, можно раньше; hold until 4 p.m. — хранить до четырёх. Время готовности задаёт начало окна, крайний срок — конец. Вопрос о получении: Can I pick up my order at 3 p.m.? У стойки можно назвать точный номер: Can I pick up order T-926? Чтобы сообщить крайний срок, скажите I need to pick up my order by 6 p.m. В США pickup часто пишут слитно как существительное, а глагол pick up — раздельно. В этом уроке используем p.m. для времени после полудня.",
+  "rows": [
+    ["ready for pickup", "Your order is ready for pickup.", "Ваш заказ готов к выдаче."],
+    ["show / bring", "Bring your receipt and show your order number.", "Принесите чек и покажите номер заказа."],
+    ["by / at", "Pick it up by 7 p.m.; I can arrive at 6 p.m.", "Заберите это не позднее 19:00; я могу прийти в 18:00."],
+    ["hold until", "We hold your order until 5 p.m.", "Мы храним ваш заказ до 17:00."]
+  ],
+  "tip": "By 6 p.m. не означает «только в шесть»: можно раньше, если заказ готов. Не теряйте дефис в номере заказа.",
+  "review": "Вспомните точное копирование полей из №25, названия стоек из №29 и until из №30. В письменных заданиях №1–3 извлеките место, срок и ID; в №4 сверьте возможный приезд с тем же подтверждением.",
+  "summary": "Вы можете прочитать подтверждение, сообщить место, срок и номер заказа и согласовать время получения.",
+  "choice": [
+    ["pickup-window", "Выберите время, попадающее в окно выдачи.", "Order H-271: ready at 2 p.m. today. Pick up by 5 p.m. today.", ["1 p.m.", "4 p.m.", "6 p.m."], 1, "Четыре часа находятся между готовностью в два и сроком в пять."],
+    ["bring-document", "Выберите документ, который нужно принести.", "Pickup note: Bring your receipt. Show order number V-602 at counter 3.", ["A store map", "A size label", "Your receipt"], 2, "Bring your receipt прямо требует чек; order number — отдельный реквизит для предъявления."],
+    ["deadline-meaning", "Выберите верное толкование срока.", "Order J-140: ready now at noon. Please collect it by 3 p.m.", ["At or before 3 p.m.", "Only at 3 p.m.", "After 3 p.m."], 0, "By задаёт крайний срок: получить можно в три или раньше после готовности."],
+    ["correct-counter", "Выберите нужную стойку.", "Order C-905: pickup at the garden counter. Returns at the front counter. Payments at the side counter.", ["The front counter", "The garden counter", "The side counter"], 1, "Pickup относится к garden counter; остальные стойки предназначены для возвратов и оплаты."],
+    ["ready-vs-hold", "Выберите верный статус в указанное время.", "Order W-812: ready at 4 p.m.; held until 8 p.m. It is now 3 p.m.", ["Ready for pickup now", "No longer held", "Not ready for pickup yet"], 2, "В три заказ ещё не готов: начало выдачи в четыре; восемь — конец хранения."]
+  ],
+  "blank": [
+    ["exact-order-number", "Впишите только номер заказа с дефисом.", "Confirmation: Order number R-746. Counter 2. Total: $18. Order number: ___.", ["R-746"], "R-746 — ID заказа; 2 — стойка, 18 — сумма."],
+    ["ready-be", "Впишите только am, is или are.", "Confirmation: One order, ready now. Your order ___ ready for pickup.", ["is"], "Your order — единственное число; требуется is."],
+    ["deadline-by", "Впишите только by или at со значением «не позднее».", "Pickup begins at noon. Deadline: 7 p.m. Please pick up your order ___ 7 p.m.", ["by"], "By обозначает крайний срок; at указывало бы конкретное время встречи."],
+    ["arrival-at", "Впишите только by или at: сообщите точное время прибытия.", "Appointment: 2 p.m. exactly. I will arrive ___ 2 p.m.", ["at"], "At используется для точного времени прибытия, а не предельного срока."],
+    ["show-imperative", "Впишите только Show или Bring по действию у стойки.", "You are at the counter. The clerk asks to see the confirmation on your phone. ___ your confirmation to the clerk.", ["Show"], "У стойки нужно показать документ сотруднику — show; bring относится к тому, что берут с собой."]
+  ],
+  "written": [
+    ["exit-location", "Сообщите место: начните с My order is at the и добавьте название стойки из подтверждения. Без других слов.", "Confirmation: order F-083, east counter. Ready at 1 p.m. Pick up by 6 p.m.", ["My order is at the east counter."], "Pickup: east counter задаёт место выдачи; at вводит местоположение."],
+    ["exit-deadline", "Сообщите, до какого времени вам надо забрать заказ. Начните с I need to pick up my order by и запишите время как в подтверждении.", "Confirmation: order F-083, east counter. Ready at 1 p.m. Pick up by 6 p.m.", ["I need to pick up my order by 6 p.m."], "Забрать заказ нужно не позднее 18:00. By передаёт крайний срок; 13:00 — начало выдачи."],
+    ["exit-id", "Напишите одно предложение: My order number is + точный ID. Без других слов.", "Confirmation: order F-083, east counter. Ready at 1 p.m. Pick up by 6 p.m.", ["My order number is F-083."], "F-083 нужно сохранить целиком, включая начальный ноль и дефис."],
+    ["valid-arrival-question", "Задайте вопрос: Can I pick up my order at + единственное подходящее время из списка. Запишите время как в списке, с p.m.", "Confirmation: order F-083, east counter. Ready at 1 p.m. Pick up by 6 p.m. Possible arrival times: noon, 5 p.m., 7 p.m.", ["Can I pick up my order at 5 p.m.?"], "Только 5 p.m. попадает в окно выдачи с 13:00 до 18:00."],
+    ["release-question", "У стойки попросите выдать заказ. Начните с Can I pick up order и добавьте точный номер.", "You are at the right counter. Order number T-926 is ready; your confirmation is open.", ["Can I pick up order T-926?"], "Can I pick up order…? подходит для получения у стойки. В подтверждении указан номер T-926."]
+  ]
+}

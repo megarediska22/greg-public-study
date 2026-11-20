@@ -1,0 +1,39 @@
+{
+  "number": 72,
+  "title": "Инструкции к заданию",
+  "subtitle": "Submitting classwork",
+  "goal": "Выбрать нужный файл и восстановить три шага отправки задания.",
+  "intro": "На учебном сайте лежат черновик и готовый отчет. Преподаватель оставил короткую инструкцию: важно отправить нужную версию.",
+  "example": "Checklist: First, select river_final.pdf. Then, upload the file. Finally, click the submit button before 6 p.m.",
+  "translation": "Список действий: сначала выберите river_final.pdf. Затем загрузите файл. Наконец, нажмите кнопку отправки до 18:00.",
+  "theory": "Select — выбрать; upload — загрузить на сайт. File name — имя файла, включая расширение вроде .pdf. Draft — черновик, final version — окончательная версия. Attachment — вложение, например файл в письме. Submit button — кнопка окончательной отправки; загрузка файла еще не всегда означает отправку. Checklist — список действий для проверки.\nИнструкцию начинаем с начальной формы глагола без you: Select the file. Upload the attachment. Click the submit button. First, then, finally показывают порядок: сначала, затем, наконец.\nBefore означает «до», after — «после». В готовых рамках используйте before/after + действие с -ing: Before clicking the submit button, check the file name. After selecting the file, upload it. То есть сначала проверьте имя, потом нажмите кнопку; сначала выберите файл, потом загрузите его. Before 6 p.m. означает «до 18:00». В строке Due at 6 p.m. указан срок сдачи — 18:00. В американском английском click the button — обычная инструкция для кнопки на экране.",
+  "rows": [
+    ["Select + file", "Select garden_final.pdf.", "Выберите garden_final.pdf."],
+    ["Before + -ing", "Before uploading the file, check the file name.", "Перед загрузкой файла проверьте его имя."],
+    ["After + -ing", "After uploading the file, click the submit button.", "После загрузки файла нажмите кнопку отправки."]
+  ],
+  "tip": "Не путайте upload и submit: Upload the file — загрузить файл; Click the submit button — подтвердить отправку. После before в рамке действия пишите before uploading, а не before upload.",
+  "review": "Вспомните сочетания из №18 (например, действие + предмет), повелительные формы из №23, порядок first/then/finally из №36 и срок due из №58. Назовите вслух три действия отправки.",
+  "summary": "Я могу выбрать нужную версию файла, прочитать срок и выполнить три шага отправки по порядку.",
+  "choice": [
+    ["final-version", "Выберите файл по инструкции.", "Upload the final PDF, not the draft. Files: lake_draft.pdf, lake_final.pdf, lake_final.docx.", ["lake_draft.pdf", "lake_final.docx", "lake_final.pdf"], 2, "Нужны оба признака: final и формат PDF. Им соответствует lake_final.pdf."],
+    ["check-first", "Что нужно сделать раньше?", "Before uploading the poster, check the file name.", ["Check the file name.", "Upload the poster.", "Click the submit button."], 0, "Before uploading ставит проверку имени перед загрузкой."],
+    ["last-action", "Выберите последний шаг.", "First, select the essay. Then, upload it. Finally, click the submit button.", ["Select the essay.", "Click the submit button.", "Upload the essay."], 1, "Finally отмечает завершающий шаг: нажать кнопку отправки."],
+    ["deadline-reading", "Выберите действие, которое соответствует сроку.", "Map assignment. Due today at 4 p.m. Submit it before the deadline.", ["Submit it at 5 p.m. today.", "Submit it tomorrow morning.", "Submit it at 3 p.m. today."], 2, "Due today at 4 p.m. задаёт срок сегодня в 16:00. Из предложенных вариантов подходит только 15:00."],
+    ["whole-checklist", "Выберите правильный порядок.", "Select the photo before uploading it. After uploading it, click the submit button.", ["Select, upload, click submit.", "Upload, select, click submit.", "Click submit, select, upload."], 0, "Before и after связывают действия: выбор → загрузка → отправка."]
+  ],
+  "blank": [
+    ["exact-report", "Впишите только точное имя нужного файла.", "Use the final report. Available: oak_draft.pdf and oak_final.pdf. Select ___.", ["oak_final.pdf"], "Слово final отличает готовый отчет от draft — черновика."],
+    ["image-format", "Впишите только имя файла по двум условиям.", "Upload the PNG named bus, not the JPG. Files: bus.jpg, bus.png. Select ___.", ["bus.png"], "Расширение .png — часть имени файла, его нужно сохранить."],
+    ["sequence-word", "Впишите только слово «затем».", "First, select the chart. ___, upload it. Finally, submit it.", ["Then"], "Then связывает средний шаг с первым; finally оставляем последнему."],
+    ["before-action", "Впишите только форму upload для рамки после before.", "Check the file name before ___ the worksheet.", ["uploading"], "В рамке before + действие нужна форма с -ing: before uploading."],
+    ["submit-object", "Впишите только два слова: «кнопку отправки».", "The file is ready. Click the ___.", ["submit button"], "Submit button — кнопка, которой подтверждают отправку. Артикль the уже стоит перед пропуском."]
+  ],
+  "written": [
+    ["select-handout", "Напишите команду из select и имени нужного файла, без please.", "Teacher: Use pine_final.pdf. Do not use pine_notes.pdf.", ["Select pine_final.pdf."], "Повелительная форма начинается с Select; имя файла передаем точно."],
+    ["upload-object", "Напишите команду из upload + the + названия объекта, без please.", "The object is a worksheet.", ["Upload the worksheet."], "Upload the worksheet указывает действие и конкретный объект загрузки."],
+    ["click-confirm", "Напишите команду из click + the + названия кнопки, без please.", "Button label: Submit.", ["Click the submit button."], "В инструкции click the submit button означает нажать кнопку отправки."],
+    ["three-step-relay", "Запишите три команды по порядку. Начните каждую с First, Then или Finally и поставьте после этого слова запятую. Используйте select + имя файла, upload it и click the submit button.", "Class checklist: Click Submit after uploading the file. Upload it only after you select the final PDF. Files: cloud_draft.pdf, cloud_final.docx, cloud_final.pdf.", ["First, select cloud_final.pdf. Then, upload it. Finally, click the submit button."], "Final PDF — это cloud_final.pdf. Сначала выбираем его, затем загружаем, а после загрузки нажимаем кнопку отправки."],
+    ["after-upload", "Составьте одно предложение: After uploading + the file, затем click + the submit button.", "Relay the last two actions: upload the file → click Submit.", ["After uploading the file, click the submit button."], "After uploading помещает загрузку перед нажатием кнопки."]
+  ]
+}

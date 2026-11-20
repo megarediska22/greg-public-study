@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { grammarLessons as lessons } from '../src/content/course.ts';
+import { grammarLessons as lessons } from '../src/content/historicalCourse.ts';
 import { getMissingAnswers, getQuestionState } from '../src/lib/exercise.ts';
 import { emptyProgress, updateProgress, getScore, isStepComplete, isStepUnlocked, decodeProgress, PROGRESS_KEY } from '../src/lib/progress.ts';
 import { openProgressSession } from '../src/lib/progressStorage.ts';

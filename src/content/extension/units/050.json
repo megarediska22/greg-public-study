@@ -1,0 +1,40 @@
+{
+  "number": 50,
+  "title": "Счёт на двоих",
+  "subtitle": "Splitting a cafe check",
+  "goal": "Прочитать итог и указанную долю каждого в счёте и попросить подходящий способ оплаты вдвоём.",
+  "intro": "После кафе вы с другом сверяете счёт: сумма до налога отличается от итога, а способ оплаты нужно уточнить.",
+  "example": "Check: Two lunches — $22. Tax — $2. Total — $24. Equal split: $12 each.\nMaya: Can we split the check?\nServer: Sure.\nMaya: Can we pay separately by card?",
+  "translation": "Счёт: Два обеда — 22 доллара. Налог — 2 доллара. Итого — 24 доллара. Поровну: по 12 долларов.\nМайя: Можно разделить счёт?\nОфициант: Конечно.\nМайя: Можно заплатить отдельно картой?",
+  "theory": "В кафе США check — обычное слово для счёта; bill тоже понятно. Subtotal — промежуточная сумма до добавлений, tax — налог, total — итог. В заданиях все суммы, включая возможные добавления, указаны явно: не добавляйте ничего от себя.\n\nTogether — вместе, separately — отдельно. Split — разделить: Can we split the check? Само split не всегда означает поровну, поэтому сравнивайте доли из условия. Each — каждому или с каждого: $9 each для двух человек означает $18 total. Если равные доли уже напечатаны, берите их из счёта.\n\nBy card — картой; после by здесь нет артикля. Также можно сказать with a card. Для наличных в американском английском обычно in cash. Can we pay separately by card? — Можно заплатить отдельно картой? Can we pay together? — Можно заплатить вместе?\n\nЕсли просите за себя и собеседника, используйте we: Can we split the bill? Не путайте сумму одного человека с общим total. Десятичная точка отделяет центы: $6.50 — шесть долларов пятьдесят центов.",
+  "rows": [
+    ["split the check / bill", "Can we split the check?", "Можно разделить счёт?"],
+    ["each / total", "It is $8 each and $16 total.", "Это по 8 долларов с каждого и 16 долларов всего."],
+    ["separately by card", "Can we pay separately by card?", "Можно заплатить отдельно картой?"],
+    ["together / in cash", "Can we pay together in cash?", "Можно заплатить вместе наличными?"]
+  ],
+  "tip": "Не пишите by a card: для способа оплаты — by card. Total $20 на двоих не означает $20 each: при равном разделе каждому приходится $10.",
+  "review": "Вспомните просьбы с Can из №19, dollars и cents из №26, количества из №44 и each из №45. В первых двух заданиях выбора найдите итог и долю одного человека; в письменных заданиях различайте together и separately.",
+  "summary": "Вы можете отличить subtotal от total, прочитать долю каждого и попросить разделить счёт или оплатить его вместе.",
+  "choice": [
+    ["exit-total", "Выберите напечатанный итог счёта.", "Check 81: subtotal $28; tax $2; total $30; equal split $15 each.", ["$28", "$30", "$15"], 1, "Total равен $30; $28 — subtotal, а $15 — доля одного человека."],
+    ["exit-each", "Выберите сумму с одного человека по указанному разделению.", "Check 81: subtotal $28; tax $2; total $30; equal split $15 each.", ["$30", "$2", "$15"], 2, "Each указывает долю каждого: $15. $30 — общий итог, $2 — налог."],
+    ["separate-intent", "Выберите просьбу, соответствующую намерению.", "Ivy and Leo want two separate payments. Both will use cards.", ["Can we pay separately by card?", "Can we pay together in cash?", "Can I pay the total in cash?"], 0, "Две оплаты передаются separately, а карты — by card."],
+    ["unequal-split", "Выберите долю Сэма, не деля общий итог поровну.", "Check 104: total $31. Agreed split: Sam $19; Jo $12.", ["$12", "$19", "$15.50"], 1, "В счёте согласована неравная доля: Sam платит $19; делить $31 пополам здесь не нужно."],
+    ["cash-method", "Выберите просьбу для указанного способа оплаты.", "One payment for both guests. Payment method: cash.", ["Can we pay separately by card?", "Can we pay together by card?", "Can we pay together in cash?"], 2, "Один платёж за двоих — together; наличными — in cash."]
+  ],
+  "blank": [
+    ["card-preposition", "Выберите предлог by или in для оплаты картой.", "Payment note: two card payments. We will pay separately ___ card.", ["by"], "Способ оплаты картой выражается by card без артикля."],
+    ["cash-preposition", "Выберите предлог by или in для оплаты наличными.", "Payment note: one cash payment. We will pay together ___ cash.", ["in"], "Устойчивое выражение для наличных — in cash."],
+    ["each-amount", "Впишите только число с десятичной точкой, как в счёте.", "Check 117: total $17.00; equal split $8.50 each. Each guest pays $___.", ["8.50"], "Указанная доля каждого — $8.50; $17.00 относится ко всему счёту."],
+    ["subtotal-label", "Впишите только subtotal или total.", "Food $16; tax $1; final amount $17. The amount before tax is the ___.", ["subtotal"], "Сумма до налога называется subtotal; final amount — total."],
+    ["split-verb", "Впишите глагол из выражения «разделить счёт», которое вы выучили в этом уроке.", "Two guests want separate shares of one check. Can we ___ the check?", ["split"], "Split the check означает разделить счёт между гостями."]
+  ],
+  "written": [
+    ["split-request", "Попросите разделить счёт: начните с Can we split the и закончите одним словом «счёт» по-английски. Без других слов.", "Two friends each want to pay a share of check 130.", ["Can we split the check?", "Can we split the bill?"], "В США в кафе обычно говорят check; bill также означает счёт и подходит к просьбе."],
+    ["separate-card-request", "Напишите вопрос: Can we pay + «отдельно» + «картой». Выберите by card или with a card.", "Check 81: subtotal $28; tax $2; total $30; equal split $15 each. Payment plan: two separate card payments.", ["Can we pay separately by card?", "Can we pay separately with a card?"], "Separately указывает на два платежа. Для оплаты картой подходят by card и with a card."],
+    ["together-cash-request", "Напишите вопрос: Can we pay + «вместе» + «наличными». Без других слов.", "Payment plan for check 158: one cash payment for both people.", ["Can we pay together in cash?"], "Together соответствует одному платежу за двоих; in cash обозначает наличные."],
+    ["report-person-share", "Сообщите долю каждого: It is (можно сокращение) + сумма со знаком доллара и двумя цифрами центов + each. Без других слов.", "Check 163: total $21.00; equal split: $10.50 per person.", ["It is $10.50 each.", "It's $10.50 each."], "Per person и each обозначают долю одного человека: $10.50."],
+    ["report-final-total", "Сообщите итог: The total is + сумма со знаком доллара без центов. Без других слов.", "Check 177: subtotal $34; tax $3; total $37. No other charges.", ["The total is $37."], "В строке total указано $37; в задании нет дополнительных платежей."]
+  ]
+}

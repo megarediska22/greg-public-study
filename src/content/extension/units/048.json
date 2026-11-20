@@ -1,0 +1,40 @@
+{
+  "number": 48,
+  "title": "Обмен покупки",
+  "subtitle": "Exchanges and receipts",
+  "goal": "Проверить два случая по правилам вымышленного магазина и попросить обмен с указанием вещи и причины.",
+  "intro": "Купленная рубашка мала. Вы читаете чек и правила именно этого магазина, прежде чем подойти к стойке.",
+  "example": "Policy: Exchanges within 10 days. Bring your receipt. Items must be unworn.\nReceipt: Shirt. Purchase date: May 3.\nToday: May 8. The shirt is unworn.\nCustomer: Can I exchange this shirt? It is too small.",
+  "translation": "Правила: Обмен в течение 10 дней. Принесите чек. Вещи должны быть неношеными.\nЧек: Рубашка. Дата покупки: 3 мая.\nСегодня 8 мая. Рубашку не носили.\nПокупатель: Можно обменять эту рубашку? Она слишком мала.",
+  "theory": "Exchange — обменять на другую вещь; return — вернуть вещь магазину; refund — возврат денег. Purchase date — дата покупки. Receipt — чек. Unworn означает «неношеный», worn — «ношеный». Эти вымышленные правила действуют только внутри заданий, а не во всех магазинах США.\n\nWithin 10 days — в течение 10 дней. Проверяйте сразу срок, чек и состояние вещи. В заданиях указан срок, прошедший после покупки; угадывать способ подсчёта дней не нужно. Can означает разрешение по правилам, can't / cannot — запрет: You can't exchange worn items. В этом уроке проверяем, что разрешено: обмен вещи или возврат денег.\n\nBought — прошедшая форма buy: I bought this coat on May 2. Для конкретной даты нужен on. В США May 2 читается как второе мая; здесь используем название месяца, чтобы избежать путаницы числовых дат.\n\nПросьба: Can I exchange this shirt? Причина: It is too small. Можно сократить It is до It's. Для возврата денег вопрос иной: Can I get a refund? Сначала проверьте, разрешён ли он.",
+  "rows": [
+    ["within + period", "You can exchange it within seven days.", "Это можно обменять в течение семи дней."],
+    ["bought on + date", "I bought this coat on June 4.", "Я купил это пальто 4 июня."],
+    ["exchange + reason", "Can I exchange this shirt? It's too small.", "Можно обменять эту рубашку? Она слишком мала."],
+    ["can't / cannot", "You cannot return worn shoes.", "Нельзя вернуть ношеные туфли."]
+  ],
+  "tip": "I buy it yesterday неверно для прошлой покупки: I bought it yesterday. Не заменяйте exchange словом refund: обмен и возврат денег — разные действия.",
+  "review": "Вспомните receipt из №26, исключения по времени из №28, bought из №33 и too small из №47. В последних двух заданиях выбора отдельно проверьте два случая; в последнем письменном ответе назовите вещь и причину.",
+  "summary": "Вы можете сопоставить чек с условиями обмена, отличить обмен от возврата денег и объяснить причину обращения.",
+  "choice": [
+    ["exchange-not-refund", "Выберите разрешённое действие.", "Policy: Unworn items with a receipt: exchanges within 14 days. No refunds. Your item: unworn, receipt present, bought 4 days ago.", ["Get money back", "Exchange the item", "Exchange a worn item"], 1, "Все условия обмена выполнены; No refunds прямо запрещает возврат денег."],
+    ["receipt-date", "Выберите дату покупки.", "Receipt: Green cap. Purchase date: April 6. Exchange deadline: April 16.", ["April 16", "April 10", "April 6"], 2, "Purchase date — дата покупки, April 6; April 16 — крайний срок обмена."],
+    ["worn-exception", "Выберите верное решение.", "Policy: Exchanges within 20 days, receipt required, unworn only. Shoes: bought 2 days ago, receipt present, worn outside.", ["You can't exchange the shoes.", "You can exchange the shoes.", "You can exchange any shoes within 20 days."], 0, "Срок и чек подходят, но worn outside нарушает условие unworn only."],
+    ["exit-eligible", "Случай 1: выберите решение по всем условиям.", "Policy: Exchange within 12 days; receipt required; unworn only. Nora's coat: bought 5 days ago; unworn; receipt present.", ["Nora can't exchange the coat.", "Nora can exchange the coat.", "Nora must wait 12 more days."], 1, "Пять дней укладываются в 12; чек есть, пальто неношеное — обмен разрешён."],
+    ["exit-ineligible", "Случай 2: выберите решение по всем условиям.", "Policy: Exchange within 12 days; receipt required; unworn only. Ben's hat: bought 16 days ago; unworn; receipt present.", ["Ben can exchange the hat.", "Ben can exchange it without the receipt.", "Ben can't exchange the hat."], 2, "Шестнадцать дней больше двенадцати: срок истёк, несмотря на чек и состояние."]
+  ],
+  "blank": [
+    ["purchase-past", "Впишите только прошедшую форму buy.", "Receipt: Scarf, August 9. Today: August 11. I ___ this scarf on August 9.", ["bought"], "Завершённая покупка в прошлом требует bought, а не buy."],
+    ["purchase-date-gap", "Перепишите только дату покупки по образцу May 2.", "Receipt: Purchase date — July 7; return deadline — July 17. I bought it on ___.", ["July 7"], "Дата после Purchase date — July 7; deadline обозначает другой факт."],
+    ["date-on", "Впишите только предлог перед конкретной датой.", "Receipt: Socks, October 2. I bought these socks ___ October 2.", ["on"], "Перед конкретной датой используется on."],
+    ["within-period", "Впишите только within или after, чтобы передать предельный срок.", "Policy: Exchange no later than ten days after purchase. Exchanges are allowed ___ ten days.", ["within"], "Within ten days означает «в течение десяти дней». After ten days означало бы «через десять дней» или позже, уже за пределами срока."],
+    ["refund-word", "Впишите только exchange или refund.", "Store reply: We can give your money back. You can get a ___.", ["refund"], "Возврат денег — refund; exchange означает обмен на другую вещь."]
+  ],
+  "written": [
+    ["coat-purchase", "Напишите предложение: I bought this coat on + дата из чека в формате Month + цифра. Без других слов.", "Receipt: Coat. Purchase date: March 8.", ["I bought this coat on March 8."], "Bought сообщает о прошлой покупке, on вводит конкретную дату."],
+    ["shoe-denial", "Сообщите запрет: You + can't или cannot + exchange these shoes. Без других слов.", "Policy: Unworn only. These shoes are worn.", ["You can't exchange these shoes.", "You cannot exchange these shoes."], "Worn не соответствует unworn only; обе отрицательные формы can передают запрет."],
+    ["refund-request", "Попросите возврат денег: начните с Can I, затем get a refund. Без других слов.", "Policy: Refunds within 7 days with receipt. Your unworn bag: bought 3 days ago; receipt present.", ["Can I get a refund?"], "Refund — возврат денег; в этом случае он разрешён указанными правилами."],
+    ["scarf-exchange", "Спросите об обмене: Can I exchange this + название вещи из чека. Без других слов.", "Receipt: Scarf. Bought 2 days ago. Policy: Exchange within 8 days with receipt; unworn only. The scarf is unworn.", ["Can I exchange this scarf?"], "Шарф неношеный, чек есть, два дня укладываются в срок. Can I exchange this scarf? запрашивает разрешённый обмен."],
+    ["exit-item-reason", "Напишите два предложения: Can I exchange this + вещь? Затем It is (можно сокращение) + причина по-английски. Передайте причину из заметки с too; других сведений не добавляйте.", "Receipt: Jacket, bought 4 days ago. Policy: Unworn items with receipt, within 10 days. The jacket is unworn and too small.", ["Can I exchange this jacket? It is too small.", "Can I exchange this jacket? It's too small."], "Обмен допустим: четыре дня из десяти, чек есть, вещь неношеная. Jacket и too small сохраняют вещь и причину."]
+  ]
+}

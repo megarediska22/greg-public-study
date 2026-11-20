@@ -1,0 +1,141 @@
+[
+  {
+    "number": 27,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "exit-directory and exit-check-in: Ella Moss is on the third floor in Room 142, so “I'm here to see Ella Moss” fits. Room 310 belongs to Owen. street-level checks Ground floor against an explicit U.S. directory.",
+    "correctedIds": [
+      "street-level",
+      "room-location",
+      "exit-floor"
+    ],
+    "sha256": "646882c896f082200d4bf808b69c801ac1424de62260feb6a7aa2d27d3b40b77"
+  },
+  {
+    "number": 28,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "Four exit notices require a permitted time. exit-valid-visit: 1 p.m. is inside the noon–3 p.m. exception window. 10 a.m. fits the regular schedule but precedes reopening. exit-normal-day restores regular hours once the exception expires.",
+    "correctedIds": [
+      "exit-corrected-hour",
+      "exit-normal-day",
+      "exit-replanned-visit",
+      "closed-period",
+      "notify-closing",
+      "reschedule-meeting"
+    ],
+    "sha256": "d1e0fc377bd35be2257f87d0e69822af95a5abd11c53d3f256cc2865b10c7032"
+  },
+  {
+    "number": 29,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "exit-entrance-counter and exit-two-cues-question: the bookstore uses the east entrance and Silver Counter, inside the lobby and next to the cafe. Brown Counter serves cafe orders. Both placement phrases are accepted with and or as a comma-separated pair.",
+    "correctedIds": [
+      "exit-two-cues-question",
+      "two-cues-statement",
+      "counter-at"
+    ],
+    "sha256": "ef94bab3c885252ddbc7c7732410519d5e25f6becb0a81b810afcc548b7961e3"
+  },
+  {
+    "number": 30,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "exit-time-place: Nick is at the cafe and returns at 2:25 p.m. 2:10 p.m. is when he leaves the cafe. exit-other-person-note transfers the same distinction to Anna: Back at 4:20 p.m.",
+    "correctedIds": [
+      "back-preposition",
+      "exact-return",
+      "exit-return-time",
+      "full-return-line",
+      "new-back-line",
+      "limited-stay-line",
+      "exit-other-person-note"
+    ],
+    "sha256": "560474a6be95907572a535e99096588d2f350c6c3f2144118d87d549d11a920f"
+  },
+  {
+    "number": 31,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "Six exit items cover ride, door, time, contact, desk and payment. Bus B arrives at 2:20 p.m. while open and before 2:30 p.m. A arrives before opening. East entrance, lee@maple.test and a card question follow the updated sources.",
+    "correctedIds": [
+      "dated-library-hours",
+      "entry-fee-not-time",
+      "exit-on-time-bus",
+      "confirm-updated-plan",
+      "exit-check-desk",
+      "exit-card-request"
+    ],
+    "sha256": "f21a820846ca8cabbf059778b4a382b59e05d77e92ae369a0f0c64829220984a"
+  },
+  {
+    "number": 32,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "monday-floor and tuesday-call require matching days to actions. Leo walked to the store on Monday. He cleaned the kitchen on Tuesday. group-task and tess-show require new entries with finished/watched and the correct day.",
+    "correctedIds": [
+      "monday-floor",
+      "tuesday-call",
+      "group-task",
+      "tess-show"
+    ],
+    "sha256": "07ae97c3861e16abc2d4a944208ec221ffea7b5a9579c95ffa811a18d0eacb5e"
+  },
+  {
+    "number": 33,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "saturday-traveler and sunday-purchase: Ruth traveled Saturday. Max's Sunday purchase was a ticket, rather than a map. hotel-get, lake-see, map-buy and park-photo check got, saw, bought and took in context.",
+    "correctedIds": [
+      "saturday-traveler",
+      "sunday-purchase",
+      "hotel-get",
+      "lake-see",
+      "river-sighting",
+      "hotel-arrival",
+      "map-buy",
+      "park-photo"
+    ],
+    "sha256": "4cdbdc2f3556f39c463622dd36ea539587b21a8afc7bef4330b98ac697b17c5f"
+  },
+  {
+    "number": 34,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "completed-kitchen, uncalled-friend and unbought-map check all three statuses. Nora cleaned the kitchen. The unchecked call and purchase did not happen. In new-list-call, the only unchecked entry calls for “I didn't call Eva yesterday”; did not is also valid.",
+    "correctedIds": [
+      "new-list-call"
+    ],
+    "sha256": "a2405212c7b82deb4d39c708327c1379dbe384916b70bc83d6752a1d45eae537"
+  },
+  {
+    "number": 35,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "recover-arrival-time and recover-viewing-place target different gaps: When did Mia arrive? and Where did they watch the match? absent-nora requires No, she didn't because she never showed up. A yes answer contradicts the coach.",
+    "correctedIds": [
+      "absent-nora",
+      "happened-question",
+      "opening-auxiliary",
+      "recover-arrival-time",
+      "recover-viewing-place"
+    ],
+    "sha256": "a27d0b1f838582891e9334bca8a41a20f9ebd9ea3987ebafc2c9e1a495da956c"
+  },
+  {
+    "number": 36,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "order-field-one through order-field-three: cleaned at 11:00, fixed at 11:10, tested at 11:20. The first printed line is the last event. last-two-actions joins fixed and tested with and then, accepting it or the repeated noun.",
+    "correctedIds": [
+      "order-field-one",
+      "order-field-two",
+      "order-field-three",
+      "last-two-actions",
+      "first-photo",
+      "final-check"
+    ],
+    "sha256": "cb27a1b3fc42cd057dbb02c52451b807cd5abf3424295a0fcee3edf9398bdd07"
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "number": 52,
+  "title": "Планы на выходные",
+  "subtitle": "Weekend intentions",
+  "goal": "Найти свободное время в общем календаре и передать два намерения, сохранив день и занятие.",
+  "intro": "Вы с другом хотите выбраться в парк. Сначала ищете общее свободное время, затем уточняете личные планы на выходные.",
+  "example": "Calendar: Saturday, 2–4 p.m. — both free.\nMaya: I'm going to visit the park on Saturday. Can you come at 2 p.m.?\nLeo: Yes, that works. I'm going to stay in on Sunday.",
+  "translation": "Календарь: суббота, с 14:00 до 16:00 — оба свободны.\nМайя: Я собираюсь пойти в парк в субботу. Ты можешь прийти в 14:00?\nЛео: Да, мне подходит. В воскресенье я собираюсь остаться дома.",
+  "theory": "This weekend — в эти выходные. Stay in — остаться дома, go out — пойти куда-нибудь вне дома, visit — посетить место или навестить человека. Plan to означает «планировать»: I plan to visit Kim — я планирую навестить Ким. После visit человек или место идут без to: visit Kim, visit the park.\n\nДля намерения используйте подлежащее + am/is/are going to + начальную форму глагола: I am going to stay in. С I нужно am, с he/she — is, с you/we/they — are. Сокращения: I'm, he's, she's, we're, they're. После going to не добавляйте -s или -ing: She is going to visit Ben.\n\nДень можно поставить в конце: on Saturday, on Sunday. Перед this weekend предлог не нужен. I am going to go out this weekend — я собираюсь куда-нибудь пойти в эти выходные. Going to передаёт намерение; оно само по себе не означает, что время уже согласовано с другом.\n\nВ американских расписаниях 10 a.m. — 10 утра, 3 p.m. — 15:00. Both free значит «оба свободны». Для совместного выхода найдите часы, когда свободны оба, а не только один участник.",
+  "rows": [
+    ["I am going to + verb", "I am going to stay in on Sunday.", "Я собираюсь остаться дома в воскресенье."],
+    ["She is going to + verb", "She is going to visit Ben on Saturday.", "Она собирается навестить Бена в субботу."],
+    ["They are going to + verb", "They are going to go out this weekend.", "Они собираются куда-нибудь пойти в эти выходные."]
+  ],
+  "tip": "Не пишите She going to visits Ben. Нужны is и начальная форма visit: She is going to visit Ben.",
+  "review": "Вспомните am/is/are из №14 и ответы о свободном времени из №20. Прочитайте часы из №22: найдите общее свободное окно, затем отдельно назовите намерения на субботу и воскресенье.",
+  "summary": "Вы умеете выбирать общее свободное время и сообщать, что человек собирается делать в указанный день, с am/is/are going to.",
+  "choice": [
+    ["shared-saturday-slot", "Ава и Бен хотят вместе пойти в парк. Выберите единственное общее свободное окно по календарю.", "Shared calendar: Saturday, 10–11 a.m. — both busy; Saturday, 1–2 p.m. — Ava free, Ben busy; Sunday, 2–3 p.m. — both free. Ava’s note: visit the museum on Saturday. Ben’s note: stay in on Sunday morning.", ["Saturday, 10–11 a.m.", "Sunday, 2–3 p.m.", "Saturday, 1–2 p.m."], 1, "В воскресенье с 14:00 до 15:00 оба свободны. В субботу утром заняты оба, а днём занят Бен."],
+    ["home-intention", "Выберите намерение остаться дома.", "Jules: I don't want to go out this weekend. I plan to stay in.", ["Jules is going to visit a friend.", "Jules is going to go out.", "Jules is going to stay in."], 2, "Stay in означает остаться дома; go out означает выйти куда-нибудь."],
+    ["single-subject-plan", "Выберите грамматически верный пересказ намерения.", "Tara's note: Saturday — visit my sister.", ["Tara is going to visit her sister on Saturday.", "Tara are going to visit her sister on Saturday.", "Tara is going to visits her sister on Saturday."], 0, "Tara заменяется на she, поэтому нужно is. После going to стоит visit без -s."],
+    ["sunday-not-saturday", "Выберите день запланированного выхода.", "Eli: I'm going to stay in on Saturday. I'm going to go out on Sunday.", ["On Saturday.", "On Sunday.", "On both days."], 1, "Go out относится к воскресенью. На субботу указано другое намерение: stay in."],
+    ["plural-weekend-intention", "Выберите пересказ заметки двух друзей.", "Sam and Alex: Our plan for this weekend is to visit the lake.", ["They is going to visit the lake this weekend.", "They are going to visiting the lake this weekend.", "They are going to visit the lake this weekend."], 2, "С they используется are; после going to нужна начальная форма visit. Перед this weekend нет on."]
+  ],
+  "blank": [
+    ["first-person-be", "Впишите только пропущенную полную форму be.", "My Saturday plan: stay in. I ___ going to stay in on Saturday.", ["am"], "С I в конструкции going to используется am."],
+    ["siblings-be", "Впишите только пропущенную форму be.", "The twins plan to go out. They ___ going to go out this weekend.", ["are"], "The twins заменяется на they; форма be — are."],
+    ["visit-base-form", "Впишите только начальную форму глагола из заметки.", "Lena's note: visit Dad on Sunday. She is going to ___ Dad on Sunday.", ["visit"], "После going to используется visit, даже если подлежащее she."],
+    ["home-chunk", "Впишите только пропущенное слово из выражения «остаться дома».", "Rob plans to spend Saturday at home. He is going to stay ___ on Saturday.", ["in"], "Stay in — устойчивое выражение «остаться дома»; stay out передаёт другой смысл."],
+    ["day-preposition", "Впишите только предлог перед днём недели.", "Our note says Sunday: visit the park. We are going to visit the park ___ Sunday.", ["on"], "Перед названием дня недели нужен on: on Sunday. Перед this weekend он не нужен."]
+  ],
+  "written": [
+    ["report-ava-saturday", "Передайте намерение Авы. Начните с Ava, используйте going to и занятие из её заметки. Поставьте день с on в конце.", "Shared calendar: Saturday, 10–11 a.m. — both busy; Saturday, 1–2 p.m. — Ava free, Ben busy; Sunday, 2–3 p.m. — both free. Ava’s note: visit the museum on Saturday. Ben’s note: stay in on Sunday morning.", ["Ava is going to visit the museum on Saturday.", "Ava's going to visit the museum on Saturday."], "После Ava нужно is going to, а перед Saturday — on. Сокращение Ava's здесь означает Ava is."],
+    ["report-ben-sunday", "Передайте намерение Бена. Начните с Ben, используйте going to и занятие из его заметки. Поставьте день и часть дня в конце по образцу on Saturday morning.", "Shared calendar: Saturday, 10–11 a.m. — both busy; Saturday, 1–2 p.m. — Ava free, Ben busy; Sunday, 2–3 p.m. — both free. Ava’s note: visit the museum on Saturday. Ben’s note: stay in on Sunday morning.", ["Ben is going to stay in on Sunday morning.", "Ben's going to stay in on Sunday morning."], "Stay in означает «остаться дома». On Sunday morning сохраняет воскресенье и уточняет, что речь об утре."],
+    ["own-weekend-plan", "Напишите своё намерение. Начните с I, используйте going to и go out, завершите словами this weekend.", "Ситуация: в эти выходные вы собираетесь куда-нибудь пойти.", ["I am going to go out this weekend.", "I'm going to go out this weekend."], "После I нужны am going to и начальная форма go. Перед this weekend предлог не ставится."],
+    ["pair-park-plan", "Сообщите намерение пары. Начните с They, используйте going to и visit the park; день поставьте в конце.", "Заметка двух соседей: в воскресенье собираемся посетить парк.", ["They are going to visit the park on Sunday.", "They're going to visit the park on Sunday."], "С they нужно are going to; visit the park не требует to перед названием места."],
+    ["retrieve-free-slot", "Ответьте одним предложением от We с be free. Время поставьте перед днём; используйте цифру и обозначение p.m. или pm.", "Общее свободное время в календаре: суббота, 15:00. Сообщите, когда вы оба свободны.", ["We are free at 3 p.m. on Saturday.", "We're free at 3 p.m. on Saturday.", "We are free at 3 pm on Saturday.", "We're free at 3 pm on Saturday."], "Для доступности достаточно be free. 15:00 — 3 p.m.; перед временем нужен at, перед днём — on."]
+  ]
+}

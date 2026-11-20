@@ -27,7 +27,7 @@ export const taskActions = {
   respond: { icon: '💬', label: 'Ответь в ситуации', hint: 'Напиши реплику по-английски.', types: ['written'] },
 } as const;
 export type TaskAction = keyof typeof taskActions;
-export type TaskMetadata = { action: TaskAction; form?: SentenceType };
+export type TaskMetadata = { action: TaskAction; form?: SentenceType; label?: string; detail?: string };
 export type TaskCatalog = Readonly<Record<string, TaskMetadata>>;
 
 export const taskForms: Record<SentenceType, { icon: string; label: string }> = {
@@ -41,7 +41,7 @@ export const taskForms: Record<SentenceType, { icon: string; label: string }> = 
 export function taskPresentation(task: TaskMetadata) {
   const action = taskActions[task.action];
   const form = task.form ? taskForms[task.form] : undefined;
-  return { icon: form?.icon ?? action.icon, label: form?.label ?? action.label, detail: form ? `${action.label}. ${action.hint}` : action.hint };
+  return { icon: form?.icon ?? action.icon, label: task.label ?? form?.label ?? action.label, detail: task.detail ?? (form ? `${action.label}. ${action.hint}` : action.hint) };
 }
 
 /** Missing author intent is a content error, never silently guessed from language. */
@@ -51,7 +51,7 @@ export function validateTaskIndicators(course: readonly CourseEntry[], metadata:
     if (step.type !== 'exercise') continue;
     for (const question of step.questions) {
       ids.add(question.id);
-      const task = metadata[question.id];
+      const task = question.task ?? metadata[question.id];
       const path = `${lesson!.id}/${step.id}/${question.id}`;
       if (!task || !Object.hasOwn(taskActions, task.action)) throw Error(`Missing or unknown task indicator: ${path}`);
       const action = taskActions[task.action];

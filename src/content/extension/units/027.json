@@ -1,0 +1,39 @@
+{
+  "number": 27,
+  "title": "Вход в здание",
+  "subtitle": "Building Check-In",
+  "goal": "Найти этаж и комнату в указателе и назвать сотрудника, к которому вы пришли.",
+  "intro": "Вы пришли в офис на встречу. Сначала найдите стойку регистрации, затем проверьте этаж и комнату принимающего сотрудника.",
+  "example": "Directory: Lobby and front desk — first floor. Maya Stone — second floor, Room 214.\nVisitor: Hi. I'm here to see Maya Stone.\nReceptionist: Room 214, on the second floor. The elevator is next to the front desk.",
+  "translation": "Указатель: вестибюль и стойка регистрации — первый этаж. Майя Стоун — второй этаж, комната 214.\nПосетитель: Здравствуйте. Я к Майе Стоун.\nАдминистратор: Комната 214, на втором этаже. Лифт рядом со стойкой регистрации.",
+  "theory": "Lobby — вестибюль; front desk — стойка регистрации; elevator — лифт в американском английском; visitor — посетитель; badge — пропуск, который носят на одежде. Directory — указатель помещений; Room 214 — комната 214.\nВ США first floor обычно означает этаж на уровне входа с улицы. Ground floor тоже может обозначать этот уровень: не прибавляйте этаж автоматически. Всегда читайте указатель конкретного здания. Здесь first — первый, second — второй, third — третий; на табличках также 1st, 2nd, 3rd.\nДля этажа используйте on the: on the first floor, on the second floor, on the third floor. Для комнаты — in Room 214. Сам номер комнаты не доказывает, на каком она этаже: источник — указатель.\nI'm here to see Maya Stone означает «Я пришёл к Майе Стоун». Полная форма I am here to see тоже верна. После see называйте нужного сотрудника; не добавляйте to перед именем. Фамилию сверяйте целиком, как в уроке 25.",
+  "rows": [
+    ["on the second floor", "The front desk is on the second floor.", "Стойка регистрации на втором этаже."],
+    ["in Room + number", "Nora Park is in Room 308.", "Нора Парк в комнате 308."],
+    ["I'm here to see + name", "I'm here to see Leo Reed.", "Я пришёл к Лео Риду."]
+  ],
+  "tip": "Не пишите at the second floor: для этажа нужно on the second floor. В I'm here to see Leo Reed предлог to уже относится к see; перед Leo второго to нет.",
+  "review": "Из №11 вспомните названия мест, из №23 — как найти лифт по указателю. Из №25 восстановите имя и фамилию: перед ответом сравните обе части имени с записью сотрудника.",
+  "summary": "Вы можете найти комнату и этаж по указателю и сообщить на стойке, к кому пришли.",
+  "choice": [
+    ["lobby-desk", "Выберите место регистрации посетителей.", "Oak Building: Visitor check-in — front desk in the lobby. Cafe — third floor. Office 6 — second floor.", ["The cafe", "The front desk", "Office 6"], 1, "Visitor check-in обозначает регистрацию посетителей; указатель направляет к front desk в вестибюле."],
+    ["host-room", "Выберите комнату Тома.", "Pine Directory: Tom West — Room 117, third floor. Eva Lane — Room 305, second floor.", ["Room 305", "Room 300", "Room 117"], 2, "У Тома прямо указана Room 117. Первые цифры номера здесь не заменяют строку с этажом."],
+    ["street-level", "Под каким названием в этом здании указан этаж у входа с улицы?", "Maple Center, US: Ground floor (G) — street entrance and lobby. Second floor (2) — meeting rooms. Third floor (3) — staff offices.", ["Ground floor", "Second floor", "Third floor"], 0, "Ground floor (G) здесь обозначает уровень уличного входа. Сверяйтесь с указателем: в другом здании вход может быть обозначен как first floor."],
+    ["badge-recipient", "Кому предназначен пропуск?", "Front desk sign: Visitors: get a badge here. Staff: use your own badge.", ["Only staff", "Visitors", "Only elevator users"], 1, "Visitors — посетители: именно им предлагают получить badge у стойки. Staff используют свой пропуск."],
+    ["exit-directory", "Найдите этаж и комнату Эллы.", "River Offices: Ella Moss — third floor, Room 142. Owen Fox — first floor, Room 310.", ["First floor, Room 310", "Third floor, Room 310", "Third floor, Room 142"], 2, "В строке Ella Moss указаны third floor и Room 142. Обе части нужно брать из одной строки."]
+  ],
+  "blank": [
+    ["floor-preposition", "Впишите только пропущенный предлог.", "Directory: Art office — second floor. The art office is ___ the second floor.", ["on"], "С этажом употребляем on: on the second floor."],
+    ["ordinal-third", "Впишите только порядковое числительное словом.", "Directory: Visitor room — 3rd floor. The visitor room is on the ___ floor.", ["third"], "3rd читается third — третий. Three обозначает количество, а не порядок."],
+    ["see-host", "Впишите только имя и фамилию сотрудника из записи.", "Appointment: Alex Bell, 10 a.m. I'm here to see ___.", ["Alex Bell"], "После see называем того, с кем назначена встреча: Alex Bell."],
+    ["room-location", "Нина сейчас внутри комнаты. Впишите один предлог со значением «внутри».", "Directory: Nina Cole — Room 206. Nina Cole is ___ Room 206.", ["in"], "In Room 206 указывает, что Нина внутри комнаты. At Room 206 могло бы означать, что она у комнаты."],
+    ["exit-floor", "Определите этаж Эллы. Впишите только порядковое числительное словом.", "River Offices: Ella Moss — 3rd floor, Room 142. Owen Fox — 1st floor, Room 310. Ella is on the ___ floor.", ["third"], "В строке Эллы 3rd означает third. Номер 142 не указывает этаж."]
+  ],
+  "written": [
+    ["check-in-host", "Сообщите, к кому пришли: начните с I am here to see или сокращения, затем только имя и фамилия.", "Your appointment: Ben Hart, Room 207.", ["I am here to see Ben Hart.", "I'm here to see Ben Hart."], "I am here to see + имя сообщает цель визита. Room 207 не является именем сотрудника."],
+    ["desk-floor-line", "Напишите предложение: The front desk + is + on the + этаж словом + floor.", "Cedar Directory: Front desk — 2nd floor.", ["The front desk is on the second floor."], "2nd — second. Для этажа нужны on и артикль the."],
+    ["room-line", "Укажите местонахождение: начните с Sam Lee is, затем in Room и номер.", "Birch Directory: Sam Lee — third floor, Room 119.", ["Sam Lee is in Room 119."], "Комната указана как 119; in Room 119 описывает нахождение в комнате."],
+    ["first-floor-line", "Переведите одним предложением: начните с The lobby is; этаж напишите словом.", "Вестибюль находится на первом этаже.", ["The lobby is on the first floor."], "Первый этаж — the first floor; с ним используем on. Lobby — вестибюль."],
+    ["exit-check-in", "Вы пришли к Элле. Напишите одну строку: I am here to see или сокращение, затем только её полное имя.", "River Offices: Ella Moss — third floor, Room 142. Owen Fox — first floor, Room 310.", ["I am here to see Ella Moss.", "I'm here to see Ella Moss."], "Цель визита — Ella Moss. Формула here to see связывает визит с человеком, а не с номером комнаты."]
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "number": 34,
+  "title": "Что не получилось",
+  "subtitle": "Done and undone tasks",
+  "goal": "Определить три статуса по списку и сообщить, какое запланированное действие не произошло.",
+  "intro": "Друг спрашивает, как прошли выходные. У вас есть список дел: отмеченные пункты выполнены, пустые клетки означают, что дело осталось несделанным.",
+  "example": "My list — last weekend\n[x] clean the kitchen\n[ ] call Alex\nI cleaned the kitchen, but I didn't call Alex.",
+  "translation": "Мой список — прошлые выходные\n[x] убрать кухню\n[ ] позвонить Алексу\nЯ убрал кухню, но не позвонил Алексу.",
+  "theory": "List — список, task — задача или дело, plan — план. Checkbox — квадратное поле для отметки. В наших списках [x] означает «выполнено», [ ] — «не выполнено». Запись описывает итог прошедшего периода, а не будущие намерения. Last weekend — в прошлые выходные; перед этим выражением не нужен предлог.\n\nДля действия, которое не произошло в прошлом, используйте didn't + начальную форму глагола: I didn't clean the kitchen. Didn't — сокращение did not. Оба варианта правильны. Форма одинакова для всех: she didn't call, they did not go. Само didn't уже показывает прошлое, поэтому глагол после него не получает -ed и не принимает неправильную прошедшую форму.\n\nСравните: I called Alex — я позвонил; I didn't call Alex — я не позвонил. We went to the store — мы пошли в магазин; We didn't go to the store — мы не пошли. Формы walked → walk, bought → buy, saw → see возвращаются к начальным после didn't. Для двух разных статусов удобно but — «но»: I finished the task, but I didn't call Sam. В американской повседневной речи didn't естественно; did not тоже допустимо, особенно если нужно подчеркнуть отрицание.\n\nЧитайте и день, и отметку: пустая клетка в итоговом списке за субботу означает, что в субботу дело не сделали. Она сама по себе не сообщает, сделали ли его в другой день.",
+  "rows": [
+    ["[x]: past affirmative", "I watched the show last weekend.", "Я посмотрел передачу в прошлые выходные."],
+    ["[ ]: didn't + base verb", "I didn't watch the show last weekend.", "Я не посмотрел передачу в прошлые выходные."],
+    ["did not + go", "They did not go to the park on Sunday.", "Они не пошли в парк в воскресенье."]
+  ],
+  "tip": "Не пишите didn't went или didn't cleaned. Прошлое уже выражено словом didn't: didn't go, didn't clean.",
+  "review": "Возьмите из №32 cleaned и из №33 bought. Сделайте отрицания: didn't clean, didn't buy. Сравните с №3: don't — обычно не делаю; didn't — не сделал в прошлом.",
+  "summary": "Я различаю выполненные и невыполненные дела в итоговом списке и пишу отрицание о прошлом с didn't или did not и начальным глаголом.",
+  "choice": [
+    ["completed-kitchen", "Прочитайте итоговый список. Какое предложение верно?", "Nora — Saturday: [x] clean the kitchen; [ ] call Tim; [ ] buy a map.", ["Nora didn't clean the kitchen.", "Nora cleaned the kitchen.", "Nora bought a map."], 1, "[x] показывает выполненную уборку. Звонок и покупка остались без отметки."],
+    ["uncalled-friend", "По тому же списку определите статус звонка.", "Nora — Saturday: [x] clean the kitchen; [ ] call Tim; [ ] buy a map.", ["Nora called Tim.", "Tim called Nora.", "Nora didn't call Tim."], 2, "Пустая клетка у call Tim означает, что Нора не позвонила Тиму. О действиях Тима список ничего не сообщает."],
+    ["unbought-map", "По тому же списку определите статус покупки.", "Nora — Saturday: [x] clean the kitchen; [ ] call Tim; [ ] buy a map.", ["Nora didn't buy a map.", "Nora bought a map.", "Nora didn't clean the kitchen."], 0, "У buy a map стоит [ ]; отрицание строим с didn't buy, а не didn't bought."],
+    ["negative-base", "Выберите грамматически правильное сообщение об отменённой поездке.", "Ситуация: мы не поехали к озеру в прошлые выходные.", ["We didn't went to the lake last weekend.", "We didn't go to the lake last weekend.", "We don't went to the lake last weekend."], 1, "После didn't нужен go. Don't относится к настоящему и не сочетается с прошедшей формой went."],
+    ["mixed-status", "Выберите сообщение, которое точно соответствует двум отметкам.", "Omar — Sunday: [x] finish the task; [ ] watch the show.", ["Omar didn't finish the task, but he watched the show.", "Omar finished the task and watched the show.", "Omar finished the task, but he didn't watch the show."], 2, "Finished передаёт [x], didn't watch — [ ]. Союз but связывает разные статусы."]
+  ],
+  "blank": [
+    ["clean-base", "Поставьте clean в нужную форму после didn't. Введите только пропуск.", "I didn't ___ my room last weekend.", ["clean"], "После didn't используется начальная форма clean без -ed."],
+    ["go-base", "Поставьте go в нужную форму после didn't. Введите только пропуск.", "Lucy didn't ___ to the store on Monday.", ["go"], "Didn't требует go; неправильная форма went нужна в утвердительном предложении."],
+    ["buy-base", "Поставьте buy в нужную форму после did not. Введите только пропуск.", "We did not ___ a ticket yesterday.", ["buy"], "Did not действует так же, как didn't: после него ставим buy, а не bought."],
+    ["take-base", "Поставьте take в нужную форму после didn't. Введите только пропуск.", "They didn't ___ the bus on Friday.", ["take"], "Take the bus — поехать на автобусе. В отрицании после didn't используем take, не took."],
+    ["past-negative", "Вставьте отрицание прошлого: didn't или полную форму. Введите только пропуск.", "Итог за вчера: [ ] call Dad. I ___ call Dad yesterday.", ["didn't", "did not"], "Невыполненное вчера действие передаём didn't call или did not call. Don't call относилось бы к настоящему."]
+  ],
+  "written": [
+    ["new-list-call", "Сообщите другу о единственном невыполненном деле. Начните с I, возьмите действие из списка и поставьте yesterday в конце. Можно didn't или did not.", "My list for yesterday: [x] walk to work; [ ] call Eva; [x] watch the show.", ["I didn't call Eva yesterday.", "I did not call Eva yesterday."], "Только у call Eva пустая клетка. Значит, звонка не было: I didn’t call Eva yesterday. Прогулка и просмотр отмечены как выполненные."],
+    ["weekend-show", "Напишите отрицание в порядке We / watch the show / last weekend. Добавьте didn't или did not; других слов не добавляйте.", "Наш итог за прошлые выходные: [ ] watch the show.", ["We didn't watch the show last weekend.", "We did not watch the show last weekend."], "После didn't или did not сохраняем watch. Перед last weekend предлог не нужен."],
+    ["map-negative", "Перепишите предложение с отрицанием didn't или did not. Сохраните остальные слова и их порядок, изменив форму глагола.", "Ben bought a map on Tuesday.", ["Ben didn't buy a map on Tuesday.", "Ben did not buy a map on Tuesday."], "Bought возвращается к buy после didn't. Не ставим вместе два показателя прошлого."],
+    ["park-negative", "Перепишите предложение с отрицанием didn't или did not. Сохраните остальные слова и их порядок, изменив форму глагола.", "They went to the park on Sunday.", ["They didn't go to the park on Sunday.", "They did not go to the park on Sunday."], "Went → didn't go. Форма didn't одинакова для they и остальных действующих лиц."],
+    ["done-task", "Сообщите о выполненном деле в порядке I / finish the task / on Friday. Измените только время глагола.", "Мой итог за прошлую пятницу: [x] finish the task.", ["I finished the task on Friday."], "[x] означает, что дело выполнено: нужно утвердительное finished без didn't."]
+  ]
+}

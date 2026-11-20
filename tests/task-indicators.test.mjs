@@ -4,14 +4,14 @@ import { createHash } from 'node:crypto';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { createServer } from 'vite';
-import { lessons } from '../src/content/course.ts';
+import { lessons } from '../src/content/historicalCourse.ts';
 import { questionTasks } from '../src/content/questionTasks.ts';
 import { taskPresentation, validateTaskIndicators } from '../src/lib/taskIndicators.ts';
 
 let server, ExerciseQuestion;
 before(async () => {
   // Middleware-only SSR loader: no listening port, no existing QA server changes.
-  server = await createServer({ server: { middlewareMode: true }, appType: 'custom' });
+  server = await createServer({ server: { middlewareMode: true, hmr: false, ws: false }, appType: 'custom' });
   ({ ExerciseQuestion } = await server.ssrLoadModule('/src/components/exercises/ExerciseQuestion.tsx'));
 });
 after(async () => { await server?.close(); });
@@ -22,8 +22,8 @@ const render = (id, saved) => renderToStaticMarkup(createElement(ExerciseQuestio
   question: byId[id], index: 0, value: '', saved, missing: false, onChange() {},
 }));
 
-test('all 480 questions have one authored compatible task, with no orphan metadata', () => {
-  assert.equal(validateTaskIndicators(lessons,questionTasks),480);
+test('all 555 questions have one authored compatible task, with no orphan metadata', () => {
+  assert.equal(validateTaskIndicators(lessons,questionTasks),555);
   assert.deepEqual(Object.keys(questionTasks).sort(),questions.map(q=>q.id).sort());
 });
 test('To Be exercise 2: every blank prominently requests a negative before the answer', () => {
@@ -89,6 +89,8 @@ test('task does not change when saved feedback locks a question', () => {
 });
 
 test('all 21 lessons, 147 steps and 480 question definitions retain their exact baseline', () => {
-  assert.equal(createHash('sha256').update(JSON.stringify(lessons)).digest('hex'),'4dc7261c6d9b843b37d41e9cb1b70694bee708f2c7feb01a21c11d92f72778b4');
-  assert.equal(lessons.length,21);assert.equal(lessons.flatMap(e=>e.lesson.steps).length,147);
+  const published = lessons.slice(0, 21);
+  assert.equal(createHash('sha256').update(JSON.stringify(published)).digest('hex'),'4dc7261c6d9b843b37d41e9cb1b70694bee708f2c7feb01a21c11d92f72778b4');
+  assert.equal(published.length,21);assert.equal(published.flatMap(e=>e.lesson.steps).length,147);
+  assert.equal(published.flatMap(e=>e.lesson.steps.flatMap(s=>s.type==='exercise'?s.questions:[])).length,480);
 });

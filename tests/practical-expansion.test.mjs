@@ -1,13 +1,17 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { lessons, foundationLessons, practicalLessons, questionCount } from '../src/content/course.ts';
+import { lessons as catalog, foundationLessons, practicalLessons } from '../src/content/historicalCourse.ts';
 import { validateCourse } from '../src/lib/validation.ts';
 import { gradeAnswer } from '../src/lib/grading.ts';
 import { emptyProgress, updateProgress, decodeProgress, isLessonUnlocked, isStepUnlocked, getScore, PROGRESS_KEY } from '../src/lib/progress.ts';
 import { getQuestionState } from '../src/lib/exercise.ts';
 import { openProgressSession } from '../src/lib/progressStorage.ts';
 import { createQaProgress, restoreQaProgress, restartQaLesson, QA_PROGRESS_KEY, loadQaProgress, saveQaProgress } from '../src/dev/qaState.ts';
+
+// Historical 16→21 regression: retain every fixed count and oracle on this prefix.
+const lessons = catalog.slice(0, 21);
+const questionCount = lessons.reduce((n, {lesson}) => n + lesson.steps.flatMap(s => s.type === 'exercise' ? s.questions : []).length, 0);
 
 const ids=['greetings-reactions','everyday-combinations','help-and-cafe','simple-arrangements','small-talk-basics'];
 // Reviewed independent term/canonical-context oracle, not factory-derived answers.

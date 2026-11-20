@@ -2,6 +2,11 @@ import type { CourseEntry, Lesson, LessonStep } from '../types/lesson.ts';
 import { gradeAnswer } from './grading.ts';
 
 export const PROGRESS_KEY = 'gps.progress.v1';
+// Only these lessons existed before vocabulary was inserted into the A1 sequence.
+const legacyGrammarIds = new Set([
+  'to-be', 'present-simple', 'do-does', 'have-has', 'articles', 'demonstratives',
+  'there-is-are', 'can-cant', 'present-continuous', 'was-were',
+]);
 export type Attempt = { answer: string; correct: boolean };
 export type QuestionProgress = { attempts: Attempt[]; retrying: boolean };
 export type LessonProgress = { completedSteps: string[]; answers: Record<string, QuestionProgress> };
@@ -28,7 +33,7 @@ export function isLessonUnlocked(progress: Progress, course: readonly CourseEntr
   const index = course.findIndex(lesson => lesson.id === lessonId);
   // A validated pre-vocabulary frontier retains grammar access. It never earns
   // completion or exempts vocabulary/new grammar from the integrated sequence.
-  if (index >= 0 && course[index].lesson?.kind !== 'vocabulary' && progress.legacyUnlockedLessons?.includes(lessonId)) {
+  if (index >= 0 && legacyGrammarIds.has(lessonId) && course[index].lesson?.kind !== 'vocabulary' && progress.legacyUnlockedLessons?.includes(lessonId)) {
     return course.slice(0, index).filter(entry => entry.lesson?.kind !== 'vocabulary').every(entry => progress.completedLessons.includes(entry.id));
   }
   return index >= 0 && course.slice(0, index).every(entry => progress.completedLessons.includes(entry.id));
@@ -144,7 +149,7 @@ export function decodeProgress(raw: string | null, course: readonly CourseEntry[
     const data: unknown = JSON.parse(raw);
     if (!record(data) || data.version !== 1 || !record(data.lessons)) return { progress: clean, recovered: true };
     if (course.some(entry => entry.lesson?.kind === 'vocabulary')) {
-      const grammar = course.filter(entry => entry.lesson?.kind !== 'vocabulary');
+      const grammar = course.filter(entry => legacyGrammarIds.has(entry.id) && entry.lesson?.kind !== 'vocabulary');
       let retained: string[] = [];
       if (data.curriculumVersion === undefined) {
         // Replay the former grammar curriculum first; stored completion booleans

@@ -1,0 +1,127 @@
+[
+  {
+    "number": 67,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "В two-turn-report текущий номер 962, а 926 старый. В Could you give me a replacement? карту выдаёт сотрудник. В follow-desk-direction гость спускается к стойке вместо ожидания доставки.",
+    "correctedIds": [
+      "room-not-phone",
+      "two-turn-report"
+    ],
+    "sha256": "3ac2bcb931ea70706d61c030c81d1fe234b6d620a3430ddd967ffe4c71b4ad1d"
+  },
+  {
+    "number": 68,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "В complete-three-field-note записка для Alice, звонок после 09:00 и до полудня по новому номеру 202-555-0153. Старый номер 202-555-0135 не подходит. В requested-action звонит получатель записки.",
+    "correctedIds": [
+      "lower-time-bound",
+      "complete-three-field-note"
+    ],
+    "sha256": "3eb46ccfc3b191cfc5a91272e890b4bdd58ef6b1ea6e3a25219b02ec42f14aa5"
+  },
+  {
+    "number": 69,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "В ask-open-window нужен Do you mind if I open the window?: действие выполняет автор вопроса. В window-refused указание Please keep it closed исключает открытие окна. В headphones-permitted разрешены наушники, но не динамик.",
+    "correctedIds": [
+      "reader-asks-own-action",
+      "ask-open-window"
+    ],
+    "sha256": "3fdab76d21564737857beff620a89f6e4e9ab32463a254c39584ebe6d85bc24e"
+  },
+  {
+    "number": 70,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "В resolve-day-room-pair Thursday следует из I meant, а Room 248 — из справочника по этажам. Room 284 находится на третьем этаже. В surname-near-match нужно Clarke с e.",
+    "correctedIds": [
+      "surname-near-match",
+      "confirm-repaired-surname",
+      "resolve-day-room-pair"
+    ],
+    "sha256": "7b2a580c86c97d279f611f9bffef5928608fcff708ec08a50082531f10caa374"
+  },
+  {
+    "number": 71,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "В exit-valid-service-slot подходит Friday at 10:30 a.m.: 09:30 рано для стойки, 12:30 поздно для гостя. Проверены все шесть итоговых пунктов, включая Thursday at 11:30 a.m. в exit-confirm-repaired-slot и Could you give me a replacement? в exit-request-right-actor.",
+    "correctedIds": [
+      "caller-versus-recipient",
+      "exit-find-slip-mismatch",
+      "exit-correct-room-field",
+      "exit-correct-recipient-field",
+      "exit-request-right-actor",
+      "exit-confirm-repaired-slot"
+    ],
+    "sha256": "d11e8b775bfda5fa07ed465077bf7f980a2424b6b4d3b089a874ec7db8384603"
+  },
+  {
+    "number": 72,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "В three-step-relay нужно выбрать cloud_final.pdf, загрузить его и нажать кнопку отправки. cloud_final.docx не подходит по формату, а отправка до загрузки нарушает after. В deadline-reading подходят 15:00 при сроке 16:00.",
+    "correctedIds": [
+      "deadline-reading",
+      "submit-object",
+      "three-step-relay"
+    ],
+    "sha256": "bfaa388baae057f5b822f12b3768fe5085fe7866b2cb47ddda41b29d8a59190b"
+  },
+  {
+    "number": 73,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "В ask-new-date нужна просьба Could I submit Park Sketch on Thursday?, поскольку это следующий день после срока в среду. В explain-laptop причина — my laptop is broken. В missing-date слова later недостаточно для согласования срока.",
+    "correctedIds": [
+      "greet-instructor",
+      "explain-laptop",
+      "ask-new-date",
+      "request-until"
+    ],
+    "sha256": "80626c39731f8b0c86dad4328c601fe654539290fa9edbbc764c8768ebe5f44a"
+  },
+  {
+    "number": 74,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "В required-shelves товар нужно доложить на полки в 11:00, чтение заметок в 10:00 необязательно. В required-apron обязателен фартук. В nina-register требуется Nina has to work at the register at 5 p.m., потому что 4 p.m. помечено optional.",
+    "correctedIds": [
+      "required-shelves",
+      "we-shelves",
+      "nina-register"
+    ],
+    "sha256": "8f7c318d0d4206a5f7d76566d522565da07845504d5224964725dfd4cbfb2f6d"
+  },
+  {
+    "number": 75,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "В viable-partner подходит Jay: он свободен в субботу утром, а Миа — в его воскресную смену. В offer-both подходит Ли: субботнее закрытие взамен пятничного открытия. Пэт свободен в пятницу, но автор просьбы не может выйти в его воскресную смену. В approval-status всё ещё нужно одобрение менеджера.",
+    "correctedIds": [
+      "viable-partner",
+      "cover-time",
+      "swap-reason",
+      "offer-both",
+      "give-class-reason"
+    ],
+    "sha256": "40486097e139678164d87b0d385901f80076305a13726073e145eae2762c6507"
+  },
+  {
+    "number": 76,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "В eligible-computer Ana свободна всю смену и умеет пользоваться компьютером. Bo не хватает умения, Cal — доступности. В ask-start-time ставка указана, а время начала отсутствует, поэтому подходит What time does the shift start?",
+    "correctedIds": [
+      "two-requirements",
+      "missing-pay",
+      "ask-hourly-pay",
+      "ask-start-time",
+      "state-register-need"
+    ],
+    "sha256": "f7673c0fc92b201e95a694c813ba582dc684e03c2a03e2a2e5fcae21b746e34c"
+  }
+]

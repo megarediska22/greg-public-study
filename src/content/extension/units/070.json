@@ -1,0 +1,40 @@
+{
+  "number": 70,
+  "title": "Уточнить, что поняли верно",
+  "subtitle": "Checking and correcting details",
+  "goal": "Найти расхождение в дне, комнате или фамилии, перенести исправленное значение и явно подтвердить его.",
+  "intro": "В переписке почти всё совпадает, но одна буква или день могут направить посетителя не туда. Вы сверяете сообщение с подтверждением и исправляете конкретную деталь.",
+  "example": "Desk: Just to check, is it Tuesday?\nVisitor: I meant Thursday. Tuesday was a typo.\nDesk: Got it. Thursday is correct.\nVisitor: And I need the room on the second floor: room 208.",
+  "translation": "Администратор: Чтобы уточнить: это вторник?\nПосетитель: Я имел в виду четверг. «Вторник» я написал по ошибке.\nАдминистратор: Понятно. Четверг — верно.\nПосетитель: И мне нужна комната на втором этаже, номер 208.",
+  "theory": "Just to check — «чтобы уточнить». Correct — «верно, правильный»; a typo — опечатка. Got it — «понятно, понял», но эта фраза сама по себе не называет исправленную деталь. The one on + место указывает на нужный предмет из нескольких: the one on the second floor — тот, что на втором этаже. В американском английском первый этаж обычно first floor; second floor — этаж над ним.\n\nДля проверки одной детали используйте готовый вопрос Just to check, is it Thursday? Вместо Thursday можно поставить номер комнаты или фамилию: Just to check, is it room 417? Just to check, is it Lane? После is it помещайте значение, которое хотите проверить. Запятая после check отделяет вводную фразу; в ответах этого урока допустим и вариант без запятой.\n\nI meant … — ограниченная формула исправления: «я имел в виду …». I meant Friday исправляет ранее названный день; I meant room 630 исправляет комнату. Для подтверждения можно повторить значение: Friday is correct. Сначала определите, какая деталь объявлена ошибкой, затем возьмите новое значение из исправления. Похожая фамилия или прежний номер не заменяют явно указанное исправление.",
+  "rows": [
+    ["Just to check, is it …?", "Just to check, is it room 417?", "Чтобы уточнить: это комната 417?"],
+    ["I meant …", "I meant Wednesday.", "Я имел в виду среду."],
+    ["… is correct.", "Lane is correct.", "Лейн — верно."],
+    ["the one on", "I need the one on the third floor.", "Мне нужна та, что на третьем этаже."]
+  ],
+  "tip": "Got it не показывает, какую деталь вы записали. После исправления повторите её: Friday is correct. Не копируйте слово после typo как верное значение: Tuesday was a typo означает, что ошибкой был именно Tuesday.",
+  "review": "Из №19 вспомните просьбу повторить, из №25 — точные поля, из №53 и №62 — детали записи, из №68 — адресата и номер для звонка. Сравните две строки по одному полю: день с днём, комнату с комнатой, фамилию с фамилией.",
+  "summary": "Вы можете найти ошибку в похожих данных, исправить её через I meant и подтвердить конкретное значение вопросом или фразой is correct.",
+  "choice": [
+    ["find-wrong-day", "Выберите деталь, которая не совпала с сообщением посетителя.", "Visitor: I'll come on Monday at 11 a.m., room 305. Desk confirmation: Tuesday at 11 a.m., room 305.", ["The room", "The time", "The day"], 2, "Время 11 a.m. и комната 305 совпадают. Расхождение только в дне: посетитель написал Monday, администратор — Tuesday."],
+    ["use-repaired-room", "Выберите комнату после исправления.", "Visitor: I wrote room 490 earlier. That was a typo. I meant room 409. The time is still 2 p.m.", ["Room 409", "Room 490", "Room 904"], 0, "I meant room 409 явно задаёт исправленную комнату. Room 490 объявлена опечаткой."],
+    ["surname-near-match", "Выберите фамилию, которую следует записать.", "Desk: Your original message says Clark. Visitor: I meant Clarke, with an e at the end. Clark was a typo.", ["Clark", "Clarke", "Clerk"], 1, "Посетитель исправляет собственное сообщение: в Clarke есть e в конце. Clark — прежняя ошибка."],
+    ["identify-floor-reference", "Выберите нужную комнату по уточнению.", "US building directory: room 112 — first floor; room 212 — second floor; room 312 — third floor. Visitor: I need the one on the second floor.", ["Room 112", "Room 312", "Room 212"], 2, "The one on the second floor указывает на комнату 212 по справочнику. Американский second floor расположен над first floor."],
+    ["check-not-assume", "Выберите вопрос, который проверяет исправленный день.", "Visitor: The note says Saturday, but I meant Sunday. Desk wants to check the new day before saving it.", ["Just to check, is it Saturday?", "Just to check, is it Sunday?", "Just to check, is it room 207?"], 1, "Новое значение после I meant — Sunday. Проверочный вопрос должен называть его, а не старый день и не другое поле."]
+  ],
+  "blank": [
+    ["corrected-visit-day", "Вставьте только исправленный день по-английски.", "Visitor: I wrote Friday by mistake. I meant Saturday. Desk: Your visit is on ___.", ["Saturday"], "После I meant указан новый день Saturday. Friday назван ошибочным и больше не используется."],
+    ["corrected-last-name", "Вставьте только исправленную фамилию.", "Visitor: My last name is Stone. Stowe in your message is a typo. Desk: The last name is ___.", ["Stone"], "Посетитель прямо называет свою фамилию Stone. Stowe — опечатка, хотя отличается всего одной буквой."],
+    ["repair-chunk-verb", "Вставьте только изученную форму mean для исправления прежнего сообщения.", "Visitor: Sorry, I wrote room 561. I ___ room 516.", ["meant"], "Готовая формула I meant вводит исправление: «я имел в виду». Здесь она заменяет 561 на 516."],
+    ["repair-two-fields-room", "Вставьте только исправленный номер комнаты.", "Earlier note: Thursday, room 734. Visitor: Thursday is correct, but I meant room 743. Desk: Thursday, room ___.", ["743"], "День Thursday подтверждён; исправляется только комната. После I meant указан номер 743."],
+    ["check-fixed-opener", "Вставьте только последнее слово вводной фразы «чтобы уточнить».", "Two messages give different last names. Desk: Just to ___, is it Brooks?", ["check"], "Just to check вводит проверку спорной детали. Далее вопрос is it Brooks? называет фамилию, которую уточняют."]
+  ],
+  "written": [
+    ["ask-repaired-day", "Напишите вопрос с Just to check, затем is it и исправленный день. Запятая после check необязательна; других слов не добавляйте.", "Visitor: My earlier message said Monday. I meant Wednesday.", ["Just to check, is it Wednesday?", "Just to check is it Wednesday?"], "Проверяется Wednesday, потому что это новое значение после I meant. Monday осталось в прежнем сообщении."],
+    ["repair-room-statement", "Исправьте свою запись одним предложением: I meant room + правильный номер.", "You typed room 827. Your visitor card shows room 872. Correct your earlier message.", ["I meant room 872."], "I meant room 872 заменяет ошибочно набранный 827 и прямо называет правильную комнату."],
+    ["confirm-repaired-surname", "Напишите исправленную фамилию, затем is correct. Одно предложение без других слов.", "Visitor: I typed Hale on my form. I meant Hall, with two l's.", ["Hall is correct."], "После I meant дана верная фамилия Hall, с двумя буквами l в конце. В подтверждении повторите её явно."],
+    ["check-repaired-room", "Уточните комнату: Just to check, затем is it room и исправленный номер. Допустим вариант без запятой.", "Visitor: Room 623 was a typo. I meant room 632. The appointment is still on Tuesday.", ["Just to check, is it room 632?", "Just to check is it room 632?"], "Вопрос должен проверять комнату 632; вторник не менялся и не является спорным полем."],
+    ["resolve-day-room-pair", "Подтвердите две исправленные детали двумя предложениями: сначала день + is correct, затем Room + номер + is correct. Без Got it и других слов.", "Desk slip: Friday, room 284. Visitor: I can't come on Friday. I meant Thursday. And I need the one on the second floor. Room list: 248 — second floor; 284 — third floor.", ["Thursday is correct. Room 248 is correct."], "I meant Thursday исправляет день. По справочнику нужная комната на втором этаже — 248. В подтверждении должны быть оба новых значения."]
+  ]
+}

@@ -1,16 +1,34 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
-import { lessons } from '../content/course';
+import { getProgressCourse } from '../content/extension/registry';
 import { emptyProgress, updateProgress, type Progress, type ProgressAction } from './progress';
-import { openProgressSession, type SaveStatus } from './progressStorage';
+import type { openProgressSession, SaveStatus } from './progressStorage';
+import { openCourseSession } from './courseSession';
 
 type ProgressContextValue = { progress: Progress; dispatch: (action: ProgressAction) => void; reset: () => void };
 export const ProgressContext = createContext<ProgressContextValue | null>(null);
 
+type Session = ReturnType<typeof openProgressSession>;
+
 export function ProgressProvider({ children }: { children: ReactNode }) {
-  const [loaded] = useState(() => openProgressSession({
-    getItem: key => window.localStorage.getItem(key),
-    setItem: (key, value) => window.localStorage.setItem(key, value),
-  }, lessons));
+  const [session, setSession] = useState<Session | null>(null);
+  const [failed, setFailed] = useState(false);
+  const [retry, setRetry] = useState(0);
+  useEffect(() => {
+    let active = true;
+    const storage = {
+      getItem: (key: string) => window.localStorage.getItem(key),
+      setItem: (key: string, value: string) => window.localStorage.setItem(key, value),
+    };
+    openCourseSession(storage).then(loaded => {
+      if (active) setSession(loaded);
+    }).catch(() => { if (active) setFailed(true); });
+    return () => { active = false; };
+  }, [retry]);
+  if (!session) return <section className="notice" role="status"><p>{failed ? 'Не удалось загрузить данные для восстановления прогресса. Сохранение не изменено.' : 'Восстанавливаем прогресс…'}</p>{failed && <button className="button button-secondary" onClick={() => { setFailed(false); setRetry(value => value + 1); }}>Повторить загрузку</button>}</section>;
+  return <ReadyProgressProvider loaded={session}>{children}</ReadyProgressProvider>;
+}
+
+function ReadyProgressProvider({ children, loaded }: { children: ReactNode; loaded: Session }) {
   const [progress, setProgress] = useState(loaded.progress);
   const [saveStatus, setSaveStatus] = useState<SaveStatus>(loaded.unavailable ? 'unavailable' : 'unchanged');
   const explicitReset = useRef(false);
@@ -19,7 +37,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
     explicitReset.current = false;
     setSaveStatus(result);
   }, [progress]);
-  const dispatch = useCallback((action: ProgressAction) => { setProgress(previous => updateProgress(previous, lessons, action)); }, []);
+  const dispatch = useCallback((action: ProgressAction) => { setProgress(previous => updateProgress(previous, getProgressCourse(), action)); }, []);
   function reset() {
     explicitReset.current = true;
     setProgress(emptyProgress());

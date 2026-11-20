@@ -1,0 +1,39 @@
+{
+  "number": 29,
+  "title": "Где забрать заказ",
+  "subtitle": "Finding a Pickup Point",
+  "goal": "По табличке и ответу сотрудника выбрать вход и стойку выдачи и уточнить их расположение.",
+  "intro": "В одном здании работают кафе и магазин. Заказ выдают у отдельной стойки: важно найти именно её, а не любую кассу у входа.",
+  "example": "Sign: Order pickup — use the east entrance.\nVisitor: Is the pickup counter next to the cafe?\nStaff: Yes. It's inside the lobby. Pick up your order at the Blue Counter.",
+  "translation": "Табличка: выдача заказов — воспользуйтесь восточным входом.\nПосетитель: Стойка выдачи рядом с кафе?\nСотрудник: Да. Она внутри вестибюля. Заберите заказ у Синей стойки.",
+  "theory": "Pickup — получение или выдача заказа; pickup counter — стойка выдачи. Counter — стойка, entrance — вход, exit — выход. Inside означает «внутри», next to — «рядом с». Order — заказ. На американских табличках Pickup часто пишут одним словом; действие — pick up your order («заберите заказ»).\nAt + название стойки обозначает точку получения: at the Blue Counter. Inside + место указывает, внутри чего она находится: inside the lobby. Next to + ориентир уточняет соседство: next to the cafe. Эти подсказки дополняют друг друга.\nУточнение строится так: Is the pickup counter next to the cafe? Сначала Is, затем the pickup counter и место. Для проверки сразу двух подсказок: Is the Blue Counter inside the lobby, next to the cafe? В этом уроке сохраняйте такой порядок мест.\nНадпись Exit не направляет к выдаче. Сначала выберите нужный entrance, затем проверьте название counter и ориентир в ответе сотрудника. East — восток, west — запад, north — север, south — юг; здесь это названия сторон входа.",
+  "rows": [
+    ["at the + named counter", "Your order is at the Green Counter.", "Ваш заказ у Зелёной стойки."],
+    ["inside + place", "The pickup counter is inside the store.", "Стойка выдачи внутри магазина."],
+    ["Is the … next to …?", "Is the pickup counter next to the elevator?", "Стойка выдачи рядом с лифтом?"]
+  ],
+  "tip": "Не заменяйте inside на next to: inside the cafe — внутри кафе, next to the cafe — рядом с ним. Стойка может быть внутри вестибюля и рядом с кафе одновременно.",
+  "review": "Из №7 вспомните the для конкретной стойки, из №23 — Use the east entrance, из №27 — lobby и elevator. Из №19 восстановите вопрос для уточнения: сначала Is, затем место, которое проверяете.",
+  "summary": "Вы можете выбрать вход и стойку выдачи и проверить её положение по двум подсказкам.",
+  "choice": [
+    ["shared-counter", "Выберите стойку для заказа из магазина.", "Sign: Store orders — Green Counter. Cafe orders — White Counter. Returns — Red Counter.", ["The White Counter", "The Red Counter", "The Green Counter"], 2, "Store orders направляют к Green Counter. Кафе и возвраты имеют другие стойки."],
+    ["inside-location", "Где находится стойка относительно магазина?", "Staff: The Orange Counter is inside the store, next to the front desk.", ["Inside the store", "Outside the store", "Inside the elevator"], 0, "Inside the store означает внутри магазина. Next to the front desk добавляет ориентир, не отменяя inside."],
+    ["entrance-not-exit", "Какой проход использовать для получения заказа?", "Door signs: North entrance — pickup. South entrance — cafe. West door — exit only.", ["The west door", "The north entrance", "The south entrance"], 1, "Pickup указан у north entrance. Exit only разрешает только выход, а не вход за заказом."],
+    ["confirm-neighbor", "Какой вопрос проверяет именно соседство с лифтом?", "Staff: The pickup counter is next to the elevator, inside the lobby.", ["Is the pickup counter inside the elevator?", "Is the pickup counter next to the exit?", "Is the pickup counter next to the elevator?"], 2, "Next to the elevator проверяет соседство с лифтом. Inside the elevator означало бы внутри лифта."],
+    ["exit-entrance-counter", "Выберите вход и стойку для заказа Лены.", "Lena's order: bookstore. Sign: Bookstore pickup — east entrance. Staff: Use the Silver Counter inside the lobby, next to the cafe. West entrance: cafe pickup at the Brown Counter.", ["East entrance; Silver Counter", "West entrance; Brown Counter", "East entrance; Brown Counter"], 0, "Заказ книжного магазина требует east entrance и Silver Counter. Brown Counter относится к заказам кафе."]
+  ],
+  "blank": [
+    ["counter-at", "Впишите предлог со значением «у» в сочетании для точки выдачи.", "Staff: Get your order ___ the Yellow Counter.", ["at"], "At the Yellow Counter — у Жёлтой стойки. From означало бы «от» и меняло бы формулировку."],
+    ["inside-word", "Впишите только слово «внутри».", "The lobby has a pickup counter. It is ___ the lobby, not outside.", ["inside"], "Inside the lobby означает внутри вестибюля; outside — снаружи."],
+    ["next-to-gap", "Впишите только пропущенное слово.", "Staff: The cafe and the pickup counter are side by side. Is the pickup counter next ___ the cafe?", ["to"], "Устойчивое сочетание next to означает «рядом с»; после next нужен to."],
+    ["question-is", "Впишите только начальное слово вопроса.", "You want to check the location: ___ the Red Counter inside the cafe?", ["Is"], "Для вопроса о месте с be ставим Is перед the Red Counter; do здесь не нужно."],
+    ["exit-counter-name", "Впишите только цвет стойки, без Counter.", "Bookstore pickup: east entrance. Staff: Your order is at the Silver Counter inside the lobby, next to the cafe. Cafe orders: Brown Counter. My bookstore order is at the ___ Counter.", ["Silver"], "Silver Counter предназначена для bookstore pickup. Brown Counter выдаёт заказы кафе."]
+  ],
+  "written": [
+    ["ask-cafe-neighbor", "Спросите о соседстве стойки выдачи с кафе: начните с Is the pickup counter; используйте next to.", "Вы хотите проверить, рядом ли стойка выдачи с кафе.", ["Is the pickup counter next to the cafe?"], "Вопрос о месте начинается с Is. Next to the cafe — рядом с кафе."],
+    ["order-at-counter", "Напишите: My order + is + at the + название стойки.", "Staff: Your order — Purple Counter.", ["My order is at the Purple Counter."], "At обозначает точку получения заказа; перед конкретной стойкой сохраняем the."],
+    ["ask-inside", "Уточните вопросом, находится ли Белая стойка внутри магазина. Начните с Is the White Counter; используйте inside.", "Сотрудник указал White Counter. Проверьте, находится ли она внутри магазина.", ["Is the White Counter inside the store?"], "Inside the store проверяет положение внутри магазина. At the store было бы менее точным."],
+    ["two-cues-statement", "Опишите стойку: начните с The Gold Counter is; используйте inside для помещения, затем next to для соседнего ориентира. Перед названиями мест поставьте the.", "Staff: Gold Counter. Location: lobby. Neighbor: elevator.", ["The Gold Counter is inside the lobby, next to the elevator.", "The Gold Counter is inside the lobby next to the elevator.", "The Gold Counter is inside the lobby and next to the elevator."], "Inside указывает помещение, next to — соседний ориентир. Оба факта нужны для точного положения."],
+    ["exit-two-cues-question", "Уточните вопросом место получения книжного заказа. Используйте Is the + название нужной стойки, затем inside the + помещение и next to the + соседний ориентир. Можно разделить две подсказки запятой или and.", "Sign: Bookstore pickup — east entrance. Staff: Silver Counter (lobby, next to the cafe). Cafe pickup: Brown Counter (inside the cafe, next to the west entrance).", ["Is the Silver Counter inside the lobby, next to the cafe?", "Is the Silver Counter inside the lobby next to the cafe?", "Is the Silver Counter inside the lobby and next to the cafe?"], "Книжный заказ выдают у Silver Counter. Inside the lobby называет помещение, next to the cafe — ориентир. У Brown Counter другой заказ и другое место."]
+  ]
+}

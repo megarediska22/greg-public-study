@@ -1,5 +1,12 @@
 import type { TaskCatalog, TaskMetadata } from '../lib/taskIndicators.ts';
 
+import { mergeTaskCatalogs } from './continuation/defineLesson.ts';
+import { hoursAndSignsUnit } from './continuation/hours-and-signs.ts';
+import { directionsOnFootUnit } from './continuation/directions-on-foot.ts';
+import { busSchedulesUnit } from './continuation/bus-schedules.ts';
+import { nameAndContactUnit } from './continuation/name-and-contact.ts';
+import { storePricesAndPaymentUnit } from './continuation/store-prices-and-payment.ts';
+
 // Explicitly audited question IDs grouped by identical learner action.
 // These groups never inspect prompts, punctuation, answers or lesson order.
 const authoredGroups: readonly (TaskMetadata & { ids: readonly string[] })[] = [
@@ -568,4 +575,11 @@ for (const { ids, ...task } of authoredGroups) for (const id of ids) {
   if (Object.hasOwn(tasks, id)) throw Error(`Duplicate task intent: ${id}`);
   tasks[id] = task;
 }
-export const questionTasks: TaskCatalog = tasks;
+export const questionTasks: TaskCatalog = mergeTaskCatalogs(
+  tasks,
+  hoursAndSignsUnit.tasks,
+  directionsOnFootUnit.tasks,
+  busSchedulesUnit.tasks,
+  nameAndContactUnit.tasks,
+  storePricesAndPaymentUnit.tasks,
+);

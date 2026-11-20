@@ -1,0 +1,206 @@
+{
+  "number": 56,
+  "title": "Решение в ответ на сообщение",
+  "subtitle": "An immediate offer",
+  "goal": "Выбрать подходящую помощь в двух сообщениях и написать короткое обязательство в ответ на внезапную просьбу.",
+  "intro": "Перед встречей друг сообщает о проблеме: некому принести вещи или заменить его на короткое время. Вы решаете помочь прямо во время переписки.",
+  "example": "Mia: I forgot the cups for our picnic.\nBen: I'll bring some cups.\nMia: Thanks. Can you come at two?\nBen: I'll check my schedule and let you know.",
+  "translation": "Мия: Я забыла стаканчики для нашего пикника.\nБен: Я принесу стаканчики.\nМия: Спасибо. Ты можешь прийти в два?\nБен: Я проверю своё расписание и дам тебе знать.",
+  "theory": "Bring — принести с собой к месту встречи. Cover в рабочем сообщении может означать «подменить»: cover the front desk — подменить сотрудника на стойке. Let you know — дать тебе знать, сообщить ответ. Check my schedule — проверить своё расписание. Right away — сразу, без промедления.\n\nДля решения или предложения помощи в ответ на новую ситуацию используйте I will + начальную форму глагола: I will bring the cups — я принесу стаканчики. Обычное сокращение в американской переписке — I'll: I'll bring the cups. После will нет to и нет -s/-ing.\n\nI'll cover the front desk — я подменю сотрудника на стойке. I'll check my schedule right away — я сразу проверю своё расписание. Можно соединить две начальные формы: I'll check my schedule and let you know — я проверю расписание и сообщу тебе. Второе will повторять необязательно: I'll check my schedule and I'll let you know тоже возможно.\n\nСравните прежнее намерение и новое решение: I am going to bring lunch — я заранее собираюсь принести обед. Сообщение «We need cups» и ответ «I'll bring the cups» показывают решение сейчас. В этом уроке выбирайте форму по ситуации: заранее записанный план или помощь в ответ на новую проблему. Will употребляется и в других значениях, но здесь мы тренируем именно решение и предложение.\n\nСначала прочитайте, чего не хватает: cups — стаканчиков, water — воды, map — карты. Полезный ответ решает названную проблему. Обещание проверить расписание не равно обещанию обязательно прийти: время ещё нужно проверить.",
+  "rows": [
+    [
+      "I'll + base verb",
+      "I'll bring the water.",
+      "Я принесу воду."
+    ],
+    [
+      "I will + base verb",
+      "I will cover the front desk.",
+      "Я подменю сотрудника на стойке."
+    ],
+    [
+      "right away",
+      "I'll check my schedule right away.",
+      "Я сразу проверю своё расписание."
+    ],
+    [
+      "and let you know",
+      "I'll check my schedule and let you know.",
+      "Я проверю своё расписание и дам тебе знать."
+    ]
+  ],
+  "tip": "Не пишите I'll to bring или I'll bringing. После will нужна начальная форма: I'll bring. Сокращение I'll означает I will, а I'm — I am.",
+  "review": "Из №12 вспомните начальную форму после модального глагола. Из №19 повторите предложения помощи, из №52 — прежнее намерение с going to, из №55 — проверку доступности. Для каждого сообщения назовите проблему перед выбором ответа.",
+  "summary": "Вы умеете выбрать помощь по конкретной проблеме и ответить через I'll / I will + глагол, различая немедленное решение и прежнее намерение.",
+  "choice": [
+    [
+      "offer-one-missing-cups",
+      "Сообщение 1 из 2: выберите помощь, которая решает названную проблему.",
+      "Picnic chat: We have food and water, but no cups. You have spare cups at home and are leaving for the picnic now.",
+      [
+        "I'll bring more water.",
+        "I'll bring some cups.",
+        "I'll bring more food."
+      ],
+      1,
+      "Не хватает стаканчиков. Bring some cups предлагает принести их, а вода и еда уже есть."
+    ],
+    [
+      "offer-two-desk-cover",
+      "Сообщение 2 из 2: выберите подходящее предложение помощи.",
+      "Desk chat: I need to leave the front desk for ten minutes. Can someone stay here? You are free and can work at the desk.",
+      [
+        "I'll bring a map.",
+        "I'll check the picnic time.",
+        "I'll cover the front desk."
+      ],
+      2,
+      "Cover the front desk означает подменить сотрудника на стойке. Это отвечает на просьбу остаться там на десять минут."
+    ],
+    [
+      "decision-time-context",
+      "Выберите ответ с немедленным решением через will.",
+      "New message: I left the park map at home. You see the message and decide to bring your map.",
+      [
+        "I'll bring my map.",
+        "I brought my map yesterday.",
+        "I bring my map every week."
+      ],
+      0,
+      "I'll bring передаёт решение в ответ на новую проблему. Yesterday указывает на прошлое, every week — на привычку."
+    ],
+    [
+      "schedule-not-attendance",
+      "Выберите, что человек действительно обещает.",
+      "Can you meet at 5 p.m.? — I'll check my schedule and let you know.",
+      [
+        "To arrive at 5 p.m. for sure.",
+        "To check availability and reply.",
+        "To cancel the meeting right away."
+      ],
+      1,
+      "Check my schedule and let you know обещает проверку и ответ. Участие в 17:00 ещё не подтверждено."
+    ],
+    [
+      "will-base-choice",
+      "Выберите верную форму короткого обещания.",
+      "Your friend needs water for the walk. You decide to bring it now.",
+      [
+        "I'll to bring the water.",
+        "I'll bringing the water.",
+        "I'll bring the water."
+      ],
+      2,
+      "После will используется начальная форма bring без to и -ing."
+    ]
+  ],
+  "blank": [
+    [
+      "recover-bring-base",
+      "Впишите только начальную форму bring.",
+      "We need chairs for the meeting. — I'll ___ two chairs.",
+      [
+        "bring"
+      ],
+      "Will требует начальную форму: bring, не bringing и не to bring."
+    ],
+    [
+      "recover-cover-base",
+      "Впишите только глагол со значением «подменить» из теории.",
+      "Can you stay at the front desk while I take a break? — I'll ___ the front desk.",
+      [
+        "cover"
+      ],
+      "Cover the front desk означает временно заменить сотрудника на стойке."
+    ],
+    [
+      "recover-will-auxiliary",
+      "Впишите только полную форму вспомогательного глагола из конструкции для решения, принятого сейчас.",
+      "We need a map. — I ___ bring my map right away.",
+      [
+        "will"
+      ],
+      "I will bring — решение принести карту. Am перед bring без других изменений не подходит."
+    ],
+    [
+      "recover-let-chunk",
+      "Впишите только пропущенный глагол устойчивого выражения «дам тебе знать».",
+      "I'm not sure about Friday. I'll check my schedule and ___ you know.",
+      [
+        "let"
+      ],
+      "Let you know означает сообщить ответ. После and здесь продолжается ряд начальных форм после will."
+    ],
+    [
+      "recover-check-base",
+      "Впишите только глагол check в форме после will.",
+      "Can you come at noon? — I'll ___ my schedule right away.",
+      [
+        "check"
+      ],
+      "Check my schedule — проверить расписание; после will используется check без окончания."
+    ]
+  ],
+  "written": [
+    [
+      "commit-water-offer",
+      "Ответьте новым решением от I через will. Используйте bring и water. Можно добавить some или the, если речь о воде для прогулки.",
+      "Friend: We're out of water for the walk. У вас есть вода, и вы сейчас решаете принести её.",
+      [
+        "I'll bring water.",
+        "I'll bring some water.",
+        "I'll bring the water.",
+        "I will bring water.",
+        "I will bring some water.",
+        "I will bring the water."
+      ],
+      "Вы обещаете принести воду, которой не хватает. После will или сокращения ’ll нужна начальная форма bring."
+    ],
+    [
+      "commit-desk-cover",
+      "Предложите помощь от I через will с cover the front desk; без указания времени.",
+      "Коллега просит ненадолго заменить его на стойке. Вы свободны и решаете согласиться.",
+      [
+        "I'll cover the front desk.",
+        "I will cover the front desk."
+      ],
+      "Cover the front desk — подменить сотрудника. После will слово cover не меняется."
+    ],
+    [
+      "commit-schedule-check",
+      "Обещайте действие от I через will: check my schedule. Завершите right away; без добавлений.",
+      "Вам только что предложили другое время встречи. Вы пока не знаете, свободны ли вы, и решаете немедленно проверить расписание.",
+      [
+        "I'll check my schedule right away.",
+        "I will check my schedule right away."
+      ],
+      "Right away означает сразу. Такое обещание касается проверки расписания, а не подтверждения участия."
+    ],
+    [
+      "commit-check-and-reply",
+      "Напишите одно предложение от I через will с check my schedule and let you know. Перед let можно повторить will или I will / I'll; без запятой и других добавлений.",
+      "Friend: The meeting moved to 5 p.m. Can you still come? Вы решаете проверить расписание и сообщить ответ.",
+      [
+        "I'll check my schedule and let you know.",
+        "I will check my schedule and let you know.",
+        "I'll check my schedule and I'll let you know.",
+        "I'll check my schedule and I will let you know.",
+        "I will check my schedule and I'll let you know.",
+        "I will check my schedule and I will let you know.",
+        "I'll check my schedule and will let you know.",
+        "I will check my schedule and will let you know."
+      ],
+      "Обе начальные формы check и let относятся к обещанию. Повторить I will после and можно, но это необязательно."
+    ],
+    [
+      "retrieve-earlier-intention",
+      "Передайте прежнее намерение от I с going to и bring lunch. День on Sunday поставьте в конце; без добавлений.",
+      "Это запись в вашем плане, сделанная вчера: в воскресенье собираюсь принести обед. Нового сообщения или решения сейчас нет.",
+      [
+        "I am going to bring lunch on Sunday.",
+        "I'm going to bring lunch on Sunday."
+      ],
+      "В задании требуется прежнее намерение с going to из №52. В отличие от нового предложения помощи, план появился до разговора."
+    ]
+  ]
+}

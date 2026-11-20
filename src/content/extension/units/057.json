@@ -1,0 +1,40 @@
+{
+  "number": 57,
+  "title": "Поездка задерживается",
+  "subtitle": "Travel delays",
+  "goal": "Сопоставить расписание с обновлением, выбрать действующий рейс и сообщить новое ожидаемое время прибытия.",
+  "intro": "Вы едете к другу. На табло появилось обновление: прежнее время больше не подходит. Нужно понять, какой транспорт отправится, и предупредить друга.",
+  "example": "Schedule: Train 18 gets to Benton at 3:10 p.m.\nUpdate: Train 18 is delayed by 25 minutes. Expected arrival: 3:35 p.m.\nMia: I'll arrive at 3:35 p.m.",
+  "translation": "Расписание: поезд 18 прибывает в Бентон в 15:10.\nОбновление: поезд 18 задерживается на 25 минут. Ожидаемое прибытие: 15:35.\nМиа: Я приеду в 15:35.",
+  "theory": "Delay — задержка; delayed — задерживается; on time — по расписанию, без задержки. Replacement bus — автобус, заменяющий отменённый транспорт. Expected arrival — ожидаемое время прибытия: это текущий прогноз, а не гарантия. Сначала прочитайте обновление и проверьте номер рейса: при отмене действующим может быть replacement bus.\n\nDelayed by + длительность сообщает, НА СКОЛЬКО задерживается рейс: delayed by 20 minutes. At + время на часах сообщает, ВО СКОЛЬКО: at 4:20 p.m. Если исходное прибытие 4:00 p.m., задержка на 20 минут даёт 4:20 p.m. Если в обновлении явно указано expected arrival, передавайте именно его.\n\nЧтобы сообщить ожидаемое прибытие, используйте I will arrive at … или I'll arrive at … . После will нужна начальная форма arrive. В американских объявлениях часто используют 12-часовые часы: a.m. — от полуночи до полудня, p.m. — от полудня до полуночи. 12:00 a.m. — полночь, 12:00 p.m. — полдень. В заданиях записывайте время цифрами и сохраняйте a.m./p.m.\n\nИз расписаний вспомните leaves — отправляется и gets to — прибывает в указанное место. Исключение canceled — отменён — важнее обычного расписания: отменённый поезд не становится действующим только потому, что отправляется раньше.",
+  "rows": [
+    ["delayed by + duration", "The train is delayed by 15 minutes.", "Поезд задерживается на 15 минут."],
+    ["expected arrival at + time", "The expected arrival is at 6:45 p.m.", "Ожидаемое прибытие — в 18:45."],
+    ["will + arrive", "I'll arrive at 6:45 p.m.", "Я приеду в 18:45."],
+    ["replacement bus", "The replacement bus leaves at 6:00 p.m.", "Автобус на замену отправляется в 18:00."]
+  ],
+  "tip": "Не пишите delayed at 15 minutes: длительность вводится через by. Не пишите I'll arrives: после will используется arrive.",
+  "review": "Вспомните #24: найдите leaves и gets to и разделите отправление и прибытие. Из #28 извлеките исключение canceled, из #53 — время с p.m., из #56 — will + начальная форма. Проверьте отдельно номер действующего рейса и новое прибытие.",
+  "summary": "Я могу прочитать обновление, отличить длительность задержки от времени на часах и передать ожидаемое прибытие. Для самопроверки решите заново последние два задания выбора и последние два письменных задания: цель — 3 из 4, включая верный действующий рейс и новое время.",
+  "choice": [
+    ["benton-active-ride", "Выберите действующий транспорт по обновлению.", "Benton update: Train 42 is canceled. Replacement bus R4 leaves at 10:15 a.m. Train 43 runs tomorrow only.", ["Train 42", "Bus R4", "Train 43"], 1, "Поезд 42 отменён, а поезд 43 идёт только завтра. Сегодня поезд 42 заменяет автобус R4."],
+    ["mill-delay-length", "Выберите длительность задержки.", "Mill Station: Bus 7 is delayed by 35 minutes. Expected arrival: 2:50 p.m.", ["7 minutes", "50 minutes", "35 minutes"], 2, "By 35 minutes указывает длительность задержки. 2:50 p.m. — время прибытия, а 7 — номер автобуса."],
+    ["ferry-clock-update", "Выберите новое ожидаемое прибытие.", "Normal schedule: Ferry 6 gets to Bay Dock at 11:20 a.m. Update: expected arrival at Bay Dock, 11:55 a.m.", ["11:55 a.m.", "11:20 a.m.", "11:55 p.m."], 0, "Обновление заменяет исходные 11:20 на 11:55 a.m. Вариант 11:55 p.m. означал бы 23:55."],
+    ["cedar-on-time", "Выберите сообщение другу о том, во сколько вы будете в отеле.", "Cedar shuttle: on time. Leaves at 5:10 p.m.; gets to Oak Hotel at 5:40 p.m.", ["I'll arrive at 5:10 p.m.", "I'll arrive at 5:40 p.m.", "I'll arrive at 6:10 p.m."], 1, "On time сохраняет расписание. Leaves относится к отправлению, gets to — к прибытию в отель."],
+    ["east-replacement-arrival", "Выберите действующий рейс и время его прибытия в Элм.", "East Terminal: Train 31 canceled. Replacement bus B8 leaves at 4:05 p.m. and gets to Elm at 4:50 p.m. Old train arrival: 4:25 p.m.", ["Train 31, 4:25 p.m.", "Bus B8, 4:05 p.m.", "Bus B8, 4:50 p.m."], 2, "Нужно передать прибытие автобуса B8: 4:50 p.m. Старое прибытие отменённого поезда и отправление автобуса не подходят."]
+  ],
+  "blank": [
+    ["duration-preposition", "Выберите by или at перед длительностью. Напишите только предлог.", "Airport line: The bus is delayed ___ 12 minutes.", ["by"], "By вводит величину задержки; at употребляется с точным временем."],
+    ["arrival-preposition", "Вставьте только предлог перед временем на часах.", "Harbor update: The replacement bus will arrive ___ 7:15 p.m.", ["at"], "Перед конкретным временем 7:15 p.m. нужен at."],
+    ["twenty-minute-shift", "Впишите только новое время цифрами с p.m.", "Bus 12: normal arrival 1:35 p.m.; delayed by 20 minutes. I'll arrive at ___.", ["1:55 p.m.", "1:55 pm"], "К 1:35 прибавляем 20 минут: получается 1:55 p.m."],
+    ["replacement-word", "Вставьте одно английское слово со значением «на замену».", "Train 9 is canceled. Take the ___ bus to West Park.", ["replacement"], "Replacement bus — автобус, который заменяет отменённый транспорт."],
+    ["future-base-verb", "Вставьте arrive в нужной форме; напишите только глагол.", "Nora's new arrival time is 8:10 p.m. Nora will ___ at 8:10 p.m.", ["arrive"], "После will форма arrive не меняется даже с Nora: окончания -s нет."]
+  ],
+  "written": [
+    ["relay-river-time", "Сообщите своё новое прибытие одним предложением: начните с I will или I'll, используйте arrive at; время цифрами с p.m.", "River line update: expected arrival 6:25 p.m.", ["I'll arrive at 6:25 p.m.", "I will arrive at 6:25 p.m.", "I'll arrive at 6:25 pm.", "I will arrive at 6:25 pm."], "Ожидаемое время из обновления передаётся через will arrive at; arrive остаётся в начальной форме."],
+    ["report-ten-minute-delay", "Сообщите о задержке автобуса из объявления. Начните с The bus, используйте is delayed by; число напишите цифрами или словом.", "Depot notice: Bus 16 delay — 10 minutes.", ["The bus is delayed by 10 minutes.", "The bus is delayed by ten minutes."], "Для состояния задержки нужно is delayed; by вводит 10 minutes."],
+    ["retrieve-departure", "Сообщите отправление: начните с The replacement bus, используйте leaves at; время цифрами с a.m.", "Train canceled. Replacement bus: departure 9:45 a.m.; arrival 10:30 a.m.", ["The replacement bus leaves at 9:45 a.m.", "The replacement bus leaves at 9:45 am."], "Leaves обозначает отправление по расписанию. Здесь это 9:45, а не время прибытия 10:30."],
+    ["relay-late-shuttle", "Рассчитайте прибытие и сообщите его: I will или I'll + arrive at; время цифрами с p.m.", "Museum shuttle: normal arrival 3:45 p.m. Today's delay: 30 minutes.", ["I'll arrive at 4:15 p.m.", "I will arrive at 4:15 p.m.", "I'll arrive at 4:15 pm.", "I will arrive at 4:15 pm."], "Тридцать минут после 3:45 — это 4:15 p.m.; при переходе через час меняются и часы, и минуты."],
+    ["relay-ash-replacement", "Сообщите своё ожидаемое прибытие на действующем транспорте: I will или I'll + arrive at; время цифрами с p.m.", "Ash update: Train 20 canceled (old arrival 7:05 p.m.). Replacement bus M2: departure 6:50 p.m.; expected arrival 7:40 p.m.", ["I'll arrive at 7:40 p.m.", "I will arrive at 7:40 p.m.", "I'll arrive at 7:40 pm.", "I will arrive at 7:40 pm."], "Действует автобус M2 с ожидаемым прибытием 7:40 p.m. Время отменённого поезда больше не описывает вашу поездку."]
+  ]
+}

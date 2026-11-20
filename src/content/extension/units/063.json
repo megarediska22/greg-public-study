@@ -1,0 +1,39 @@
+{
+  "number": 63,
+  "title": "Вежливая просьба о действии",
+  "subtitle": "Asking someone to help",
+  "goal": "Определить, кто должен действовать, и написать вежливую просьбу с нужным действием и предметом.",
+  "intro": "В общем рабочем пространстве у вас заняты руки, музыка мешает разговору, а файл нужен коллеге. Для каждой ситуации нужна конкретная просьба.",
+  "example": "Nora: Could you hold the door for a minute?\nEli: Sure.\nNora: Thanks. These boxes are heavy.",
+  "translation": "Нора: Можешь придержать дверь на минутку?\nИлай: Конечно.\nНора: Спасибо. Эти коробки тяжёлые.",
+  "theory": "Could you + начальная форма глагола — вежливая просьба собеседнику сделать что-то: Could you move the chair? Действует you, а просит говорящий. Could I move the chair? означает, что стул хочет передвинуть сам говорящий. Could в таких просьбах не обозначает прошедшее время.\n\nHold the door — придержать дверь, move — передвинуть, turn down — сделать тише, send over — прислать, for a minute — на минутку. В американском рабочем чате send over часто относится к файлу: Could you send over the file? Скажите, какой именно предмет или файл нужен: the chair, the map, the schedule. Schedule здесь — расписание, а floor map — схема этажа.\n\nПосле could you используйте hold, move, turn, send без to, -s и -ing. У turn down сохраняйте down: turn down the music — сделать музыку тише. С существительным возможен также порядок turn the music down. У send over возможны send over the file и send the file over. С местоимением: turn it down, send it over.",
+  "rows": [
+    ["Could you hold …?", "Could you hold the door for a minute?", "Можешь придержать дверь на минутку?"],
+    ["Could you turn down …?", "Could you turn down the music?", "Можешь сделать музыку тише?"],
+    ["Could I …? / Could you …?", "Could I move the chair? Could you move the desk?", "Можно мне передвинуть стул? Можешь передвинуть стол?"]
+  ],
+  "tip": "Could I send the file? — отправить собираюсь я. Если нужен файл от коллеги, скажите Could you send the file? Не пишите Could you to send.",
+  "review": "Повторите сочетания из №18 и просьбы с can из №19. Сравните Could I из №62 с Could you: перед ответом назовите человека, который выполнит действие.",
+  "summary": "Выходная проверка: во втором и третьем заданиях выбора определите, кто спрашивает и кто действует. В предпоследнем письменном задании попросите коллегу прислать нужный файл.",
+  "choice": [
+    ["hands-full-door", "Выберите подходящую просьбу.", "You need to get into the shared office, but the door is closing and you are carrying two boxes. Alex is standing by the door.", ["Could you turn down the music?", "Could you send over the map?", "Could you hold the door?"], 2, "У говорящего заняты руки, а Алекс стоит у двери: hold the door просит придержать её."],
+    ["who-moves-cart", "Выберите пару в порядке «кто просит → кто выполнит действие».", "Mia writes to Jay: Could you move the cart?", ["Mia → Jay", "Jay → Mia", "Mia → Mia"], 0, "You относится к адресату Джею. Миа просит, а Джей должен передвинуть тележку."],
+    ["speaker-permission", "Выберите пару в порядке «кто спрашивает → кто хочет выполнить действие».", "Sam asks Robin: Could I open the window?", ["Sam → Robin", "Sam → Sam", "Robin → Sam"], 1, "В Could I действие выполняет говорящий: Сэм спрашивает, можно ли ему открыть окно."],
+    ["quiet-call", "Выберите просьбу, которая решит проблему.", "The music is too loud for your phone call. Your coworker controls the speaker.", ["Could you move the printer?", "Could you hold the door?", "Could you turn down the music?"], 2, "Turn down the music — уменьшить громкость музыки. Это поможет услышать собеседника по телефону."],
+    ["need-schedule", "Выберите просьбу получить нужный файл от коллеги.", "Only Dana has the new schedule file. You need a copy in the workspace chat.", ["Could I send over the schedule?", "Could you send over the schedule?", "Could you send over the floor map?"], 1, "Только у Даны есть расписание. Could you обращается к Дане, а the schedule называет нужный файл. Карта этажа здесь не нужна."]
+  ],
+  "blank": [
+    ["door-base", "Вставьте только форму глагола hold.", "Could you ___ the side door while I bring in this chair?", ["hold"], "После could you нужна начальная форма hold, без -s и -ing."],
+    ["music-particle", "Вставьте только частицу: громкость нужно уменьшить.", "Could you turn ___ the music near the meeting room?", ["down"], "Turn down означает сделать тише; turn up, наоборот, увеличивает громкость."],
+    ["request-actor", "Вставьте только I или you: передвинуть стол должен адресат.", "You write to Ben because you cannot lift the desk: Could ___ move the desk?", ["you"], "You указывает на Бена, которому адресована просьба. I изменило бы исполнителя на говорящего."],
+    ["send-base", "Вставьте только форму глагола send.", "Could you ___ over the floor map before lunch?", ["send"], "Could требует начальной формы send; over дополняет значение «прислать»."],
+    ["minute-preposition", "Вставьте только предлог перед длительностью.", "Could you hold this cable ___ a minute?", ["for"], "For a minute означает длительность «на минутку». At используется для времени на часах."]
+  ],
+  "written": [
+    ["ask-door-help", "Напишите просьбу с Could you, затем hold the door и for a minute.", "У вас в руках стопка папок. Коллега стоит у входа в офис.", ["Could you hold the door for a minute?"], "Could you адресует действие коллеге; hold the door называет нужную помощь, for a minute — её длительность."],
+    ["ask-chair-move", "Попросите коллегу передвинуть стул. Начните Could you и используйте move the chair; ничего не добавляйте.", "Стул мешает пройти к общему принтеру, а вы держите тяжёлую коробку.", ["Could you move the chair?"], "Исполнитель — коллега, поэтому you. После could идёт move, а the chair уточняет предмет."],
+    ["ask-volume-down", "Начните Could you. Используйте turn, down и the music, чтобы попросить сделать музыку тише; других слов не добавляйте.", "В соседней рабочей зоне музыка мешает вашему разговору.", ["Could you turn down the music?", "Could you turn the music down?"], "С существительным допустимы оба порядка: turn down the music и turn the music down."],
+    ["ask-map-file", "Напишите коллеге в чат с Could you. Выберите подходящее действие из hold, turn down, send over и назовите нужный файл с the. Других слов не добавляйте.", "You need to find the meeting room. Your coworker has two files: the schedule and the floor map.", ["Could you send over the floor map?", "Could you send the floor map over?"], "Чтобы найти переговорную, нужна карта этажа, а не расписание. Could you просит коллегу прислать файл. Send over the floor map и send the floor map over равнозначны."],
+    ["repair-role-error", "Исправьте только местоимение в просьбе, чтобы действие выполнил адресат. Напишите весь вопрос.", "You need Pat to move a box. Your draft: Could I move the box?", ["Could you move the box?"], "Замена I на you делает Пэта исполнителем. Остальные слова уже правильно называют действие и предмет."]
+  ]
+}

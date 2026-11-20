@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import type { Root } from 'react-dom/client';
 import { App } from '../App';
 import { lessons } from '../content/course';
+import { loadLesson } from '../content/extension/registry';
 import { ProgressContext } from '../lib/ProgressContext';
 import { updateProgress, type ProgressAction } from '../lib/progress';
 import { useRoute } from '../lib/router';
@@ -39,7 +40,10 @@ function LocalQa() {
   </ProgressContext>;
 }
 
-export function mountLocalQa(root: Root) {
+export async function mountLocalQa(root: Root) {
+  // Deliberately eager in the isolated dev QA branch only. Production never
+  // imports this module; loading first also creates synthetic gates for new units.
+  await Promise.all(lessons.map(entry => loadLesson(entry.id)));
   let theme = 'light';
   try { if (window.localStorage.getItem(QA_THEME_KEY) === 'dark') theme = 'dark'; } catch { /* Default QA theme. */ }
   document.documentElement.dataset.theme = theme;

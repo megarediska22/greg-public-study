@@ -1,0 +1,123 @@
+[
+  {
+    "number": 107,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "lamp-remedy: a replacement — неисправная лампа с чеком на 10-й день подходит под срок замены. A refund исключён после 7-го дня. speaker-credit: на 18-й день действует только store credit.",
+    "correctedIds": [
+      "lamp-remedy",
+      "request-lamp",
+      "request-fan"
+    ],
+    "sha256": "8bc301d69c981d7643978ee4e62a823c65c3052f85fda4532f13def1468fabbc"
+  },
+  {
+    "number": 108,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "complete-cable-report: CB-962, заказан кабель 3 м, получен 1 м, поддержка может выслать кабель 3 м. missing-markers: запись в упаковочном листе не подтверждает наличие маркеров в коробке.",
+    "correctedIds": [
+      "wrong-notebook",
+      "identify-order",
+      "complete-cable-report"
+    ],
+    "sha256": "0c85286add57434a2611c18fefd468395588a4ff8dce24c41fa4d11fb872b283"
+  },
+  {
+    "number": 109,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "notify-and-move: новый прогноз 3:18 p.m. пропускает границу 3:10, перенос нужен на 3:30 p.m. Вариант сохранить запись опирается на устаревшее 3:06. inclusive-minute: ровно 4:05 подходит под by.",
+    "correctedIds": [
+      "notify-and-keep",
+      "notify-and-move"
+    ],
+    "sha256": "a6635595dbd15a6934556a2ba4487a55a92610b9506358498c8b6a18035e6dff"
+  },
+  {
+    "number": 110,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "keep-open: правильные стаканы получены, крышки отсутствуют, поэтому Please keep the case open. Вариант закрыть обращение противоречит проверке клиента, хотя поддержка заявила об исправлении обоих пунктов.",
+    "correctedIds": [
+      "remaining-item",
+      "keep-open",
+      "close-confirmed-case"
+    ],
+    "sha256": "f77e647b34ab91f4be2ea54c2a8d95485897dda6540915fdb9368c4d8f7f1e8b"
+  },
+  {
+    "number": 111,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "exit-feasible-remedy: срочная замена в 5:10 p.m. укладывается в 5:30, обычная в 6:20 опаздывает. Отдельно проверены GH-527 и статус: белые кружки получены, крышки ожидаются. Шесть выходных пунктов, цель 5/6 относится к первой попытке.",
+    "correctedIds": [
+      "exit-feasible-remedy",
+      "retrieve-new-eta",
+      "retrieve-proof",
+      "exit-exact-order",
+      "exit-report-discrepancy",
+      "exit-request-before-deadline",
+      "exit-acknowledge-pending"
+    ],
+    "sha256": "7c55f88128898635df2687deb9502608831ffc06241ece0aaa44c76e84239a18"
+  },
+  {
+    "number": 112,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "join-saturday-desk: подходит welcome desk team в субботу с 10 a.m. до noon. У setup team те же часы, однако Мина не может передвигать столы. В fair-role-match одного умения недостаточно при несовпадении времени.",
+    "correctedIds": [
+      "fair-role-match",
+      "day-frame",
+      "join-saturday-desk"
+    ],
+    "sha256": "881dec8106bd2b2b5995ecf8f77ec8cb6903ede7ed0edeb19149685707f2362e"
+  },
+  {
+    "number": 113,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "relay-supply-deadline: Victor will bring supplies by 2:30 p.m. Указание 2 p.m. взято из строки про столы. assign-three-owners: работу со столами, доставку материалов и встречу гостей сохраняют за Alice, Bruno и Cora соответственно.",
+    "correctedIds": [
+      "responsibility-link",
+      "future-base-form",
+      "relay-supply-deadline"
+    ],
+    "sha256": "250bce27d55c24b57b2713068560194f95efb0acb910b67b2a265926325c121d"
+  },
+  {
+    "number": 114,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "complete-maple-invitation: open house в Maple Library в субботу в 2 p.m., восточный вход, ответ к полудню четверга. Вариант 1:30 p.m. подменяет начало временем открытия дверей.",
+    "correctedIds": [
+      "complete-maple-invitation"
+    ],
+    "sha256": "2aeb7ff3b1057e26df4ac1a6023dc454c1065c6b5a1f6452a041865d97fe3a60"
+  },
+  {
+    "number": 115,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "relay-total-and-helper: всего 3, Suki will help set up tables. Help to set up тоже засчитывается. Mark отказался, а предложение Suki помочь не добавляет гостя. В count-combined-list ответ ровно в полдень входит в срок.",
+    "correctedIds": [
+      "count-family-rsvp",
+      "count-combined-list",
+      "relay-total-and-helper"
+    ],
+    "sha256": "95468303468dd956e68e34a41cdd9b30ae36bf5ea83f4d9b6f26597c4809e469"
+  },
+  {
+    "number": 116,
+    "reviewedQuestions": 15,
+    "decision": "accept",
+    "evidence": "write-three-step-plan: Chen выставляет стаканчики, Arlo приносит коробку со схемой, Bess расставляет стулья. С 10:00 до 10:30 можно успеть к 10:40. В choose-feasible-sequence начало в 8:50 невозможно из-за доступа только с 9:00.",
+    "correctedIds": [
+      "choose-feasible-sequence",
+      "missing-second-marker",
+      "write-three-step-plan"
+    ],
+    "sha256": "bd79dfe6cf284488d13998f83886b657c6b6d5c2767ff4a77f96de3eb54d6ad5"
+  }
+]

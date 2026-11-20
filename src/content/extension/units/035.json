@@ -1,0 +1,40 @@
+{
+  "number": 35,
+  "title": "Что случилось?",
+  "subtitle": "Questions about a missed event",
+  "goal": "Задать вопросы о времени и месте прошедшего события и выбрать подходящий краткий ответ.",
+  "intro": "Вы пропустили встречу у стадиона и выясняете детали у друга. Нужно узнать, пришёл ли он, когда приехала команда и где прошла игра.",
+  "example": "A: Did you show up for the match?\nB: Yes, I did.\nA: When did you arrive?\nB: At two. Leo missed the match.\nA: What happened?\nB: Leo missed the bus.",
+  "translation": "А: Ты пришёл на матч?\nБ: Да.\nА: Когда ты приехал?\nБ: В два. Лео пропустил матч.\nА: Что случилось?\nБ: Лео опоздал на автобус.",
+  "theory": "Coach — тренер. Happen — случаться; arrive — прибывать; miss — пропустить или опоздать на что-то; match — матч; show up — прийти, появиться на событии. Miss the bus — опоздать на автобус, miss the match — пропустить матч. Arrive at the park — прибыть в парк. В американском английском show up — обычное разговорное выражение; оба слова сохраняются в вопросе: Did he show up?\n\nВопрос о действии в прошлом строится так: Did + кто + начальная форма глагола + остальное? He arrived → Did he arrive? They took the bus → Did they take the bus? Did одинаково для всех лиц. После did не нужны arrived, took или went: вспомогательный глагол did уже показывает прошлое.\n\nЧтобы спросить время, добавьте When перед did: When did Mia arrive? Чтобы спросить место, поставьте Where: Where did they watch the match? When требует времени, Where — места. Краткий ответ на Did you…?: Yes, I did или No, I didn't / No, I did not. На Did she…?: Yes, she did / No, she didn't. В ответе на вопрос о другом человеке сохраняем соответствующее местоимение.\n\nWhat happened? — готовый вопрос «Что случилось?». Здесь what само спрашивает о событии, поэтому дополнительное did не нужно. Вопросы с be из №16 строятся иначе: Was he at home? Для действия используйте Did he arrive?, а не Was he arrive?",
+  "rows": [
+    ["Did + person + base verb?", "Did Maya miss the match?", "Майя пропустила матч?"],
+    ["When did …?", "When did Leo arrive?", "Когда приехал Лео?"],
+    ["Where did …?", "Where did they watch the match?", "Где они смотрели матч?"],
+    ["No, person didn't.", "No, he didn't.", "Нет, он не пришёл / не сделал этого."]
+  ],
+  "tip": "Не пишите Did she arrived? или When she arrived? Для вопроса о действии: Did she arrive? / When did she arrive? Исключение из этого урока — готовое What happened?",
+  "review": "Сравните do/does из №4 с did: в обоих случаях после помощника идёт начальный глагол. Восстановите take из took (№33) и go из didn't go (№34). Отдельно вспомните Was he…? из №16.",
+  "summary": "Я спрашиваю о прошедшем действии с Did, узнаю время через When и место через Where и отвечаю Yes, … did или No, … didn't.",
+  "choice": [
+    ["arrival-reply", "Выберите ответ, который сообщает время прибытия.", "When did Grace arrive at the park?", ["At three.", "At the park.", "Yes, she did."], 0, "When спрашивает о времени: at three — в три. At the park отвечает на вопрос о месте."],
+    ["viewing-place", "Выберите ответ о месте просмотра.", "Where did you watch the match?", ["At five.", "At home.", "No, I didn't."], 1, "Where требует места: at home. At five называет время, а краткое отрицание не сообщает место."],
+    ["missed-bus", "Ответьте от лица Алекса: он действительно опоздал на автобус.", "Dana: Did you miss the bus, Alex?", ["Yes, you did.", "Yes, I do.", "Yes, I did."], 2, "Алекс говорит о себе I, а вопрос с did требует ответа did, не do."],
+    ["absent-nora", "Ответьте за тренера. Выберите краткий ответ, который соответствует его сообщению.", "Coach: Nora missed the match. She never showed up. Question: Did Nora show up?", ["No, she didn't.", "Yes, she did.", "No, he didn't."], 0, "She never showed up означает, что Нора так и не пришла. Ответ начинается с No, а вместо Nora используем she."],
+    ["happened-question", "Выберите вопрос «Что случилось?».", "Сообщение от друга: I missed the match.", ["What did happened?", "What happened?", "What happen yesterday?"], 1, "Готовый вопрос What happened? не требует did. Happened уже стоит в прошедшей форме."]
+  ],
+  "blank": [
+    ["opening-auxiliary", "Вставьте вспомогательный глагол для вопроса в Past Simple. Введите только пропуск.", "___ you call the coach yesterday?", ["Did"], "В вопросе о прошлом нужен Did; call остаётся в начальной форме. Coach — тренер."],
+    ["arrive-base", "Поставьте arrive в нужную форму после did. Введите только пропуск.", "When did Rosa ___ at the station?", ["arrive"], "После did используем arrive, не arrived. When просит назвать время."],
+    ["take-base-question", "Поставьте take в нужную форму после did. Введите только пропуск.", "Did Evan ___ the bus to the match?", ["take"], "В утверждении было бы took, но в вопросе после did нужен take."],
+    ["negative-short", "Завершите краткий отрицательный ответ: didn't или полная форма. Введите только пропуск.", "Did you watch the show? — No, I ___.", ["didn't", "did not"], "No, I didn't и No, I did not — допустимые отрицательные ответы на вопрос с Did you."],
+    ["show-base", "Поставьте show в нужную форму после did. Введите только пропуск.", "Did your friends ___ up at six yesterday?", ["show"], "Show up сохраняет обе части. После did первая часть остаётся начальной: show up."]
+  ],
+  "written": [
+    ["recover-arrival-time", "Спросите, когда приехала Мия. Используйте When, Mia и глагол arrive. Составьте один вопрос.", "Chat: Mia arrived at the stadium. Время её прибытия не указано.", ["When did Mia arrive?"], "When запрашивает время. Did перед Mia показывает прошлое, поэтому дальше нужна форма arrive."],
+    ["recover-viewing-place", "Спросите, где они смотрели матч. Используйте Where, they и watch the match. Составьте один вопрос.", "Chat: They watched the match at two. Место просмотра не указано.", ["Where did they watch the match?"], "Where запрашивает место. В два часа — это уже известное время. После did нужна начальная форма watch."],
+    ["bus-yes-no", "Задайте общий вопрос к предложению. Начните с Did, сохраните имя и остальные слова, изменив форму глагола.", "Nina took the bus.", ["Did Nina take the bus?"], "Для общего вопроса did ставится перед Nina, а took возвращается к take."],
+    ["missed-show", "Задайте общий вопрос к предложению. Начните с Did, сохраните имя и остальные слова, изменив форму глагола.", "Tom missed the show.", ["Did Tom miss the show?"], "Did + Tom + miss the show: после did окончание -ed убирается."],
+    ["friend-came", "Спросите, пришёл ли друг. Начните с Did, затем you, затем show up. Других слов не добавляйте.", "Вы пишете другу после вчерашнего матча и хотите уточнить сам факт его появления.", ["Did you show up?"], "Did you show up? спрашивает о факте появления. Короткий ответ друга: Yes, I did или No, I didn't."]
+  ]
+}

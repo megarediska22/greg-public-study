@@ -1,0 +1,40 @@
+{
+  "number": 76,
+  "title": "Объявление о вакансии",
+  "subtitle": "Reading a job listing",
+  "goal": "Выбрать кандидата по двум явным требованиям вакансии и задать вопрос о недостающей информации.",
+  "intro": "Вы помогаете другу прочитать вымышленное объявление о работе. Важно проверить условия, а не угадывать то, чего в тексте нет.",
+  "example": "Part-time store assistant. You have to work Tuesday and Thursday, 4–8 p.m. You need to be able to use a computer. No experience required. Apply by email. Pay is not listed.",
+  "translation": "Помощник в магазине, неполная занятость. Нужно работать во вторник и четверг с 16:00 до 20:00. Нужно уметь пользоваться компьютером. Опыт не требуется. Откликнитесь по электронной почте. Оплата не указана.",
+  "theory": "Part-time — неполная занятость; full-time — полная. Эти слова сами по себе не задают точных часов: ищите расписание в объявлении. Weekday — будний день, с понедельника по пятницу; weekdays — будни. Experience — опыт работы, requirement — требование. No experience required означает, что опыт не обязателен. Apply — откликнуться: Apply by email — откликнитесь по электронной почте.\nNeed to и have to + начальная форма обозначают необходимость: You need to be able to use a computer — нужно уметь пользоваться компьютером. You have to work on weekdays. После to не добавляйте -s: need to work. Can + начальная форма обозначает способность: I can use a computer. Can не требует to. В американском объявлении register означает кассу: Can you use a register?\nДля проверки кандидата сопоставьте все обязательные условия: доступность по времени и нужное умение. Человек подходит по указанным условиям, только если выполняет каждое из них. Не добавляйте требование опыта, если написано No experience required.\nЕсли информация отсутствует, задайте вопрос. What is the hourly pay? — Какова почасовая оплата? What time does the shift start? — Во сколько начинается смена? Сокращение What's вместо What is допустимо. Не делайте вывод об оплате или времени, если это не указано.",
+  "rows": [
+    ["have to + work", "You have to work on weekdays.", "Нужно работать по будням."],
+    ["need to + be able to", "You need to be able to use a register.", "Нужно уметь пользоваться кассой."],
+    ["can + base verb", "I can use a computer.", "Я умею пользоваться компьютером."],
+    ["ask about missing pay", "What is the hourly pay?", "Какова почасовая оплата?"]
+  ],
+  "tip": "Не пишите I can to use. Верно I can use a computer. Но после need требуется to: I need to use a computer. No experience required не означает, что опыт запрещен: он просто не обязателен.",
+  "review": "Вспомните способности с can из №12–13, чтение расписания из №22, данные анкеты из №25 и have to из №74. Выпишите отдельно два требования вакансии.",
+  "summary": "Я могу найти два условия вакансии, выбрать подходящего по ним кандидата и спросить об отсутствующей детали.",
+  "choice": [
+    ["eligible-computer", "Кто соответствует обоим требованиям?", "Job: Monday, 9 a.m.–1 p.m.; computer skills required. Ana is free then and can use a computer. Bo is free then but cannot use a computer. Cal can use a computer but is busy Monday morning.", ["Bo", "Cal", "Ana"], 2, "Ana соответствует времени и умеет пользоваться компьютером; у каждого другого кандидата нарушено одно условие."],
+    ["two-requirements", "Какие два требования прямо указаны?", "Library assistant: You have to work on Saturdays. You need to be able to use a computer. No experience required.", ["Saturday availability and computer skills", "Experience and a car", "Weekday availability and cooking skills"], 0, "Указаны доступность по субботам и умение пользоваться компьютером. Опыт не входит в требования."],
+    ["missing-pay", "О чем нужно спросить, поскольку этой информации нет?", "Part-time cashier. Friday, 5–9 p.m. You need to be able to use a register. Apply by email.", ["Which day do I work?", "What is the hourly pay?", "How do I apply?"], 1, "День и способ отклика указаны; почасовой оплаты в тексте нет."],
+    ["experience-condition", "Может ли кандидат без опыта соответствовать указанным требованиям?", "Listing: No experience required. You have to work Sunday mornings. Sara has no experience and is free every Sunday morning.", ["No, experience is required.", "No, Sunday work is optional.", "Yes, she meets the stated requirement."], 2, "Опыт не обязателен, а требуемое время Sara подходит. Это соответствие условиям, не гарантия найма."],
+    ["weekday-check", "Кто доступен в нужный день?", "Job: one weekday shift, Wednesday, 10 a.m.–2 p.m. Max is free Wednesday. Jo is free only Saturday. No other requirements are listed.", ["Max", "Jo", "Neither candidate"], 0, "Wednesday — будний день; Max свободен в среду, а Jo только в субботу."]
+  ],
+  "blank": [
+    ["start-time", "Впишите только время начала, включая a.m.", "Cafe listing: Saturday shift, 8 a.m.–noon. The shift starts at ___.", ["8 a.m.", "8 am"], "Начало диапазона 8 a.m.–noon — 8 утра; noon означает полдень."],
+    ["required-day", "Впишите только день из объявления.", "Bookstore: You have to work every Thursday. The required day is ___.", ["Thursday"], "Every Thursday задает обязательную работу каждый четверг."],
+    ["ability-frame", "Впишите только can или need.", "I ___ use a register. This is a skill I already have.", ["can"], "Can выражает имеющееся умение и стоит перед глаголом без to."],
+    ["need-to-frame", "Впишите только недостающее слово.", "You need ___ work two evenings a week.", ["to"], "Need to + начальная форма описывает необходимое действие."],
+    ["application-channel", "Впишите только способ отклика одним словом из объявления.", "Plant shop: Apply by email, not by phone. Please apply by ___.", ["email"], "Apply by email означает отправить отклик по электронной почте."]
+  ],
+  "written": [
+    ["ask-hourly-pay", "Проверьте, что указано в объявлении: время начала или почасовая оплата. Спросите о недостающей детали одним из двух вопросов из теории. Сокращение What's допустимо.", "Pet store assistant. Part-time. Work on Tuesdays from 3 to 7 p.m. You need to be able to use a computer. Apply by email.", ["What is the hourly pay?", "What's the hourly pay?"], "Смена начинается в 15:00. О ставке ничего не сказано, поэтому подходит What is the hourly pay? или What's the hourly pay?"],
+    ["ask-start-time", "Проверьте, что указано в объявлении: время начала или почасовая оплата. Спросите о недостающей детали одним из двух вопросов из теории.", "Museum assistant. Part-time. One shift every Sunday. Pay: $16 an hour. No experience required. Apply by email.", ["What time does the shift start?"], "Оплата указана — 16 долларов в час. Известен день, но отсутствует время начала. Спросите What time does the shift start?"],
+    ["state-ability", "Напишите I can + use a computer, без дополнительных слов.", "Candidate skill: computer use.", ["I can use a computer."], "Can выражает умение; to после can не нужно."],
+    ["state-weekday-duty", "Передайте требование: You have to + work + on weekdays.", "Office listing: Work is required Monday through Friday.", ["You have to work on weekdays."], "Weekdays охватывает понедельник–пятницу, have to выражает требование."],
+    ["state-register-need", "Передайте требование одним предложением. Начните You need to и используйте изученное выражение об умении пользоваться кассой.", "Cashier listing: Applicants must know how to use a register.", ["You need to be able to use a register."], "Это требование к умению, поэтому после You need to используется be able to use a register."]
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "number": 83,
+  "title": "Кто что пробовал",
+  "subtitle": "Experience cards",
+  "goal": "Сопоставить людей с их опытом и написать записи с изученными формами глаголов.",
+  "intro": "Участники клуба заполняют карточки о еде и занятиях. Прочитайте, что каждый уже пробовал, и добавьте короткую запись по подсказке.",
+  "example": "Club cards\nTessa: I've tried pottery. I've never taken a dance class.\nAndre: I've eaten kimchi, and I've seen a whale.\nHost: We've collected four cards so far.",
+  "translation": "Карточки клуба\nТесса: Я пробовала гончарное дело. Я никогда раньше не ходила на занятия по танцам.\nАндре: Я ел кимчи и видел кита.\nВедущий: Пока мы собрали четыре карточки.",
+  "theory": "Для опыта используйте have/has + особую форму глагола — причастие: I have tried pottery. После he, she и имени одного человека — has. I've = I have; he's перед причастием может означать he has. В карточке об опыте не нужна дата события.\nВыучите четыре пары: try → tried («попробовать», y меняется на i перед -ed), eat → eaten («есть»), see → seen («видеть»), take → taken. Take a class значит «посещать занятие / пройти курс», take a photo — «сделать фотографию». Tried pottery — «пробовал гончарное дело», eaten kimchi — «ел кимчи», seen a whale — «видел кита».\nНе путайте формы: в Past Simple говорят saw и took, а после have/has нужны seen и taken. I have taken a cooking class — опыт занятий к настоящему моменту.\nI've never … значит «Я никогда не …»: I've never eaten tofu. Never ставится перед причастием, без not. So far — «пока, к настоящему моменту»: I've tried two new foods so far. В этом уроке ставим so far в конце. В американском английском стандартны eaten, seen и taken; замена на ate, saw, took после have неверна.",
+  "rows": [
+    ["have tried", "I have tried painting.", "Я пробовал заниматься живописью."],
+    ["has eaten", "Jules has eaten tofu.", "Джулс ел тофу."],
+    ["have seen", "We have seen a bear.", "Мы видели медведя."],
+    ["have taken", "They have taken a cooking class.", "Они посещали кулинарные занятия."]
+  ],
+  "tip": "Не пишите She has took a class. Took — форма Past Simple; после has нужна taken: She has taken a class.",
+  "review": "Из №13 вспомните названия занятий, из №45 — еду. Сопоставьте saw/took из №33 с have seen/have taken. По модели №82 превратите одну запись об опыте в вопрос с ever.",
+  "summary": "Вы можете сопоставить карточки опыта и составить записи с tried, eaten, seen и taken, в том числе с never.",
+  "choice": [
+    ["club-pottery", "Кто пробовал гончарное дело?", "Rae: I've tried pottery, but I've never taken a yoga class. Luis: I've taken a yoga class, but I've never tried pottery.", ["Luis.", "Both Rae and Luis.", "Rae."], 2, "Rae прямо сообщает I've tried pottery. У Luis перед tried стоит never, поэтому у него такого опыта нет."],
+    ["club-yoga", "Кто посещал йогу?", "Rae: I've tried pottery, but I've never taken a yoga class. Luis: I've taken a yoga class, but I've never tried pottery.", ["Luis.", "Rae.", "Both Rae and Luis."], 0, "Луис пишет I've taken a yoga class. У Рэй перед taken стоит never: она не посещала занятия йогой."],
+    ["food-card", "Выберите точное описание карточки Джун.", "June: I've eaten mango, but I've never eaten papaya.", ["June has eaten both fruits.", "June has eaten mango but has never eaten papaya.", "June has eaten neither fruit."], 1, "Положительная часть подтверждает mango, а never исключает papaya. Сведения относятся только к этим двум фруктам."],
+    ["photo-form", "Выберите правильную запись об опыте фотографирования.", "Verb cue: take. Subject: I. Object: photos of birds.", ["I have took photos of birds.", "I has taken photos of birds.", "I have taken photos of birds."], 2, "С I требуется have, а после have — taken. Took используется без have в Past Simple."],
+    ["so-far-meaning", "Что означает so far в сообщении?", "Workshop note: I've tried three crafts so far. There are more workshops next month.", ["К настоящему моменту.", "Только в следующем месяце.", "Очень далеко отсюда."], 0, "So far обозначает результат до настоящего момента; будущие мастерские ещё не входят в эти три занятия."]
+  ],
+  "blank": [
+    ["try-pickle", "Впишите только форму try после have.", "I have ___ pickled okra.", ["tried"], "У try форма для have/has — tried: y после согласной меняется на i перед -ed."],
+    ["eat-dumplings", "Впишите только форму eat после has.", "Naomi has ___ dumplings before.", ["eaten"], "Eat → eaten в конструкции has eaten; ate — форма отдельного прошедшего времени."],
+    ["see-otter", "Впишите только форму see после have.", "We have ___ an otter near the bridge.", ["seen"], "После have используется seen, а не saw."],
+    ["take-weaving", "Впишите только форму take после has.", "My brother has ___ a weaving class.", ["taken"], "Take a class — посещать занятия. После has форма take меняется на taken."],
+    ["never-order", "Впишите только слово «никогда».", "I've ___ tried rock climbing.", ["never"], "В записи об отсутствии опыта never ставится между have и tried; дополнительное not не нужно."]
+  ],
+  "written": [
+    ["entry-tried", "Запишите опыт от первого лица с have и формой try. Используйте только I, have, try и pottery в нужной форме и порядке.", "Experience card: pottery — yes.", ["I have tried pottery.", "I've tried pottery."], "После have нужна tried. I've сохраняет тот же смысл, что I have."],
+    ["entry-eaten", "Запишите опыт от первого лица с have и формой eat. Используйте только I, have, eat и seaweed в нужной форме и порядке.", "Food card: seaweed — yes.", ["I have eaten seaweed.", "I've eaten seaweed."], "Eat получает форму eaten; seaweed означает съедобные водоросли."],
+    ["entry-seen", "Напишите одно предложение о Лене. Начните с Lena, используйте have или has и глагол see в нужной форме. Используйте a fox. Можно сократить вспомогательный глагол.", "Wildlife card: Lena — fox — yes.", ["Lena has seen a fox.", "Lena's seen a fox."], "Имя Lena требует has; форма see после has — seen. Lena's seen означает Lena has seen."],
+    ["entry-taken", "Заполните карточку от первого лица одним предложением. Используйте I, have, форму take и a boxing class. Сверьтесь с отметкой в карточке и добавьте never только при отсутствии опыта. Можно сократить I have.", "Your activity card\nA dance class: YES.\nA boxing class: NO.", ["I have never taken a boxing class.", "I've never taken a boxing class."], "В карточке A boxing class: NO. Поэтому ставим never между have и taken. Отметка YES относится к танцам, а не к боксу."],
+    ["entry-so-far", "Составьте запись: We + have + форма try + two new soups; поставьте so far в конце.", "Tasting card: two new soups up to now.", ["We have tried two new soups so far.", "We've tried two new soups so far."], "So far связывает результат с настоящим моментом; после have используется tried."]
+  ]
+}

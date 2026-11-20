@@ -1,0 +1,40 @@
+{
+  "number": 44,
+  "title": "Сколько нужно?",
+  "subtitle": "Supply quantities",
+  "goal": "Выбрать правильный тип вопроса для трёх из четырёх полей снабжения и спросить о недостающем количестве.",
+  "intro": "Вы помогаете готовить встречу соседей. В таблице снабжения не везде указаны количества: иногда нужно узнать число стаканов, а иногда — объём воды.",
+  "example": "A: How many cups do we need?\nB: Twenty.\nA: How much water do we need?\nB: Six liters.",
+  "translation": "А: Сколько стаканов нам нужно?\nБ: Двадцать.\nА: Сколько воды нам нужно?\nБ: Шесть литров.",
+  "theory": "Supply — запас или снабжение; a supply sheet — таблица нужных запасов. A serving — порция, a cup — стакан или чашка, a liter — литр. People означает «люди» и требует множественного числа. В таблице cups может обозначать отдельные стаканы или мерные чашки; читайте подпись.\n\nHow many + существительное во множественном числе спрашивает о числе отдельных единиц: How many cups do we need? — Сколько стаканов нам нужно? How many servings do we need? — Сколько порций нам нужно? Готовая рамка вопроса: How many + предметы + do we need? После do ставим we, затем need.\n\nHow much + неисчисляемое существительное спрашивает об общем количестве продукта: How much rice do we need? How much water do we need? Но если считаем единицы объёма, используем many: How many liters of water do we need? Water не меняется; liters — исчисляемые единицы.\n\nHow much is the rice? спрашивает цену, а How much rice do we need? — количество риса. Ответ $4 — цена; 2 bags — количество. В американском английском пишут liter, а не litre. На американских упаковках можно встретить литры; в наших вымышленных таблицах единицы всегда указаны. Cups в записи paper cups — бумажные стаканы, не мера объёма.",
+  "rows": [
+    ["How many + plural", "How many servings do we need?", "Сколько порций нам нужно?"],
+    ["How much + mass noun", "How much rice do we need?", "Сколько риса нам нужно?"],
+    ["How many + units", "How many liters of water do we need?", "Сколько литров воды нам нужно?"],
+    ["How much is + item?", "How much is the bottle of juice?", "Сколько стоит бутылка сока?"]
+  ],
+  "tip": "Не пишите How much cups: cups можно посчитать, поэтому How many cups. С водой без единицы измерения — How much water, но с литрами — How many liters of water.",
+  "review": "Вспомните вопрос о цене из №26 и упаковки из №42. Составьте два разных вопроса о воде: об общем количестве с much и о числе бутылок с many. Проверьте себя по первым четырём заданиям на выбор: цель — минимум три верных ответа. Затем составьте вопрос к пустому полю в письменной практике.",
+  "summary": "Вы можете найти незаполненное поле в таблице снабжения и спросить о числе предметов, порций или единиц объёма либо об общем количестве продукта.",
+  "choice": [
+    ["paper-cup-field", "Выберите вопрос к незаполненному полю.", "Block party sheet: paper cups — count missing; water — 8 liters.", ["How much are the cups?", "How many cups do we need?", "How much water do we need?"], 1, "Неизвестно число стаканов, поэтому many cups. Вода уже указана, а цена не запрашивается."],
+    ["rice-amount-field", "Выберите вопрос об общем количестве риса без названия упаковки.", "Dinner supply sheet: rice — amount missing; bags — not specified.", ["How much rice do we need?", "How many bags of rice do we need?", "How much is the rice?"], 0, "Rice — неисчисляемый продукт. Вопрос о количестве без упаковки начинается с How much rice."],
+    ["juice-liter-field", "Выберите вопрос именно о числе литров сока.", "School picnic sheet: juice — liters needed: ?", ["How much is the juice?", "How many bottles of juice do we need?", "How many liters of juice do we need?"], 2, "В поле запрашивают liters, поэтому считаем литры с many; bottles изменило бы единицу."],
+    ["drink-price-field", "Выберите вопрос о цене одной указанной бутылки.", "Store card: one bottle of water — 1 liter; price: ?", ["How much water do we need?", "How much is the bottle of water?", "How many bottles do we need?"], 1, "Объём уже известен, отсутствует цена. How much is the bottle of water? спрашивает стоимость."],
+    ["serving-field", "Выберите вопрос к числу порций.", "Team lunch sheet: rice servings needed — ?; price per serving — $3.", ["How much is a serving?", "How much rice is left?", "How many servings do we need?"], 2, "Число порций неизвестно; servings — исчисляемое множественное. Цена уже дана."]
+  ],
+  "blank": [
+    ["people-many", "Впишите только many или much.", "Volunteer sheet: people needed — ?. How ___ people do we need?", ["many"], "People обозначает несколько людей, поэтому спрашиваем How many people."],
+    ["water-much", "Впишите только many или much.", "Cooking sheet: water amount — ?. How ___ water do we need?", ["much"], "Water без единиц измерения неисчисляемое: How much water."],
+    ["liter-spelling", "Впишите только американское множественное число слова liter.", "Drink supply: 3 L of water. We need three ___ of water.", ["liters"], "Американское написание — liter; после three добавляем -s: liters."],
+    ["rice-question-order", "Впишите только вспомогательный глагол.", "Cafeteria sheet: rice amount — ?. How much rice ___ we need?", ["do"], "В вопросе с we перед подлежащим ставим do, а need оставляем в начальной форме."],
+    ["portion-noun", "Впишите только английское слово servings или cups по подписи.", "Soup plan: 18 portions, not drinking cups. We need eighteen ___.", ["servings"], "Порции — servings. Cups здесь означало бы чашки или стаканы."]
+  ],
+  "written": [
+    ["workshop-cups", "Задайте один вопрос к пустому полю. После How выберите many или much, назовите предмет и закончите вопрос словами do we need. Для «стаканы» используйте cups.", "Workshop supply sheet: paper cups — count missing.", ["How many cups do we need?"], "Cups считаются поштучно: many cups. Порядок вопроса: do + we + need."],
+    ["festival-rice", "Задайте один вопрос к пустому полю. После How выберите many или much, затем назовите продукт и закончите вопрос словами do we need. Упаковки не упоминайте.", "Festival meal sheet: rice — amount missing.", ["How much rice do we need?"], "С rice без единицы измерения выбираем much, не many."],
+    ["hike-water-liters", "Задайте один вопрос к пустому полю. Начните с How, выберите many или much, назовите единицу измерения с американским написанием и продукт с of. Закончите вопрос словами do we need.", "Hike supply sheet: water — liters needed: ?", ["How many liters of water do we need?"], "Считаем liters, поэтому many; of соединяет единицу измерения с water."],
+    ["rehearsal-servings", "Спросите о числе порций: начните с How many, используйте servings и закончите do we need; без названия блюда.", "Rehearsal lunch sheet: servings — count missing.", ["How many servings do we need?"], "Serving — одна порция; после many нужна форма servings."],
+    ["garden-water", "Спросите об общем количестве воды: начните с How much, используйте water и закончите do we need; без единиц измерения.", "Garden lunch sheet: drinking water — amount missing.", ["How much water do we need?"], "Вопрос без liters или bottles относится к неисчисляемому water, поэтому much."]
+  ]
+}

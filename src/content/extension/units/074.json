@@ -1,0 +1,40 @@
+{
+  "number": 74,
+  "title": "Обязанности на смене",
+  "subtitle": "Shift duties",
+  "goal": "Различить обязательные и необязательные задачи и сообщить обязанность с точным временем.",
+  "intro": "Новый сотрудник читает карточку смены в небольшом магазине. По ней нужно понять, что обязательно, а что можно не делать.",
+  "example": "Shift card: Maya has to sign in at 8 a.m. She has to stock shelves at 9 a.m. She doesn't have to work at the register today. The manager handles the register.",
+  "translation": "Карточка смены: Майя должна отметиться в 8 утра. Она должна доложить товар на полки в 9 утра. Сегодня ей не обязательно работать на кассе. Кассой занимается менеджер.",
+  "theory": "Shift — рабочая смена. Sign in — отметиться в начале работы. Stock shelves — пополнять полки товарами; register — касса. Apron — фартук. Handover — передача дел следующему сотруднику. В США также встречается handoff. Например, Read the handover notes — прочитайте заметки для следующей смены. В американском магазине говорят work at the register — работать на кассе.\nHave to + начальная форма глагола обозначает обязанность: I have to sign in. С he/she и одним именем используйте has to: Maya has to wear an apron. Глагол после to не меняется: has to wear, не has to wears.\nDon't have to означает «не обязательно», а не «запрещено»: You don't have to wear an apron today — сегодня фартук можно не надевать. Для he/she: doesn't have to. После doesn't возвращаем have: She doesn't have to work at the register.\nУказывайте время через at: at 8 a.m. — в 8 утра; at 4 p.m. — в 16:00. На карточке required означает «обязательно», optional — «по желанию». Can указывает, что действие разрешено, но не делает его обязательным. Сначала найдите обязательную задачу, затем проверьте её время.",
+  "rows": [
+    ["I/you/we/they have to", "You have to sign in at 7 a.m.", "Вы должны отметиться в 7 утра."],
+    ["he/she has to", "He has to stock shelves at 10 a.m.", "Он должен доложить товар на полки в 10 утра."],
+    ["don't have to", "We don't have to wear aprons today.", "Сегодня нам не обязательно надевать фартуки."],
+    ["doesn't have to", "She doesn't have to use the register.", "Ей не обязательно пользоваться кассой."]
+  ],
+  "tip": "She doesn't has to — ошибка. Правильно: She doesn't have to. Это отсутствие обязанности; запрет так не выражают.",
+  "review": "Вспомните согласование he/she из №3, время расписания из №52–53 и разрешение из №64. Сравните «можно» и «обязательно» на двух задачах смены.",
+  "summary": "Я могу найти обязательные задачи в карточке смены, отличить их от необязательных и назвать время выполнения.",
+  "choice": [
+    ["required-apron", "Какая задача обязательна?", "Shift rules: You have to wear an apron. You don't have to work at the register.", ["Work at the register.", "Wear an apron.", "Do both tasks."], 1, "Have to делает фартук обязательным; don't have to снимает обязанность работать на кассе."],
+    ["required-shelves", "Какая задача обязательна?", "Noah's shift card: Stock shelves at 11 a.m. — required. You can read the handover notes at 10 a.m., but it's optional.", ["Read the handover notes at 10 a.m.", "Skip both tasks.", "Stock shelves at 11 a.m."], 2, "Stock shelves отмечено как required. Can read здесь сообщает о разрешении, а optional уточняет, что читать заметки необязательно."],
+    ["optional-meaning", "Выберите смысл правила.", "You don't have to sign in again after lunch.", ["Signing in again is optional.", "Signing in again is forbidden.", "Signing in again is required."], 0, "Don't have to означает отсутствие необходимости, а не запрет."],
+    ["single-worker", "Выберите грамматически верное сообщение.", "Lena's required task: read the handover notes.", ["Lena have to read the handover notes.", "Lena has to read the handover notes.", "Lena has to reads the handover notes."], 1, "С Lena нужно has to; read после to остается в начальной форме."],
+    ["handover-time", "Когда нужно передать дела?", "Evening card: Sign in at 3 p.m. Stock shelves at 4 p.m. Handover: 7 p.m.", ["At 3 p.m.", "At 4 p.m.", "At 7 p.m."], 2, "Handover на карточке назначен на 7 p.m., то есть 19:00."]
+  ],
+  "blank": [
+    ["plural-duty", "Впишите только have to или has to.", "We ___ stock shelves before opening.", ["have to"], "С we употребляется have to."],
+    ["singular-duty", "Впишите только have to или has to.", "Owen ___ sign in at 6 a.m.", ["has to"], "Owen — один человек, поэтому has to."],
+    ["optional-plural", "Впишите только отрицательную рамку: «не обязаны». Сокращение разрешено.", "Aprons are optional today. You ___ wear an apron.", ["don't have to", "do not have to"], "Don't have to и do not have to выражают отсутствие обязанности."],
+    ["optional-singular", "Впишите только отрицательную рамку: «ей не обязательно». Сокращение разрешено.", "Register work is optional for Beth. She ___ work at the register.", ["doesn't have to", "does not have to"], "С she нужна рамка doesn't have to, с have после doesn't."],
+    ["base-stock", "Впишите только stock в нужной форме.", "Eli has to ___ shelves at noon.", ["stock"], "После has to используется начальная форма stock."]
+  ],
+  "written": [
+    ["maya-sign-in", "Напишите обязанность: Maya + has to + sign in + at и время точно как на карточке.", "Maya: sign in required, 7 a.m.", ["Maya has to sign in at 7 a.m."], "Has to согласуется с Maya; at вводит время."],
+    ["we-shelves", "Начните We have to; используйте stock shelves и at. Перенесите время в том же формате, что на карточке.", "Our team: stock shelves required, 2 p.m.", ["We have to stock shelves at 2 p.m."], "С we нужна форма have to, затем действие и время."],
+    ["optional-apron", "Начните I; используйте отрицание have to и wear an apron. Сокращение разрешено.", "Your card: apron optional.", ["I don't have to wear an apron.", "I do not have to wear an apron."], "Optional означает, что обязанности надевать фартук нет."],
+    ["nina-register", "Запишите одно требование к Нине с точным временем как на карточке. Начните с Nina, используйте have to в нужной форме и выражение work at the register.", "Nina's shift card: 4 p.m. — work at the register (optional). 5 p.m. — work at the register (required).", ["Nina has to work at the register at 5 p.m."], "Обязательна работа на кассе в 17:00. Для Нины используйте has to. Первое at входит в work at the register, второе вводит время."],
+    ["ben-optional", "Начните Ben; используйте отрицание have to и read the handover notes. Сокращение разрешено.", "Ben: reading the handover notes is optional today. Не добавляйте today в ответ.", ["Ben doesn't have to read the handover notes.", "Ben does not have to read the handover notes."], "С Ben используем doesn't have to; read после to не меняется."]
+  ]
+}

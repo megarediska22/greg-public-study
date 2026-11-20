@@ -1,0 +1,39 @@
+{
+  "number": 97,
+  "title": "Совет перед поездкой",
+  "subtitle": "Packing advice",
+  "goal": "Сопоставить две потребности в поездке с советами и написать рекомендацию с should или shouldn't.",
+  "intro": "Лена собирается на выходные в Сиэтл. Друг помогает выбрать вещи для прохладного вечера и долгой прогулки.",
+  "example": "Lena: The forecast says 58 degrees Fahrenheit, and we'll walk a lot.\nBen: You should pack a light jacket and comfortable shoes.\nLena: Should I take all three sweaters?\nBen: No, you shouldn't pack so much.",
+  "translation": "Лена: По прогнозу 58 градусов по Фаренгейту, и мы будем много ходить.\nБен: Тебе стоит взять лёгкую куртку и удобную обувь.\nЛена: Мне взять все три свитера?\nБен: Нет, тебе не стоит брать так много свитеров.",
+  "theory": "Should означает «стоит, следует» и даёт совет: You should pack a jacket. Shouldn't = should not: «не стоит». После обеих форм нужен глагол без to и без окончания -s: she should pack, не should packs. В вопросе should ставится перед человеком: Should I pack a jacket?\nPack — собирать вещи, класть в багаж; a light jacket — лёгкая куртка; comfortable shoes — удобная обувь; a travel adapter — переходник для розетки в поездке. Совет выбираем по указанной потребности: прогулки требуют удобной обуви, несовместимая вилка — переходника. Переходник нужен не для каждой поездки.\nShould — рекомендация, have to — необходимость или правило. Если куртка просто поможет вечером, you should pack it; если паспорт обязателен по правилу, you have to bring it. В американском прогнозе температуру обычно называют по Фаренгейту: 58°F — примерно 14°C, поэтому лёгкая куртка уместна.",
+  "rows": [
+    ["should + base verb", "You should pack a light jacket for the evening.", "Тебе стоит взять лёгкую куртку на вечер."],
+    ["shouldn't + base verb", "She shouldn't pack four pairs of shoes for one night.", "Ей не стоит брать четыре пары обуви на одну ночь."],
+    ["Should + subject + base verb?", "Should I pack a travel adapter?", "Мне стоит взять переходник для розетки?"]
+  ],
+  "tip": "Не добавляйте to после should: You should to pack неверно; You should pack верно. В отрицательном совете не теряйте not: shouldn't pack означает «не стоит брать».",
+  "review": "Вспомните сочетания действий из №18 и прогноз из №59: назовите действие для прохладного вечера. Затем по №74 объясните разницу между советом should и обязательным have to; по №63 составьте короткую просьбу о помощи с багажом.",
+  "summary": "Вы умеете выбирать вещи по погоде и условиям поездки, давать положительный и отрицательный совет и отличать рекомендацию от обязательного правила.",
+  "choice": [
+    ["cool-pier", "Выберите совет под указанную потребность.", "Maya: We'll sit outside by the water after sunset. The forecast says it will be cool. What should I pack to stay warm?", ["You should pack a travel adapter.", "You should pack a light jacket.", "You should pack another phone."], 1, "Вопрос именно о прохладе после заката: light jacket поможет согреться, а переходник не решает эту задачу."],
+    ["walking-blocks", "Выберите совет для описанного маршрута.", "Leo: Our hotel is six blocks from the station. We'll walk there with our bags, and my new shoes hurt my feet.", ["You should pack a second suitcase.", "You should pack a heavy coat.", "You should pack comfortable shoes."], 2, "Маршрут пеший, а новая обувь причиняет боль: comfortable shoes отвечает обеим указанным деталям."],
+    ["outlet-shape", "Выберите вещь для указанной проблемы.", "Nina: My phone charger works, but its plug doesn't fit the outlets at our hotel abroad.", ["You should pack a travel adapter.", "You should pack comfortable shoes.", "You should pack a light jacket."], 0, "Travel adapter помогает подключить вилку к розетке другой формы. О неисправности зарядки здесь не сказано."],
+    ["one-night-bag", "Выберите отрицательный совет.", "Owen: It's a one-night trip. I want to take five sweaters, but my bag is already full.", ["You shouldn't take your bag.", "You shouldn't pack five sweaters.", "You shouldn't go for one night."], 1, "Лишний объём создают пять свитеров. Shouldn't pack советует сократить вещи, а не отменять поездку."],
+    ["passport-rule", "Выберите фразу об обязательном правиле, а не совете.", "Tour notice: A passport is required for every traveler on this trip.", ["You should buy a new bag.", "You shouldn't bring a passport.", "You have to bring your passport."], 2, "Required обозначает обязательное условие. Have to передаёт необходимость, а should — только рекомендацию."]
+  ],
+  "blank": [
+    ["cool-cabin", "Впишите только положительную форму should, чтобы дать совет.", "The cabin is cool at night. You ___ pack a sweater.", ["should"], "Should выражает полезный совет; после него уже стоит начальная форма pack."],
+    ["negative-heavy-bag", "Впишите только отрицательную форму should; сокращение допустимо.", "Your bag is too heavy. You ___ pack another pair of boots.", ["shouldn't", "should not"], "Ещё одна пара утяжелит багаж, поэтому совет отрицательный: shouldn't или should not."],
+    ["sister-base", "Впишите только форму глагола pack.", "Her trip starts tomorrow. She should ___ her bag tonight.", ["pack"], "После should форма одинакова для всех лиц: she should pack, без -s и без to."],
+    ["adapter-question", "Впишите только модальный глагол для вопроса о совете.", "The hotel has different outlets. ___ I pack a travel adapter?", ["Should"], "Вопрос о совете строится Should + I + pack; вспомогательное do не нужно."],
+    ["comfortable-word", "Впишите только английское слово «удобную» по смыслу фразы.", "We'll walk for two hours. You should wear ___ shoes, not the pair that hurts your feet.", ["comfortable"], "Comfortable shoes — удобная обувь. Прилагательное comfortable не меняется во множественном числе."]
+  ],
+  "written": [
+    ["advise-jacket", "Дайте совет одним предложением по схеме You should + pack + вещь из карточки.", "Weather: cool after sunset. Packing card: a light jacket for cool evenings; a travel adapter for different outlets. Посоветуйте, что взять для прохладного вечера.", ["You should pack a light jacket."], "Для прохладного вечера по карточке нужна лёгкая куртка. После should употребляется pack без to."],
+    ["avoid-heavy-coat", "Напишите отрицательный совет с You, should и pack; используйте a heavy coat, без добавлений. Сокращение допустимо.", "Ситуация: в месте отдыха жарко. Посоветуйте не брать тяжёлое пальто.", ["You shouldn't pack a heavy coat.", "You should not pack a heavy coat."], "Отрицание должно относиться к совету: shouldn't pack или should not pack. Положительное should pack изменило бы смысл."],
+    ["advise-walking-shoes", "Напишите совет с You should; используйте wear и comfortable shoes, без добавлений.", "Ситуация: предстоит долгая прогулка. Посоветуйте надеть удобную обувь.", ["You should wear comfortable shoes."], "Wear описывает обувь на человеке; comfortable shoes употребляется без a, потому что shoes — множественное число."],
+    ["ask-about-adapter", "Спросите о совете: начните с Should I, используйте pack и a travel adapter, без добавлений.", "Ситуация: вы не знаете, нужен ли переходник. Спросите, стоит ли вам его взять.", ["Should I pack a travel adapter?"], "Should I pack — вопрос о рекомендации. После модального should не ставится to."],
+    ["advise-sister", "Напишите совет о ней: начните с She should, используйте pack и her bag tonight, без добавлений.", "Сестра уезжает рано утром. Скажите другу, что ей стоит собрать сумку сегодня вечером.", ["She should pack her bag tonight."], "Даже с she после should остаётся pack. Tonight указывает на сегодняшний вечер."]
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "number": 38,
+  "title": "Отзыв о вчерашнем событии",
+  "subtitle": "Yesterday's event",
+  "goal": "Найти два факта в отзыве и отдельно описать состояние места и действие на прошедшем событии.",
+  "intro": "После небольшого концерта посетители заполняют карточки отзывов. Вам нужно отделить впечатление о зале от того, что люди делали.",
+  "example": "Feedback: The hall was quiet before the concert. The seats were comfortable. A big crowd came at seven. I enjoyed the music, but the cafe was noisy.",
+  "translation": "Отзыв: До концерта в зале было тихо. Сиденья были удобными. В семь пришло много людей. Мне понравилась музыка, но в кафе было шумно.",
+  "theory": "Event — событие или мероприятие; crowd — толпа, большая группа людей; seats — места для сидения. Quiet — тихий, noisy — шумный, comfortable — удобный, hard — жёсткий, warm — тёплый, empty — пустой. The hall was quiet описывает зал; a big crowd came сообщает, что пришло много людей.\nСостояние в прошлом: подлежащее + was/were + прилагательное. The room was noisy; the seats were comfortable. С одним предметом и с I/he/she/it используем was, с you/we/they и несколькими предметами — were. Для отрицания: wasn't / was not, weren't / were not.\nДействие в прошлом передаём смысловым глаголом: We watched a film; they went home. Enjoy — получать удовольствие, enjoyed — получил удовольствие, понравилось: I enjoyed the event — мне понравилось мероприятие. После enjoyed можно сразу назвать предмет: enjoyed the music, без to. Was перед enjoyed здесь не нужен.\nВ отзыве отделяйте факты: The cafe was noisy — состояние места; We ate at the cafe — действие людей. Before — до, after — после. В американском английском movie — обычное слово для фильма; I watched a movie — я посмотрел фильм.",
+  "rows": [
+    ["was + adjective", "The event was short.", "Мероприятие было коротким."],
+    ["were + adjective", "The seats were comfortable.", "Сиденья были удобными."],
+    ["enjoyed + noun", "We enjoyed the concert.", "Нам понравился концерт."],
+    ["past action", "A small crowd came at eight.", "В восемь пришла небольшая группа людей."]
+  ],
+  "tip": "Не добавляйте was к действию: I was enjoyed the concert → I enjoyed the concert. Для прилагательного, наоборот, нужен was: The concert was good.",
+  "review": "Из №2 вспомните прилагательные состояния, из №17 — короткую реакцию на событие. Восстановите was/were из №16 и прошедшие глаголы из №32–33. В первых двух заданиях на выбор найдите в одной карточке факт о зале и действие посетителей.",
+  "summary": "Я могу извлечь два факта из отзыва, написать предложение с was/were о месте и отдельное предложение о прошедшем действии.",
+  "choice": [
+    ["hall-state-detail", "Выберите факт о зале до выступления.", "Visitor slip: The hall was quiet before the show. The cafe was noisy. We watched a short movie.", ["The hall was noisy.", "The hall was quiet.", "The cafe was quiet."], 1, "В карточке quiet относится к hall, а noisy — к cafe. До выступления в зале было тихо."],
+    ["visitor-action-detail", "Выберите действие посетителей из отзыва.", "Visitor slip: The hall was quiet before the show. The cafe was noisy. We watched a short movie.", ["The cafe was noisy.", "The hall was quiet.", "We watched a short movie."], 2, "Watched a short movie означает «посмотрели короткий фильм». Was noisy и was quiet описывают состояние двух помещений."],
+    ["classify-crowd", "Выберите предложение о действии, а не о состоянии.", "Three notes from Friday's event:", ["The crowd left at nine.", "The cafe was quiet at nine.", "The seats were empty at nine."], 0, "Left — прошедшая форма leave: люди ушли. Quiet и empty после was/were описывают состояние."],
+    ["feedback-enjoyed", "Выберите грамматически верный отзыв о музыке.", "Лене понравилась музыка на вчерашнем мероприятии.", ["Lena was enjoyed the music.", "Lena enjoyed the music.", "Lena enjoyed to the music."], 1, "Enjoyed самостоятельно передаёт прошлое действие. Перед ним не нужно was, а перед the music — to."],
+    ["seat-count-agreement", "Выберите предложение, которое сохраняет оба факта.", "Feedback: two seats — comfortable; one room — noisy.", ["The seats was comfortable, and the room were noisy.", "The seats were noisy, and the room was comfortable.", "The seats were comfortable, and the room was noisy."], 2, "Seats — множественное число, поэтому were; room — единственное, поэтому was. Прилагательные должны оставаться при своих предметах."]
+  ],
+  "blank": [
+    ["museum-room-state", "Впишите только was или were.", "The small room at the museum ___ quiet yesterday afternoon.", ["was"], "The small room — один зал, поэтому в прошлом используем was."],
+    ["front-seats-state", "Впишите только was или were.", "The seats near the stage ___ comfortable last night.", ["were"], "Главное слово seats стоит во множественном числе: the seats were."],
+    ["enjoy-past-concert", "Впишите только прошедшую форму enjoy.", "I ___ the guitar concert on Saturday. (enjoy)", ["enjoyed"], "Enjoy — правильный глагол: enjoy + ed → enjoyed. Перед существительным the guitar concert предлог не нужен."],
+    ["crowd-arrival", "Впишите только прошедшую форму come.", "A crowd ___ to the school event at six. (come)", ["came"], "Прошедшая форма come — came: группа людей пришла в шесть."],
+    ["not-noisy-gallery", "Впишите только отрицательную форму be; допустимо сокращение.", "The gallery was quiet yesterday. It ___ noisy.", ["was not", "wasn't"], "Quiet — тихо, поэтому утверждение «шумно» отрицаем. Для it подходят was not и wasn't."]
+  ],
+  "written": [
+    ["state-library-event", "Опишите только помещение. Начните с The library, поставьте be в прошлом, выберите quiet или noisy и закончите словом yesterday.", "Library event card: yesterday — room quiet; visitors enjoyed the poems.", ["The library was quiet yesterday."], "Was quiet сообщает о состоянии библиотеки. Чтение стихов — отдельное действие, в это предложение оно не входит."],
+    ["action-poetry-night", "Передайте впечатление посетителей. Начните с We, поставьте enjoy в прошлом, назовите то, что понравилось, и закончите словом yesterday.", "Library event card: yesterday — room quiet; visitors enjoyed the poems.", ["We enjoyed the poems yesterday."], "В карточке посетителям понравились стихи: We enjoyed the poems yesterday. Quiet описывает библиотеку."],
+    ["two-feedback-facts", "Напишите два предложения. Начните первое с The seats и используйте be в прошлом. Второе начните с I и поставьте watch в прошлом. Для обоих предложений возьмите нужные сведения из карточки.", "Feedback card: seats — hard; room — warm; what I watched — the movie.", ["The seats were hard. I watched the movie."], "Were hard описывает сиденья. Watched the movie сообщает, что посетитель посмотрел фильм. Warm относится к залу."],
+    ["crowd-left-report", "Сообщите об уходе людей. Начните с The crowd; используйте leave в прошлом и at eight в конце.", "Восемь вечера: люди ушли с мероприятия.", ["The crowd left at eight."], "Leave меняется на left. Was здесь не нужен: речь о действии, а не о свойстве толпы."],
+    ["quiet-cafe-negative", "Опровергните отзыв одной фразой. Начните с The cafe; используйте отрицательную форму was и noisy, без дополнительных слов. Сокращение допустимо.", "Someone wrote: The cafe was noisy. Your note: quiet.", ["The cafe was not noisy.", "The cafe wasn't noisy."], "Отрицаем состояние: was not noisy или wasn't noisy. Did not перед прилагательным не используется."]
+  ]
+}
