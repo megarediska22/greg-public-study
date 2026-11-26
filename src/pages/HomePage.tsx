@@ -14,12 +14,27 @@ export function HomePage() {
   const entry = fastEntry ? { ...fastEntry, diagnosticAvailable: fastEntry.canStart }
     : engine?.entry();
   const hasResult = engine?.fast ? Boolean(engine.fast.result()) : Boolean(engine?.result());
+  const diagnosticHref = entry?.resumable || entry?.incompatibleDraft ? '#/diagnostic' : hasResult ? '#/diagnostic/new' : '#/diagnostic';
+  const diagnosticLabel = entry?.resumable ? 'Продолжить диагностику' : entry?.incompatibleDraft ? 'О незавершённой диагностике'
+    : hasResult ? 'Пройти диагностику снова' : 'Подобрать учебный старт';
+  const diagnosticAvailable = Boolean(entry?.resumable || entry?.incompatibleDraft || entry?.diagnosticAvailable);
+  const ordinaryHref = last ? `#/lesson/${last.lessonId}/${last.stepId}` : '#/start';
   const next = lessons.find(lesson => entry?.resume === lesson.id);
   return <>
     <section className="hero" aria-labelledby="home-title">
       <div className="hero-copy">
-        <span className="pill"><span className="status-dot" />Бесплатно. Без регистрации.</span>
+        <span className="pill"><span className="status-dot" />{__ONLINE_BETA__ && 'Beta · '}Бесплатно. Без регистрации.</span>
         <h1 id="home-title">Английский.<br />С понятного<br />начала.</h1>
+        {__ONLINE_BETA__ ? <>
+          <div className="beta-entry-actions">
+            {last && <LinkButton href={ordinaryHref}>Продолжить обучение <Icon name="arrow" /></LinkButton>}
+            {diagnosticAvailable && <LinkButton href={diagnosticHref} secondary={Boolean(last)}>{diagnosticLabel}</LinkButton>}
+            {!last && <LinkButton href="#/course/a1" secondary={diagnosticAvailable}>Начать обучение без диагностики</LinkButton>}
+          </div>
+          <p className="beta-entry-note">Экспериментальная версия. Диагностика помогает подобрать подходящий урок, но не является официальным определением уровня английского</p>
+          {next && <p className="hero-note">Ваш урок — «{next.title}».</p>}
+          {!diagnosticAvailable && <p className="muted">Доступные варианты диагностики пройдены. Можно продолжить обучение.</p>}
+        </> : <>
         <p className="lead">Небольшие уроки, понятные правила и практика. Учитесь в своём темпе — шаг за шагом, от первой фразы.</p>
         <LinkButton href={last ? `#/lesson/${last.lessonId}/${last.stepId}` : adaptive ? '#/start' : '#/course/a1'}>{last ? adaptive ? 'Продолжить обучение' : 'Продолжить учиться' : 'Начать учиться'} <Icon name="arrow" /></LinkButton>
         <p className="hero-note">{next ? `Ваш урок — «${next.title}».` : 'Первый шаг — базовый курс A1'}</p>
@@ -31,6 +46,8 @@ export function HomePage() {
           : <p className="muted">{hasResult
             ? 'Доступные варианты диагностики пройдены. Можно продолжить обучение.'
             : 'Диагностика пока недоступна. Можно продолжить обучение.'}</p>)}
+
+        </>}
 
       </div>
       <div className="study-visual" aria-label="Формы глагола to be: I am, you are, we are">
