@@ -10,9 +10,11 @@ const legacyGrammarIds = new Set([
 export type Attempt = { answer: string; correct: boolean };
 export type QuestionProgress = { attempts: Attempt[]; retrying: boolean };
 export type LessonProgress = { completedSteps: string[]; answers: Record<string, QuestionProgress> };
+type CurriculumVersion = 2 | 3 | NonNullable<CourseEntry['introducedIn']>;
 export type Progress = {
   version: 1;
-  curriculumVersion?: 2 | 3;
+  curriculumVersion?: CurriculumVersion;
+  waivedInsertions?: string[];
   pk01CoreAccess?: true;
   legacyUnlockedLessons?: string[];
   completedLessons: string[];
@@ -26,8 +28,15 @@ export type ProgressAction =
   | { type: 'answer'; lessonId: string; stepId: string; questionId: string; answer: string }
   | { type: 'retry'; lessonId: string; stepId: string; questionId: string };
 
+function curriculumVersionFor(course: readonly CourseEntry[]): CurriculumVersion {
+  return course.reduce<CurriculumVersion>((version, entry) => {
+    const introduced = entry.introducedIn ?? (entry.id === 'bp-a1-01' ? 3 : 2);
+    return introduced > version ? introduced : version;
+  }, 2);
+}
+
 export function emptyProgress(course: readonly CourseEntry[] = []): Progress {
-  return { version: 1, curriculumVersion: course.some(entry => entry.id === 'bp-a1-01') ? 3 : 2, completedLessons: [], lessons: {}, lastVisited: null };
+  return { version: 1, curriculumVersion: curriculumVersionFor(course), completedLessons: [], lessons: {}, lastVisited: null };
 }
 
 export function isLessonUnlocked(progress: Progress, course: readonly CourseEntry[], lessonId: string, granted?: ReadonlySet<string>): boolean {
@@ -36,7 +45,8 @@ export function isLessonUnlocked(progress: Progress, course: readonly CourseEntr
   if (granted?.has(lessonId)) return true;
   const preparation = target.level === 'Pre-A1';
   const route = course.filter(entry => (entry.level === 'Pre-A1') === preparation);
-  const preceding = route.slice(0, route.indexOf(target)).filter(entry => !(progress.pk01CoreAccess && entry.id === 'bp-a1-01'));
+  const preceding = route.slice(0, route.indexOf(target)).filter(entry =>
+    !(progress.pk01CoreAccess && entry.id === 'bp-a1-01') && !progress.waivedInsertions?.includes(entry.id));
   // A validated pre-vocabulary frontier retains grammar access.
   if (legacyGrammarIds.has(lessonId) && progress.legacyUnlockedLessons?.includes(lessonId)) {
     return preceding.filter(entry => legacyGrammarIds.has(entry.id)).every(entry => progress.completedLessons.includes(entry.id));
@@ -87,7 +97,8 @@ export function updateProgress(progress: Progress, course: readonly CourseEntry[
   const lesson = course.find(entry => entry.id === action.lessonId)?.lesson;
   const step = lesson?.steps.find(item => item.id === action.stepId);
   if (!lesson || !step || !isLessonUnlocked(progress, course, lesson.id, granted) || !isStepUnlocked(progress, lesson, step.id)) return progress;
-  const curriculumVersion = course.some(entry => entry.id === 'bp-a1-01') ? 3 : progress.curriculumVersion;
+  const installedVersion = curriculumVersionFor(course);
+  const curriculumVersion = progress.curriculumVersion && progress.curriculumVersion > installedVersion ? progress.curriculumVersion : installedVersion;
   if (action.type === 'visit') {
     if (progress.lastVisited?.lessonId === lesson.id && progress.lastVisited.stepId === step.id) return progress;
     return { ...progress, curriculumVersion, lastVisited: { lessonId: lesson.id, stepId: step.id } };
@@ -171,7 +182,7 @@ export function decodeProgress(raw: string | null, course: readonly CourseEntry[
     // and replay validation still apply. A fresh or reset course uses version 3.
     if (course.some(entry => entry.id === 'bp-a1-01') &&
         (data.curriculumVersion === undefined || data.curriculumVersion === 2 ||
-          data.curriculumVersion === 3 && data.pk01CoreAccess === true)) {
+          typeof data.curriculumVersion === 'number' && data.curriculumVersion >= 3 && data.pk01CoreAccess === true)) {
       clean.pk01CoreAccess = true;
     }
     if (course.some(entry => entry.lesson?.kind === 'vocabulary')) {
@@ -183,12 +194,37 @@ export function decodeProgress(raw: string | null, course: readonly CourseEntry[
         const legacy = decodeProgress(raw, grammar).progress;
         const frontier = grammar.findIndex(entry => !legacy.completedLessons.includes(entry.id));
         retained = grammar.slice(0, frontier < 0 ? grammar.length : frontier + 1).map(entry => entry.id);
-      } else if ((data.curriculumVersion === 2 || data.curriculumVersion === 3) && Array.isArray(data.legacyUnlockedLessons)) {
+      } else if (typeof data.curriculumVersion === 'number' && data.curriculumVersion >= 2 && Array.isArray(data.legacyUnlockedLessons)) {
         retained = grammar.filter(entry => (data.legacyUnlockedLessons as unknown[]).includes(entry.id)).map(entry => entry.id);
       }
       if (retained.length) clean.legacyUnlockedLessons = retained;
     }
+    if (data.curriculumVersion !== undefined &&
+        (typeof data.curriculumVersion !== 'number' || !Number.isInteger(data.curriculumVersion) ||
+          data.curriculumVersion < 2 || data.curriculumVersion > curriculumVersionFor(course))) {
+      return { progress: emptyProgress(course), recovered: true };
+    }
+    const savedVersion = typeof data.curriculumVersion === 'number' ? data.curriculumVersion : 2;
+    let former: { course: readonly CourseEntry[]; progress: Progress } | undefined;
+    if (clean.curriculumVersion! > savedVersion && course.some(entry => (entry.introducedIn ?? 2) > savedVersion)) {
+      const previous = course.filter(entry => (entry.introducedIn ?? 2) <= savedVersion);
+      former = { course: previous, progress: decodeProgress(raw, previous).progress };
+    }
+    const savedWaivers: unknown[] = Array.isArray(data.waivedInsertions) ? data.waivedInsertions : [];
+    const core = course.filter(entry => entry.level !== 'Pre-A1');
     for (const entry of course) {
+      if (entry.introducedIn && isLessonUnlocked(clean, course, entry.id)) {
+        const later = core.slice(core.indexOf(entry) + 1);
+        const successor = former && later.find(next => (next.introducedIn ?? 2) <= savedVersion);
+        // The previous route is replayed before deriving its accessible frontier.
+        // A final append has no former successor and stays a normal requirement.
+        const retained = former && successor && isLessonUnlocked(former.progress, former.course, successor.id);
+        const resumable = entry.introducedIn <= savedVersion && savedWaivers.includes(entry.id) &&
+          later.some(next => (next.introducedIn ?? 2) < entry.introducedIn!);
+        if (retained || resumable) {
+          clean.waivedInsertions = [...clean.waivedInsertions ?? [], entry.id];
+        }
+      }
       const lesson = entry.lesson;
       const saved = data.lessons[entry.id];
       if (!lesson || !record(saved) || !isLessonUnlocked(clean, course, entry.id, granted)) continue;

@@ -52,7 +52,7 @@ test('old-only and mixed saves preserve attempts without fetching rich units or 
   let progress = emptyProgress();
   for (const { lesson } of historicalLessons) progress = finish(progress, historicalLessons, lesson);
   const oldStore = store(JSON.stringify(progress));
-  const migrated = { ...progress, curriculumVersion: 3, pk01CoreAccess: true };
+  const migrated = { ...progress, curriculumVersion: emptyProgress(lessons).curriculumVersion, pk01CoreAccess: true, waivedInsertions: ['bp-a1-02', 'bp-a1-03', 'bp-a1-04', 'bp-a1-05'] };
   assert.deepEqual((await openCourseSession(oldStore)).progress, migrated);
   assert.deepEqual(loadedUnitIds(), []);
   assert.deepEqual(loadedReplayIds(), []);

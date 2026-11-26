@@ -75,7 +75,7 @@ test('old saves load no extension chunks; compact new saves restore only saved l
   let old = emptyProgress();
   for (const { lesson } of historicalLessons) old = finish(old, historicalLessons, lesson);
   const course = await prepareProgressCourse(JSON.stringify(old));
-  old = { ...old, curriculumVersion: 3, pk01CoreAccess: true };
+  old = { ...old, curriculumVersion: emptyProgress(lessons).curriculumVersion, pk01CoreAccess: true, waivedInsertions: ['bp-a1-02', 'bp-a1-03', 'bp-a1-04', 'bp-a1-05'] };
   assert.deepEqual(decodeProgress(JSON.stringify(old), course), { progress: old, recovered: false });
   assert.deepEqual(loadedReplayIds(), []);
   assert.deepEqual(loadedUnitIds(), []);

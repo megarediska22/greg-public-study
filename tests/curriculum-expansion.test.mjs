@@ -87,7 +87,13 @@ test('SUBSET real sequential replay, oldest partial, graduate, retries and prese
   async function refresh(progress){
     const raw=JSON.stringify(progress); const writes=[];
     const session=await openCourseSession({getItem:k=>k===PROGRESS_KEY?raw:null,setItem:(...args)=>writes.push(args)});
-    assert.deepEqual(session.progress, { ...progress, curriculumVersion: 3, pk01CoreAccess: true }); assert.equal(session.persist(session.progress),'unchanged');assert.deepEqual(writes,[]);
+    const ready = new Set(progress.completedLessons);
+    const boundary = [['daily-routines', 'bp-a1-02'], ['home-places', 'bp-a1-03'], ['actions-time', 'bp-a1-04'], ['small-talk-basics', 'bp-a1-05']];
+    const waivedInsertions = boundary.filter(([id]) => ready.has(id)).map(([, id]) => id);
+    assert.deepEqual(session.progress, {
+      ...progress, curriculumVersion: emptyProgress(lessons).curriculumVersion, pk01CoreAccess: true,
+      ...(waivedInsertions.length ? { waivedInsertions } : {}),
+    }); assert.equal(session.persist(session.progress),'unchanged');assert.deepEqual(writes,[]);
   }
   const legacy=legacyFixtures(historicalLessons);
   await refresh(legacy.partial); await refresh(legacy.completed);

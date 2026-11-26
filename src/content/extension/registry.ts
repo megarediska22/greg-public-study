@@ -1,12 +1,13 @@
 import type { CourseEntry, Lesson } from '../../types/lesson.ts';
 import { assembleCourse } from '../assembleCourse.ts';
+import { applyBlueprint, blueprintCounts } from '../blueprint/integration.ts';
 import { availableEntries } from './generated/catalog.ts';
 import { unitLoaders, replayLoaders } from './generated/loaders.ts';
 import { adaptUnit, replayLesson } from './adaptUnit.ts';
 
 // Only a contiguous prefix can enter the learner sequence; a missing file can
 // never silently remove a prerequisite. QA can load other authored IDs directly.
-const byId = new Map(availableEntries.map(entry => [entry.id, { ...entry }]));
+const byId = new Map(availableEntries.map(entry => [entry.id, blueprintCounts({ ...entry })]));
 const prefix: CourseEntry[] = [];
 for (let number = 27; number <= 121; number++) {
   const entry = byId.get(`unit-${String(number).padStart(3, '0')}`);
@@ -29,7 +30,7 @@ export function loadLesson(id: string): Promise<Lesson> {
   if (existing) return existing;
   if (!Object.hasOwn(unitLoaders, id)) return Promise.reject(Error(`Unknown lesson: ${id}`));
   const request = unitLoaders[id]().then(unit => {
-    const lesson = adaptUnit(unit);
+    const lesson = applyBlueprint(adaptUnit(unit));
     const entry = byId.get(id)!;
     lesson.title = entry.title;
     entry.lesson = lesson;
@@ -54,7 +55,7 @@ export async function prepareProgressCourse(raw: string | null): Promise<readonl
   const ids = extensionEntries.filter(entry => Object.hasOwn(saved, entry.id) && !entry.lesson && !replays.has(entry.id)).map(entry => entry.id);
   await Promise.all(ids.map(async id => {
     const data = await replayLoaders[id]();
-    replays.set(id, replayLesson(data));
+    replays.set(id, applyBlueprint(replayLesson(data)));
   }));
   return getProgressCourse();
 }

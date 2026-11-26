@@ -66,6 +66,7 @@ export type Lesson = {
 
 export type CourseEntry = {
   number?: number;
+  introducedIn?: 4 | 5 | 6 | 7;
   level?: Lesson['level'];
   band?: string;
   stepCount?: number;

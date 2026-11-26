@@ -29,7 +29,7 @@ export function practice(id: string, title: string, questions: readonly Question
 }
 type Unit = {
   id: string;
-  level: 'Pre-A1' | 'A1';
+  level: Lesson['level'];
   title: string;
   goals: readonly string[];
   example: readonly [string, string];

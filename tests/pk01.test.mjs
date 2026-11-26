@@ -14,6 +14,7 @@ import { validateCourse } from '../src/lib/validation.ts';
 import { validateTaskIndicators } from '../src/lib/taskIndicators.ts';
 import { questionTasks } from '../src/content/questionTasks.ts';
 
+const pk02Waivers = ['bp-a1-02', 'bp-a1-03', 'bp-a1-04', 'bp-a1-05'];
 const ids = ['bp-pre-01', 'bp-pre-02', 'bp-pre-03', 'bp-pre-04', 'bp-a1-01'];
 const supplements = ['to-be', 'greetings-reactions', 'help-and-cafe'];
 const exerciseQuestions = unit => unit.steps.flatMap(step => step.questions ?? []);
@@ -36,16 +37,16 @@ function finish(progress, course, lesson) {
   return progress;
 }
 
-test('PK-01 registry is the implemented blueprint order and all installed questions have unique keys', async () => {
+test('Installed registry is the implemented blueprint order and all installed questions have unique keys', async () => {
   const fullyLoaded = await Promise.all(lessons.map(async entry => ({ ...entry, lesson: await loadLesson(entry.id) })));
   const installed = new Set(lessons.map(entry => entry.id));
   assert.deepEqual(lessons.map(entry => entry.id), adaptiveCatalog.sequence.filter(row => installed.has(row.id)).map(row => row.id));
   assert.deepEqual(lessons.slice(0, 5).map(entry => entry.id), ids);
-  assert.equal(lessons.length, 126);
-  assert.equal(questionCount, 2040);
-  assert.equal(fullyLoaded.flatMap(entry => entry.lesson.steps).length, 885);
+  assert.equal(lessons.length, 130);
+  assert.equal(questionCount, 2119);
+  assert.equal(fullyLoaded.flatMap(entry => entry.lesson.steps).length, 927);
   assert.doesNotThrow(() => validateCourse(fullyLoaded));
-  assert.equal(validateTaskIndicators(fullyLoaded, questionTasks), 2040);
+  assert.equal(validateTaskIndicators(fullyLoaded, questionTasks), 2119);
   assert.deepEqual(ids.map(id => exerciseQuestions(unit(id)).length), [10, 11, 8, 10, 12]);
   for (const id of supplements) {
     const before = baselineLessons.find(entry => entry.id === id).lesson;
@@ -118,7 +119,7 @@ test('v2 compact replay retains old completions, errors and available lessons wi
   const raw = JSON.stringify(old);
   const disk = store(raw);
   const session = await openCourseSession(disk);
-  assert.deepEqual(session.progress, { ...old, curriculumVersion: 3, pk01CoreAccess: true });
+  assert.deepEqual(session.progress, { ...old, curriculumVersion: emptyProgress(lessons).curriculumVersion, pk01CoreAccess: true, waivedInsertions: pk02Waivers });
   assert.equal(session.persist(session.progress), 'unchanged');
   assert.deepEqual(disk.writes, []);
   for (const entry of baseline) assert.equal(isLessonUnlocked(session.progress, lessons, entry.id), isLessonUnlocked(old, baseline, entry.id));
@@ -134,10 +135,11 @@ test('adaptive metadata resolves to live tasks and leaves the diagnostic release
   assert.deepEqual(validateCatalogue(), []);
   assert.deepEqual(validateAdaptiveContent(rules, bank, practice), []);
   assert.deepEqual(rules.readyLessons, lessons.map(entry => entry.id));
-  assert.equal(practice.length, 8);
+  const pk01Practice = practice.filter(item => ids.includes(item.lessonId));
+  assert.equal(pk01Practice.length, 8);
   const allCriteria = new Map(adaptiveCatalog.groups.flatMap(group => group.placementCriterion
     ? [[group.placementCriterion, group.objectives]] : []).concat(rules.criteria.map(criterion => [criterion.id, criterion.objectives])));
-  for (const item of practice) {
+  for (const item of pk01Practice) {
     const step = unit(item.lessonId).steps.find(candidate => candidate.id === item.stepId);
     const question = step.questions.find(q => q.id === item.itemId);
     assert.equal(item.role, question.type === 'choice' ? 'R' : 'P');
