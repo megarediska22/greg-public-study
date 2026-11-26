@@ -2,6 +2,8 @@
 
 ## Development
 
+- Integrate PK-01 into develop: five new lessons, nine optional questions in existing lessons, legacy progress compatibility, and the local CP-PRE check. See the [PK-01 review](docs/PK_01_REVIEW.md).
+
 - Establish `develop` as the shared development branch. Add onboarding, recovery, release and handoff documentation.
 - Preserve the completed standards research, curriculum audit, program blueprint and assessment specification.
 - Complete Stage 05 in develop. Add the adaptive engine, progress sidecar, derived curriculum metadata, automated checks and handoff contracts. Learner access remains linear. The adaptive pilot is unpublished and inactive.
