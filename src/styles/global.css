@@ -451,3 +451,8 @@ progress::-moz-progress-bar { background: var(--accent); }
 @media (max-width: 600px) {
   .adaptive-actions > .button { width: 100%; }
 }
+
+.fast-selected { display: flex; flex-wrap: wrap; gap: 10px; padding-block: 12px; border-block: 1px solid var(--border); min-height: 64px; }
+.fast-token { display: flex; gap: 4px; align-items: center; max-width: 100%; }
+.fast-token .button { padding-inline: 12px; overflow-wrap: anywhere; }
+.fast-token-bank { display: flex; flex-wrap: wrap; gap: 10px; margin-block: 16px; }

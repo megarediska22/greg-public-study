@@ -7,6 +7,7 @@ import { resumeStep } from '../../lib/progress';
 import { LinkButton } from '../LinkButton';
 import { AdaptiveQuestion, type Response } from './AdaptiveQuestion';
 import { useAdaptive } from './AdaptiveContext';
+import { FastPlacementPage } from './FastPlacementPage';
 import { Checkpoint } from './Checkpoint';
 import { skillLabels } from './skillLabels';
 
@@ -29,6 +30,12 @@ function reason(start: Start) {
 }
 
 export default function AdaptivePage({ route }: { route: string }) {
+  const adaptive = useAdaptive();
+  return adaptive?.host.engine.fast && !route.startsWith('/checkpoint/')
+    ? <FastPlacementPage route={route} /> : <LegacyAdaptivePage route={route} />;
+}
+
+function LegacyAdaptivePage({ route }: { route: string }) {
   const adaptive = useAdaptive();
   const { progress } = useProgress();
   const [startedHere, setStartedHere] = useState(false);

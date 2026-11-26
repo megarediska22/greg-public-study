@@ -9,7 +9,11 @@ export function HomePage() {
   const { progress } = useProgress();
   const last = progress.lastVisited;
   const adaptive = useAdaptive();
-  const entry = adaptive?.host.engine.entry();
+  const engine = adaptive?.host.engine;
+  const fastEntry = engine?.fast?.entry();
+  const entry = fastEntry ? { ...fastEntry, diagnosticAvailable: fastEntry.canStart }
+    : engine?.entry();
+  const hasResult = engine?.fast ? Boolean(engine.fast.result()) : Boolean(engine?.result());
   const next = lessons.find(lesson => entry?.resume === lesson.id);
   return <>
     <section className="hero" aria-labelledby="home-title">
@@ -20,11 +24,11 @@ export function HomePage() {
         <LinkButton href={last ? `#/lesson/${last.lessonId}/${last.stepId}` : adaptive ? '#/start' : '#/course/a1'}>{last ? adaptive ? 'Продолжить обучение' : 'Продолжить учиться' : 'Начать учиться'} <Icon name="arrow" /></LinkButton>
         <p className="hero-note">{next ? `Ваш урок — «${next.title}».` : 'Первый шаг — базовый курс A1'}</p>
         {adaptive && (entry?.resumable || entry?.incompatibleDraft || entry?.diagnosticAvailable
-          ? <a className="text-link" href={entry.resumable || entry.incompatibleDraft ? '#/diagnostic' : adaptive.host.engine.result() ? '#/diagnostic/new' : '#/diagnostic'}>
+          ? <a className="text-link" href={entry.resumable || entry.incompatibleDraft ? '#/diagnostic' : hasResult ? '#/diagnostic/new' : '#/diagnostic'}>
             {entry.resumable ? 'Продолжить диагностику' : entry.incompatibleDraft ? 'О незавершённой диагностике'
-              : adaptive.host.engine.result() ? 'Пройти диагностику снова' : 'Подобрать учебный старт'}
+              : hasResult ? 'Пройти диагностику снова' : 'Подобрать учебный старт'}
           </a>
-          : <p className="muted">{adaptive.host.engine.result()
+          : <p className="muted">{hasResult
             ? 'Доступные варианты диагностики пройдены. Можно продолжить обучение.'
             : 'Диагностика пока недоступна. Можно продолжить обучение.'}</p>)}
 
