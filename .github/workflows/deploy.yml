@@ -8,8 +8,15 @@ on:
 
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
+
+env:
+  # Set to an approved immutable commit. An empty value removes Beta on the next deploy.
+  PAGES_BETA_SHA: 636fef4461b149628ade901963ae647e76bf02e5
+  # Fingerprint of the 195 stable files from Pages run 45847257502, attempt 2.
+  PAGES_STABLE_SHA256: 550bf124b9de1a9f6a0aca748327a254874b0afc4e95477e2dec6e6cd6edfe8a
 
 concurrency:
   group: pages
@@ -46,14 +53,59 @@ jobs:
         env:
           VITE_BASE_PATH: /greg-public-study/
 
+      - name: Check out approved Beta source
+        if: env.PAGES_BETA_SHA != ''
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ env.PAGES_BETA_SHA }}
+          path: .pages-beta
+          persist-credentials: false
+
+      - name: Verify and build Beta
+        if: env.PAGES_BETA_SHA != ''
+        working-directory: .pages-beta
+        run: |
+          test "$(git rev-parse HEAD)" = "$PAGES_BETA_SHA"
+          npm ci
+          npm run typecheck
+          npm test
+          python3 scripts/generate-adaptive-catalog.py --check
+          npm run course:check-final
+          npm run build:beta
+        env:
+          VITE_BASE_PATH: /greg-public-study/beta/
+
+      - name: Append Beta to checked stable files
+        if: env.PAGES_BETA_SHA != ''
+        run: python3 .github/scripts/assemble-beta-pages.py dist .pages-beta/dist-beta "$PAGES_STABLE_SHA256"
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
       - name: Upload Pages artifact
+        id: pages_artifact
         uses: actions/upload-pages-artifact@v4
         with:
           name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
           path: ./dist
+
+      - name: Wait for Pages artifact metadata
+        if: env.PAGES_BETA_SHA != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_NAME: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
+          ARTIFACT_ID: ${{ steps.pages_artifact.outputs.artifact_id }}
+        run: |
+          for attempt in {1..6}; do
+            if id="$(gh api --method GET "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts" \
+              -f "name=$ARTIFACT_NAME" --jq '.artifacts[] | select(.expired == false) | .id')" &&
+              [ -n "$ARTIFACT_ID" ] && [ "$id" = "$ARTIFACT_ID" ]; then
+              exit 0
+            fi
+            if [ "$attempt" -lt 6 ]; then sleep 5; fi
+          done
+          echo "::error::The Pages artifact was not visible to the deploy API."
+          exit 1
 
       - name: Deploy to GitHub Pages
         id: deployment
