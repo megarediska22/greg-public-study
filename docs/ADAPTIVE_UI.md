@@ -4,7 +4,7 @@ The adaptive interface uses the Stage 05 engine for placement, knowledge, grants
 
 ## Local review
 
-- Run `npm run dev` in this checkout. Open `/?adaptive=1#/start` on the local server to preview the local course pilot and available checkpoints. The diagnostic bank is empty.
+- Run `npm run dev` in this checkout. Open `/?adaptive=1#/start` on the local server to preview the local course pilot with the reviewed diagnostic forms and available checkpoints.
 - The test-only entry `/tests/fixtures/adaptive-ui.html#/start` exercises the same screens with the engine test bank. Use a disposable browser context or a separate local origin. Do not use the test entry with learner progress.
 - `scripts/test-adaptive-ui.py` uses installed Python Playwright and Chromium. Pass `--dev` and `--production` for the development server and the build served at the configured base path.
 
@@ -20,7 +20,7 @@ The adaptive interface uses the Stage 05 engine for placement, knowledge, grants
 
 The Stage 07 feature branch registers all 13 approved course checkpoints with live question IDs. Ordinary hints are captured by the existing assistance port. The checkpoint UI restores the latest attempt and resumes at the next unmarked item. A learner can still use the ordinary lesson practice to revisit the skill. Exposed materials never produce a new independent sign. CP-A2 reports separate text skills and offers review without awarding a level or a further transition.
 
-Placement diagnosis still requires two independent reviewed forms and a release decision. The release validator is the authority for enabling it. The production build continues to use ordinary course progression. The browser checks use emulated mobile viewports and keyboard controls in Chromium.
+The local pilot has two reviewed placement forms. The release validator checks metadata integrity. Learner calibration and an explicit release decision are pending. See the [diagnostic bank review](DIAGNOSTIC_BANK_REVIEW.md). The production build continues to use ordinary course progression. The browser checks use emulated mobile viewports and keyboard controls in Chromium.
 
 ## Verification
 
