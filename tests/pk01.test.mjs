@@ -130,7 +130,7 @@ test('v2 compact replay retains old completions, errors and available lessons wi
   assert.equal(disk.getItem('gps.theme.v1'), 'dark');
 });
 
-test('adaptive metadata resolves to live tasks and leaves the diagnostic release gate closed', () => {
+test('PK-01 observations still resolve to live questions with the local diagnostic bank installed', () => {
   const { rules, bank, practice } = adaptivePilot;
   assert.deepEqual(validateCatalogue(), []);
   assert.deepEqual(validateAdaptiveContent(rules, bank, practice), []);
@@ -148,11 +148,7 @@ test('adaptive metadata resolves to live tasks and leaves the diagnostic release
     assert.equal(item.keyId, `${question.id}-key`);
     assert.equal(item.keyVisible, false);
   }
-  assert.deepEqual(bank.items, []);
-  assert.deepEqual(bank.forms, []);
-  assert.deepEqual(validateAdaptiveContent(rules, bank, practice, true), [
-    'Pilot requires enabled rules, two independent complete forms and a ready A1 entry',
-  ]);
+  assert.deepEqual(validateAdaptiveContent(rules, bank, practice, true), []);
 });
 
 test('CP-PRE ignores historical and assisted answers while capturing a new unassisted result', async () => {
@@ -163,7 +159,7 @@ test('CP-PRE ignores historical and assisted answers while capturing a new unass
   previous = submit(previous, lessons, prep.id, prep.steps[2]);
   const disk = store(JSON.stringify(previous));
   const host = await openAdaptiveHost(disk, adaptivePilot);
-  assert.equal(host.engine.entry().diagnosticAvailable, false);
+  assert.equal(host.engine.entry().diagnosticAvailable, true);
   assert.equal(disk.getItem(ADAPTIVE_STORAGE_KEY), null);
   assert.equal(await host.engine.beginCheckpoint('CP-PRE', 'readiness-first'), 'saved');
   assert.equal(await host.engine.checkpointAnswer('CP-PRE', 'readiness-first', 'bp-pre-04-letter-pass', { type: 'answer', answer: 'Inez' }), 'saved');

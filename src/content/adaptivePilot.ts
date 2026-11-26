@@ -3,12 +3,20 @@ import { pk05Checkpoints, pk05Criteria, pk05Practice } from './blueprint/pk05Evi
 import { pk04Checkpoints, pk04Criteria, pk04Practice } from './blueprint/pk04Evidence.ts';
 import { pk03Checkpoints, pk03Criteria, pk03Practice } from './blueprint/pk03Evidence.ts';
 import { pk02Criteria, pk02Practice } from './blueprint/evidence.ts';
+import { diagnosticBank } from './diagnostic/bank.ts';
 import { lessons } from './course.ts';
+import { pilotCriteria } from '../lib/adaptive/model.ts';
 import type { AdaptiveContent } from '../lib/adaptiveHost.ts';
 
-// Replace only with reviewed content and an explicit release decision.
+// Loaded only by the localhost development entry. Public release is a separate decision.
 export const adaptivePilot: AdaptiveContent = {
-  rules: { enabled: true, version: 'pk05-unreleased', criteria: [...pk01Criteria, ...pk02Criteria, ...pk03Criteria, ...pk04Criteria, ...pk05Criteria], checkpoints: [pk01Checkpoint, ...pk03Checkpoints, ...pk04Checkpoints, ...pk05Checkpoints], readyLessons: lessons.map(entry => entry.id) },
-  bank: { version: 'not-released', items: [], forms: [] },
+  rules: {
+    enabled: true, version: 'pk05-unreleased',
+    criteria: [...pk01Criteria, ...pk02Criteria, ...pk03Criteria, ...pk04Criteria, ...pk05Criteria],
+    checkpoints: [pk01Checkpoint, ...pk03Checkpoints, ...pk04Checkpoints, ...pk05Checkpoints],
+    readyLessons: lessons.map(entry => entry.id),
+    skipProfiles: { 'bp-pre-01': pilotCriteria.filter(criterion => criterion.group === 'K-P-LAT') },
+  },
+  bank: diagnosticBank,
   practice: [...pk01Practice, ...pk02Practice, ...pk03Practice, ...pk04Practice, ...pk05Practice],
 };

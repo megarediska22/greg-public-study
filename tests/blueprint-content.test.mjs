@@ -110,8 +110,7 @@ test('live mappings match their exact authored question and approved objectives'
   assert.deepEqual(validateCatalogue(), []);
   assert.deepEqual(validateAdaptiveContent(rules, bank, practice), []);
   assert.deepEqual(rules.readyLessons, course.map(entry => entry.id));
-  assert.deepEqual(bank.items, []);
-  assert.deepEqual(bank.forms, []);
+
   for (const item of practice.filter(item => item.criterion.id.startsWith('C-BP-'))) {
     const step = course.find(entry => entry.id === item.lessonId).lesson.steps.find(step => step.id === item.stepId);
     const q = step.questions.find(q => q.id === item.itemId);
@@ -192,7 +191,7 @@ test('CP-A2 reports five specific criteria and grants no next-level access', asy
     legacy: () => ({ completed: [], available: [lesson.id], resume: lesson.id }),
     question: item => byId.get(item.itemId),
   });
-  assert.equal(engine.entry().diagnosticAvailable, false);
+  assert.equal(engine.entry().diagnosticAvailable, true);
   assert.equal(await engine.beginCheckpoint(profile.id, 'final'), 'saved');
   for (const id of profile.items) {
     const q = byId.get(id);

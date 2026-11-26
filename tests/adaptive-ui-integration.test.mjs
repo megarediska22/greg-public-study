@@ -8,17 +8,19 @@ import { adaptivePilot } from '../src/content/adaptivePilot.ts';
 import { content } from './fixtures/adaptive-ui-data.mjs';
 import { storage } from './fixtures/adaptive.mjs';
 
-test('UI host opens the old progress read-only and keeps the empty bank and disabled mode unavailable', async () => {
+test('UI host opens the old progress read-only and enables the local bank and keeps explicit empty or disabled modes unavailable', async () => {
   const disk = storage();
   const legacy = { ...emptyProgress(), lastVisited: { lessonId: 'to-be', stepId: 'intro' } };
   const raw = JSON.stringify(legacy);
   disk.setItem(PROGRESS_KEY, raw);
   const host = await openAdaptiveHost(disk, adaptivePilot);
   assert.equal(host.engine.entry().resume, 'to-be');
-  assert.equal(host.engine.entry().diagnosticAvailable, false);
+  assert.equal(host.engine.entry().diagnosticAvailable, true);
   assert.equal(host.engine.access('to-be').available, true);
-  assert.equal(await host.engine.begin('unavailable'), 'unchanged');
-  const disabled = await openAdaptiveHost(disk, { ...content, rules: { ...content.rules, enabled: false } });
+  const empty = await openAdaptiveHost(disk, { ...adaptivePilot, bank: { version: 'empty-test', items: [], forms: [] } });
+  assert.equal(empty.engine.entry().diagnosticAvailable, false);
+  assert.equal(await empty.engine.begin('unavailable'), 'unchanged');
+  const disabled = await openAdaptiveHost(disk, { ...adaptivePilot, rules: { ...adaptivePilot.rules, enabled: false } });
   assert.equal(disabled.engine.entry().diagnosticAvailable, false);
   assert.equal(disk.getItem(PROGRESS_KEY), raw);
   assert.equal(disk.getItem(ADAPTIVE_STORAGE_KEY), null);
