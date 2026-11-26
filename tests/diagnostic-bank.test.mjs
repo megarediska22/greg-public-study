@@ -63,7 +63,7 @@ test('the local bank contains two complete forms with 96 separately versioned, a
   assert.deepEqual(validateAdaptiveContent(rules, bank, practice, true), []);
   assert.equal(bank.forms.length, 2);
   assert.equal(bank.items.length, 96);
-  assert.equal(bank.version, 'diagnostic-bank-v1');
+  assert.equal(bank.version, 'diagnostic-bank-v2');
   assert.equal(questionCount, 2267);
   assert.deepEqual(rules.readyLessons, adaptiveCatalog.sequence.map(row => row.id));
   assert.deepEqual(rules.readyLessons, lessons.map(lesson => lesson.id));
@@ -90,7 +90,9 @@ test('the local bank contains two complete forms with 96 separately versioned, a
       assert.ok(approved.objectives.every(id => adaptiveCatalog.objectives.some(objective => objective.id === id)));
       assert.equal(q.id, item.itemId);
       assert.equal(item.keyId, q.id + '-key');
-      assert.deepEqual([item.itemRevision, item.keyRevision], ['1', '1']);
+      assert.deepEqual([item.itemRevision, item.keyRevision],
+        item.itemId === 'diag-b-team-reply' ? ['2', '2'] :
+        item.itemId === 'diag-b-email-no-paper' ? ['1', '2'] : ['1', '1']);
       assert.equal(item.role, q.type === 'choice' ? 'R' : 'P');
       assert.ok(item.designated && !item.keyVisible && !q.hints);
       for (const [values, value] of [[seen, q.id], [family, item.family], [stimulus, item.stimulus], [sources, normalizeAnswer(q.prompt)]]) {

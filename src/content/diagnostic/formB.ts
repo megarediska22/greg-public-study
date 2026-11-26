@@ -49,7 +49,7 @@ export const formB = authorForm('b', [
   ['D2-BASE', 'K-A1-BE',
     r('satisfied-kid', 'Выберите форму слова в сообщении от первого лица.', '“I ___ happy today.”',
       ['are', 'is', 'am'], 2, 'С I нужна am.'),
-    p('team-reply', 'Представьте свою команду одним предложением. Начните с We или We’re. Поставьте on перед названием команды. Название перепишите как на карточке.',
+    p('team-reply', 'Представьте свою команду одним предложением. Говорите от лица своей команды, используя местоимение «мы». Поставьте on перед названием команды. Название перепишите как на карточке.',
       'Sign-up · you and Max: Team Red · Sam and Lee: Team Blue',
       ['We are on Team Red.', "We're on Team Red."],
       'Вы и Макс — Team Red. О себе вдвоём можно сказать We are или We’re.', grammarSentence)],
@@ -158,7 +158,7 @@ export const formB = authorForm('b', [
     p('email-no-paper', 'Одним сообщением с Use и because передайте новый способ записи и причину. Описывая причину, назовите, что перестало работать.',
       'Club email · We planned to give everyone a paper sign-up sheet. The printer broke this morning, so sign-up is now through the website form. You can still bring a friend.',
       ['the online form', 'the website form', 'the form on the website', 'the form online'].flatMap(form =>
-        ['the printer broke', 'the printer is broken', "the printer isn't working", 'the printer is not working'].map(reason =>
+        ['the printer broke', 'the printer is broken', "the printer isn't working", 'the printer is not working', 'the printer stopped working'].map(reason =>
           `Use ${form} because ${reason}.`)),
       'Запись теперь онлайн из-за сломанного принтера. Условие о друге не изменилось.', written)],
   ['D3', 'K-A2-MEDIATE',
