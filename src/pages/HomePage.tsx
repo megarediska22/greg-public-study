@@ -19,9 +19,15 @@ export function HomePage() {
         <p className="lead">Небольшие уроки, понятные правила и практика. Учитесь в своём темпе — шаг за шагом, от первой фразы.</p>
         <LinkButton href={last ? `#/lesson/${last.lessonId}/${last.stepId}` : adaptive ? '#/start' : '#/course/a1'}>{last ? adaptive ? 'Продолжить обучение' : 'Продолжить учиться' : 'Начать учиться'} <Icon name="arrow" /></LinkButton>
         <p className="hero-note">{next ? `Ваш урок — «${next.title}».` : 'Первый шаг — базовый курс A1'}</p>
-        {adaptive && <a className="text-link" href={adaptive.host.engine.result() ? '#/diagnostic/new' : '#/diagnostic'}>
-          {adaptive.host.engine.result() ? 'Пройти диагностику снова' : 'Подобрать учебный старт'}
-        </a>}
+        {adaptive && (entry?.resumable || entry?.incompatibleDraft || entry?.diagnosticAvailable
+          ? <a className="text-link" href={entry.resumable || entry.incompatibleDraft ? '#/diagnostic' : adaptive.host.engine.result() ? '#/diagnostic/new' : '#/diagnostic'}>
+            {entry.resumable ? 'Продолжить диагностику' : entry.incompatibleDraft ? 'О незавершённой диагностике'
+              : adaptive.host.engine.result() ? 'Пройти диагностику снова' : 'Подобрать учебный старт'}
+          </a>
+          : <p className="muted">{adaptive.host.engine.result()
+            ? 'Доступные варианты диагностики пройдены. Можно продолжить обучение.'
+            : 'Диагностика пока недоступна. Можно продолжить обучение.'}</p>)}
+
       </div>
       <div className="study-visual" aria-label="Формы глагола to be: I am, you are, we are">
         <div className="notebook-top"><Icon name="book" /><span>Ваше первое знакомство с английским</span><span className="level-tag">A1</span></div>

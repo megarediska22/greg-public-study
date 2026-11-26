@@ -218,10 +218,44 @@ def pause_retake(page):
     assert first['session']['formId'] == 'pilot-form-a' and second['session']['formId'] == 'pilot-form-b'
     assert set(first['session']['exposed']).isdisjoint(second['session']['exposed'])
     page.goto(pilot + '/')
-    page.get_by_role('link', name='Пройти диагностику снова', exact=True).click()
-    expect(page.get_by_text('Диагностика пока недоступна.', exact=False)).to_be_visible()
+    expect(page.get_by_role('link', name='Пройти диагностику снова', exact=True)).to_have_count(0)
+    expect(page.get_by_text('Доступные варианты диагностики пройдены. Можно продолжить обучение.', exact=True)).to_be_visible()
     expect(button(page, 'Начать диагностику')).to_have_count(0)
     assert len(state(page)['results']) == 2
+
+
+
+def final_design(page):
+    enter(page)
+    diagnostic(page, lambda item: 'wrong' if item['group'] == 'K-P-LAT' else 'skip')
+    labels = page.locator('.adaptive-result li').all_text_contents()
+    assert labels and len(labels) == len(set(labels)), labels
+    ask = [label for label in labels if label.startswith('Вопрос о привычном действии')]
+    assert len(ask) == 2 and any('Диагностика' in label for label in ask) and any('Практика в уроках' in label for label in ask)
+    width_ok = lambda: page.evaluate('document.documentElement.scrollWidth <= innerWidth')
+    assert width_ok()
+    before = page.evaluate("localStorage.getItem('gps.progress.v1')")
+    page.goto(pilot + '/')
+    retake = page.get_by_role('link', name='Пройти диагностику снова', exact=True)
+    expect(retake).to_be_visible()
+    retake.focus()
+    expect(retake).to_be_focused()
+    retake.press('Enter')
+    start_diagnostic(page)
+    diagnostic(page, lambda item: 'wrong' if item['group'] == 'K-P-LAT' else 'skip')
+    page.goto(pilot + '/')
+    expect(page.get_by_role('link', name='Пройти диагностику снова', exact=True)).to_have_count(0)
+    expect(page.get_by_text('Доступные варианты диагностики пройдены. Можно продолжить обучение.', exact=True)).to_be_visible()
+    assert page.evaluate("localStorage.getItem('gps.progress.v1')") == before
+    assert width_ok()
+    page.reload()
+    expect(page.get_by_role('link', name='Пройти диагностику снова', exact=True)).to_have_count(0)
+    resume = page.get_by_role('link', name='Продолжить обучение', exact=True)
+    resume.focus()
+    expect(resume).to_be_focused()
+    resume.press('Enter')
+    expect_lesson(page, 'to-be')
+    assert page.url.endswith('/theory')
 
 
 def checkpoint(page, name, mode):
@@ -504,6 +538,12 @@ def seeds(adaptive=None, progress=None):
 
 
 cases = [
+    *[(f'final-design-{width}-{theme}', final_design,
+       seeds(progress={'version': 1, 'curriculumVersion': 2, 'completedLessons': [],
+         'lessons': {'to-be': {'completedSteps': ['intro'], 'answers': {}}},
+         'lastVisited': {'lessonId': 'to-be', 'stepId': 'theory'}}), width, theme)
+      for width in (360, 1280) for theme in ('light', 'dark')],
+
     ('first-early-pre', start_and_early, {}, 360, 'dark'),
     ('ordinary-a1', begin_a1, {}, 1280, 'light'),
     ('early-a1', early_a1, {}, 360, 'light'),

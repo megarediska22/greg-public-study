@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { lessons } from '../../content/course';
-import { adaptiveCatalog, type Block } from '../../lib/adaptive/model';
+import { adaptiveCatalog, criterionKey, type Block } from '../../lib/adaptive/model';
 import type { Start } from '../../lib/adaptive/routes';
 import { useProgress } from '../../lib/ProgressContext';
 import { resumeStep } from '../../lib/progress';
@@ -8,6 +8,7 @@ import { LinkButton } from '../LinkButton';
 import { AdaptiveQuestion, type Response } from './AdaptiveQuestion';
 import { useAdaptive } from './AdaptiveContext';
 import { Checkpoint } from './Checkpoint';
+import { skillLabels } from './skillLabels';
 
 const phase: Record<Block, string> = {
   D0: 'Буквы и числа', D0R: 'Буквы и короткие записи', D1: 'Короткие тексты и фразы',
@@ -107,6 +108,7 @@ export default function AdaptivePage({ route }: { route: string }) {
   const leave = <LinkButton href={ordinary} secondary>{entry.resume ? 'Продолжить обучение' : 'К программе курса'}</LinkButton>;
   const startButton = <button className="button button-primary" disabled={busy || !entry.diagnosticAvailable} onClick={() => void start()}>Начать новую диагностику</button>;
   const result = engine.result();
+  const labels = skillLabels(result?.knowledge.map(item => item.criterion) ?? []);
 
   return <section ref={panel} className="lesson-panel adaptive-panel" aria-label="Подбор учебного старта">
     <div className="lesson-panel-content">
@@ -162,7 +164,7 @@ export default function AdaptivePage({ route }: { route: string }) {
         </> : <p>Сейчас нет готового урока для рекомендации. Можно вернуться к программе курса.</p>}
         <ResultDetails knowledge={result.knowledge} />
         <details><summary>Что проверяли</summary><p>Чтение коротких текстов и письменные ответы. Устная речь, произношение, аудирование и свободное письмо не проверялись.</p>
-          <ul>{result.knowledge.filter(item => item.checked).map(item => <li key={item.criterion.id}>{skillName(item.criterion.group)}</li>)}</ul>
+          <ul>{result.knowledge.filter(item => item.checked).map(item => <li key={item.criterion.id}>{labels.get(criterionKey(item.criterion))}</li>)}</ul>
         </details>
         <div className="adaptive-actions">
           {result.placement?.start && lessonName(result.placement.start.lessonId) && <button className="button button-primary" disabled={busy}
@@ -192,6 +194,7 @@ export default function AdaptivePage({ route }: { route: string }) {
 type Knowledge = NonNullable<ReturnType<NonNullable<ReturnType<typeof useAdaptive>>['host']['engine']['result']>>['knowledge'];
 
 function ResultDetails({ knowledge }: { knowledge: Knowledge }) {
+  const labels = skillLabels(knowledge.map(item => item.criterion));
   const lists = [
     { heading: 'Получилось самостоятельно', items: knowledge.filter(item => item.fresh.state === 'CONFIRMED') },
     { heading: 'Стоит потренировать', items: knowledge.filter(item => ['GAP', 'REVIEW'].includes(item.fresh.state)) },
@@ -200,7 +203,7 @@ function ResultDetails({ knowledge }: { knowledge: Knowledge }) {
   return <div className="adaptive-result">
     {lists.map(({heading, items}) => <section key={heading}>
       <h3>{heading}</h3>
-      {items.length ? <ul>{items.map(item => <li key={item.criterion.id}>{skillName(item.criterion.group)}
+      {items.length ? <ul>{items.map(item => <li key={criterionKey(item.criterion)}>{labels.get(criterionKey(item.criterion))}
         {item.fresh.state === 'MIXED' && ' · ответы неоднозначны'}
         {item.unanswered > 0 && ` · без ответа: ${item.unanswered}`}
         {item.checked === 0 && ' · не проверялось'}
