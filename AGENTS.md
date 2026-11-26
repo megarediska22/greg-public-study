@@ -1,44 +1,32 @@
 # Greg Public Study — Agent Instructions
 
-This repository contains Greg Public Study, a free interactive English-learning platform.
+Greg Public Study is a free American English course for Russian-speaking learners. Read [PROJECT_STATUS.md](PROJECT_STATUS.md) and the relevant sections of [SPEC.md](SPEC.md) before work. The specification governs product and technical behavior.
 
-## Source of truth
+## Architecture and quality
 
-- Read `SPEC.md` before implementing features.
-- Treat `SPEC.md` as the authoritative product and technical specification.
-- Use the supplied logo and screenshots under `assets/`.
-- Do not copy BAD School branding or proprietary content.
+- Use React, TypeScript and Vite. Keep lesson data separate from rendering and keep dependencies small.
+- Preserve stable lesson, step and question IDs and existing browser progress. Review compatibility and recovery before changing storage or migrations. Keep QA storage isolated.
+- Support mobile and desktop layouts, light and dark themes, and static GitHub Pages with hash routing. Use approved project assets. Do not copy BAD School branding or proprietary content.
+- Work only on the assigned phase. Run checks appropriate to the diff and report actual results. For application changes, use the type check, tests and production build described in [SETUP.md](SETUP.md).
 
-## Development rules
+## Responsibilities
 
-- Use React, TypeScript, and Vite.
-- Support complete light and dark themes.
-- Follow sequential lesson progression.
-- Keep lessons separate from UI components.
-- Use localStorage for progress.
-- Ensure compatibility with GitHub Pages.
-- Prefer minimal dependencies and maintainable code.
+- 00 Project Manager coordinates scope, approvals and handoffs.
+- 01 GitHub & Deployment owns repository workflow, backups and authorized releases.
+- 02 Foundation & Design owns the interface, responsive layout and design.
+- 03 Learning Engine owns grading, adaptation, state and progress compatibility.
+- 04 Lessons & QA owns lesson authoring and learning-flow verification.
+- 05 Curriculum & Assessment Research owns curriculum and assessment methodology.
 
-## Working process
+## Git and parallel work
 
-- Implement only the phase explicitly requested by the user.
-- Inspect existing files before editing.
-- Do not install unnecessary tools or agent skills.
-- Do not initiate GitHub authentication without approval.
-- Do not push, deploy, or modify remote repositories without explicit permission.
-- If the same operation fails twice for the same reason, stop and explain the blocker.
-- Run relevant checks and report actual results.
-- Do not claim tests passed unless executed.
+- Check branch, status and remote state before starting. Coordinate file ownership and preserve other agents' edits. Use a separate worktree for concurrent changes.
+- Start development from current `develop`. Keep public `main` stable. Use task branches when useful and stage explicit paths after reviewing changes.
+- At each completed milestone, run relevant checks, update status when it materially changes, commit and push to the authorized development branch. Verify the remote hash and report it. An authorized, clearly labeled WIP commit on its own branch may back up incomplete work.
+- Treat this repository as public on every branch. Exclude secrets, local browser data, private research, temporary files and materials without redistribution rights.
+- Obtain owner authorization before remote changes or publication. Never force-push, rewrite shared history, run destructive recovery commands or automatically merge to `main`. See [GIT_WORKFLOW.md](GIT_WORKFLOW.md).
+- Use subagents only when authorized for the specific task. Do not initiate GitHub authentication without approval or install unrelated tools. If the same operation fails twice for the same reason, report the blocker.
 
 ## Communication
 
-- Communicate with the user in Russian.
-- Keep code identifiers and technical documentation in English.
-- Keep website interface text in Russian.
-- Explain important technical decisions and blockers concisely.
-
-## Current scope
-
-MVP v1.0 contains three complete A1 lessons.
-
-Do not implement additional levels, authentication, backend services, AI tutoring, or video lessons unless explicitly requested.
+Write to the user in Russian. Keep identifiers and technical documentation in English and website interface text in Russian.

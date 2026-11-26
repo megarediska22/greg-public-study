@@ -2,6 +2,13 @@
 
 Greg Public Study teaches American English through Russian explanations, practical reading and written exercises. The local course contains **121 lessons, 847 steps and 1,980 questions**. The original 21 lessons are followed by the 100-unit continuation. The frontend uses React, TypeScript and Vite.
 
+## Start here
+
+- [Agent instructions](AGENTS.md) and [project status](PROJECT_STATUS.md)
+- [Setup and recovery](SETUP.md) and [Git workflow](GIT_WORKFLOW.md)
+- [Roadmap](ROADMAP.md) and [changelog](CHANGELOG.md)
+- [Curriculum and assessment research](research/curriculum-assessment/README.md)
+
 ## Local development
 
 Use Node.js 22.18+ or 24+ and npm. Tests use Node's built-in TypeScript stripping and test runner; no test packages are installed.

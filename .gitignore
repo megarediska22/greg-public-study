@@ -19,3 +19,9 @@ temp/
 assets/references/
 verification/
 research/youtube/
+
+# Local assistant state, QA captures and platform metadata
+/.codex/
+/docs/qa/
+Thumbs.db
+Desktop.ini
