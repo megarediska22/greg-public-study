@@ -21,6 +21,8 @@ Greg Public Study is a free American English course for Russian-speaking learner
 ## Git and parallel work
 
 - Check branch, status and remote state before starting. Coordinate file ownership and preserve other agents' edits. Use a separate worktree for concurrent changes.
+- Keep only the primary checkout on the Desktop. Never create temporary projects, technical folders or additional checkouts there. Create every additional Git worktree under `~/Developer/Greg Public Study Worktrees/`.
+- Check whether an existing worktree can be reused before creating one. At task completion, review whether the worktree is still needed and remove finished copies promptly once their work is safe and no chat or process needs them. Follow the cleanup procedure in [GIT_WORKFLOW.md](GIT_WORKFLOW.md).
 - Start development from current `develop`. Keep public `main` stable. Use task branches when useful and stage explicit paths after reviewing changes.
 - At each completed milestone, run relevant checks, update status when it materially changes, commit and push to the authorized development branch. Verify the remote hash and report it. An authorized, clearly labeled WIP commit on its own branch may back up incomplete work.
 - Treat this repository as public on every branch. Exclude secrets, local browser data, private research, temporary files and materials without redistribution rights.

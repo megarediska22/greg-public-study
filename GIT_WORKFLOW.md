@@ -10,7 +10,13 @@
 
 1. Read [AGENTS.md](AGENTS.md) and [PROJECT_STATUS.md](PROJECT_STATUS.md). Check `git status --short --branch`, `git worktree list` and the intended scope.
 2. Use `git ls-remote --heads origin` to inspect remote state without touching local checkout files, then `git fetch origin` to update remote refs when needed. Compare local and remote tips before editing.
-3. Coordinate ownership and select a branch. To start from the fetched baseline in a separate directory, run `git worktree add -b docs/onboarding ../gps-onboarding origin/develop`. Do not switch, stash or clean another agent's checkout.
+3. Coordinate ownership and select a branch. Check whether a suitable existing worktree can be reused safely before creating one. Do not switch, stash or clean another agent's checkout.
+4. Keep only the primary checkout at `~/Desktop/Greg Public Study`. Do not create temporary projects, technical folders or additional checkouts on the Desktop. Put every additional Git worktree under `~/Developer/Greg Public Study Worktrees/`. For example, to start an onboarding branch from the fetched baseline:
+
+   ```sh
+   mkdir -p "$HOME/Developer/Greg Public Study Worktrees"
+   git worktree add -b docs/onboarding "$HOME/Developer/Greg Public Study Worktrees/onboarding" origin/develop
+   ```
 
 ## Finish a milestone
 
@@ -18,6 +24,9 @@
 2. Stage exact approved files and review `git diff --cached` and `git diff --cached --check`. Every public branch can expose its commits. Keep credentials, personal data, local browser state, private research, logs and unlicensed material out of commits.
 3. Create a focused commit. Push to the authorized branch, for example `git push -u origin docs/onboarding`. Verify the remote hash with `git ls-remote origin refs/heads/docs/onboarding` and report it. Integrate task branches into develop after review and relevant checks.
 4. An explicitly authorized WIP commit may back up incomplete work on its own branch. Mark it WIP and keep it out of stable releases.
+5. Review whether the worktree is still needed. Check branch ancestry and remote refs, tracked changes, untracked and ignored files, and use by chats or local processes. Preserve unique commits, unfinished work and local materials. Remove completed worktrees promptly with `git worktree remove` after confirming their work is saved and the directory is idle. Keep copies with ongoing work in the technical directory and review them again when their tasks finish.
+
+Use `git worktree move` to relocate a linked worktree. Coordinate with any chat or server using it, then verify Git registration and report the new path. If Git cannot move it safely, keep the copy intact and report the blocker. Remove temporary verification directories when they are no longer needed and their contents are safe to discard.
 
 ## Sync, recover and resolve conflicts
 
