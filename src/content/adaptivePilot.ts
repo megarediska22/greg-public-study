@@ -3,6 +3,7 @@ import { pk05Checkpoints, pk05Criteria, pk05Practice } from './blueprint/pk05Evi
 import { pk04Checkpoints, pk04Criteria, pk04Practice } from './blueprint/pk04Evidence.ts';
 import { pk03Checkpoints, pk03Criteria, pk03Practice } from './blueprint/pk03Evidence.ts';
 import { pk02Criteria, pk02Practice } from './blueprint/evidence.ts';
+import { fastPlacementBank } from './fast-placement/index.ts';
 import { diagnosticBank } from './diagnostic/bank.ts';
 import { lessons } from './course.ts';
 import { pilotCriteria } from '../lib/adaptive/model.ts';
@@ -21,5 +22,6 @@ export const adaptivePilot: AdaptiveContent = {
     skipProfiles: { 'bp-pre-01': pilotCriteria.filter(criterion => criterion.group === 'K-P-LAT') },
   },
   bank: diagnosticBank,
+  fastBank: fastPlacementBank,
   practice: [...pk01Practice, ...pk02Practice, ...pk03Practice, ...pk04Practice, ...pk05Practice],
 };
