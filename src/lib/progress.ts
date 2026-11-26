@@ -29,8 +29,9 @@ export function emptyProgress(): Progress {
   return { version: 1, curriculumVersion: 2, completedLessons: [], lessons: {}, lastVisited: null };
 }
 
-export function isLessonUnlocked(progress: Progress, course: readonly CourseEntry[], lessonId: string): boolean {
+export function isLessonUnlocked(progress: Progress, course: readonly CourseEntry[], lessonId: string, granted?: ReadonlySet<string>): boolean {
   const index = course.findIndex(lesson => lesson.id === lessonId);
+  if (index >= 0 && granted?.has(lessonId)) return true;
   // A validated pre-vocabulary frontier retains grammar access. It never earns
   // completion or exempts vocabulary/new grammar from the integrated sequence.
   if (index >= 0 && legacyGrammarIds.has(lessonId) && course[index].lesson?.kind !== 'vocabulary' && progress.legacyUnlockedLessons?.includes(lessonId)) {
@@ -70,10 +71,10 @@ export function resumeStep(progress: Progress, lesson: Lesson): string {
 }
 
 /** All mutations enforce prerequisites, including calls that bypass the UI. */
-export function updateProgress(progress: Progress, course: readonly CourseEntry[], action: ProgressAction): Progress {
+export function updateProgress(progress: Progress, course: readonly CourseEntry[], action: ProgressAction, granted?: ReadonlySet<string>): Progress {
   const lesson = course.find(entry => entry.id === action.lessonId)?.lesson;
   const step = lesson?.steps.find(item => item.id === action.stepId);
-  if (!lesson || !step || !isLessonUnlocked(progress, course, lesson.id) || !isStepUnlocked(progress, lesson, step.id)) return progress;
+  if (!lesson || !step || !isLessonUnlocked(progress, course, lesson.id, granted) || !isStepUnlocked(progress, lesson, step.id)) return progress;
   if (action.type === 'visit') {
     if (progress.lastVisited?.lessonId === lesson.id && progress.lastVisited.stepId === step.id) return progress;
     return { ...progress, lastVisited: { lessonId: lesson.id, stepId: step.id } };
@@ -142,7 +143,7 @@ function comparableJson(value: unknown): string {
 }
 
 /** Rebuild earned progress from known content and validated attempts, never trust stored scores. */
-export function decodeProgress(raw: string | null, course: readonly CourseEntry[]): { progress: Progress; recovered: boolean } {
+export function decodeProgress(raw: string | null, course: readonly CourseEntry[], granted?: ReadonlySet<string>): { progress: Progress; recovered: boolean } {
   let clean = emptyProgress();
   if (raw === null) return { progress: clean, recovered: false };
   try {
@@ -165,7 +166,7 @@ export function decodeProgress(raw: string | null, course: readonly CourseEntry[
     for (const entry of course) {
       const lesson = entry.lesson;
       const saved = data.lessons[entry.id];
-      if (!lesson || !record(saved) || !isLessonUnlocked(clean, course, entry.id)) continue;
+      if (!lesson || !record(saved) || !isLessonUnlocked(clean, course, entry.id, granted)) continue;
       const completedSteps = Array.isArray(saved.completedSteps) ? saved.completedSteps : [];
       const answers = record(saved.answers) ? saved.answers : {};
       for (const step of lesson.steps) {
@@ -178,19 +179,19 @@ export function decodeProgress(raw: string | null, course: readonly CourseEntry[
             for (const attempt of savedAnswer.attempts) {
               if (!record(attempt) || typeof attempt.answer !== 'string' || typeof attempt.correct !== 'boolean') continue;
               const action = { lessonId: lesson.id, stepId: step.id, questionId: question.id };
-              if (clean.lessons[lesson.id]?.answers[question.id]?.attempts.length) clean = updateProgress(clean, course, { ...action, type: 'retry' });
-              clean = updateProgress(clean, course, { ...action, type: 'answer', answer: attempt.answer });
+              if (clean.lessons[lesson.id]?.answers[question.id]?.attempts.length) clean = updateProgress(clean, course, { ...action, type: 'retry' }, granted);
+              clean = updateProgress(clean, course, { ...action, type: 'answer', answer: attempt.answer }, granted);
             }
-            if (savedAnswer.retrying === true) clean = updateProgress(clean, course, { type: 'retry', lessonId: lesson.id, stepId: step.id, questionId: question.id });
+            if (savedAnswer.retrying === true) clean = updateProgress(clean, course, { type: 'retry', lessonId: lesson.id, stepId: step.id, questionId: question.id }, granted);
           }
         } else if (completedSteps.includes(step.id)) {
-          clean = updateProgress(clean, course, { type: 'complete', lessonId: lesson.id, stepId: step.id });
+          clean = updateProgress(clean, course, { type: 'complete', lessonId: lesson.id, stepId: step.id }, granted);
         }
       }
     }
     const visited = data.lastVisited;
     if (record(visited) && typeof visited.lessonId === 'string' && typeof visited.stepId === 'string') {
-      clean = updateProgress(clean, course, { type: 'visit', lessonId: visited.lessonId, stepId: visited.stepId });
+      clean = updateProgress(clean, course, { type: 'visit', lessonId: visited.lessonId, stepId: visited.stepId }, granted);
     }
     return { progress: clean, recovered: comparableJson(data) !== comparableJson(clean) };
   } catch {

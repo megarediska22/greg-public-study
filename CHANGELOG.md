@@ -4,7 +4,7 @@
 
 - Establish `develop` as the shared development branch. Add onboarding, recovery, release and handoff documentation.
 - Preserve the completed standards research, curriculum audit, program blueprint and assessment specification.
-- The adaptive learning engine is in progress. See [project status](PROJECT_STATUS.md) for the current phase.
+- Complete Stage 05 in develop. Add the adaptive engine, progress sidecar, derived curriculum metadata, automated checks and handoff contracts. Learner access remains linear. The adaptive pilot is unpublished and inactive.
 
 ## Published
 

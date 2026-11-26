@@ -26,6 +26,10 @@
 
 [Навигация по спецификации](assessment/README.md) ведёт к правилам входной диагностики, карте знаний, требованиям к свидетельствам, 13 контрольным точкам, сценариям приёмки, плану пилота и заданиям для движка, интерфейса и авторов.
 
+## Этап 05 · Adaptive Learning Engine
+
+[Реализация](engine/ENGINE_IMPLEMENTATION.md) · [Совместимость прогресса](engine/PROGRESS_MIGRATION.md) · [Контракт UI](engine/UI_INTEGRATION_CONTRACT.md) · [Контракт контента](engine/CONTENT_INTEGRATION_CONTRACT.md) · [Исходный отчёт QA](engine/ENGINE_QA_REPORT.md)
+
 ## Как использовать
 
 1. **00 · Project Manager & Prompts** берёт из методологической базы границы следующего этапа, из CEFR — области покрытия, из исследования оценивания — гипотезы для будущего ТЗ.
