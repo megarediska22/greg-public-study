@@ -9,12 +9,14 @@ import { adaptiveCatalog, criterionKey, pilotCriteria, type Bank, type CourseRul
 import { capturePractice, logPractice, markCheckpointItem, trackHint, type PracticeCapture } from './practice.ts';
 import { canAccess, checkpointState, currentPlacement, grantAccess, lessonAccess, preA1, ready, safeStart, type AccessAction, type LegacyAccess } from './routes.ts';
 import { emptyAdaptiveState, isAdaptiveState, latestResults, type AdaptiveState, type DiagnosticResult } from './state.ts';
+import { bindFastPlacement, type FastBank } from './fast/index.ts';
 import { ADAPTIVE_STORAGE_KEY, openAdaptiveStorage, type AdaptivePersistStatus } from './storage.ts';
 
 export type EngineOptions = {
   storage: Pick<Storage, 'getItem' | 'setItem'>;
   rules: CourseRules;
   bank: Bank;
+  fastBank?: FastBank;
   practice: readonly PracticeItem[];
   legacy: () => LegacyAccess;
   question?: (item: PracticeItem) => Question | undefined;
@@ -88,6 +90,10 @@ export function openAdaptiveEngine(options: EngineOptions) {
   }
 
   return {
+    fast: options.fastBank ? bindFastPlacement({
+      bank: options.fastBank, rules: config, legacy, practice, previouslyAttempted: options.previouslyAttempted,
+      question: options.question, read: () => state, storageStatus: () => storage.status, commit,
+    }) : undefined,
     receiptPractice(before: Progress, after: Progress, action: ProgressAction) {
       if (!enabled || before === after || action.type !== 'check-exercise') return;
       const mapped = practice.filter(item => item.lessonId === action.lessonId && item.stepId === action.stepId && mappedQuestion(item));

@@ -5,7 +5,7 @@ import { adaptiveCatalog } from './adaptive/model.ts';
 import { legacyAccess } from './adaptive/storage.ts';
 import type { Progress } from './progress.ts';
 
-type Content = Pick<EngineOptions, 'rules' | 'bank' | 'practice'>;
+type Content = Pick<EngineOptions, 'rules' | 'bank' | 'practice' | 'fastBank'>;
 export type AdaptiveContent = Content;
 export type AdaptiveHost = Awaited<ReturnType<typeof openAdaptiveHost>>;
 

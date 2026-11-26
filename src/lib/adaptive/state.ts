@@ -9,6 +9,8 @@ export type DiagnosticResult = {
 };
 export type CheckpointAttempt = { id: string; items: string[] };
 export type AdaptiveState = {
+  /** Independent, optional pilot partition. Its own reader handles unsupported versions. */
+  fastPlacement?: unknown;
   history: Evidence[];
   exposed: string[];
   session: Session | null;
