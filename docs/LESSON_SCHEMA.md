@@ -1,14 +1,14 @@
 # Lesson engine contract
 
-The A1–A2 catalog has **121 lessons, 847 steps and 1,980 questions**. The historical first 26 contain the 21 published lessons and five continuation pilots. The next 95 units use the [extension data and loading contract](extension-engine.md). The ordered production registry is `src/content/course.ts`; the reference types are in `src/types/lesson.ts`.
+The PK-01 feature catalog contains **126 lessons, 885 steps and 2,040 questions**, including four elective Pre-A1 lessons. The historical first 26 contain the 21 published lessons and five continuation pilots. The next 95 units use the [extension data and loading contract](extension-engine.md). The ordered production registry is `src/content/course.ts`; the reference types are in `src/types/lesson.ts`.
 
 ## Lesson and catalog
 
-`Lesson` contains `id`, `level` (`A1`, `A2`, `B1`, `B2`), `title`, `sample`, `objectives` and ordered `steps`. Optional `kind` is `grammar` (the legacy default) or `vocabulary`. Keep `sample: true` for demonstrations. Text is plain text, never executable HTML.
+`Lesson` contains `id`, `level` (`Pre-A1`, `A1`, `A2`, `B1`, `B2`), `title`, `sample`, `objectives` and ordered `steps`. Optional `kind` is `grammar` (the legacy default) or `vocabulary`. Keep `sample: true` for demonstrations. Text is plain text, never executable HTML.
 
 The ordered `CourseEntry[]` in `src/content/course.ts` supplies card metadata (`id`, `title`, `subtitle`, `objective`) and an optional `lesson`. The lesson ID must match its catalog ID. An entry without content can unlock, but cannot award completion. New learners must complete all preceding entries. Validated retained grammar access for returning learners is described below.
 
-IDs are stable lowercase URL-safe slugs (`to-be`, `ready-question`), unique within their owner. Production question IDs must be unique across the course. Routes use `#/lesson/{lessonId}/{stepId}`; no component depends on particular lesson or step IDs. All 121 production lessons use `sample: false`.
+IDs are stable lowercase URL-safe slugs (`to-be`, `ready-question`), unique within their owner. Production question IDs must be unique across the course. Routes use `#/lesson/{lessonId}/{stepId}`; no component depends on particular lesson or step IDs. All 126 production lessons use `sample: false`.
 
 ## Steps
 
@@ -23,7 +23,7 @@ Every step has `id`, `title`, `description`, `type` and `completion`.
 | `review` | Mistakes derived from saved attempts | `acknowledge` |
 | `summary` | Scores derived from saved attempts | `acknowledge` |
 
-An optional nonempty plain-text `subjectHeading` overrides the historical «Кто?» heading; omission preserves the old rendering. Each theory row has `subject`, `form`, `example`, `translation`. Theory text is rendered as paragraphs separated by a blank line; no HTML is accepted. Production validation enforces exactly seven ordered steps: intro, theory (or vocabulary discovery), choice exercise, blank exercise, written exercise, review, summary. Each exercise must contain at least five questions of the specified type; all must be solved before that section completes. Translated introductory examples, theory table rows and common-mistake explanations are required.
+An optional nonempty plain-text `subjectHeading` overrides the historical «Кто?» heading; omission preserves the old rendering. Each theory row has `subject`, `form`, `example`, `translation`. Theory text is rendered as paragraphs separated by a blank line; no HTML is accepted. Production validation enforces seven required ordered steps: intro, theory (or vocabulary discovery), choice exercise, blank exercise, written exercise, review, summary. Required exercises have at least five questions of the specified type, or at least two in compact lessons. In either case, all must be solved before that section completes. Translated introductory examples, theory table rows and common-mistake explanations are required.
 
 ### Compact theory presentation
 
@@ -58,7 +58,8 @@ The `check-exercise` action atomically validates all unresolved questions. Corre
 ```ts
 {
   version: 1,
-  curriculumVersion?: 2,
+  curriculumVersion?: 2 | 3,
+  pk01CoreAccess?: true,
   legacyUnlockedLessons?: string[],
   completedLessons: string[],
   lessons: {
@@ -111,7 +112,7 @@ QA uses only `gps.qa.progress.v1` for synthetic lesson/step completion flags and
 1. Create a typed lesson content file, with explanations before the relevant exercises and configured accepted alternatives.
 2. Attach it to the appropriate entry in `src/content/course.ts`. Preserve the catalog order and stable IDs.
 3. Follow the seven-step sequence. Add questions to the existing exercise arrays without changing UI components.
-4. Run `npm run typecheck`, `npm test` and `npm run build`. `validateCourse` runs when the catalog loads and in content unit tests, reporting lesson/step/question paths for invalid IDs, keys, normalized duplicate alternatives, incomplete theory, incorrect step order/type or exercises with fewer than five questions. Grammar regression tests retain the original ten-lesson/150-question oracle. Foundation regression tests retain the exact 16-lesson/330-question order and original vocabulary keys. Historical practical tests run on `lessons.slice(0, 21)` and retain hardcoded 21-lesson/147-step/480-question checks, 50 new expressions, all 150 new answers, full progression and 16→21 compatibility.
+4. Run `npm run typecheck`, `npm test` and `npm run build`. `validateCourse` runs when the catalog loads and in content unit tests, reporting lesson/step/question paths for invalid IDs, keys, normalized duplicate alternatives, incomplete theory, incorrect step order/type or exercises below their applicable minimum. Grammar regression tests retain the original ten-lesson/150-question oracle. Foundation regression tests retain the exact 16-lesson/330-question order and original vocabulary keys. Historical practical tests run on `lessons.slice(0, 21)` and retain hardcoded 21-lesson/147-step/480-question checks, 50 new expressions, all 150 new answers, full progression and 16→21 compatibility.
 5. Check the learner flow, error review, refresh, both themes and small screens.
 
 The full sequence uses one progress scope. The A2 catalog view filters that sequence at `#/course/a2`; `#/course/a1` remains the full catalog. All existing lesson hash routes stay valid.
@@ -135,7 +136,7 @@ Vocabulary review derives the unique words associated with actual incorrect atte
 
 ## Grammar-only → integrated curriculum migration
 
-`gps.progress.v1` and `version: 1` remain stable. Newly initialized normal progress includes `curriculumVersion: 2`. For an older record without this field, the decoder first replays its attempts against the grammar-only view, applying the existing grading and prerequisite guards. That validated result defines `legacyUnlockedLessons`: completed grammar lessons and the next formerly unlocked grammar lesson, identified by stable IDs. This retained frontier does not expand as new work is completed. Stored completion flags alone do not grant access.
+`gps.progress.v1` and `version: 1` remain stable. The earlier integrated curriculum introduced `curriculumVersion: 2`. PK-01 adds version 3 as described below. For an older record without this field, the decoder first replays its attempts against the grammar-only view, applying the existing grading and prerequisite guards. That validated result defines `legacyUnlockedLessons`: completed grammar lessons and the next formerly unlocked grammar lesson, identified by stable IDs. This retained frontier does not expand as new work is completed. Stored completion flags alone do not grant access.
 
 The decoder then replays the full integrated catalog with these retained grammar entitlements. Earlier grammar prerequisites still apply; only newly inserted vocabulary prerequisites are waived for the retained grammar IDs. All original completion, valid answers, wrong-attempt history, pending retry and accessible last location survive. New vocabulary is not marked complete. For example, someone who completed `to-be`, `present-simple` and `do-does` retains access to `have-has`; they must complete `people-feelings` and `daily-routines` before progressing beyond that frontier to `articles`. Someone who completed all ten grammar lessons retains all ten; the course shows 10/16 until the six vocabulary lessons are completed in order. A fresh user must complete all sixteen in the integrated order.
 
@@ -168,3 +169,11 @@ The five pilots are registered as historical course entries in `src/content/hist
 There is no storage migration, key change or automatic completion for this append. A completed 21-lesson save opens only `hours-and-signs` among the pilots. Each acknowledged pilot summary opens the next; fresh learners cannot access the suffix early. Legacy grammar entitlements remain limited to the historical ten IDs. Production startup remains read-only and preserves unchanged save bytes, attempts, retries and last eligible route. Synthetic access flags belong only to the isolated development QA catalog/state and never grant production access.
 
 `tests/curriculum-pilot.test.mjs` covers 26 lessons, 182 steps and 555 unique questions, exact published content/task hashes, unchanged complete/partial saves, sequential batches/retries/reloads and independently expected correct/wrong surface strings for every pilot. Historical task coverage and rendering span all 555 questions. The historical ten-, sixteen- and twenty-one-lesson regressions keep their original hardcoded count/hash baselines scoped to their unchanged subsets. Final verification includes `npm test`, `npm run typecheck`, `npm run build` (including QA isolation verification) and the coordinator's browser harness in production and isolated QA.
+
+## PK-01 additions
+
+A named Pre-A1 level groups the four sequential preparation lessons. The core starts at `bp-a1-01`. `exerciseLayout: 'compact'` permits two or more questions per required practice step, while the usual minimum remains five. An `optional: true` exercise can sit between review and summary. Its independently saved answers do not contribute to required step counts or scores. The summary remains the same stable step and unlocks the next lesson.
+
+Questions can include two ordered `hints`. Opening either records its level through the existing dev pilot practice port when the question is mapped. These hints remain hidden until requested. Review `guidance` can direct learners to the relevant prerequisite.
+
+The progress storage key and schema version remain `gps.progress.v1` and `version: 1`. Curriculum version 3 adds a waiver for the newly inserted `bp-a1-01` prerequisite when replaying previous saved progress. Other gates are validated as before. Fresh and reset sessions start without that waiver. Startup replay remains read-only and the first write that upgrades older data retains its raw backup.

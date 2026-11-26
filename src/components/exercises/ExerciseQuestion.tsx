@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { Question } from '../../types/lesson';
 import type { QuestionProgress } from '../../lib/progress';
 import { getQuestionState } from '../../lib/exercise';
@@ -10,10 +11,12 @@ type Props = {
   saved?: QuestionProgress;
   missing: boolean;
   onChange: (value: string) => void;
+  onHint?: (level: 1 | 2) => void;
 };
 
 /** Controlled question: checking and focus are owned by the exercise group. */
-export function ExerciseQuestion({ question, index, value, saved, missing, onChange }: Props) {
+export function ExerciseQuestion({ question, index, value, saved, missing, onChange, onHint }: Props) {
+  const [hintLevel, setHintLevel] = useState(0);
   const { locked, feedback, edited } = getQuestionState(saved, value);
   const feedbackId = `${question.id}-feedback`;
   const instructionId = `${question.id}-instruction`;
@@ -38,6 +41,14 @@ export function ExerciseQuestion({ question, index, value, saved, missing, onCha
         </label>)}</div> : <label className="answer-label">{answerLabel}
           <input className="answer-input" type="text" lang="en" value={value} onChange={event => onChange(event.target.value)} placeholder={question.placeholder} required maxLength={2000} enterKeyHint="done" autoComplete="off" autoCapitalize="none" spellCheck={false} aria-invalid={invalid || undefined} aria-describedby={descriptionIds} />
         </label>}
+      {question.hints && !feedback && <div>
+        {question.hints.slice(0, hintLevel).map(hint => <p key={hint}>{hint}</p>)}
+        {hintLevel < 2 && <button type="button" className="button button-secondary" onClick={() => {
+          const level = hintLevel === 0 ? 1 : 2;
+          onHint?.(level);
+          setHintLevel(level);
+        }}>{hintLevel === 0 ? 'Подсказка' : 'Ещё подсказка'}</button>}
+      </div>}
       {missing && <p id={missingId} className="missing-answer">Ответьте на это задание. Попытка не засчитана.</p>}
     </fieldset>
     {feedback && <div id={feedbackId} className={`answer-feedback ${locked ? 'is-correct' : 'is-incorrect'}`}>

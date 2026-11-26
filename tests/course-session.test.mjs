@@ -23,7 +23,7 @@ test('async startup is read-only for empty, malformed and denied storage', async
   for (const raw of [null, '{bad', '[]', '{"version":1,"lessons":null}']) {
     const storage = store(raw);
     const session = await openCourseSession(storage);
-    assert.deepEqual(session.progress, emptyProgress());
+    assert.deepEqual(session.progress, emptyProgress(lessons));
     assert.equal(session.persist(session.progress), 'unchanged');
     assert.deepEqual(storage.writes, []);
     assert.equal(storage.values.get(PROGRESS_KEY), raw);
@@ -41,8 +41,8 @@ test('a cross-tab change during asynchronous startup cannot be decoded or overwr
   const opening = openCourseSession(storage);
   storage.values.set(PROGRESS_KEY, '{"another":"tab"}');
   const session = await opening;
-  assert.deepEqual(session.progress, emptyProgress());
-  const changed = updateProgress(session.progress, lessons, { type: 'complete', lessonId: 'to-be', stepId: 'intro' });
+  assert.deepEqual(session.progress, emptyProgress(lessons));
+  const changed = updateProgress(session.progress, lessons, { type: 'complete', lessonId: 'bp-a1-01', stepId: 'intro' });
   assert.equal(session.persist(changed), 'conflict');
   assert.deepEqual(storage.writes, []);
   assert.equal(storage.values.get(PROGRESS_KEY), '{"another":"tab"}');
@@ -52,13 +52,14 @@ test('old-only and mixed saves preserve attempts without fetching rich units or 
   let progress = emptyProgress();
   for (const { lesson } of historicalLessons) progress = finish(progress, historicalLessons, lesson);
   const oldStore = store(JSON.stringify(progress));
-  assert.deepEqual((await openCourseSession(oldStore)).progress, progress);
+  const migrated = { ...progress, curriculumVersion: 3, pk01CoreAccess: true };
+  assert.deepEqual((await openCourseSession(oldStore)).progress, migrated);
   assert.deepEqual(loadedUnitIds(), []);
   assert.deepEqual(loadedReplayIds(), []);
-  const first = lessons[26];
+  const first = lessons.find(entry => entry.id === 'unit-027');
   if (!first) return;
   const compact = replayLesson(await replayLoaders[first.id]());
-  progress = finish(progress, [...historicalLessons, { ...first, lesson: compact }], compact);
+  progress = finish(migrated, [...historicalLessons, { ...first, lesson: compact }], compact);
   progress = { ...progress, lastVisited: { lessonId: first.id, stepId: 'summary' } };
   const storage = store(JSON.stringify(progress));
   const session = await openCourseSession(storage);
@@ -72,7 +73,7 @@ test('old-only and mixed saves preserve attempts without fetching rich units or 
 });
 
 test('an unavailable replay chunk stops startup without erasing stored new attempts', async () => {
-  const entry = lessons.slice(26).find(entry => !loadedReplayIds().includes(entry.id));
+  const entry = lessons.find(entry => entry.id.startsWith('unit-') && !loadedReplayIds().includes(entry.id));
   if (!entry) return;
   const original = replayLoaders[entry.id];
   const raw = JSON.stringify({ ...emptyProgress(), lessons: { [entry.id]: { completedSteps: ['intro'], answers: {} } } });

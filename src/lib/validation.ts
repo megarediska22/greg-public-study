@@ -16,7 +16,8 @@ export function validateCourse(course: readonly CourseEntry[]): void {
     if (lesson.id !== entry.id || !lesson.title.trim() || !lesson.objectives.length || lesson.objectives.some(objective => !objective.trim())) fail(entry.id, 'missing or inconsistent lesson metadata');
     if (lesson.steps[0]?.type !== 'intro' || lesson.steps.at(-1)?.type !== 'summary') fail(entry.id, 'start with introduction and end with summary');
     const discoveryType = lesson.kind === 'vocabulary' ? 'vocabulary' : 'theory';
-    if (!lesson.sample && lesson.steps.map(step => step.type).join(',') !== `intro,${discoveryType},exercise,exercise,exercise,review,summary`) fail(entry.id, 'production lessons require exactly seven ordered steps');
+    const required = lesson.steps.filter(step => step.type !== 'exercise' || !step.optional);
+    if (!lesson.sample && required.map(step => step.type).join(',') !== `intro,${discoveryType},exercise,exercise,exercise,review,summary`) fail(entry.id, 'production lessons require exactly seven ordered steps');
     const vocabularyIds = new Set<string>();
     for (const step of lesson.steps) if (step.type === 'vocabulary') {
       const path = `${lesson.id}/${step.id}`;
@@ -36,20 +37,23 @@ export function validateCourse(course: readonly CourseEntry[]): void {
       stepIds.add(step.id);
       if (step.type === 'exercise') {
         if (step.completion !== 'all-correct' || !step.questions.length) fail(path, 'exercise needs questions and all-correct completion');
-        if (!lesson.sample && step.questions.length < 5) fail(path, 'production exercise needs at least five questions');
-        const expectedType = ['choice', 'blank', 'written'][lesson.steps.indexOf(step) - 2];
+        if (step.optional && (lesson.steps.at(-2) !== step || lesson.steps.at(-3)?.type !== 'review')) fail(path, 'optional practice goes between review and summary');
+        const min = lesson.exerciseLayout === 'compact' ? 2 : 5;
+        if (!lesson.sample && !step.optional && step.questions.length < min) fail(path, (min === 5 ? 'production exercise needs at least five questions' : 'compact exercise needs at least two questions'));
+        const expectedType = ['choice', 'blank', 'written'][required.indexOf(step) - 2];
         for (const question of step.questions) {
           const location = `${path}/${question.id}`;
           if (question.vocabularyId !== undefined && !vocabularyIds.has(question.vocabularyId)) fail(location, 'unknown vocabulary reference');
-          if (lesson.kind === 'vocabulary' && !question.vocabularyId) fail(location, 'vocabulary practice needs a card reference');
+          if (lesson.kind === 'vocabulary' && !step.optional && !question.vocabularyId) fail(location, 'vocabulary practice needs a card reference');
           if ([question.promptLanguage, question.optionsLanguage].some(value => value !== undefined && !['ru', 'en'].includes(value))) fail(location, 'question language must be en or ru');
           if (question.optionsLanguage !== undefined && question.type !== 'choice') fail(location, 'optionsLanguage is only valid for choices');
+          if (question.hints && (question.hints.length !== 2 || question.hints.some(hint => !hint.trim()) || question.hints[0] === question.hints[1])) fail(location, 'hints need two distinct nonempty levels');
           if (!validId(question.id) || questionIds.has(question.id)) fail(location, 'question IDs must be unique within a lesson');
           questionIds.add(question.id);
           if (!lesson.sample) {
             if (productionQuestionIds.has(question.id)) fail(location, 'production question IDs must be unique across the course');
             productionQuestionIds.add(question.id);
-            if (question.type !== expectedType) fail(location, `expected ${expectedType} questions in this section`);
+            if (!step.optional && question.type !== expectedType) fail(location, `expected ${expectedType} questions in this section`);
           }
           if (question.sentenceType !== undefined && (question.type !== 'written' || !['affirmative', 'negative', 'question', 'short-affirmative', 'short-negative'].includes(question.sentenceType))) fail(location, 'sentenceType must describe a written sentence task');
           if (!question.prompt.trim() || !question.instruction.trim() || !question.explanation.trim() || !question.acceptedAnswers.length || question.acceptedAnswers.some(answer => !answer.trim())) fail(location, 'prompt, instruction, explanation and accepted answers are required');

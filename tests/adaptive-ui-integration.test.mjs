@@ -10,7 +10,7 @@ import { storage } from './fixtures/adaptive.mjs';
 
 test('UI host opens the old progress read-only and keeps the empty bank and disabled mode unavailable', async () => {
   const disk = storage();
-  const legacy = updateProgress(emptyProgress(), getProgressCourse(), { type: 'visit', lessonId: 'to-be', stepId: 'intro' });
+  const legacy = { ...emptyProgress(), lastVisited: { lessonId: 'to-be', stepId: 'intro' } };
   const raw = JSON.stringify(legacy);
   disk.setItem(PROGRESS_KEY, raw);
   const host = await openAdaptiveHost(disk, adaptivePilot);

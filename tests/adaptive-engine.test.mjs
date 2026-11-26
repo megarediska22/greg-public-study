@@ -182,7 +182,7 @@ test('S14 retake uses fresh families, retains late access and recommends to-be f
 });
 test('S15 existing learned history receives no adaptive evidence or mandatory prompt', () => {
   const port = storage();
-  const old = { ...emptyProgress(), lastVisited: { lessonId: 'to-be', stepId: 'intro' } };
+  const old = { ...emptyProgress(lessons), pk01CoreAccess: true, lastVisited: { lessonId: 'to-be', stepId: 'intro' } };
   const engine = openAdaptiveEngine(options(port, { legacy: () => legacyAccess(old, lessons) }));
   assert.equal(engine.entry().showChoice, false);
   assert.equal(engine.entry().resume, 'to-be');

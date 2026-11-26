@@ -10,10 +10,12 @@ Snapshot after integrating Stage 06 into develop. The stable baseline is `645018
 | 4. Diagnostic and adaptive methodology | Complete as a specification | 05 |
 | 5. Adaptive learning engine | Complete in develop | 03 |
 | 6. Integrate adaptation into the existing UI | Complete in develop | 02 and 03 |
-| 7. Author and extend lessons | Pending | 04 with 05 |
+| 7. Author and extend lessons | PK-01 implemented on feature branch. PK-02–PK-05 pending. | 04 with 05 |
 | 8. Integrate, test and release | Pending | 04, 03 and 01 with owner approval |
 
-The adaptive engine, its separate storage and optional practice/access interfaces are available for development. The public learner route remains linear. The [Stage 06 interface](docs/ADAPTIVE_UI.md) is available in develop for local review. Live diagnostic forms and approved practice mappings are pending. The integration uses the [engine implementation](research/curriculum-assessment/engine/ENGINE_IMPLEMENTATION.md), [progress contract](research/curriculum-assessment/engine/PROGRESS_MIGRATION.md), [UI contract](research/curriculum-assessment/engine/UI_INTEGRATION_CONTRACT.md) and [content contract](research/curriculum-assessment/engine/CONTENT_INTEGRATION_CONTRACT.md).
+The adaptive engine, its separate storage and optional practice/access interfaces are available for development. The public learner route remains linear. The [Stage 06 interface](docs/ADAPTIVE_UI.md) is available in develop for local review. PK-01 adds eight practice mappings and the optional CP-PRE check in the development pilot. Live diagnostic forms are pending. The integration uses the [engine implementation](research/curriculum-assessment/engine/ENGINE_IMPLEMENTATION.md), [progress contract](research/curriculum-assessment/engine/PROGRESS_MIGRATION.md), [UI contract](research/curriculum-assessment/engine/UI_INTEGRATION_CONTRACT.md) and [content contract](research/curriculum-assessment/engine/CONTENT_INTEGRATION_CONTRACT.md).
+
+The PK-01 feature branch contains 126 lessons, 885 steps and 2,040 questions. See the [implementation and QA report](docs/PK_01_REVIEW.md).
 
 The target program specifies **140 sessions**: 4 optional Pre-A1, 49 A1 and 87 A2. Those are planning counts, separate from the published catalog. Placement and adaptive recommendations will need verification against the specification and pilot validation before making claims about assessment accuracy.
 

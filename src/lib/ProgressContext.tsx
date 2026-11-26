@@ -82,12 +82,12 @@ function ReadyProgressProvider({ children, loaded, practice, adaptive, reportAda
   function reset() {
     if (adaptive) return resetPilot();
     explicitReset.current = true;
-    latestProgress.current = emptyProgress();
+    latestProgress.current = emptyProgress(getProgressCourse());
     setProgress(latestProgress.current);
   }
   async function resetPilot() {
     if (!adaptive || !canPersist) return false;
-    const next = emptyProgress();
+    const next = emptyProgress(getProgressCourse());
     const status = loaded.persist(next, { allowReset: true });
     setSaveStatus(status);
     if (status !== 'saved' && status !== 'unchanged') return false;

@@ -17,6 +17,7 @@ export type EngineOptions = {
   practice: readonly PracticeItem[];
   legacy: () => LegacyAccess;
   question?: (item: PracticeItem) => Question | undefined;
+  previouslyAttempted?: (item: PracticeItem) => boolean;
   locks?: Pick<LockManager, 'request'>;
 };
 
@@ -179,7 +180,7 @@ export function openAdaptiveEngine(options: EngineOptions) {
         if (!q || q.id !== itemId || !validRole(item.role, q.type)) return current;
         if (response.type === 'answer' && (!response.answer.trim() || response.answer.length > 2000 ||
             q.type === 'choice' && !q.options.includes(response.answer))) return current;
-        const exposed = current.history.some(event => identity(event.item) === identity(item));
+        const exposed = Boolean(options.previouslyAttempted?.(item)) || current.history.some(event => identity(event.item) === identity(item));
         const next = logPractice(current, item, config, {
           source: attempt, channel: 'checkpoint', first: !exposed, visible: exposed, hint: localHints.get(identity(item)),
           outcome: response.type === 'skip' ? 'skipped' : response.type === 'unknown' ? 'unknown'

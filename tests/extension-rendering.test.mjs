@@ -42,7 +42,7 @@ test('A2 is discoverable while old A1 catalog links remain available', () => {
   assert.match(home, /По порядку после A1/);
   const catalog = render(createElement(CoursePage));
   assert.match(catalog, /A1 → A2/);
-  assert.match(catalog, /href="#\/lesson\/to-be\/intro"/);
+  assert.match(catalog, /href="#\/lesson\/bp-a1-01\/intro"/);
   const a2 = render(createElement(CoursePage, { level: 'A2' }));
-  assert.doesNotMatch(a2, /href="#\/lesson\/to-be\/intro"/);
+  assert.doesNotMatch(a2, /href="#\/lesson\/bp-a1-01\/intro"/);
 });

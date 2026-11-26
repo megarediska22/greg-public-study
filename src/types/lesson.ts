@@ -6,6 +6,7 @@ export type Normalization = {
 export type SentenceType = 'affirmative' | 'negative' | 'question' | 'short-affirmative' | 'short-negative';
 
 type BaseQuestion = {
+  hints?: readonly [string, string];
   task?: import('../lib/taskIndicators.ts').TaskMetadata;
   vocabularyId?: string;
   promptLanguage?: 'en' | 'ru';
@@ -46,16 +47,17 @@ export type LessonStep = BaseStep & (
   | { type: 'intro'; completion: 'acknowledge'; heading: string; text: string; example: string; translation: string }
   | { type: 'vocabulary'; completion: 'acknowledge'; heading: string; text: string; items: readonly VocabularyItem[]; note: string }
   | { type: 'theory'; completion: 'acknowledge'; heading: string; text: string; tableCaption: string; patternTable?: boolean; subjectHeading?: string; rows: readonly { subject: string; subjectTranslation?: string; form: string; example: string; translation: string }[]; blocks?: readonly TheoryBlock[]; noteTitle: string; note: string }
-  | { type: 'exercise'; completion: 'all-correct'; questions: readonly Question[] }
-  | { type: 'review'; completion: 'acknowledge' }
+  | { type: 'exercise'; completion: 'all-correct'; optional?: true; questions: readonly Question[] }
+  | { type: 'review'; completion: 'acknowledge'; guidance?: string }
   | { type: 'summary'; completion: 'acknowledge' }
 );
 
 export type Lesson = {
+  exerciseLayout?: 'compact';
   band?: string;
   kind?: 'grammar' | 'vocabulary';
   id: string;
-  level: 'A1' | 'A2' | 'B1' | 'B2';
+  level: 'Pre-A1' | 'A1' | 'A2' | 'B1' | 'B2';
   title: string;
   sample: boolean;
   objectives: readonly string[];

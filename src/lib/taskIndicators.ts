@@ -2,6 +2,7 @@ import type { CourseEntry, SentenceType } from '../types/lesson.ts';
 
 // Learner actions, never answer keys or grading statuses.
 export const taskActions = {
+  record: { icon: '✍️', label: 'Запиши данные', hint: 'Введи только запрошенные данные.', types: ['blank', 'written'] },
   choose: { icon: '👀', label: 'Выбери ответ', hint: 'Отметь один вариант.', types: ['choice'] },
   'choose-article': { icon: '👀', label: 'Выбери артикль', hint: 'Отметь один артикль.', types: ['choice'] },
   'fill-article': { icon: '🔤', label: 'Вставь артикль', hint: 'Напиши только артикль.', types: ['blank'] },

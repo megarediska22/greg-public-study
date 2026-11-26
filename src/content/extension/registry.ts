@@ -1,5 +1,5 @@
 import type { CourseEntry, Lesson } from '../../types/lesson.ts';
-import { lessons as historicalLessons } from '../historicalCourse.ts';
+import { assembleCourse } from '../assembleCourse.ts';
 import { availableEntries } from './generated/catalog.ts';
 import { unitLoaders, replayLoaders } from './generated/loaders.ts';
 import { adaptUnit, replayLesson } from './adaptUnit.ts';
@@ -14,6 +14,7 @@ for (let number = 27; number <= 121; number++) {
   prefix.push(entry);
 }
 export const extensionEntries: readonly CourseEntry[] = prefix;
+const installedEntries = assembleCourse(extensionEntries);
 export const availableUnitIds = Object.keys(unitLoaders);
 const pending = new Map<string, Promise<Lesson>>();
 const replays = new Map<string, Lesson>();
@@ -22,7 +23,7 @@ export const loadedReplayIds = () => [...replays.keys()];
 
 /** Loads exactly one rich unit. Failures are retryable; no future lesson prefetch. */
 export function loadLesson(id: string): Promise<Lesson> {
-  const old = historicalLessons.find(entry => entry.id === id)?.lesson;
+  const old = installedEntries.find(entry => entry.id === id)?.lesson;
   if (old) return Promise.resolve(old);
   const existing = pending.get(id);
   if (existing) return existing;
@@ -40,7 +41,7 @@ export function loadLesson(id: string): Promise<Lesson> {
 
 /** Engine registry can use compact replay lessons; these are never rendered. */
 export function getProgressCourse(): readonly CourseEntry[] {
-  return [...historicalLessons, ...extensionEntries.map(entry => ({ ...entry, lesson: entry.lesson ?? replays.get(entry.id) }))];
+  return installedEntries.map(entry => ({ ...entry, lesson: entry.lesson ?? replays.get(entry.id) }));
 }
 
 /** Inspect IDs only; the engine still validates every saved attempt and gate.

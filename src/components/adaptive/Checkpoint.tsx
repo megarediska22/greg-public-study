@@ -73,6 +73,7 @@ export function Checkpoint({ id }: { id: string }) {
           onClick={() => void transition(state.status === 'independent' ? 'independent' : 'supported')}>
           {state.status === 'independent' ? 'Продолжить' : 'Продолжить с опорой'}
         </button>}
+        {row.id === 'CP-PRE' && state.next && <LinkButton href={`#/lesson/${state.next}/intro`}>Перейти к A1</LinkButton>}
         <LinkButton href={`#/lesson/${row.lesson}/intro`} secondary>Повторить тему</LinkButton>
         <LinkButton href="#/course/a1" secondary>К программе курса</LinkButton>
       </div>

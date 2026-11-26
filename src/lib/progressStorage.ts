@@ -19,7 +19,7 @@ export function openProgressSession(storage: StoragePort, course: readonly Cours
     initial = decodeProgress(expectedRaw, course, granted);
   } catch {
     readable = false;
-    initial = { progress: emptyProgress(), recovered: false };
+    initial = { progress: emptyProgress(course), recovered: false };
   }
   let savedSnapshot = JSON.stringify(initial.progress);
   let needsBackup = initial.recovered && expectedRaw !== null;

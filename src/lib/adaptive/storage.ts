@@ -19,7 +19,7 @@ export function legacyAccess(progress: Progress, course: readonly CourseEntry[])
   const hasHistory = progress.lastVisited !== null || completed.length > 0 || course.some(entry => Object.hasOwn(progress.lessons, entry.id));
   const resume = visited && available.includes(visited)
     ? visited
-    : hasHistory ? available.find(id => !completed.includes(id)) ?? available.at(-1) ?? null : null;
+    : hasHistory ? available.find(id => !completed.includes(id) && course.find(entry => entry.id === id)?.level !== 'Pre-A1') ?? available.at(-1) ?? null : null;
   return { completed, available, resume };
 }
 

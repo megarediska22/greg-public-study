@@ -12,7 +12,8 @@ export type QuestionProgress = { attempts: Attempt[]; retrying: boolean };
 export type LessonProgress = { completedSteps: string[]; answers: Record<string, QuestionProgress> };
 export type Progress = {
   version: 1;
-  curriculumVersion?: 2;
+  curriculumVersion?: 2 | 3;
+  pk01CoreAccess?: true;
   legacyUnlockedLessons?: string[];
   completedLessons: string[];
   lessons: Record<string, LessonProgress>;
@@ -25,24 +26,35 @@ export type ProgressAction =
   | { type: 'answer'; lessonId: string; stepId: string; questionId: string; answer: string }
   | { type: 'retry'; lessonId: string; stepId: string; questionId: string };
 
-export function emptyProgress(): Progress {
-  return { version: 1, curriculumVersion: 2, completedLessons: [], lessons: {}, lastVisited: null };
+export function emptyProgress(course: readonly CourseEntry[] = []): Progress {
+  return { version: 1, curriculumVersion: course.some(entry => entry.id === 'bp-a1-01') ? 3 : 2, completedLessons: [], lessons: {}, lastVisited: null };
 }
 
 export function isLessonUnlocked(progress: Progress, course: readonly CourseEntry[], lessonId: string, granted?: ReadonlySet<string>): boolean {
-  const index = course.findIndex(lesson => lesson.id === lessonId);
-  if (index >= 0 && granted?.has(lessonId)) return true;
-  // A validated pre-vocabulary frontier retains grammar access. It never earns
-  // completion or exempts vocabulary/new grammar from the integrated sequence.
-  if (index >= 0 && legacyGrammarIds.has(lessonId) && course[index].lesson?.kind !== 'vocabulary' && progress.legacyUnlockedLessons?.includes(lessonId)) {
-    return course.slice(0, index).filter(entry => entry.lesson?.kind !== 'vocabulary').every(entry => progress.completedLessons.includes(entry.id));
+  const target = course.find(entry => entry.id === lessonId);
+  if (!target) return false;
+  if (granted?.has(lessonId)) return true;
+  const preparation = target.level === 'Pre-A1';
+  const route = course.filter(entry => (entry.level === 'Pre-A1') === preparation);
+  const preceding = route.slice(0, route.indexOf(target)).filter(entry => !(progress.pk01CoreAccess && entry.id === 'bp-a1-01'));
+  // A validated pre-vocabulary frontier retains grammar access.
+  if (legacyGrammarIds.has(lessonId) && progress.legacyUnlockedLessons?.includes(lessonId)) {
+    return preceding.filter(entry => legacyGrammarIds.has(entry.id)).every(entry => progress.completedLessons.includes(entry.id));
   }
-  return index >= 0 && course.slice(0, index).every(entry => progress.completedLessons.includes(entry.id));
+  return preceding.every(entry => progress.completedLessons.includes(entry.id));
+}
+
+export function isOptionalStep(step: LessonStep): boolean {
+  return step.type === 'exercise' && step.optional === true;
+}
+
+export function requiredSteps(lesson: Lesson): LessonStep[] {
+  return lesson.steps.filter(step => !isOptionalStep(step));
 }
 
 export function isStepUnlocked(progress: Progress, lesson: Lesson, stepId: string): boolean {
   const index = lesson.steps.findIndex(step => step.id === stepId);
-  return index >= 0 && lesson.steps.slice(0, index).every(step => progress.lessons[lesson.id]?.completedSteps.includes(step.id));
+  return index >= 0 && lesson.steps.slice(0, index).filter(step => !isOptionalStep(step)).every(step => progress.lessons[lesson.id]?.completedSteps.includes(step.id));
 }
 
 export function isStepComplete(progress: Progress, lessonId: string, stepId: string): boolean {
@@ -54,7 +66,7 @@ export function questionSolved(answer?: QuestionProgress): boolean {
 }
 
 export function getScore(progress: Progress, lesson: Lesson, step?: LessonStep) {
-  const questions = (step ? [step] : lesson.steps).flatMap(item => item.type === 'exercise' ? item.questions : []);
+  const questions = (step ? [step] : requiredSteps(lesson)).flatMap(item => item.type === 'exercise' ? item.questions : []);
   const answers = progress.lessons[lesson.id]?.answers ?? {};
   return {
     total: questions.length,
@@ -67,7 +79,7 @@ export function getScore(progress: Progress, lesson: Lesson, step?: LessonStep) 
 export function resumeStep(progress: Progress, lesson: Lesson): string {
   const visited = progress.lastVisited;
   if (visited?.lessonId === lesson.id && isStepUnlocked(progress, lesson, visited.stepId)) return visited.stepId;
-  return lesson.steps.find(step => !isStepComplete(progress, lesson.id, step.id))?.id ?? lesson.steps.at(-1)!.id;
+  return requiredSteps(lesson).find(step => !isStepComplete(progress, lesson.id, step.id))?.id ?? lesson.steps.at(-1)!.id;
 }
 
 /** All mutations enforce prerequisites, including calls that bypass the UI. */
@@ -75,9 +87,10 @@ export function updateProgress(progress: Progress, course: readonly CourseEntry[
   const lesson = course.find(entry => entry.id === action.lessonId)?.lesson;
   const step = lesson?.steps.find(item => item.id === action.stepId);
   if (!lesson || !step || !isLessonUnlocked(progress, course, lesson.id, granted) || !isStepUnlocked(progress, lesson, step.id)) return progress;
+  const curriculumVersion = course.some(entry => entry.id === 'bp-a1-01') ? 3 : progress.curriculumVersion;
   if (action.type === 'visit') {
     if (progress.lastVisited?.lessonId === lesson.id && progress.lastVisited.stepId === step.id) return progress;
-    return { ...progress, lastVisited: { lessonId: lesson.id, stepId: step.id } };
+    return { ...progress, curriculumVersion, lastVisited: { lessonId: lesson.id, stepId: step.id } };
   }
   const previous = progress.lessons[lesson.id] ?? { completedSteps: [], answers: {} };
   const current: LessonProgress = { completedSteps: [...previous.completedSteps], answers: { ...previous.answers } };
@@ -120,9 +133,14 @@ export function updateProgress(progress: Progress, course: readonly CourseEntry[
       if (step.questions.every(item => questionSolved(current.answers[item.id])) && !current.completedSteps.includes(step.id)) current.completedSteps.push(step.id);
     }
   }
-  const completed = lesson.steps.every(item => current.completedSteps.includes(item.id));
+  if (lesson.steps.some(isOptionalStep)) {
+    const done = new Set(current.completedSteps);
+    current.completedSteps = lesson.steps.filter(item => done.has(item.id)).map(item => item.id);
+  }
+  const completed = requiredSteps(lesson).every(item => current.completedSteps.includes(item.id));
   return {
     ...progress,
+    curriculumVersion,
     lessons: { ...progress.lessons, [lesson.id]: current },
     completedLessons: completed && !progress.completedLessons.includes(lesson.id)
       ? course.filter(entry => entry.id === lesson.id || progress.completedLessons.includes(entry.id)).map(entry => entry.id)
@@ -144,11 +162,18 @@ function comparableJson(value: unknown): string {
 
 /** Rebuild earned progress from known content and validated attempts, never trust stored scores. */
 export function decodeProgress(raw: string | null, course: readonly CourseEntry[], granted?: ReadonlySet<string>): { progress: Progress; recovered: boolean } {
-  let clean = emptyProgress();
+  let clean = emptyProgress(course);
   if (raw === null) return { progress: clean, recovered: false };
   try {
     const data: unknown = JSON.parse(raw);
     if (!record(data) || data.version !== 1 || !record(data.lessons)) return { progress: clean, recovered: true };
+    // This waiver preserves the old first-lesson entitlement. All former gates
+    // and replay validation still apply. A fresh or reset course uses version 3.
+    if (course.some(entry => entry.id === 'bp-a1-01') &&
+        (data.curriculumVersion === undefined || data.curriculumVersion === 2 ||
+          data.curriculumVersion === 3 && data.pk01CoreAccess === true)) {
+      clean.pk01CoreAccess = true;
+    }
     if (course.some(entry => entry.lesson?.kind === 'vocabulary')) {
       const grammar = course.filter(entry => legacyGrammarIds.has(entry.id) && entry.lesson?.kind !== 'vocabulary');
       let retained: string[] = [];
@@ -158,7 +183,7 @@ export function decodeProgress(raw: string | null, course: readonly CourseEntry[
         const legacy = decodeProgress(raw, grammar).progress;
         const frontier = grammar.findIndex(entry => !legacy.completedLessons.includes(entry.id));
         retained = grammar.slice(0, frontier < 0 ? grammar.length : frontier + 1).map(entry => entry.id);
-      } else if (data.curriculumVersion === 2 && Array.isArray(data.legacyUnlockedLessons)) {
+      } else if ((data.curriculumVersion === 2 || data.curriculumVersion === 3) && Array.isArray(data.legacyUnlockedLessons)) {
         retained = grammar.filter(entry => (data.legacyUnlockedLessons as unknown[]).includes(entry.id)).map(entry => entry.id);
       }
       if (retained.length) clean.legacyUnlockedLessons = retained;

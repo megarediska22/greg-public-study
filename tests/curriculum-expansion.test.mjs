@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { createHash } from 'node:crypto';
-import { lessons, historicalLessons, questionCount } from '../src/content/course.ts';
+import { lessons, baselineLessons, historicalLessons, baselineQuestionCount } from '../src/content/course.ts';
 import { availableEntries } from '../src/content/extension/generated/catalog.ts';
 import { loadAuthoredCourse } from './fixtures/extensionCourse.mjs';
 import { gradeAnswer } from '../src/lib/grading.ts';
@@ -18,11 +18,11 @@ const titles = new Map([...plan.matchAll(/^\| <a id="unit-(\d+)"><\/a>([^|]+)\|/
 
 test('FINAL exact production registry: 121 lessons / 847 steps / 1980 questions', async () => {
   assert.deepEqual(availableEntries.map(e=>e.id), expected);
-  assert.deepEqual(lessons.slice(26).map(e=>e.id), expected);
+  assert.deepEqual(baselineLessons.slice(26).map(e=>e.id), expected);
   const course = await loadAuthoredCourse();
   assert.equal(course.length,121);
   assert.equal(course.reduce((n,e)=>n+e.lesson.steps.length,0),847);
-  assert.equal(questionCount,1980);
+  assert.equal(baselineQuestionCount,1980);
   assert.equal(course.flatMap(e=>e.lesson.steps.flatMap(s=>s.questions??[])).length,1980);
 });
 
@@ -59,7 +59,7 @@ test('extension questions are distinct from earlier lessons and from linked ques
 
 test('SUBSET historical prefix, plan identity, metadata, all keys and plausible nonkeys', async () => {
   assert.equal(hash(JSON.stringify(historicalLessons)),'2ecd1ba372f0f2c3a15082d38b23e346d00ce8c7d1a8739d1e5077219a71e6cd');
-  assert.deepEqual(lessons.slice(0,26),historicalLessons);
+  assert.deepEqual(baselineLessons.slice(0,26),historicalLessons);
   assert.deepEqual([...titles.keys()],Array.from({length:100},(_,i)=>i+22));
   const ids=new Set();
   for(const entry of (await loadAuthoredCourse()).slice(26)){
@@ -87,7 +87,7 @@ test('SUBSET real sequential replay, oldest partial, graduate, retries and prese
   async function refresh(progress){
     const raw=JSON.stringify(progress); const writes=[];
     const session=await openCourseSession({getItem:k=>k===PROGRESS_KEY?raw:null,setItem:(...args)=>writes.push(args)});
-    assert.deepEqual(session.progress,progress); assert.equal(session.persist(session.progress),'unchanged');assert.deepEqual(writes,[]);
+    assert.deepEqual(session.progress, { ...progress, curriculumVersion: 3, pk01CoreAccess: true }); assert.equal(session.persist(session.progress),'unchanged');assert.deepEqual(writes,[]);
   }
   const legacy=legacyFixtures(historicalLessons);
   await refresh(legacy.partial); await refresh(legacy.completed);

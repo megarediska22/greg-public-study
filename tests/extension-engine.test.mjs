@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { createHash } from 'node:crypto';
-import { lessons, historicalLessons, questionCount } from '../src/content/course.ts';
+import { lessons, historicalLessons, baselineLessons, baselineQuestionCount, questionCount } from '../src/content/course.ts';
 import { availableEntries } from '../src/content/extension/generated/catalog.ts';
 import { unitLoaders, replayLoaders } from '../src/content/extension/generated/loaders.ts';
 import { availableUnitIds, extensionEntries, getProgressCourse, loadLesson, loadedUnitIds, loadedReplayIds, prepareProgressCourse } from '../src/content/extension/registry.ts';
@@ -36,13 +36,13 @@ function finish(progress, course, lesson, introduceMistakes = false) {
 // The expected value is recorded independently of the generated extension catalog.
 test('lightweight startup preserves the complete historical fixture and imports no rich extensions', async () => {
   assert.equal(historicalLessons.length, 26);
-  assert.deepEqual(lessons.slice(0, 26), historicalLessons);
+  assert.deepEqual(baselineLessons.slice(0, 26), historicalLessons);
   assert.equal(createHash('sha256').update(JSON.stringify(historicalLessons)).digest('hex'), '2ecd1ba372f0f2c3a15082d38b23e346d00ce8c7d1a8739d1e5077219a71e6cd');
   assert.deepEqual(loadedUnitIds(), []);
   assert.deepEqual(loadedReplayIds(), []);
-  assert.equal(questionCount, 555 + extensionEntries.length * 15);
+  assert.equal(baselineQuestionCount, 555 + extensionEntries.length * 15);
   const fresh = await prepareProgressCourse(null);
-  assert.deepEqual(decodeProgress(null, fresh).progress, emptyProgress());
+  assert.deepEqual(decodeProgress(null, fresh).progress, emptyProgress(fresh));
   assert.deepEqual(loadedReplayIds(), []);
   assert.deepEqual(loadedUnitIds(), []);
   const malformed = await prepareProgressCourse('{bad');
@@ -57,7 +57,7 @@ test('current batches are refreshed exactly, while gaps never bypass course prer
   assert.deepEqual(Object.keys(replayLoaders), availableUnitIds);
   assert.deepEqual(availableEntries.map(entry => entry.id), availableUnitIds);
   extensionEntries.forEach((entry, index) => assert.equal(entry.number, index + 27));
-  assert.equal(lessons.length, 26 + extensionEntries.length);
+  assert.equal(baselineLessons.length, 26 + extensionEntries.length);
   for (const entry of availableEntries) {
     assert.doesNotMatch(entry.title, /<|>|unit-|A1|A2/);
     assert.ok(/[а-яё]/iu.test(entry.title));
@@ -75,6 +75,7 @@ test('old saves load no extension chunks; compact new saves restore only saved l
   let old = emptyProgress();
   for (const { lesson } of historicalLessons) old = finish(old, historicalLessons, lesson);
   const course = await prepareProgressCourse(JSON.stringify(old));
+  old = { ...old, curriculumVersion: 3, pk01CoreAccess: true };
   assert.deepEqual(decodeProgress(JSON.stringify(old), course), { progress: old, recovered: false });
   assert.deepEqual(loadedReplayIds(), []);
   assert.deepEqual(loadedUnitIds(), []);
@@ -151,7 +152,7 @@ test('entire current continuous catalog completes in order with exact attempts a
     const lesson = await loadLesson(entry.id);
     const course = getProgressCourse();
     assert.equal(isLessonUnlocked(progress, course, entry.id), true);
-    const next = course[course.findIndex(item => item.id === entry.id) + 1];
+    const next = course.slice(course.findIndex(item => item.id === entry.id) + 1).find(item => (item.level === 'Pre-A1') === (entry.level === 'Pre-A1'));
     if (next) assert.equal(isLessonUnlocked(progress, course, next.id), false);
     progress = finish(progress, course, lesson);
     if (next) assert.equal(isLessonUnlocked(progress, course, next.id), true);

@@ -16,7 +16,7 @@ function focusQuestion(id: string) {
 }
 
 export function ExerciseStep({ lesson, step, reviewOnly = false }: { lesson: Lesson; step: Exercise; reviewOnly?: boolean }) {
-  const { progress, dispatch } = useProgress();
+  const { progress, dispatch, reportHint } = useProgress();
   const saved = progress.lessons[lesson.id]?.answers ?? {};
   const [drafts, setDrafts] = useState<Record<string, string>>(() => Object.fromEntries(
     step.questions.map(question => [question.id, saved[question.id]?.attempts.at(-1)?.answer ?? '']),
@@ -44,7 +44,7 @@ export function ExerciseStep({ lesson, step, reviewOnly = false }: { lesson: Les
     <span className="pill">{lesson.sample ? 'Демонстрационное упражнение' : 'Практика'}</span>
     <h2>{step.title}</h2>
     <p className="muted">Ответьте на все вопросы, затем нажмите «Проверить ответы» внизу. Верные ответы сохранятся — исправлять нужно только ошибки.</p>
-    <div className="exercise-status"><span>{checked ? `Выполнено: ${score.correct} из ${score.total}` : `Заполнено: ${filled} из ${score.total}`}</span><span>{reviewOnly ? 'Дополнительное повторение. Прогресс урока сохранён.' : 'Следующий шаг откроется после всех верных ответов.'}</span></div>
+    <div className="exercise-status"><span>{checked ? `Выполнено: ${score.correct} из ${score.total}` : `Заполнено: ${filled} из ${score.total}`}</span><span>{step.optional ? 'Эту практику можно пропустить и перейти к итогам.' : reviewOnly ? 'Дополнительное повторение. Прогресс урока сохранён.' : 'Следующий шаг откроется после всех верных ответов.'}</span></div>
     <form className="exercise-form" noValidate onSubmit={event => {
       event.preventDefault();
       if (complete) return;
@@ -63,6 +63,7 @@ export function ExerciseStep({ lesson, step, reviewOnly = false }: { lesson: Les
     }}>
       {step.questions.map((question, index) => <ExerciseQuestion
         key={question.id} question={question} index={index} value={drafts[question.id] ?? ''}
+        onHint={level => reportHint?.(lesson.id, step.id, question.id, level)}
         saved={saved[question.id]} missing={missing.includes(question.id)}
         onChange={value => {
           setDrafts(previous => ({ ...previous, [question.id]: value }));
@@ -73,7 +74,7 @@ export function ExerciseStep({ lesson, step, reviewOnly = false }: { lesson: Les
       <div className="batch-actions">
         <div ref={summaryRef} className="batch-summary" role="status" aria-live="polite" aria-atomic="true" tabIndex={-1}>
           {missing.length ? <p>Заполните задания: {numbers(missing)}. Введённые ответы оставлены в полях; попытки не засчитаны.</p> : null}
-          {checked && <><strong>{score.correct} из {score.total} правильно{complete ? ' — раздел завершён.' : '.'}</strong><p>{complete ? reviewOnly ? 'Повторение завершено. Можно вернуться к разбору.' : 'Теперь можно нажать «Продолжить».' : 'Исправьте отмеченные ответы и проверьте ещё раз.'}</p><small>С первой попытки: {score.firstTry}. Всего попыток: {score.attempts}.</small></>}
+          {checked && <><strong>{score.correct} из {score.total} правильно{complete ? ' — раздел завершён.' : '.'}</strong><p>{complete ? step.optional ? 'Можно вернуться к итогам.' : reviewOnly ? 'Повторение завершено. Можно вернуться к разбору.' : 'Теперь можно нажать «Продолжить».' : 'Исправьте отмеченные ответы и проверьте ещё раз.'}</p><small>С первой попытки: {score.firstTry}. Всего попыток: {score.attempts}.</small></>}
           {!checked && !missing.length && <p>Результат появится здесь после отправки всех ответов.</p>}
         </div>
         <button className="button button-primary batch-check" type="submit" disabled={complete}>Проверить ответы</button>
