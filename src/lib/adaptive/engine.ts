@@ -1,3 +1,4 @@
+import type { PracticeReceipt, Progress, ProgressAction } from '../progress.ts';
 import type { Question } from '../../types/lesson.ts';
 import { gradeAnswer } from '../grading.ts';
 import { reviewAdvice } from './advice.ts';
@@ -30,7 +31,7 @@ export function openAdaptiveEngine(options: EngineOptions) {
   const storage = openAdaptiveStorage(options.storage, emptyAdaptiveState(), isAdaptiveState);
   let state = storage.data;
   let pending = Promise.resolve();
-  // Hint exposure is conservative even when the write cannot be confirmed in this tab.
+  // Preserve the highest confirmed hint level while the current tab is open.
   const localHints = new Map<string, 1 | 2>();
   const criteria = new Map([...pilotCriteria, ...rules.criteria].map(criterion => [criterionKey(criterion), criterion]));
   const active = () => state.session && state.session.status !== 'finished' ? state.session : null;
@@ -80,7 +81,66 @@ export function openAdaptiveEngine(options: EngineOptions) {
     return currentPlacement(config, legacy(), state.grants, state.history, fresh);
   }
 
+  const revision = (item: PracticeItem) => JSON.stringify([identity(item), item.keyId, item.keyRevision]);
+  function mappedQuestion(item: PracticeItem) {
+    const question = options.question?.(item);
+    return question?.id === item.itemId && validRole(item.role, question.type);
+  }
+
   return {
+    receiptPractice(before: Progress, after: Progress, action: ProgressAction) {
+      if (!enabled || before === after || action.type !== 'check-exercise') return;
+      const mapped = practice.filter(item => item.lessonId === action.lessonId && item.stepId === action.stepId && mappedQuestion(item));
+      if (!mapped.length) return;
+      let order = 0;
+      for (const item of practice) {
+        const attempts = before.lessons[item.lessonId]?.answers[item.itemId]?.attempts ?? [];
+        for (const attempt of attempts.slice(0, 2)) order = Math.max(order, attempt.adaptiveReceipt?.order ?? 0);
+      }
+      for (const item of mapped) {
+        const attempts = after.lessons[item.lessonId]?.answers[item.itemId]?.attempts;
+        const previous = before.lessons[item.lessonId]?.answers[item.itemId]?.attempts.length ?? 0;
+        if (!attempts || attempts.length <= previous || attempts.length > 2) continue;
+        const maximumHelp = Math.max(localHints.get(identity(item)) ?? 0, state.hints[identity(item)] ?? 0);
+        const help = maximumHelp === 2 ? 2 : maximumHelp === 1 ? 1 : 0;
+        const checkpoint = item.checkpointId && state.checkpoints[item.checkpointId]?.id;
+        // The reducer has allocated this attempt. Its receipt is saved atomically
+        // with the graded answer and can be replayed if the sidecar write is interrupted.
+        attempts.at(-1)!.adaptiveReceipt = { revision: revision(item), order: ++order, help, ...(checkpoint ? { checkpoint } : {}) };
+      }
+    },
+    restoreStudy(progress: Progress, newCompletions: readonly string[] = []) {
+      if (!enabled) return Promise.resolve('unchanged' as const);
+      return commit(current => {
+        let next = current;
+        const pending: { item: PracticeItem; receipt: PracticeReceipt; first: boolean; correct: boolean }[] = [];
+        for (const item of practice) {
+          // The ordinary decoder has already validated answers, including for
+          // lessons represented by compact replay data at startup.
+          const attempts = progress.lessons[item.lessonId]?.answers[item.itemId]?.attempts ?? [];
+          for (const [index, attempt] of attempts.slice(0, 2).entries()) {
+            const receipt = attempt.adaptiveReceipt;
+            if (receipt?.revision === revision(item)) pending.push({ item, receipt, first: index === 0, correct: attempt.correct });
+          }
+        }
+        pending.sort((a, b) => a.receipt.order - b.receipt.order);
+        for (const { item, receipt, first, correct } of pending) {
+          next = logPractice(next, item, config, {
+            source: receipt.checkpoint ?? item.lessonId, channel: receipt.checkpoint ? 'checkpoint' : 'lesson',
+            outcome: correct ? 'correct' : 'incorrect', first, visible: !first, pinnedHelp: receipt.help,
+          });
+          if (item.checkpointId && receipt.checkpoint && next.checkpoints[item.checkpointId]?.id === receipt.checkpoint)
+            next = markCheckpointItem(next, item.checkpointId, item.itemId);
+        }
+        const completions = new Set([...newCompletions, ...current.grants.map(grant => grant.lessonId)]);
+        let grants = next.grants;
+        for (const lessonId of completions) {
+          if (!progress.completedLessons.includes(lessonId)) continue;
+          grants = grantAccess(config, legacy(), grants, next.history, { type: 'complete', lessonId });
+        }
+        return grants === next.grants ? next : { ...next, grants };
+      });
+    },
     entry() {
       const current = legacy();
       return { showChoice: enabled && !current.resume && !state.grants.length,
@@ -198,15 +258,17 @@ export function openAdaptiveEngine(options: EngineOptions) {
       const item = practice.find(item => item.lessonId === lessonId && item.stepId === stepId && item.itemId === id);
       if (!item) return Promise.resolve('unchanged' as const);
       const key = identity(item);
-      if ((localHints.get(key) ?? 0) < level) localHints.set(key, level);
-      return commit(current => trackHint(current, practice, lessonId, stepId, id, level));
+      return commit(current => trackHint(current, practice, lessonId, stepId, id, level)).then(status => {
+        if ((status === 'saved' || status === 'unchanged') && (localHints.get(key) ?? 0) < level)
+          localHints.set(key, level);
+        return status;
+      });
     },
     capture(input: PracticeCapture) {
       if (!enabled) return Promise.resolve('unchanged' as const);
       const mapped = practice.filter(item => {
         if (item.lessonId !== input.action.lessonId || item.stepId !== input.action.stepId) return false;
-        const question = options.question?.(item);
-        return question?.id === item.itemId && validRole(item.role, question.type);
+        return mappedQuestion(item);
       });
       if (!mapped.length) return Promise.resolve('unchanged' as const);
       const assistance = Object.fromEntries(mapped.flatMap<[string, 1 | 2]>(item => {

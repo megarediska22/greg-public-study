@@ -48,21 +48,18 @@ function ReadyProgressProvider({ children, loaded, practice, adaptive, reportAda
   const [saveStatus, setSaveStatus] = useState<SaveStatus>(loaded.unavailable ? 'unavailable' : 'unchanged');
   const explicitReset = useRef(false);
   const savedProgress = useRef(loaded.progress);
-  const pendingCaptures = useRef<Parameters<PracticePort['capture']>[0][]>([]);
   const canPersist = !adaptive?.protectedData && !suspendPersistence;
   useEffect(() => {
     if (!canPersist) return;
     const result = loaded.persist(progress, { allowReset: explicitReset.current });
     explicitReset.current = false;
     setSaveStatus(result);
-    const captures = pendingCaptures.current.splice(0);
     if (adaptive && (result === 'saved' || result === 'unchanged')) {
       adaptive.sync(progress);
       if (progress !== savedProgress.current) reportAdaptiveStatus?.('saved');
       const newlyCompleted = progress.completedLessons.filter(id => !savedProgress.current.completedLessons.includes(id));
       savedProgress.current = progress;
-      for (const capture of captures) void adaptive.engine.capture(capture).then(reportAdaptiveStatus);
-      for (const lessonId of newlyCompleted) void adaptive.engine.choose({ type: 'complete', lessonId }).then(reportAdaptiveStatus);
+      void adaptive.engine.restoreStudy(progress, newlyCompleted).then(reportAdaptiveStatus);
     }
   }, [progress, canPersist, adaptive, loaded, reportAdaptiveStatus]);
   const dispatch = useCallback((action: ProgressAction) => {
@@ -74,9 +71,9 @@ function ReadyProgressProvider({ children, loaded, practice, adaptive, reportAda
     }
     const after = updateProgress(before, getProgressCourse(), action, adaptive?.grants());
     if (before === after) return;
+    if (adaptive && canPersist) adaptive.engine.receiptPractice(before, after, action);
     latestProgress.current = after;
     setProgress(after);
-    if (adaptive && canPersist && action.type === 'check-exercise') pendingCaptures.current.push({ before, after, action });
     practice?.capture({ before, after, action });
   }, [practice, adaptive, canPersist]);
   function reset() {
@@ -101,7 +98,11 @@ function ReadyProgressProvider({ children, loaded, practice, adaptive, reportAda
   }
 
   const reportHint: PracticePort['hint'] | undefined = adaptive && canPersist
-    ? (...args) => { void adaptive.engine.hint(...args).then(reportAdaptiveStatus); }
+    ? async (...args) => {
+        const result = await adaptive.engine.hint(...args);
+        reportAdaptiveStatus?.(result);
+        return result === 'saved' || result === 'unchanged';
+      }
     : practice?.hint;
   return <ProgressContext value={{ progress, dispatch, reset, reportHint }}>
     {(saveStatus !== 'saved' && saveStatus !== 'unchanged' || loaded.recovered) && <p className="storage-note" role="status">{saveStatus === 'conflict' ? 'В другой вкладке изменился прогресс. Чтобы не перезаписать его, сохранение остановлено. Обновите страницу перед продолжением.' : saveStatus === 'backup-failed' || saveStatus === 'empty-blocked' ? 'Исходный прогресс защищён от перезаписи. Не удалось безопасно сохранить изменения; они действуют до перезагрузки.' : saveStatus === 'unavailable' ? 'Не удалось безопасно прочитать или сохранить прогресс. Существующие данные не перезаписываются; новые изменения действуют до перезагрузки.' : 'Сохранённые данные проверены по текущей программе. Корректная часть восстановлена. Исходные данные сохраняются отдельно перед записью изменений; новые задания нужно пройти.'}</p>}

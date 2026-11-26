@@ -57,7 +57,7 @@ with sync_playwright() as playwright:
             ctx, page = page_for(browser, width, dark)
             page.goto(fixture + '#/start')
             heading(page, 'Начать с нуля')
-            expect(button(page, 'Подготовка к A1')).to_have_count(0)
+            expect(button(page, 'Подготовка к A1')).to_be_enabled()
             width_ok(page)
             page.get_by_role('link', name='Подобрать учебный старт').click()
             start(page)
@@ -88,9 +88,9 @@ with sync_playwright() as playwright:
     ctx, page = page_for(browser, 1280)
     page.goto(fixture + '#/start')
     button(page, 'Сразу к A1').click()
-    expect(page).to_have_url(fixture + '#/lesson/to-be/intro')
+    expect(page).to_have_url(fixture + '#/lesson/bp-a1-01/intro')
     button(page, 'Прочитано, далее').click()
-    expect(page).to_have_url(fixture + '#/lesson/to-be/theory')
+    expect(page).to_have_url(fixture + '#/lesson/bp-a1-01/theory')
     page.goto(fixture + '#/diagnostic')
     start(page)
     for _ in range(28):
@@ -111,7 +111,7 @@ with sync_playwright() as playwright:
     width_ok(page)
     raw = page.evaluate("JSON.parse(localStorage.getItem('gps.adaptive.v1')).data")
     recommendation = raw['results'][-1]['placement']['start']['lessonId']
-    assert recommendation != 'to-be'
+    assert recommendation != 'bp-a1-01'
     assert all(grant['lessonId'] != recommendation for grant in raw['grants'])
     page.goto(fixture + '#/lesson/' + recommendation + '/intro')
     heading(page, 'Урок пока заблокирован')
@@ -121,7 +121,7 @@ with sync_playwright() as playwright:
     assert '/lesson/' + recommendation + '/' in page.url
     page.reload()
     expect(page.locator('.lesson-heading')).to_be_visible()
-    page.goto(fixture + '#/lesson/to-be/theory')
+    page.goto(fixture + '#/lesson/bp-a1-01/theory')
     expect(page.locator('.lesson-heading')).to_be_visible()
     page.goto(fixture + '#/diagnostic/new')
     start(page)
@@ -135,7 +135,7 @@ with sync_playwright() as playwright:
     expect(page.get_by_role('heading', name='Результат диагностики')).to_be_focused()
     expect(page.get_by_text('Данных пока мало.', exact=True)).to_be_visible()
     button(page, 'Продолжить с моего урока').click()
-    expect(page).to_have_url(fixture + '#/lesson/to-be/theory')
+    expect(page).to_have_url(fixture + '#/lesson/bp-a1-01/theory')
     ctx.close()
     checks.append('ordinary A1, explicit later grant, old progress, retake, neutral responses, decline')
 
@@ -179,12 +179,11 @@ with sync_playwright() as playwright:
 
     ctx, page = page_for(browser)
     page.goto(args.dev + '/?adaptive=1#/diagnostic')
-    expect(page.get_by_text('Диагностика пока недоступна.', exact=False)).to_be_visible()
-    expect(button(page, 'Начать диагностику')).to_have_count(0)
+    expect(button(page, 'Начать диагностику')).to_be_enabled()
     page.goto(args.dev + '/?adaptive=1#/checkpoint/CP-061')
     heading(page, 'Контрольная пока недоступна')
     ctx.close()
-    checks.append('missing diagnostic and checkpoint content')
+    checks.append('installed diagnostic bank and locked checkpoint before entitlement')
 
     ctx, page = page_for(browser, 360, True)
     page.goto(fixture + '?checkpoint#/checkpoint/CP-061')
@@ -208,10 +207,10 @@ with sync_playwright() as playwright:
     heading(page, 'Здесь пока нет страницы')
     assert page.evaluate("localStorage.getItem('gps.adaptive.v1') === null")
     page.get_by_role('link', name='К курсу A1').click()
-    expect(page.locator('.lesson-card')).to_have_count(121)
+    expect(page.locator('.lesson-card')).to_have_count(140)
     expect(page.get_by_role('link', name='Подобрать учебный старт')).to_have_count(0)
     ctx.close()
-    checks.append('production feature off and all 121 lessons')
+    checks.append('production feature off and all 140 lessons')
     browser.close()
 
 assert not errors, errors

@@ -10,7 +10,7 @@ export type PracticeCapture = {
   assistance?: Readonly<Record<string, 1 | 2>>;
 };
 export type PracticePort = {
-  hint(lessonId: string, stepId: string, questionId: string, level: 1 | 2): void;
+  hint(lessonId: string, stepId: string, questionId: string, level: 1 | 2): void | Promise<boolean>;
   capture(input: PracticeCapture): void;
 };
 
@@ -24,10 +24,10 @@ export function trackHint(state: AdaptiveState, practice: readonly PracticeItem[
 
 export function logPractice(
   state: AdaptiveState, item: PracticeItem, rules: CourseRules,
-  input: { source: string; channel: 'lesson' | 'checkpoint' | 'recheck'; outcome: Outcome; first: boolean; visible: boolean; hint?: 1 | 2 },
+  input: { source: string; channel: 'lesson' | 'checkpoint' | 'recheck'; outcome: Outcome; first: boolean; visible: boolean; hint?: 1 | 2; pinnedHelp?: 0 | 1 | 2 },
 ): AdaptiveState {
   const key = identity(item);
-  const hint = Math.max(input.hint ?? 0, state.hints[key] ?? 0);
+  const hint = input.pinnedHelp ?? Math.max(input.hint ?? 0, state.hints[key] ?? 0);
   const event = interpret({
     submission: JSON.stringify([input.source, key, input.first]),
     source: input.source, channel: input.channel, item,

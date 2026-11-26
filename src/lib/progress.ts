@@ -7,7 +7,8 @@ const legacyGrammarIds = new Set([
   'to-be', 'present-simple', 'do-does', 'have-has', 'articles', 'demonstratives',
   'there-is-are', 'can-cant', 'present-continuous', 'was-were',
 ]);
-export type Attempt = { answer: string; correct: boolean };
+export type PracticeReceipt = { revision: string; order: number; help: 0 | 1 | 2; checkpoint?: string };
+export type Attempt = { answer: string; correct: boolean; adaptiveReceipt?: PracticeReceipt };
 export type QuestionProgress = { attempts: Attempt[]; retrying: boolean };
 export type LessonProgress = { completedSteps: string[]; answers: Record<string, QuestionProgress> };
 type CurriculumVersion = 2 | 3 | NonNullable<CourseEntry['introducedIn']>;
@@ -241,7 +242,19 @@ export function decodeProgress(raw: string | null, course: readonly CourseEntry[
               if (!record(attempt) || typeof attempt.answer !== 'string' || typeof attempt.correct !== 'boolean') continue;
               const action = { lessonId: lesson.id, stepId: step.id, questionId: question.id };
               if (clean.lessons[lesson.id]?.answers[question.id]?.attempts.length) clean = updateProgress(clean, course, { ...action, type: 'retry' }, granted);
+              const beforeAnswer = clean;
               clean = updateProgress(clean, course, { ...action, type: 'answer', answer: attempt.answer }, granted);
+              // Only admissible attempts can carry an opt-in pilot receipt. Legacy
+              // attempts have no receipt and are never independent evidence.
+              const receipt = attempt.adaptiveReceipt;
+              if (clean !== beforeAnswer && record(receipt) && typeof receipt.revision === 'string' &&
+                  receipt.revision.length <= 512 && typeof receipt.order === 'number' &&
+                  Number.isSafeInteger(receipt.order) && receipt.order >= 1 && (receipt.help === 0 || receipt.help === 1 || receipt.help === 2) &&
+                  (receipt.checkpoint === undefined || typeof receipt.checkpoint === 'string' && receipt.checkpoint.length <= 128)) {
+                const accepted = clean.lessons[lesson.id].answers[question.id].attempts.at(-1)!;
+                accepted.adaptiveReceipt = { revision: receipt.revision, order: receipt.order, help: receipt.help,
+                  ...(receipt.checkpoint ? { checkpoint: receipt.checkpoint } : {}) };
+              }
             }
             if (savedAnswer.retrying === true) clean = updateProgress(clean, course, { type: 'retry', lessonId: lesson.id, stepId: step.id, questionId: question.id }, granted);
           }

@@ -88,3 +88,77 @@ test('UI host reports failed writes and stale tab writes without granting lesson
   assert.equal(await denied.engine.diagnosticAction('pause'), 'unavailable');
   assert.equal(denied.engine.diagnostic().status, 'active');
 });
+
+test('a persisted practice receipt restores the first attempt after a failed sidecar write, exactly once and with original help', async () => {
+  const disk = storage();
+  let failAdaptive = false;
+  const port = {
+    getItem: disk.getItem,
+    setItem(key, value) {
+      if (key === ADAPTIVE_STORAGE_KEY && failAdaptive) throw new Error('Quota');
+      disk.setItem(key, value);
+    },
+  };
+  let host = await openAdaptiveHost(port, adaptivePilot);
+  const lessonId = 'bp-a1-01';
+  const lesson = await loadLesson(lessonId);
+  const course = getProgressCourse();
+  let progress = host.session.progress;
+  for (const step of lesson.steps.slice(0, 4)) {
+    const action = step.type === 'exercise'
+      ? { type: 'check-exercise', lessonId, stepId: step.id, answers: Object.fromEntries(step.questions.map(q => [q.id, q.acceptedAnswers[0]])) }
+      : { type: 'complete', lessonId, stepId: step.id };
+    progress = updateProgress(progress, course, action, host.grants());
+  }
+  const written = lesson.steps.find(step => step.type === 'exercise' && step.id === 'written');
+  const assisted = written.questions.find(q => q.id.endsWith('lost-surname'));
+  assert.equal(await host.engine.hint(lessonId, written.id, assisted.id, 2), 'saved');
+  const action = { type: 'check-exercise', lessonId, stepId: written.id,
+    answers: Object.fromEntries(written.questions.map(q => [q.id, q.acceptedAnswers[0]])) };
+  const after = updateProgress(progress, course, action, host.grants());
+  host.engine.receiptPractice(progress, after, action);
+  assert.equal(host.session.persist(after), 'saved');
+  failAdaptive = true;
+  assert.equal(await host.engine.restoreStudy(after), 'unavailable');
+  assert.equal(JSON.parse(disk.getItem(ADAPTIVE_STORAGE_KEY)).data.history.length, 0);
+  failAdaptive = false;
+  host = await openAdaptiveHost(port, adaptivePilot);
+  assert.equal(await host.engine.restoreStudy(host.session.progress), 'saved');
+  assert.equal(await host.engine.restoreStudy(host.session.progress), 'unchanged');
+  const events = JSON.parse(disk.getItem(ADAPTIVE_STORAGE_KEY)).data.history;
+  assert.equal(events.length, 2);
+  assert.equal(events.find(event => event.item.itemId === assisted.id).neutral, 'assisted');
+  assert.equal(events.find(event => event.item.itemId === assisted.id).assistance, 'H2');
+  assert.equal(events.filter(event => event.sign === '+').length, 1);
+  assert.equal(host.engine.knowledge().find(item => item.criterion.id === 'C-PK01-REPAIR').state, 'PRELIMINARY');
+});
+
+test('startup reconciliation restores an ordinary successor from a completed granted lesson after a failed save', async () => {
+  const disk = storage();
+  const host = await openAdaptiveHost(disk, content);
+  assert.equal(await host.engine.begin('placement-before-completion'), 'saved');
+  while (host.engine.diagnostic().prompt) {
+    const { id, slot, type } = host.engine.diagnostic().prompt;
+    await host.engine.submit({ slot, itemId: id, key: String(slot), type: 'answer', answer: type === 'choice' ? 'west' : 'quartz' });
+  }
+  assert.equal(await host.engine.diagnosticAction('decline-upper'), 'saved');
+  const lessonId = 'unit-062';
+  assert.equal(await host.engine.choose({ type: 'accept', lessonId }), 'saved');
+  const lesson = await loadLesson(lessonId);
+  const course = getProgressCourse();
+  let progress = host.session.progress;
+  for (const step of lesson.steps) {
+    const action = step.type === 'exercise'
+      ? { type: 'check-exercise', lessonId, stepId: step.id, answers: Object.fromEntries(step.questions.map(q => [q.id, q.acceptedAnswers[0]])) }
+      : { type: 'complete', lessonId, stepId: step.id };
+    progress = updateProgress(progress, course, action, host.grants());
+  }
+  assert.equal(host.session.persist(progress), 'saved');
+  // Simulate a restart before the adaptive completion effect.
+  const reopened = await openAdaptiveHost(disk, content);
+  assert.equal(reopened.engine.access('unit-063').available, false);
+  assert.equal(await reopened.engine.restoreStudy(reopened.session.progress), 'saved');
+  assert.equal(await reopened.engine.restoreStudy(reopened.session.progress), 'unchanged');
+  assert.deepEqual([...reopened.grants()], ['unit-062', 'unit-063']);
+  assert.deepEqual(reopened.session.progress.completedLessons, ['unit-062']);
+});

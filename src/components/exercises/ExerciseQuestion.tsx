@@ -11,7 +11,7 @@ type Props = {
   saved?: QuestionProgress;
   missing: boolean;
   onChange: (value: string) => void;
-  onHint?: (level: 1 | 2) => void;
+  onHint?: (level: 1 | 2) => void | Promise<boolean>;
 };
 
 /** Controlled question: checking and focus are owned by the exercise group. */
@@ -43,10 +43,11 @@ export function ExerciseQuestion({ question, index, value, saved, missing, onCha
         </label>}
       {question.hints && !feedback && <div>
         {question.hints.slice(0, hintLevel).map(hint => <p key={hint}>{hint}</p>)}
-        {hintLevel < 2 && <button type="button" className="button button-secondary" onClick={() => {
+        {hintLevel < 2 && <button type="button" className="button button-secondary" onClick={async () => {
           const level = hintLevel === 0 ? 1 : 2;
-          onHint?.(level);
-          setHintLevel(level);
+          // In the pilot a hint may affect evidence after reload, so display it
+          // only once its exposure can be recovered.
+          if (await onHint?.(level) !== false) setHintLevel(level);
         }}>{hintLevel === 0 ? 'Подсказка' : 'Ещё подсказка'}</button>}
       </div>}
       {missing && <p id={missingId} className="missing-answer">Ответьте на это задание. Попытка не засчитана.</p>}
