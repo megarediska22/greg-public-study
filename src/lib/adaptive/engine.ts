@@ -15,7 +15,8 @@ import { ADAPTIVE_STORAGE_KEY, openAdaptiveStorage, type AdaptivePersistStatus }
 export type EngineOptions = {
   storage: Pick<Storage, 'getItem' | 'setItem'>;
   rules: CourseRules;
-  bank: Bank;
+  bank?: Bank;
+  storageKey?: string;
   fastBank?: FastBank;
   practice: readonly PracticeItem[];
   legacy: () => LegacyAccess;
@@ -25,18 +26,20 @@ export type EngineOptions = {
 };
 
 export function openAdaptiveEngine(options: EngineOptions) {
-  const { bank, rules, practice, legacy } = options;
+  const { rules, practice, legacy, storageKey = ADAPTIVE_STORAGE_KEY } = options;
+  const bank = options.bank ?? { version: 'disabled', items: [], forms: [] };
+  const legacyDiagnostic = !!options.bank;
   const contentErrors = validateAdaptiveContent(rules, bank, practice);
   const enabled = rules.enabled && contentErrors.length === 0;
-  const readiness = enabled ? validateAdaptiveContent(rules, bank, practice, true) : [];
+  const readiness = enabled && legacyDiagnostic ? validateAdaptiveContent(rules, bank, practice, true) : [];
   const config = { ...rules, enabled };
-  const storage = openAdaptiveStorage(options.storage, emptyAdaptiveState(), isAdaptiveState);
+  const storage = openAdaptiveStorage(options.storage, emptyAdaptiveState(), isAdaptiveState, storageKey);
   let state = storage.data;
   let pending = Promise.resolve();
   // Preserve the highest confirmed hint level while the current tab is open.
   const localHints = new Map<string, 1 | 2>();
   const criteria = new Map([...pilotCriteria, ...rules.criteria].map(criterion => [criterionKey(criterion), criterion]));
-  const active = () => state.session && state.session.status !== 'finished' ? state.session : null;
+  const active = () => legacyDiagnostic && state.session && state.session.status !== 'finished' ? state.session : null;
 
   function commit(change: (current: AdaptiveState) => AdaptiveState, replaceProtected = false): Promise<AdaptivePersistStatus> {
     async function work(): Promise<AdaptivePersistStatus> {
@@ -47,7 +50,7 @@ export function openAdaptiveEngine(options: EngineOptions) {
         return result;
       };
       const locks = options.locks ?? globalThis.navigator?.locks;
-      try { return locks ? await locks.request(ADAPTIVE_STORAGE_KEY, write) : write(); }
+      try { return locks ? await locks.request(storageKey, write) : write(); }
       catch { return 'unavailable'; }
     }
     const operation = pending.then(work);
@@ -78,7 +81,7 @@ export function openAdaptiveEngine(options: EngineOptions) {
   }
   function placement() {
     const session = state.session;
-    if (!session || session.status !== 'finished') return null;
+    if (!legacyDiagnostic || !session || session.status !== 'finished') return null;
     const fresh = session.reason === 'manual' || session.reason === 'incompatible' ? undefined : session.events;
     return currentPlacement(config, legacy(), state.grants, state.history, fresh);
   }
@@ -151,7 +154,7 @@ export function openAdaptiveEngine(options: EngineOptions) {
       const current = legacy();
       return { showChoice: enabled && !current.resume && !state.grants.length,
         preA1: enabled ? preA1(config) : null, a1: safeStart(config), resume: current.resume,
-        diagnosticAvailable: enabled && !readiness.length &&
+        diagnosticAvailable: enabled && legacyDiagnostic && !readiness.length &&
           !!beginDiagnostic('availability', bank, config, state.history, [...state.exposed, ...(active()?.exposed ?? [])]),
         resumable: active() ? canResumeDiagnostic(active()!, bank, config) : false,
         incompatibleDraft: active() ? !canResumeDiagnostic(active()!, bank, config) : false,
@@ -159,7 +162,7 @@ export function openAdaptiveEngine(options: EngineOptions) {
     },
     diagnostic() {
       const session = state.session;
-      if (!session) return null;
+      if (!legacyDiagnostic || !session) return null;
       // Drafts and active sessions expose neither submitted correctness nor keys.
       return { id: session.id, formId: session.formId, status: session.status,
         answered: session.cursor, presented: session.presented,
@@ -167,7 +170,7 @@ export function openAdaptiveEngine(options: EngineOptions) {
     },
     begin(id: string) {
       return commit(current => {
-        if (!enabled || current.results.some(result => result.id === id) || current.session?.id === id || readiness.length) return current;
+        if (!enabled || !legacyDiagnostic || current.results.some(result => result.id === id) || current.session?.id === id || readiness.length) return current;
         const draft = active();
         if (draft) {
           if (canResumeDiagnostic(draft, bank, config)) return current;
@@ -177,16 +180,16 @@ export function openAdaptiveEngine(options: EngineOptions) {
       });
     },
     submit(submission: Submission) {
-      return commit(current => enabled && current.session ? advance(current, submitDiagnostic(current.session, submission, bank, config, current.history, current.exposed)) : current);
+      return commit(current => enabled && legacyDiagnostic && current.session ? advance(current, submitDiagnostic(current.session, submission, bank, config, current.history, current.exposed)) : current);
     },
     diagnosticAction(action: 'pause' | 'resume' | 'finish' | 'upper' | 'decline-upper') {
-      return commit(current => enabled && current.session ? advance(current, changeDiagnostic(current.session, action, bank, config, current.history, current.exposed)) : current);
+      return commit(current => enabled && legacyDiagnostic && current.session ? advance(current, changeDiagnostic(current.session, action, bank, config, current.history, current.exposed)) : current);
     },
     knowledge() {
       return [...criteria.values()].map(criterion => ({ criterion, ...foldKnowledge(state.history, criterion, config.withdrawnKeys) }));
     },
     result() {
-      if (state.session?.status !== 'finished') return null;
+      if (!legacyDiagnostic || state.session?.status !== 'finished') return null;
       const session = state.session;
       const record = state.results.at(-1);
       const automatic = session.reason !== 'manual' && session.reason !== 'incompatible';
@@ -210,7 +213,7 @@ export function openAdaptiveEngine(options: EngineOptions) {
       });
     },
     declinePlacement() {
-      return commit(current => current.session?.status === 'finished' ? chooseResult(current, { type: 'declined' }) : current);
+      return commit(current => legacyDiagnostic && current.session?.status === 'finished' ? chooseResult(current, { type: 'declined' }) : current);
     },
     advice(lesson: string, includeDismissed = false) {
       return reviewAdvice(config, state.history, state.dismissals, lesson, includeDismissed);
@@ -295,6 +298,7 @@ export function openAdaptiveEngine(options: EngineOptions) {
       if (status === 'saved') localHints.clear();
       return status;
     },
+    verifyStorage() { return commit(current => current); },
     storageStatus: () => storage.status,
     recoveryKey: () => storage.recoveryKey,
   };

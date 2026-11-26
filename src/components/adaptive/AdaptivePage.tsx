@@ -31,8 +31,11 @@ function reason(start: Start) {
 
 export default function AdaptivePage({ route }: { route: string }) {
   const adaptive = useAdaptive();
-  return adaptive?.host.engine.fast && !route.startsWith('/checkpoint/')
-    ? <FastPlacementPage route={route} /> : <LegacyAdaptivePage route={route} />;
+  if (route.startsWith('/checkpoint/')) return <section className="lesson-panel adaptive-panel" aria-label="Подбор учебного старта">
+    <div className="lesson-panel-content"><Checkpoint id={route.slice('/checkpoint/'.length)} /></div>
+  </section>;
+  if (__ONLINE_BETA__ || adaptive?.host.engine.fast) return <FastPlacementPage route={route} />;
+  return import.meta.env.DEV ? <LegacyAdaptivePage route={route} /> : null;
 }
 
 function LegacyAdaptivePage({ route }: { route: string }) {
@@ -52,7 +55,6 @@ function LegacyAdaptivePage({ route }: { route: string }) {
   const { engine } = host;
   const entry = engine.entry();
   const diagnostic = engine.diagnostic();
-  const checkpointId = route.startsWith('/checkpoint/') ? route.slice('/checkpoint/'.length) : null;
   const course = '#/course/a1';
 
   function hrefFor(id: string) {
@@ -119,7 +121,7 @@ function LegacyAdaptivePage({ route }: { route: string }) {
 
   return <section ref={panel} className="lesson-panel adaptive-panel" aria-label="Подбор учебного старта">
     <div className="lesson-panel-content">
-      {checkpointId ? <Checkpoint id={checkpointId} /> : route === '/start' ? <>
+      {route === '/start' ? <>
         <h1 tabIndex={-1}>{entry.showChoice ? 'Начать с нуля' : 'Продолжить обучение'}</h1>
         {entry.resume && lessonName(entry.resume) && <p>Ваш урок — «{lessonName(entry.resume)}».</p>}
         {!entry.preA1 && <p>Подготовительный раздел пока недоступен. Можно начать с первого урока A1.</p>}

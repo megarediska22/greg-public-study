@@ -47,22 +47,28 @@ function ReadyProgressProvider({ children, loaded, practice, adaptive, reportAda
   const latestProgress = useRef(loaded.progress);
   const [saveStatus, setSaveStatus] = useState<SaveStatus>(loaded.unavailable ? 'unavailable' : 'unchanged');
   const explicitReset = useRef(false);
+  const resetting = useRef(false);
   const savedProgress = useRef(loaded.progress);
   const canPersist = !adaptive?.protectedData && !suspendPersistence;
   useEffect(() => {
-    if (!canPersist) return;
-    const result = loaded.persist(progress, { allowReset: explicitReset.current });
+    if (!canPersist || resetting.current) return;
+    const options = { allowReset: explicitReset.current };
     explicitReset.current = false;
-    setSaveStatus(result);
-    if (adaptive && (result === 'saved' || result === 'unchanged')) {
-      adaptive.sync(progress);
-      if (progress !== savedProgress.current) reportAdaptiveStatus?.('saved');
-      const newlyCompleted = progress.completedLessons.filter(id => !savedProgress.current.completedLessons.includes(id));
-      savedProgress.current = progress;
-      void adaptive.engine.restoreStudy(progress, newlyCompleted).then(reportAdaptiveStatus);
+    function apply(result: SaveStatus) {
+      setSaveStatus(result);
+      if (adaptive && (result === 'saved' || result === 'unchanged')) {
+        adaptive.sync(progress);
+        if (progress !== savedProgress.current) reportAdaptiveStatus?.('saved');
+        const newlyCompleted = progress.completedLessons.filter(id => !savedProgress.current.completedLessons.includes(id));
+        savedProgress.current = progress;
+        void adaptive.engine.restoreStudy(progress, newlyCompleted).then(reportAdaptiveStatus);
+      }
     }
+    if (adaptive?.persistProgress) void adaptive.persistProgress(progress, options).then(apply);
+    else apply(loaded.persist(progress, options));
   }, [progress, canPersist, adaptive, loaded, reportAdaptiveStatus]);
   const dispatch = useCallback((action: ProgressAction) => {
+    if (resetting.current) return;
     const before = latestProgress.current;
     if (adaptive && !adaptive.protectedData && !adaptive.engine.access(action.lessonId).available) return;
     if (adaptive && action.type === 'complete' && action.stepId === 'summary') {
@@ -83,18 +89,31 @@ function ReadyProgressProvider({ children, loaded, practice, adaptive, reportAda
     setProgress(latestProgress.current);
   }
   async function resetPilot() {
-    if (!adaptive || !canPersist) return false;
-    const next = emptyProgress(getProgressCourse());
-    const status = loaded.persist(next, { allowReset: true });
-    setSaveStatus(status);
-    if (status !== 'saved' && status !== 'unchanged') return false;
-    latestProgress.current = next;
-    setProgress(next);
-    const adaptiveStatus = await adaptive.engine.resetAfterConfirmation();
-    reportAdaptiveStatus?.(adaptiveStatus);
-    if (adaptiveStatus !== 'saved' && adaptiveStatus !== 'unchanged') return false;
-    window.location.reload();
-    return true;
+    if (!adaptive || !canPersist || resetting.current) return false;
+    resetting.current = true;
+    try {
+      if (adaptive.persistProgress) {
+        const adaptiveStatus = await adaptive.engine.verifyStorage();
+        if (adaptiveStatus !== 'saved' && adaptiveStatus !== 'unchanged') {
+          reportAdaptiveStatus?.(adaptiveStatus);
+          return false;
+        }
+      }
+      const next = emptyProgress(getProgressCourse());
+      const options = { allowReset: true };
+      const status = adaptive.persistProgress ? await adaptive.persistProgress(next, options) : loaded.persist(next, options);
+      setSaveStatus(status);
+      if (status !== 'saved' && status !== 'unchanged') return false;
+      latestProgress.current = next;
+      setProgress(next);
+      const adaptiveStatus = await adaptive.engine.resetAfterConfirmation();
+      reportAdaptiveStatus?.(adaptiveStatus);
+      if (adaptiveStatus !== 'saved' && adaptiveStatus !== 'unchanged') return false;
+      window.location.reload();
+      return true;
+    } finally {
+      resetting.current = false;
+    }
   }
 
   const reportHint: PracticePort['hint'] | undefined = adaptive && canPersist

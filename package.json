@@ -8,6 +8,8 @@
     "typecheck": "tsc --noEmit",
     "test": "node --experimental-strip-types --test tests/*.test.mjs",
     "build": "npm run typecheck && vite build && node scripts/verify-production.mjs",
+    "build:beta": "npm run typecheck && vite build --mode beta && node scripts/verify-production.mjs --beta",
+    "prebuild:beta": "npm run course:refresh",
     "qa": "node scripts/start-local-qa.mjs",
     "verify:production": "node scripts/verify-production.mjs",
     "preview": "vite preview --host 127.0.0.1",

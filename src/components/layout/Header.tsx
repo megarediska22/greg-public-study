@@ -3,7 +3,9 @@ import logo from '../../../assets/brand/Greg Public Study Logo.png';
 import lightLogo from '../../../assets/brand/greg-public-study-logo-light.png';
 import { Icon } from '../Icon';
 
-export function Header({ route, themeStorageKey = 'gps.theme.v1' }: { route: string; themeStorageKey?: string }) {
+export function Header({ route, themeStorageKey = 'gps.theme.v1', persistTheme }: {
+  route: string; themeStorageKey?: string; persistTheme?: (theme: 'light' | 'dark') => Promise<boolean>;
+}) {
   const [theme, setTheme] = useState(() => document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light');
   const [menuOpen, setMenuOpen] = useState(false);
   const [storageUnavailable, setStorageUnavailable] = useState(false);
@@ -13,7 +15,8 @@ export function Header({ route, themeStorageKey = 'gps.theme.v1' }: { route: str
     document.documentElement.style.colorScheme = next;
     document.querySelector('meta[name="theme-color"]')?.setAttribute('content', next === 'dark' ? '#121212' : '#F7F7F7');
     setTheme(next);
-    try { localStorage.setItem(themeStorageKey, next); } catch { setStorageUnavailable(true); }
+    if (persistTheme) void persistTheme(next).then(saved => setStorageUnavailable(!saved));
+    else if (!__ONLINE_BETA__) try { localStorage.setItem(themeStorageKey, next); } catch { setStorageUnavailable(true); }
   }
   return <header className="site-header">
     <div className="header-inner">

@@ -24,7 +24,9 @@ export function legacyAccess(progress: Progress, course: readonly CourseEntry[])
 }
 
 /** Opening never writes. The validator must accept only complete, JSON-safe snapshots. */
-export function openAdaptiveStorage<T>(storage: StoragePort, initial: T, isData: (value: unknown) => value is T) {
+export function openAdaptiveStorage<T>(storage: StoragePort, initial: T, isData: (value: unknown) => value is T,
+  storageKey = ADAPTIVE_STORAGE_KEY) {
+  const recoveryPrefix = `${storageKey}.recovery.`;
   function encode(value: T): string | null {
     try {
       if (!isData(value)) return null;
@@ -43,7 +45,7 @@ export function openAdaptiveStorage<T>(storage: StoragePort, initial: T, isData:
   let recoveryKey: string | null = null;
   let canWrite = true;
   try {
-    expectedRaw = storage.getItem(ADAPTIVE_STORAGE_KEY);
+    expectedRaw = storage.getItem(storageKey);
     if (expectedRaw !== null) {
       try {
         const value: unknown = JSON.parse(expectedRaw);
@@ -64,13 +66,13 @@ export function openAdaptiveStorage<T>(storage: StoragePort, initial: T, isData:
     if ((status === 'corrupt' || status === 'unsupported') && !replaceProtected) return 'protected';
     try {
       // Check even no-op saves: a stale in-memory snapshot is not current storage.
-      if (storage.getItem(ADAPTIVE_STORAGE_KEY) !== expectedRaw) return 'conflict';
+      if (storage.getItem(storageKey) !== expectedRaw) return 'conflict';
       if (nextRaw === snapshot && !replaceProtected) return 'unchanged';
       if (expectedRaw !== null) {
         // Keep the exact previous bytes until (and after) the replacement is verified.
-        let candidate = `${ADAPTIVE_RECOVERY_PREFIX}latest`;
+        let candidate = `${recoveryPrefix}latest`;
         if (replaceProtected) {
-          const prefix = `${ADAPTIVE_RECOVERY_PREFIX}${Date.now()}`;
+          const prefix = `${recoveryPrefix}${Date.now()}`;
           candidate = prefix;
           let suffix = 0;
           while (storage.getItem(candidate) !== null) {
@@ -82,11 +84,11 @@ export function openAdaptiveStorage<T>(storage: StoragePort, initial: T, isData:
         if (storage.getItem(candidate) !== expectedRaw) return 'unavailable';
         recoveryKey = candidate;
         // Backup creation may yield to a different writer through the storage port.
-        if (storage.getItem(ADAPTIVE_STORAGE_KEY) !== expectedRaw) return 'conflict';
+        if (storage.getItem(storageKey) !== expectedRaw) return 'conflict';
       }
-      storage.setItem(ADAPTIVE_STORAGE_KEY, nextRaw);
+      storage.setItem(storageKey, nextRaw);
       let written: string | null;
-      try { written = storage.getItem(ADAPTIVE_STORAGE_KEY); }
+      try { written = storage.getItem(storageKey); }
       catch {
         // The commit is uncertain. Reopen before any further write attempt.
         canWrite = false;

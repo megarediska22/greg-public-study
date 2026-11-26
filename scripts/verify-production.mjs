@@ -4,22 +4,41 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const dist = path.join(root, 'dist');
+const beta = process.argv.includes('--beta');
+const dist = path.join(root, beta ? 'dist-beta' : 'dist');
 const files = fs.readdirSync(dist, { recursive: true }).filter(file => /\.(?:js|css|html)$/.test(file));
-assert.ok(files.some(file => file.endsWith('.js')), 'Build dist/ before verifying production');
-const forbidden = ['gps.qa.progress.v1', 'gps.qa.theme.v1', 'mountLocalQa', 'createQaProgress', 'restartQaLesson', 'qa-bar', 'Очистить ответы этого урока', 'Локальная проверка · все уроки', 'stage06-unreleased', 'pk05-unreleased', 'diagnostic-bank-v1', 'diagnostic-bank-v2', 'fast-placement-v1', 'gps.adaptive.v1', 'pilot-form-a', 'pilot-form-b', 'diag-a-', 'diag-b-', 'fixture-ui', 'Fixture key'];
+assert.ok(files.some(file => file.endsWith('.js')), 'Build the requested artifact before verifying it');
+const forbidden = ['gps.qa.progress.v1', 'gps.qa.theme.v1', 'mountLocalQa', 'createQaProgress', 'restartQaLesson', 'qa-bar',
+  'Очистить ответы этого урока', 'Локальная проверка · все уроки', 'stage06-unreleased', 'pk05-unreleased',
+  'diagnostic-bank-v1', 'diagnostic-bank-v2', 'pilot-form-a', 'pilot-form-b', 'fixture-ui', 'Fixture key'];
+if (!beta) forbidden.push('fast-placement-v1', 'fast-placement-bank-v1', 'gps.adaptive.v1', 'diag-a-', 'diag-b-', 'online-beta-v1', 'gps.beta.');
 for (const file of files) {
   const content = fs.readFileSync(path.join(dist, file), 'utf8');
-  for (const marker of forbidden) assert.equal(content.includes(marker), false, `Development-only marker ${marker} in ${file}`);
+  for (const marker of forbidden) assert.equal(content.includes(marker), false, `Excluded marker ${marker} in ${file}`);
   assert.equal(/(?:^|\/)qa[-.]/.test(file), false, `Development QA asset: ${file}`);
 }
-console.log(`Production isolation verified: ${files.length} HTML/JS/CSS files contain no local QA, pilot, or diagnostic bank markers.`);
+const html = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
+assert.ok(html.includes(beta ? "localStorage.getItem('gps.beta.theme.v1')" : "localStorage.getItem('gps.theme.v1')"),
+  'Restore the theme from the selected edition before loading the app');
 
-// Follow only static imports from the entry: new rich units and replay keys must
-// remain separate lazy chunks, including Vite's dependency preload graph.
+// Follow only static imports from the entry: rich units and replay keys stay
+// deferred. Beta uses the projected fast bank and excludes the legacy bank.
 const manifest = JSON.parse(fs.readFileSync(path.join(dist, '.vite/manifest.json'), 'utf8'));
-assert.equal(Object.keys(manifest).some(key => /AdaptivePage|AdaptiveRoot|adaptivePilot|adaptive\/fast\/|content\/diagnostic\//.test(key)), false,
-  'Unapproved adaptive pilot must stay out of production entries');
+const entries = Object.keys(manifest);
+assert.equal(entries.some(key => /adaptivePilot|content\/diagnostic\//.test(key)), false, 'Localhost pilot and R/P bank must stay out of releases');
+if (beta) {
+  assert.ok(html.includes('src="/greg-public-study/beta/assets/'), 'Beta assets must use the dedicated Pages base');
+  assert.ok(entries.some(key => /AdaptivePage/.test(key)) && entries.some(key => /content\/onlineBeta/.test(key)),
+    'Beta must include the adaptive host and fast placement entry');
+  const betaAssets = files.filter(file => file.endsWith('.js')).map(file => fs.readFileSync(path.join(dist, file), 'utf8')).join('');
+  for (const marker of ['online-beta-v1', 'fast-placement-bank-v1', 'gps.beta.progress.v1', 'gps.beta.adaptive.v1', 'gps.beta.theme.v1'])
+    assert.ok(betaAssets.includes(marker), `Missing Beta entry or key ${marker}`);
+} else {
+  assert.equal(entries.some(key => /AdaptivePage|AdaptiveRoot|onlineBeta|adaptive\/fast\/|content\/fast-placement\//.test(key)), false,
+    'Stable build must exclude both diagnostic banks and the Beta host');
+}
+console.log(`${beta ? 'Beta' : 'Stable production'} isolation verified across ${files.length} HTML/JS/CSS files.`);
+
 const initial = new Set();
 function visit(key) {
   if (initial.has(key)) return;

@@ -9,9 +9,11 @@ import { lessons } from './content/course';
 import { LinkButton } from './components/LinkButton';
 import { useAdaptive } from './components/adaptive/AdaptiveContext';
 
-const AdaptivePage = import.meta.env.DEV ? lazy(() => import('./components/adaptive/AdaptivePage')) : null;
+const AdaptivePage = __ONLINE_BETA__ || import.meta.env.DEV ? lazy(() => import('./components/adaptive/AdaptivePage')) : null;
 
-export function App({ themeStorageKey }: { themeStorageKey?: string } = {}) {
+export function App({ themeStorageKey, persistTheme }: {
+  themeStorageKey?: string; persistTheme?: (theme: 'light' | 'dark') => Promise<boolean>;
+} = {}) {
   const route = useRoute();
   const adaptive = useAdaptive();
   const adaptiveRoute = AdaptivePage && adaptive && (/^\/(start|diagnostic(?:\/new)?|checkpoint\/[^/]+)$/.test(route));
@@ -29,5 +31,5 @@ export function App({ themeStorageKey }: { themeStorageKey?: string } = {}) {
       previousRoute.current = route;
     }
   }, [route, title]);
-  return <><a className="skip-link" href="#main-content" onClick={event => { event.preventDefault(); mainRef.current?.focus(); }}>Перейти к содержимому</a><Header route={route} themeStorageKey={themeStorageKey} /><main id="main-content" className="main-container" tabIndex={-1} ref={mainRef}>{AdaptivePage && adaptiveRoute ? <Suspense fallback={<p role="status">Загружаем учебный маршрут…</p>}><AdaptivePage key={route} route={route} /></Suspense> : route === '/' ? <HomePage /> : route === '/course/a1' || route === '/course/a2' ? <CoursePage level={route === '/course/a2' ? 'A2' : undefined} /> : entry && match ? <LessonPage key={entry.id} entry={entry} stepId={match[2]} /> : <section className="not-found"><h1>Здесь пока нет страницы</h1><p>Вернитесь к программе и выберите доступный урок.</p><LinkButton href="#/course/a1">К курсу A1</LinkButton></section>}</main><Footer /></>;
+  return <><a className="skip-link" href="#main-content" onClick={event => { event.preventDefault(); mainRef.current?.focus(); }}>Перейти к содержимому</a><Header route={route} themeStorageKey={themeStorageKey} persistTheme={persistTheme} /><main id="main-content" className="main-container" tabIndex={-1} ref={mainRef}>{AdaptivePage && adaptiveRoute ? <Suspense fallback={<p role="status">Загружаем учебный маршрут…</p>}><AdaptivePage key={route} route={route} /></Suspense> : route === '/' ? <HomePage /> : route === '/course/a1' || route === '/course/a2' ? <CoursePage level={route === '/course/a2' ? 'A2' : undefined} /> : entry && match ? <LessonPage key={entry.id} entry={entry} stepId={match[2]} /> : <section className="not-found"><h1>Здесь пока нет страницы</h1><p>Вернитесь к программе и выберите доступный урок.</p><LinkButton href="#/course/a1">К курсу A1</LinkButton></section>}</main><Footer /></>;
 }

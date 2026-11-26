@@ -4,6 +4,7 @@ import { ProgressProvider } from '../../lib/ProgressContext';
 import { openAdaptiveHost, type AdaptiveContent, type AdaptiveHost } from '../../lib/adaptiveHost';
 import type { AdaptivePersistStatus } from '../../lib/adaptive/storage';
 import { AdaptiveContext } from './AdaptiveContext';
+import { withStorageLock, type StorageKeys } from '../../lib/betaStorage';
 import { LinkButton } from '../LinkButton';
 
 export const browserStorage = {
@@ -11,7 +12,9 @@ export const browserStorage = {
   setItem: (key: string, value: string) => window.localStorage.setItem(key, value),
 };
 
-export function AdaptiveRoot({ content, storage = browserStorage }: { content: AdaptiveContent; storage?: typeof browserStorage }) {
+export function AdaptiveRoot({ content, storage = browserStorage, storageKeys }: {
+  content: AdaptiveContent; storage?: typeof browserStorage; storageKeys?: StorageKeys;
+}) {
   const [host, setHost] = useState<AdaptiveHost>();
   const [failed, setFailed] = useState(false);
   const [retry, setRetry] = useState(0);
@@ -27,11 +30,11 @@ export function AdaptiveRoot({ content, storage = browserStorage }: { content: A
 
   useEffect(() => {
     let active = true;
-    openAdaptiveHost(storage, content)
+    openAdaptiveHost(storage, content, storageKeys)
       .then(value => { if (active) setHost(value); })
       .catch(() => { if (active) setFailed(true); });
     return () => { active = false; };
-  }, [storage, content, retry]);
+  }, [storage, content, storageKeys, retry]);
 
   async function write(operation: () => Promise<AdaptivePersistStatus>) {
     if (writing.current) return false;
@@ -48,6 +51,14 @@ export function AdaptiveRoot({ content, storage = browserStorage }: { content: A
     }
   }
 
+  const persistTheme = storageKeys ? async (theme: 'light' | 'dark') => {
+    try {
+      return await withStorageLock(storageKeys.theme, () => {
+        storage.setItem(storageKeys.theme, theme);
+        return storage.getItem(storageKeys.theme) === theme;
+      });
+    } catch { return false; }
+  } : undefined;
   if (!host) return <main className="main-container"><p role="status">{failed ? 'Загрузить сохранённые данные не удалось.' : 'Восстанавливаем прогресс…'}</p>
     {failed && <button className="button button-secondary" onClick={() => { setFailed(false); setRetry(value => value + 1); }}>Повторить загрузку</button>}</main>;
   const visited = host.session.progress.lastVisited;
@@ -76,6 +87,6 @@ export function AdaptiveRoot({ content, storage = browserStorage }: { content: A
         </div>
       </div>}
     </section>}
-    <ProgressProvider adaptive={host} reportAdaptiveStatus={report} suspendPersistence={error === 'conflict' || error === 'protected'}><App /></ProgressProvider>
+    <ProgressProvider adaptive={host} reportAdaptiveStatus={report} suspendPersistence={error === 'conflict' || error === 'protected'}><App themeStorageKey={storageKeys?.theme} persistTheme={persistTheme} /></ProgressProvider>
   </AdaptiveContext>;
 }

@@ -9,7 +9,7 @@
     <script>
       (() => {
         let theme = 'light';
-        try { if (localStorage.getItem('gps.theme.v1') === 'dark') theme = 'dark'; } catch {}
+        try { if (localStorage.getItem('%GPS_THEME_KEY%') === 'dark') theme = 'dark'; } catch {}
         document.documentElement.dataset.theme = theme;
         document.documentElement.style.colorScheme = theme;
         document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#121212' : '#F7F7F7';

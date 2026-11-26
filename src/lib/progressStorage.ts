@@ -10,12 +10,14 @@ function hasProgress(progress: Progress): boolean {
 }
 
 /** Opening a session only reads. Recovery never replaces the original on startup. */
-export function openProgressSession(storage: StoragePort, course: readonly CourseEntry[], granted?: ReadonlySet<string>) {
+export function openProgressSession(storage: StoragePort, course: readonly CourseEntry[], granted?: ReadonlySet<string>, progressKey = PROGRESS_KEY) {
+  const backupPrefix = `${progressKey}.backup.`;
+  const verifyWrite = progressKey !== PROGRESS_KEY;
   let expectedRaw: string | null = null;
   let readable = true;
   let initial: ReturnType<typeof decodeProgress>;
   try {
-    expectedRaw = storage.getItem(PROGRESS_KEY);
+    expectedRaw = storage.getItem(progressKey);
     initial = decodeProgress(expectedRaw, course, granted);
   } catch {
     readable = false;
@@ -29,22 +31,26 @@ export function openProgressSession(storage: StoragePort, course: readonly Cours
     // A failed read must never become a blind write if storage later becomes writable.
     if (!readable) return 'unavailable';
     const nextRaw = JSON.stringify(progress);
-    if (nextRaw === savedSnapshot && !allowReset) return 'unchanged';
+    if (!verifyWrite && nextRaw === savedSnapshot && !allowReset) return 'unchanged';
     try {
       // Do not let a stale tab replace another tab's newly saved progress.
-      if (storage.getItem(PROGRESS_KEY) !== expectedRaw) return 'conflict';
+      if (storage.getItem(progressKey) !== expectedRaw) return 'conflict';
+      if (nextRaw === savedSnapshot && !allowReset) return 'unchanged';
       if (!allowReset && !hasProgress(progress) && hasProgress(initial.progress)) return 'empty-blocked';
       if ((needsBackup || allowReset) && expectedRaw !== null) {
         try {
-          const prefix = `${PROGRESS_BACKUP_PREFIX}${Date.now()}`;
+          const prefix = `${backupPrefix}${Date.now()}`;
           let candidate = prefix;
           let suffix = 0;
           while (storage.getItem(candidate) !== null) candidate = `${prefix}.${++suffix}`;
           storage.setItem(candidate, expectedRaw);
+          if (verifyWrite && storage.getItem(candidate) !== expectedRaw) return 'backup-failed';
           backupKey = candidate;
         } catch { return 'backup-failed'; }
       }
-      storage.setItem(PROGRESS_KEY, nextRaw);
+      if (verifyWrite && storage.getItem(progressKey) !== expectedRaw) return 'conflict';
+      storage.setItem(progressKey, nextRaw);
+      if (verifyWrite && storage.getItem(progressKey) !== nextRaw) return 'conflict';
       expectedRaw = nextRaw;
       savedSnapshot = nextRaw;
       initial = { progress, recovered: false };
