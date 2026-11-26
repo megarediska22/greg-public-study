@@ -2,6 +2,7 @@
 
 ## Development
 
+- Integrate the A1–A2 diagnostic bank for the localhost pilot. Two independent forms contain 96 items. Production excludes the bank. Learner pilot and public release remain pending. See the [bank review](docs/DIAGNOSTIC_BANK_REVIEW.md).
 - Complete Stage 07 in develop: integrate PK-02–PK-05, reach 140 lessons and add all 13 local pilot checkpoints. Diagnostic forms and public release remain pending. See the [PK-02–PK-05 review](docs/PK_02_05_REVIEW.md).
 - Integrate PK-01 into develop: five new lessons, nine optional questions in existing lessons, legacy progress compatibility, and the local CP-PRE check. See the [PK-01 review](docs/PK_01_REVIEW.md).
 
