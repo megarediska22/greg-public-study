@@ -1,0 +1,42 @@
+# Stage 05 handoff · Fast Adaptive Placement
+
+Source baseline 097295a0470e0ab3acd24d24e7c08bb6b8af25c8. Feature branch `codex/fast-placement-methodology`. Start later work at the verified integrated develop SHA recorded by 01. [Master brief](../MASTER_SPEC.md) · [Status](../PIPELINE_STATUS.md) · [Method](../METHODOLOGY.md)
+
+## 03 · Learning Engine
+
+Reuse version pinning, family tracking, ready-catalog validation, resume and the explicit single-lesson grant contract in the adaptive pilot. Route and fold fast observations inside a separate versioned placement namespace. Only vetted ordinary-learning observations reach the independent evidence fold. Supersede the legacy active placement entry with the fast entry after the real bank and UI are integrated. An incompatible old draft may be archived or kept read-only with a clear restart message. Preserve existing course progress, grants, prior diagnostic information and exposed family history. The persisted selection state must be deterministic on resume. Verify idempotence and revalidate the selected option at acceptance.
+
+Publish the exact engine interface before 04 starts. It needs slot identity (method and bank version, form, semantic group, block or phase, role, variant and family), display prompt, deterministic option IDs or individual token IDs and labels, accepted sequences, declared target/attribution, and answer, skip and unknown events. Submit choice by option identity and word card answers by an ordered list of distinct instance IDs. Compare their words or equivalent token classes so either instance of an indistinguishable repeated word works. Reject unknown IDs and reusing the same instance twice. Grade full approved sequences including natural alternate orders and only tolerate explicitly irrelevant punctuation or case. Display order is pinned and should avoid revealing the entire key order. Keep answers, correctness and explanations out of prompt data. Pin the item/key revision and presented order. Cover malformed submissions, exhaustion after two exposed forms, isolation from ordinary progress, stale actions, reload and repeat. Provide synthetic fixtures for tests without shipping a demonstrator bank as the learner bank.
+
+The local pilot and production exclusion remain owned by the existing development gate and release verifier. Implementation should be confined to adaptive placement and its consumers. Record a downstream filename or anchor in the stage 03 handoff for the exact interface and fixtures.
+
+## 04 · Lessons & QA
+
+Use two independent forms with identical semantic roles across corresponding slots. Start with existing quality items and appropriate scope. Review material, operation and answer cues, not just family ID uniqueness. If old and revised variants share a near-identical stimulus or operation, share lineage/family for exposure checks. Reuse item identity for a genuine revision and version changed meaning, key or format. Cover the mandatory entry slots, actual routes, branch probes and the conditional clarifiers needed by the acceptance rows. The count is determined by those slots and the available independent source material. Clarifiers must use a different context or task operation so a diagnostic recheck is not a replay.
+
+Offer several kinds of everyday situation across both forms. Test BE, ASK, ORIENT and NOTE through discrete operations with short reading. Measure A2 through two-condition decisions and bounded card construction of a relevant fact and useful next step. For S, require meaningful selection or arrangement. Supplying the full target form in the prompt or listing words in key order invalidates independent route support. Include only relevant distractors, short usable card sets and unambiguous American English keys. The two closed issues from the previous bank review (disclosed BE, excluded admissible printer wording) are regression examples. Record actual route and item counts, exact edited versions, family independence and the inventory audit. Leave 140 ordinary lessons, 1,011 steps and 2,267 course questions intact.
+
+## 02 · Foundation & Design
+
+Keep the existing course design and place the fast pilot behind the development gate. Show one task and one short action per screen. Tap a choice and allow correction before submitting. If testing auto-advance, use it only where a deliberate tap commits without likely accidental submits. Word ordering always has explicit confirmation. Cards can be inserted, removed and repositioned via keyboard and touch through simple controls, including identical labels represented by different tokens. Before result show no correct answers or pedagogical feedback. Use current item number with stage or a truthful variable range. Avoid a percent with a moving denominator. Show action labels for pause, deliberate finish and skip. Preserve pause or reload, distinguish resume from retake, and explain exhausted forms without halting course access.
+
+Offer a clear entry choice on home. Preserve prior course resume beside diagnosis. On the result, show a concrete provisional suggestion and a brief reason when there is enough evidence. For sparse or conflicting data use “Пока недостаточно данных для точной рекомендации” and show usable observations and the relevant choices. Keep resume prominent. Use course lesson titles and show elective Pre-A1 and A1 only where relevant. The first lesson button can read “Начать с основ” as a voluntary option when evidence is sparse. Never imply absence of knowledge from skipped items or a confirmed CEFR level. Verify light/dark at 360/1280, keyboard focus and announcement, no horizontal overflow and touch interaction.
+
+## Final acceptance fixtures and pilot
+
+| Fixture | Expected result |
+| --- | --- |
+| Novice, two direct LAT negatives | Elective Pre-A1 at item 2. A1 can still be chosen. |
+| LAT + and BE − twice with ASK not supporting a later path | Targeted `to-be` at item 7 when BE follow-up supplies the second negative. |
+| LAT and BE +, ASK − twice, other probes do not satisfy upper branching | Targeted `do-does` at item 8. Retain an existing later resume as the primary action. |
+| LAT, BE and ASK +, ORIENT and NOTE unresolved, later skips | Keep preliminary `hours-and-signs` even if later items are skipped. |
+| All six A2 entry criteria +, CONSTRAINT or WRITE unclear | Provisional `unit-042` after upper block and at most two useful clarifiers. |
+| A2 entry profile, both CONSTRAINT + and WRITE S + | Provisional `unit-062` after upper block (normally 10). |
+| Five or more skips, no usable profile | Insufficient, with transparent elective options and existing resume. No invented gap and no forced fallback. |
+| R + and independent S − on one criterion | Disputed. A usable clarifier or unresolved result. Existing access and knowledge retained. |
+| Cards repeat a word, allow an alternate valid order, or are rearranged before submission | Identity of each token remains distinct, valid sequences are accepted, grading occurs once on submit, result remains S. |
+| Pause or reload, finish, retake, then exhaust | Resume same form and order. Early finish uses eligible observed data alone. The retake uses fresh material. Exhaustion provides course entry. |
+| All paths and accepted lesson choices | Max 15 presentations, zero mandatory typing, one explicit new grant at most, no completion from placement, no modification of ordinary progress. |
+| Production and ordinary learning | Production excludes pilot bundles and IDs. The course preserves counts and progress. Practice still observes qualifying P. |
+
+Use staged volunteer observation with anonymized notes and no account or analytics service. Alternate A/B, include first-time and returning learners, exercise mobile/desktop, and include a learner with scattered A1 gaps. Record actual presented and skipped counts, active time, the point where fatigue starts, card corrections, early exit comprehension and whether the first suggested lesson is usable. Ask the learner to try a fresh task from the recommendation without knowing the basis of the suggestion. Record if it was too easy, too hard or reasonable and why. The 3–5 minute target, branch thresholds, friction and form comparability remain hypotheses. For owner acceptance, try an upper route, skip several later items, change the order of cards, reload mid-test, and verify both the explanation and previous progress. [Earlier pilot plan](../../../research/curriculum-assessment/assessment/PILOT_VALIDATION_PLAN.md)
