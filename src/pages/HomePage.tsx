@@ -1,3 +1,4 @@
+import { useAdaptive } from '../components/adaptive/AdaptiveContext';
 import { formatLessonCount } from '../lib/format';
 import { LinkButton } from '../components/LinkButton';
 import { Icon } from '../components/Icon';
@@ -7,14 +8,20 @@ import { lessons } from '../content/course';
 export function HomePage() {
   const { progress } = useProgress();
   const last = progress.lastVisited;
+  const adaptive = useAdaptive();
+  const entry = adaptive?.host.engine.entry();
+  const next = lessons.find(lesson => entry?.resume === lesson.id);
   return <>
     <section className="hero" aria-labelledby="home-title">
       <div className="hero-copy">
         <span className="pill"><span className="status-dot" />Бесплатно. Без регистрации.</span>
         <h1 id="home-title">Английский.<br />С понятного<br />начала.</h1>
         <p className="lead">Небольшие уроки, понятные правила и практика. Учитесь в своём темпе — шаг за шагом, от первой фразы.</p>
-        <LinkButton href={last ? `#/lesson/${last.lessonId}/${last.stepId}` : '#/course/a1'}>{last ? 'Продолжить учиться' : 'Начать учиться'} <Icon name="arrow" /></LinkButton>
-        <p className="hero-note">Первый шаг — базовый курс A1</p>
+        <LinkButton href={last ? `#/lesson/${last.lessonId}/${last.stepId}` : adaptive ? '#/start' : '#/course/a1'}>{last ? adaptive ? 'Продолжить обучение' : 'Продолжить учиться' : 'Начать учиться'} <Icon name="arrow" /></LinkButton>
+        <p className="hero-note">{next ? `Ваш урок — «${next.title}».` : 'Первый шаг — базовый курс A1'}</p>
+        {adaptive && <a className="text-link" href={adaptive.host.engine.result() ? '#/diagnostic/new' : '#/diagnostic'}>
+          {adaptive.host.engine.result() ? 'Пройти диагностику снова' : 'Подобрать учебный старт'}
+        </a>}
       </div>
       <div className="study-visual" aria-label="Формы глагола to be: I am, you are, we are">
         <div className="notebook-top"><Icon name="book" /><span>Ваше первое знакомство с английским</span><span className="level-tag">A1</span></div>

@@ -1,3 +1,5 @@
+import { useAdaptive } from '../components/adaptive/AdaptiveContext';
+import { LessonAdvice } from '../components/adaptive/LessonAdvice';
 import { useEffect, useState } from 'react';
 import { lessons } from '../content/course';
 import { loadLesson } from '../content/extension/registry';
@@ -12,11 +14,15 @@ import { LessonContent } from '../components/lessons/LessonContent';
 
 export function LessonPage({ entry, stepId }: { entry: CourseEntry; stepId: string }) {
   const { progress, dispatch } = useProgress();
+  const adaptive = useAdaptive();
+  const engine = adaptive?.host.protectedData ? null : adaptive?.host.engine;
+  const checkpoint = engine ? adaptive?.host.checkpointFor(entry.id) : undefined;
+  const bridgePending = Boolean(checkpoint?.mode === 'BRIDGE' && checkpoint.next && !engine?.access(checkpoint.next).available);
   const [lesson, setLesson] = useState<Lesson | undefined>(entry.lesson);
   const [loadFailed, setLoadFailed] = useState(false);
   const [retry, setRetry] = useState(0);
   const step = lesson?.steps.find(item => item.id === stepId);
-  const unlocked = isLessonUnlocked(progress, lessons, entry.id);
+  const unlocked = engine?.access(entry.id).available ?? isLessonUnlocked(progress, lessons, entry.id);
   useEffect(() => {
     if (!unlocked || lesson) return;
     let active = true;
@@ -40,7 +46,7 @@ export function LessonPage({ entry, stepId }: { entry: CourseEntry; stepId: stri
   const complete = score ? score.correct === score.total : isStepComplete(progress, lesson.id, step.id);
   const completedCount = progress.lessons[lesson.id]?.completedSteps.length ?? 0;
   const nextLesson = lessons[lessons.indexOf(entry) + 1];
-  const nextAccessible = nextLesson && isLessonUnlocked(progress, lessons, nextLesson.id);
+  const nextAccessible = nextLesson && (engine?.access(nextLesson.id).available ?? isLessonUnlocked(progress, lessons, nextLesson.id));
   function advance() {
     if (!lesson || !step || (!complete && step.completion !== 'acknowledge')) return;
     dispatch({ type: 'complete', lessonId: lesson.id, stepId });
@@ -49,9 +55,11 @@ export function LessonPage({ entry, stepId }: { entry: CourseEntry; stepId: stri
   return <div className="lesson-page"><a className="back-link" href="#/course/a1"><Icon name="back" /> К программе курса</a>
     <div className="lesson-heading"><div><span className="muted">{lesson.band ?? lesson.level} / {lesson.kind === 'vocabulary' ? 'Словарь' : 'Грамматика'} / Урок {String(lessons.indexOf(entry) + 1).padStart(2, '0')}</span><h1>{entry.title} <span>{entry.subtitle}</span></h1></div>{lesson.sample && <span className="pill">Демонстрационный контент</span>}</div>
     <div className="lesson-progress"><div><span>Прогресс урока</span><span aria-live="polite">{completedCount} из {lesson.steps.length} шагов пройдено</span></div><progress value={completedCount} max={lesson.steps.length} aria-label={`Прогресс урока: ${completedCount} из ${lesson.steps.length} шагов`} /></div>
-    <div className="lesson-layout"><StepNavigation lesson={lesson} current={stepId} /><section className="lesson-panel" aria-label={step.title}><div className="lesson-panel-content"><LessonContent key={`${lesson.id}/${stepId}`} lesson={lesson} step={step} />{step.type === 'summary' && complete && <LinkButton href={nextAccessible ? `#/lesson/${nextLesson.id}/intro` : '#/course/a1'}>{nextAccessible ? 'К следующему уроку' : 'К программе курса'} <Icon name="arrow" /></LinkButton>}</div>
+    <div className="lesson-layout"><StepNavigation lesson={lesson} current={stepId} /><section className="lesson-panel" tabIndex={-1} aria-label={step.title}><div className="lesson-panel-content">{engine && <LessonAdvice key={lesson.id} lessonId={lesson.id} />}
+      {engine && checkpoint && (step.type === 'review' || step.type === 'summary' && bridgePending) && <p><LinkButton href={`#/checkpoint/${checkpoint.id}`} secondary>Открыть контрольную</LinkButton></p>}
+      <LessonContent key={`${lesson.id}/${stepId}`} lesson={lesson} step={step} />{step.type === 'summary' && complete && <LinkButton href={nextAccessible ? `#/lesson/${nextLesson.id}/intro` : '#/course/a1'}>{nextAccessible ? 'К следующему уроку' : 'К программе курса'} <Icon name="arrow" /></LinkButton>}</div>
       <nav className="lesson-pagination" aria-label="Навигация по уроку">{index > 0 ? <LinkButton secondary href={`#/lesson/${lesson.id}/${lesson.steps[index - 1].id}`}><Icon name="back" /> Назад</LinkButton> : <LinkButton secondary href="#/course/a1"><Icon name="back" /> К курсу</LinkButton>}<span>{index + 1} из {lesson.steps.length}</span>
-        {step.type === 'summary' && complete ? <LinkButton href="#/course/a1">К курсу <Icon name="arrow" /></LinkButton> : <button className="button button-primary" disabled={step.completion === 'all-correct' && !complete} onClick={advance}>{step.type === 'summary' ? 'Завершить урок' : step.type === 'exercise' ? 'Продолжить' : complete ? 'Далее' : step.type === 'review' ? 'Разбор завершён' : 'Прочитано, далее'}<Icon name="arrow" /></button>}
+        {step.type === 'summary' && bridgePending ? <LinkButton href={`#/checkpoint/${checkpoint!.id}`}>К контрольной <Icon name="arrow" /></LinkButton> : step.type === 'summary' && complete ? <LinkButton href="#/course/a1">К курсу <Icon name="arrow" /></LinkButton> : <button className="button button-primary" disabled={step.completion === 'all-correct' && !complete} onClick={advance}>{step.type === 'summary' ? 'Завершить урок' : step.type === 'exercise' ? 'Продолжить' : complete ? 'Далее' : step.type === 'review' ? 'Разбор завершён' : 'Прочитано, далее'}<Icon name="arrow" /></button>}
       </nav>
     </section></div>
   </div>;

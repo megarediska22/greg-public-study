@@ -442,3 +442,12 @@ progress::-moz-progress-bar { background: var(--accent); }
   .batch-actions { border-top: 1px solid var(--border); padding-top: 20px; }
   .batch-check { min-height: 48px; }
 }
+
+.adaptive-panel { max-width: 760px; margin: 32px auto 64px; }
+.adaptive-panel h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); }
+.adaptive-panel .exercise-card legend { font-size: .95rem; color: var(--text); }
+.adaptive-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-block: 16px; }
+.adaptive-result section { border-top: 1px solid var(--border); padding-block: 12px 0; }
+@media (max-width: 600px) {
+  .adaptive-actions > .button { width: 100%; }
+}
