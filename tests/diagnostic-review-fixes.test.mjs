@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
+import snapshot from './fixtures/diagnostic-unmodified-hashes.json' with { type: 'json' };
 import { adaptivePilot } from '../src/content/adaptivePilot.ts';
 import { gradeAnswer } from '../src/lib/grading.ts';
 import { beginDiagnostic, canResumeDiagnostic } from '../src/lib/adaptive/diagnostic.ts';
@@ -41,11 +42,31 @@ test('withdrawn revision-one evidence is excluded and old bank sessions cannot r
   assert.equal(canResumeDiagnostic(session, bank, rules), false);
 });
 
-test('the other 94 authored items retain their exact source', () => {
-  for (const file of ['author.ts', 'formA.ts']) {
-    const old = execFileSync('git', ['show', '6469ba3:src/content/diagnostic/' + file], { encoding: 'utf8' });
-    const current = execFileSync('git', ['diff', '6469ba3', '--', 'src/content/diagnostic/' + file], { encoding: 'utf8' });
-    assert.ok(old.length > 0);
-    assert.equal(current, '');
+// Object keys are sorted recursively; array order and every item field remain significant.
+function canonical(value) {
+  if (Array.isArray(value)) return value.map(canonical);
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(Object.keys(value).sort().map(key => [key, canonical(value[key])]));
   }
+  return value;
+}
+
+function unchangedHashes(items) {
+  return Object.fromEntries(items.filter(item => !snapshot.excluded.includes(item.itemId))
+    .map(item => [item.itemId, createHash('sha256').update(JSON.stringify(canonical(item))).digest('hex')]));
+}
+
+test('the other 94 authored items retain their exact source', () => {
+  assert.deepEqual([...snapshot.excluded].sort(), ['diag-b-email-no-paper', 'diag-b-team-reply']);
+  assert.equal(Object.keys(snapshot.hashes).length, 94);
+  assert.deepEqual(unchangedHashes(bank.items), snapshot.hashes);
+});
+
+test('the baseline comparison detects a changed instruction in an otherwise unchanged item', () => {
+  const mutated = structuredClone(bank.items);
+  const target = mutated.find(item => !snapshot.excluded.includes(item.itemId));
+  target.question.instruction += ' Changed instruction.';
+  assert.throws(() => assert.deepEqual(unchangedHashes(mutated), snapshot.hashes), {
+    code: 'ERR_ASSERTION',
+  });
 });
