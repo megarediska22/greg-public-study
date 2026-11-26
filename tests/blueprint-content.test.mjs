@@ -1,4 +1,5 @@
 import test from 'node:test';
+import { readFileSync } from 'node:fs';
 import assert from 'node:assert/strict';
 import { lessons, questionCount } from '../src/content/course.ts';
 import { packets } from '../src/content/blueprint/integration.ts';
@@ -13,6 +14,7 @@ import { validateCourse } from '../src/lib/validation.ts';
 const counts = [
   [4, [12, 12, 12, 12], 31],
   [5, [10, 12, 13], 7],
+  [6, [12, 12, 12], 16],
 ];
 
 const keys = new Map([
@@ -23,6 +25,9 @@ const keys = new Map([
   ['bp-a1-06', ['2:15 p.m.', 'The east door.', 'The lobby.', 'The room.', '10:45', 'at', '61', '4:30', "Hi, Kim. I'll be back at 1:45. Please wait in Room 6.", "Hi, Bo. Wait by the side door. I'll be back at 3:20."]],
   ['bp-a1-07', ['Opened the doors.', 'The hall was cold.', 'Wash the cups.', 'At two on Saturday.', 'opened', 'was', 'finish', '9:20', 'First we opened the gym. Then we checked the balls.', "We changed the room. We didn't send a note.", 'The window was open.', 'Kai finished the signs.']],
   ['bp-a1-08', ['Tuesday at 6:15.', 'Where does Dev work?', 'They moved the piano.', 'Kelly is carrying two bags.', '3:15', 'do', 'open', 'plays', 'Where do you buy lunch?', 'Dana is packing the boxes.', "Drew, I'll be back at 2:40. Please wait in Room 4.", "We opened the side door. We didn't call Sam.", "Hi, Chris. I'll be back at 11:35. Please leave your form on the table by the door."]],
+  ['bp-a2-01', ['The customer.', 'The room.', 'They received the form.', 'Could I pick it up at the side desk?', '2:40', 'Where', 'Monday', 'you', "Could you tell me where to pick up my pass? I'll bring my ID.", "What time will the technician arrive? I'll be home.", 'Could you call me after 2?', 'Could I bring my sister?']],
+  ['bp-a2-02', ['Review the PDF today.', 'Another class has the room first.', 'Friday is not confirmed yet.', 'The blue link is usable again.', 'Friday', 'Mia', 'PNG', 'but', 'Jill, use the short version. Send it by Thursday.', 'Lou, use the new drawing. The map is due Tuesday.', 'The team changed the sheet because it was torn.', 'Lee, the poster is ready. Send the photo.']],
+  ['bp-a2-03', ['The first store was out of bread.', 'They rode later because the bike needed repair.', 'A sign went up.', 'Who did you go with?', '6:40', 'because', 'Thursday', 'did', 'Who showed you the knot?', 'Where did you meet?', 'They took the bus because a tree fell on the tracks.', 'First, we made sandwiches. Then, we baked the bread.']],
 ]);
 
 const full = async () => Promise.all(lessons.map(async entry => ({ ...entry, lesson: await loadLesson(entry.id) })));
@@ -89,6 +94,11 @@ test('a former PK-01 frontier retains access and a resumed partial attempt, with
 test('live mappings match their exact authored question and approved objectives', async () => {
   const { rules, bank, practice } = adaptivePilot;
   const course = await full();
+  const approvedPrerequisites = new Map(readFileSync('research/curriculum-assessment/assessment/CHECKPOINT_SPEC.csv', 'utf8')
+    .trim().split('\n').slice(1).map(line => {
+      const [id, , , , , , prerequisites] = line.split(',', 7);
+      return [id, prerequisites.split(' | ')];
+    }));
   const criteria = new Map(rules.criteria.map(ref => [ref.id, ref]));
   assert.deepEqual(validateCatalogue(), []);
   assert.deepEqual(validateAdaptiveContent(rules, bank, practice), []);
@@ -102,7 +112,8 @@ test('live mappings match their exact authored question and approved objectives'
     assert.equal(item.keyId, q.id + '-key');
     assert.ok(criteria.get(item.criterion.id).objectives.every(id =>
       adaptiveCatalog.sequence.find(row => row.id === item.lessonId).objectives.includes(id) ||
-      adaptiveCatalog.checkpoints.find(row => row.id === item.checkpointId)?.objectives.includes(id)), item.itemId);
+      adaptiveCatalog.checkpoints.find(row => row.id === item.checkpointId)?.objectives.includes(id) ||
+      approvedPrerequisites.get(item.checkpointId)?.includes(id)), item.itemId);
   }
 });
 

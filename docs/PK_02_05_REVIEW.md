@@ -32,3 +32,17 @@ Seven optional questions add fresh material in `unit-031`, `unit-036`, `unit-039
 The local pilot adds CP-031, CP-041 and CP-A1. CP-A1 checks current fresh evidence and confirmed history for action questions, the present-time contrast, schedules and visitor notes. Past events add separate feedback. The ordinary parallel note in the lesson can be practiced after the independent check. Repeating exposed checkpoint families stays practice. There are no alternative diagnostic forms. The independent review caught an initial schedule criterion with only R tasks, a near-duplicate visitor source and missing parallel practice. The schedule now includes a genuine P response. The new visitor stimulus requires checking room access and separating return time from start time.
 
 All 564 tests passed, including live question references, readiness profiles and rejection of unsupported curriculum markers. TypeScript, production build, adaptive catalogue and the extension verification passed. The browser matrix covered 108 layouts with no horizontal overflow. In the local pilot, answering “I don’t know” on all seven CP-A1 questions produced targeted feedback and opened `unit-042` through the supported transition. The initial production JavaScript was approximately 767 kB, with Vite’s size warning.
+
+## PK-04 · Complete messages and connected reading
+
+| New lesson | Questions |
+| --- | ---: |
+| `bp-a2-01` · service request and reply | 12 |
+| `bp-a2-02` · the main point of project messages | 12 |
+| `bp-a2-03` · what happened and why | 12 |
+
+Four optional tasks in `unit-073` and `unit-103` check complete extension requests and maintenance reports. Twelve optional tasks in `unit-051`, `unit-061`, `unit-071`, `unit-081` and `unit-091` supply the corresponding practice checkpoints. The review in `unit-060` now points to `unit-056` for will and to the local model for “I’ll bring.” The review in `unit-089` points to `unit-082` and `unit-083` for the general pattern and to the current lesson for “done” and “sent.” All original exercise keys remain untouched. Total: 136 lessons, 980 steps and 2,213 questions.
+
+The editorial review found an unsupported promise, an unspecified walking time, an already-answered date and a missing example for subject “who.” These were corrected. The technical reviewer verified rich and compact replay and exercised both CP-061 transitions, including previously exposed tasks. The CP-091 follow-up mapping is listed as an explicit prerequisite in the approved checkpoint table and is checked against that source.
+
+All 564 tests, TypeScript, the generated catalogue check and the production build passed. Chromium checked 120 layouts at both widths and in both themes without horizontal overflow. The production checker confirmed that the local pilot and QA code stay outside the public build.

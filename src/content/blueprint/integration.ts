@@ -1,10 +1,11 @@
 import { practice } from '../pk01/author.ts';
 import type { CourseEntry, Lesson } from '../../types/lesson.ts';
+import { pk04 } from './pk04.ts';
 import { pk03 } from './pk03.ts';
 import { pk02 } from './pk02.ts';
 import type { ContentPacket } from './author.ts';
 
-export const packets: readonly ContentPacket[] = [pk02, pk03];
+export const packets: readonly ContentPacket[] = [pk02, pk03, pk04];
 
 export function insertBlueprint(entries: readonly CourseEntry[]): readonly CourseEntry[] {
   const after = new Map(packets.flatMap(packet => packet.placements.map(([id, lesson]) => [id, {
