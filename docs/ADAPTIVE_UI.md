@@ -4,7 +4,7 @@ The adaptive interface uses the Stage 05 engine for placement, knowledge, grants
 
 ## Local review
 
-- Run `npm run dev` in this checkout. Open `/?adaptive=1#/start` on the local server to preview the interface with the current empty content configuration.
+- Run `npm run dev` in this checkout. Open `/?adaptive=1#/start` on the local server to preview the local course pilot and available checkpoints. The diagnostic bank is empty.
 - The test-only entry `/tests/fixtures/adaptive-ui.html#/start` exercises the same screens with the engine test bank. Use a disposable browser context or a separate local origin. Do not use the test entry with learner progress.
 - `scripts/test-adaptive-ui.py` uses installed Python Playwright and Chromium. Pass `--dev` and `--production` for the development server and the build served at the configured base path.
 
@@ -18,9 +18,9 @@ The adaptive interface uses the Stage 05 engine for placement, knowledge, grants
 
 ## Before release
 
-Direction 04 must supply two independent, reviewed diagnostic forms, approved placement and practice metadata tied to live question IDs, the new lessons and ordered checkpoint profiles. The readiness validator remains the authority for starting diagnosis. The public launch needs a separate release decision and a repeat of the browser checks with approved content. Stage 06 test coverage uses fixtures for grants and supported checkpoints. The current integrated develop baseline has no connected progressive-hint controls in ordinary exercises. The optional progress port can record their assistance when that separate presentation work is integrated.
+The Stage 07 feature branch registers all 13 approved course checkpoints with live question IDs. Ordinary hints are captured by the existing assistance port. The checkpoint UI restores the latest attempt and resumes at the next unmarked item. A learner can still use the ordinary lesson practice to revisit the skill. Exposed materials never produce a new independent sign. CP-A2 reports separate text skills and offers review without awarding a level or a further transition.
 
-The engine exposes checkpoint results and verified grants. A partially completed checkpoint is not resumed by the UI after leaving its screen, since the engine’s checkpoint view does not expose the attempt ID and item cursor. The lightweight browser checks use emulated mobile viewports and keyboard controls in Chromium.
+Placement diagnosis still requires two independent reviewed forms and a release decision. The release validator is the authority for enabling it. The production build continues to use ordinary course progression. The browser checks use emulated mobile viewports and keyboard controls in Chromium.
 
 ## Verification
 

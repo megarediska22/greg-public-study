@@ -47,6 +47,7 @@ export const pk04Practice = [
   ...purchase, ...saturday, ...booking, ...files, ...experience,
   observation(message, 'bp-a2-01', 'locker-where', 'written', 'pickup-location-and-id', 'P'),
   observation(correspondence, 'bp-a2-02', 'poster-main', 'choice', 'printable-file-correspondence', 'R'),
+  observation(correspondence, 'bp-a2-02', 'audio-handoff', 'written', 'fit-audio-and-pass-on-deadline', 'P'),
   observation(story, 'bp-a2-03', 'bike-main', 'choice', 'delayed-bike-trip', 'R'),
 ];
 export const pk04Checkpoints: readonly CheckpointProfile[] = [

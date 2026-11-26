@@ -1,11 +1,12 @@
 import { practice } from '../pk01/author.ts';
 import type { CourseEntry, Lesson } from '../../types/lesson.ts';
+import { pk05 } from './pk05.ts';
 import { pk04 } from './pk04.ts';
 import { pk03 } from './pk03.ts';
 import { pk02 } from './pk02.ts';
 import type { ContentPacket } from './author.ts';
 
-export const packets: readonly ContentPacket[] = [pk02, pk03, pk04];
+export const packets: readonly ContentPacket[] = [pk02, pk03, pk04, pk05];
 
 export function insertBlueprint(entries: readonly CourseEntry[]): readonly CourseEntry[] {
   const after = new Map(packets.flatMap(packet => packet.placements.map(([id, lesson]) => [id, {
@@ -13,9 +14,8 @@ export function insertBlueprint(entries: readonly CourseEntry[]): readonly Cours
     subtitle: 'Перенос навыков', lesson, introducedIn: packet.version,
   }] as const)));
   return entries.flatMap(entry => {
-    const previous = entry;
     const next = after.get(entry.id);
-    return next ? [previous, next] : [previous];
+    return next ? [entry, next] : [entry];
   });
 }
 
@@ -40,6 +40,6 @@ export function applyBlueprint(lesson: Lesson): Lesson {
 
 export function blueprintCounts(entry: CourseEntry): CourseEntry {
   const addition = packets.find(packet => packet.supplements[entry.id])?.supplements[entry.id];
-  return addition?.questions.length && entry.stepCount !== undefined && entry.questionCount !== undefined ?
-    { ...entry, stepCount: entry.stepCount + 1, questionCount: entry.questionCount + addition.questions.length } : entry;
+  return addition?.questions.length && entry.questionCount !== undefined
+    ? { ...entry, questionCount: entry.questionCount + addition.questions.length } : entry;
 }

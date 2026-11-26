@@ -88,7 +88,7 @@ test('SUBSET real sequential replay, oldest partial, graduate, retries and prese
     const raw=JSON.stringify(progress); const writes=[];
     const session=await openCourseSession({getItem:k=>k===PROGRESS_KEY?raw:null,setItem:(...args)=>writes.push(args)});
     const ready = new Set(progress.completedLessons);
-    const boundary = [['daily-routines', 'bp-a1-02'], ['home-places', 'bp-a1-03'], ['actions-time', 'bp-a1-04'], ['small-talk-basics', 'bp-a1-05'], ['unit-031', 'bp-a1-06'], ['unit-039', 'bp-a1-07'], ['unit-041', 'bp-a1-08'], ['unit-071', 'bp-a2-01'], ['unit-081', 'bp-a2-02'], ['unit-091', 'bp-a2-03']];
+    const boundary = [['daily-routines', 'bp-a1-02'], ['home-places', 'bp-a1-03'], ['actions-time', 'bp-a1-04'], ['small-talk-basics', 'bp-a1-05'], ['unit-031', 'bp-a1-06'], ['unit-039', 'bp-a1-07'], ['unit-041', 'bp-a1-08'], ['unit-071', 'bp-a2-01'], ['unit-081', 'bp-a2-02'], ['unit-091', 'bp-a2-03'], ['unit-101', 'bp-a2-04'], ['unit-111', 'bp-a2-05'], ['unit-120', 'bp-a2-06']];
     const waivedInsertions = boundary.filter(([id]) => ready.has(id)).map(([, id]) => id);
     assert.deepEqual(session.progress, {
       ...progress, curriculumVersion: emptyProgress(lessons).curriculumVersion, pk01CoreAccess: true,

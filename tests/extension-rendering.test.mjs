@@ -46,3 +46,11 @@ test('A2 is discoverable while old A1 catalog links remain available', () => {
   const a2 = render(createElement(CoursePage, { level: 'A2' }));
   assert.doesNotMatch(a2, /href="#\/lesson\/bp-a1-01\/intro"/);
 });
+
+test('a completed lazy lesson with optional practice still shows seven required steps', () => {
+  const id = 'unit-103';
+  const steps = ['intro', 'theory', 'choice', 'blank', 'written', 'review', 'pk04-transfer', 'summary'];
+  const progress = { ...emptyProgress(), completedLessons: [id], lessons: { [id]: { completedSteps: steps, answers: {} } } };
+  const html = renderToStaticMarkup(createElement(ProgressContext, { value: { progress, dispatch() {}, reset() {} } }, createElement(CoursePage)));
+  assert.match(html, /aria-label="Сообщаем о неисправности в квартире: 7 из 7 шагов"/);
+});

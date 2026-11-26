@@ -7,7 +7,7 @@ import { applyBlueprint, insertBlueprint } from './blueprint/integration.ts';
 import { pk01Entries, supplementEntry } from './pk01/integration.ts';
 
 const earlyEntries = [...pk01Entries, ...historicalLessons.map(supplementEntry).map(entry =>
-  entry.lesson ? { ...entry, lesson: applyBlueprint(entry.lesson) } : entry)];
+  entry.lesson ? { ...entry, level: entry.lesson.level, lesson: applyBlueprint(entry.lesson) } : entry)];
 validateCourse(earlyEntries);
 validateTaskIndicators(earlyEntries, questionTasks);
 

@@ -160,6 +160,10 @@ export function openAdaptiveEngine(options: EngineOptions) {
       const attempt = state.checkpoints[id];
       return checkpointState(config, state.history, id, attempt?.id ?? '', attempt?.items ?? []);
     },
+    checkpointAttempt(id: string) {
+      const attempt = state.checkpoints[id];
+      return attempt ? { id: attempt.id, items: [...attempt.items] } : undefined;
+    },
     beginCheckpoint(id: string, attempt: string) {
       return commit(current => {
         const lesson = adaptiveCatalog.checkpoints.find(row => row.id === id)?.lesson;

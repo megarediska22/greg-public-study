@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { finalSkillLabels, finalSkillTips } from '../../content/blueprint/pk05Evidence';
 import { loadLesson } from '../../content/extension/registry';
 import { adaptiveCatalog, pilotCriteria } from '../../lib/adaptive/model';
 import type { Lesson } from '../../types/lesson';
@@ -14,8 +15,6 @@ export function Checkpoint({ id }: { id: string }) {
   const state = host?.engine.checkpoint(id);
   const allowed = Boolean(row && profile && state?.status !== 'unavailable' && host?.engine.access(row.lesson).available);
   const [lesson, setLesson] = useState<Lesson>();
-  const [attempt, setAttempt] = useState<string>();
-  const [index, setIndex] = useState(0);
   const [notice, setNotice] = useState('');
   useEffect(() => {
     if (!allowed || !row) return;
@@ -30,9 +29,12 @@ export function Checkpoint({ id }: { id: string }) {
     <h1>Контрольная пока недоступна</h1><p>Для этого раздела нужны проверенные задания и доступ к уроку.</p>{back}
   </>;
   const { write, busy } = adaptive;
-  const { engine } = adaptive.host;
+  const { engine, content } = adaptive.host;
+  const active = engine.checkpointAttempt(id);
+  const attempt = active?.id;
+  const index = profile.items.findIndex(itemId => !active?.items.includes(itemId));
   const criterionTitle = (id: string) => {
-    const ref = [...host!.content.rules.criteria, ...pilotCriteria].find(criterion => criterion.id === id);
+    const ref = [...content.rules.criteria, ...pilotCriteria].find(criterion => criterion.id === id);
     return adaptiveCatalog.groups.find(group => group.id === ref?.group)?.name ?? 'Проверяемое умение';
   };
   const questions = profile.items.map(itemId => lesson?.steps.flatMap(step => step.type === 'exercise' ? step.questions : []).find(q => q.id === itemId));
@@ -41,7 +43,7 @@ export function Checkpoint({ id }: { id: string }) {
     const next = crypto.randomUUID();
     await write(async () => {
       const status = await engine.beginCheckpoint(id, next);
-      if (status === 'saved') { setAttempt(next); setIndex(0); setNotice(''); }
+      if (status === 'saved') setNotice('');
       return status;
     });
   }
@@ -49,8 +51,7 @@ export function Checkpoint({ id }: { id: string }) {
     if (!attempt || !prompt) return;
     await write(async () => {
       const status = await engine.checkpointAnswer(id, attempt, prompt.id, response);
-      if (status === 'saved') setIndex(value => value + 1);
-      else if (status === 'unchanged') setNotice('Ответ не записан. Проверьте ввод или начните новую попытку.');
+      if (status === 'unchanged') setNotice('Ответ не записан. Проверьте ввод или начните новую попытку.');
       return status;
     });
   }
@@ -62,22 +63,28 @@ export function Checkpoint({ id }: { id: string }) {
     else setNotice('Следующий урок пока не удалось открыть.');
   }
 
+  const confirmed = state.criteria.filter(item => item.fresh && item.state === 'CONFIRMED');
+  const preliminary = state.criteria.filter(item => item.fresh && item.state !== 'CONFIRMED');
+  const review = state.criteria.filter(item => !item.fresh);
+  const skill = (id: string) => row.mode === 'FINAL_TEXT' && Object.hasOwn(finalSkillLabels, id)
+    ? finalSkillLabels[id as keyof typeof finalSkillLabels] : criterionTitle(id);
+  const feedback = (id: string) => row.mode === 'FINAL_TEXT' && Object.hasOwn(finalSkillTips, id)
+    ? <p>{finalSkillTips[id as keyof typeof finalSkillTips]}</p> : null;
+
   return <>
     <h1>Контрольная</h1>
     {attempt && state.completedAttempt ? <>
       <p role="status">{state.status === 'independent' ? 'Самостоятельная готовность подтверждена.' : 'Попытка завершена.'}</p>
-      <h2>Получилось самостоятельно</h2>
-      {state.criteria.some(item => item.fresh && item.state === 'CONFIRMED') ? <ul>
-        {state.criteria.filter(item => item.fresh && item.state === 'CONFIRMED').map(item => <li key={item.criterion.id}>{criterionTitle(item.criterion.id)}</li>)}
-      </ul> : <p>Пока нет подтверждённых тем в этой попытке.</p>}
-      {state.criteria.some(item => item.fresh && item.state !== 'CONFIRMED') && <>
-        <h2>Есть верный самостоятельный ответ</h2>
-        <ul>{state.criteria.filter(item => item.fresh && item.state !== 'CONFIRMED')
-          .map(item => <li key={item.criterion.id}>{criterionTitle(item.criterion.id)}</li>)}</ul>
-        <p>Попробуйте другой материал по этим умениям, чтобы проверить результат ещё раз.</p>
+      {confirmed.length > 0 && <><h2>Получилось самостоятельно</h2>
+        <ul>{confirmed.map(({ criterion }) => <li key={criterion.id}>{skill(criterion.id)}</li>)}</ul>
       </>}
-      {state.review.some(item => !state.criteria.some(result => result.criterion.id === item.id && result.fresh)) && <><h2>Стоит потренировать</h2><ul>
-        {state.review.filter(item => !state.criteria.some(result => result.criterion.id === item.id && result.fresh)).map(item => <li key={item.id}>{criterionTitle(item.id)}</li>)}</ul></>}
+      {preliminary.length > 0 && <><h2>Есть верный самостоятельный ответ</h2>
+        <ul>{preliminary.map(({ criterion }) => <li key={criterion.id}>{skill(criterion.id)}{feedback(criterion.id)}</li>)}</ul>
+        {row.mode !== 'FINAL_TEXT' && <p>Попробуйте другой материал по этим умениям, чтобы проверить результат ещё раз.</p>}
+      </>}
+      {review.length > 0 && <><h2>Стоит потренировать</h2>
+        <ul>{review.map(({ criterion }) => <li key={criterion.id}>{skill(criterion.id)}{feedback(criterion.id)}</li>)}</ul>
+      </>}
       <div className="adaptive-actions">
         {row.mode === 'BRIDGE' && state.next && <button className="button button-primary" disabled={busy}
           onClick={() => void transition(state.status === 'independent' ? 'independent' : 'supported')}>

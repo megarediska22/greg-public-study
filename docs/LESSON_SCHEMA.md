@@ -1,6 +1,6 @@
 # Lesson engine contract
 
-The PK-01 feature catalog contains **126 lessons, 885 steps and 2,040 questions**, including four elective Pre-A1 lessons. The historical first 26 contain the 21 published lessons and five continuation pilots. The next 95 units use the [extension data and loading contract](extension-engine.md). The ordered production registry is `src/content/course.ts`; the reference types are in `src/types/lesson.ts`.
+The Stage 07 feature catalogue contains **140 lessons, 1,011 steps and 2,267 questions**, including four elective Pre-A1 lessons. The historical first 26 contain the 21 published lessons and five continuation pilots. The next 95 units use the [extension data and loading contract](extension-engine.md). The ordered production registry is `src/content/course.ts`; the reference types are in `src/types/lesson.ts`.
 
 ## Lesson and catalog
 
@@ -8,7 +8,7 @@ The PK-01 feature catalog contains **126 lessons, 885 steps and 2,040 questions*
 
 The ordered `CourseEntry[]` in `src/content/course.ts` supplies card metadata (`id`, `title`, `subtitle`, `objective`) and an optional `lesson`. The lesson ID must match its catalog ID. An entry without content can unlock, but cannot award completion. New learners must complete all preceding entries. Validated retained grammar access for returning learners is described below.
 
-IDs are stable lowercase URL-safe slugs (`to-be`, `ready-question`), unique within their owner. Production question IDs must be unique across the course. Routes use `#/lesson/{lessonId}/{stepId}`; no component depends on particular lesson or step IDs. All 126 production lessons use `sample: false`.
+IDs are stable lowercase URL-safe slugs (`to-be`, `ready-question`), unique within their owner. Production question IDs must be unique across the course. Routes use `#/lesson/{lessonId}/{stepId}`; no component depends on particular lesson or step IDs. All 140 registered lessons use `sample: false`.
 
 ## Steps
 
@@ -58,7 +58,8 @@ The `check-exercise` action atomically validates all unresolved questions. Corre
 ```ts
 {
   version: 1,
-  curriculumVersion?: 2 | 3,
+  curriculumVersion?: 2 | 3 | 4 | 5 | 6 | 7,
+  waivedInsertions?: string[],
   pk01CoreAccess?: true,
   legacyUnlockedLessons?: string[],
   completedLessons: string[],
@@ -177,3 +178,10 @@ A named Pre-A1 level groups the four sequential preparation lessons. The core st
 Questions can include two ordered `hints`. Opening either records its level through the existing dev pilot practice port when the question is mapped. These hints remain hidden until requested. Review `guidance` can direct learners to the relevant prerequisite.
 
 The progress storage key and schema version remain `gps.progress.v1` and `version: 1`. Curriculum version 3 adds a waiver for the newly inserted `bp-a1-01` prerequisite when replaying previous saved progress. Other gates are validated as before. Fresh and reset sessions start without that waiver. Startup replay remains read-only and the first write that upgrades older data retains its raw backup.
+
+
+### PK-02–PK-05 ordered insertions
+
+The four packets use the existing seven required steps. `introducedIn` records the curriculum revision of a new interleaved lesson (4 through 7). Applying a packet can also add an optional exercise before a historical summary. The same transform applies to rich lessons and compact replay. Catalogue question totals include optional practice. Lesson completion, scores and step meters count only required steps.
+
+The schema and storage key stay stable. During upgrade the decoder validates attempts on the former curriculum to establish its accessible frontier. An insertion before a formerly accessible successor may be waived while the inserted lesson remains available on its own merits. A final append has no former successor. Fresh learners follow all required core lessons in sequence. Startup remains read-only. Former data are backed up by the guarded writer before its first migrated save. The retained metadata describes access in an unsigned browser store.

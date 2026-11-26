@@ -42,11 +42,11 @@ test('Installed registry is the implemented blueprint order and all installed qu
   const installed = new Set(lessons.map(entry => entry.id));
   assert.deepEqual(lessons.map(entry => entry.id), adaptiveCatalog.sequence.filter(row => installed.has(row.id)).map(row => row.id));
   assert.deepEqual(lessons.slice(0, 5).map(entry => entry.id), ids);
-  assert.equal(lessons.length, 136);
-  assert.equal(questionCount, 2213);
-  assert.equal(fullyLoaded.flatMap(entry => entry.lesson.steps).length, 980);
+  assert.equal(lessons.length, 140);
+  assert.equal(questionCount, 2267);
+  assert.equal(fullyLoaded.flatMap(entry => entry.lesson.steps).length, 1011);
   assert.doesNotThrow(() => validateCourse(fullyLoaded));
-  assert.equal(validateTaskIndicators(fullyLoaded, questionTasks), 2213);
+  assert.equal(validateTaskIndicators(fullyLoaded, questionTasks), 2267);
   assert.deepEqual(ids.map(id => exerciseQuestions(unit(id)).length), [10, 11, 8, 10, 12]);
   for (const id of supplements) {
     const before = baselineLessons.find(entry => entry.id === id).lesson;
