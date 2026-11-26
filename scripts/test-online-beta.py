@@ -94,7 +94,7 @@ def browser_checks(browser, regular, beta):
     errors = []
     page.on('pageerror', lambda error: errors.append(str(error)))
     page.goto(beta + '#/')
-    expect(page.get_by_role('link', name='Начать учиться', exact=True)).to_be_visible()
+    expect(page.get_by_role('link', name='Начать обучение без диагностики', exact=True)).to_be_visible()
     expect(page.get_by_role('link', name='Подобрать учебный старт', exact=True)).to_be_visible()
     assert page.evaluate("testRead('gps.beta.progress.v1')") is None
     assert page.evaluate("testRead('gps.beta.adaptive.v1')") is None
