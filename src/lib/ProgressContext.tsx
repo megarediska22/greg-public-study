@@ -2,14 +2,15 @@ import { createContext, useCallback, useContext, useEffect, useRef, useState, ty
 import { getProgressCourse } from '../content/extension/registry';
 import { emptyProgress, updateProgress, type Progress, type ProgressAction } from './progress';
 import type { openProgressSession, SaveStatus } from './progressStorage';
+import type { PracticePort } from './adaptive/practice';
 import { openCourseSession } from './courseSession';
 
-type ProgressContextValue = { progress: Progress; dispatch: (action: ProgressAction) => void; reset: () => void };
+type ProgressContextValue = { progress: Progress; dispatch: (action: ProgressAction) => void; reset: () => void; reportHint?: PracticePort['hint'] };
 export const ProgressContext = createContext<ProgressContextValue | null>(null);
 
 type Session = ReturnType<typeof openProgressSession>;
 
-export function ProgressProvider({ children }: { children: ReactNode }) {
+export function ProgressProvider({ children, practice }: { children: ReactNode; practice?: PracticePort }) {
   const [session, setSession] = useState<Session | null>(null);
   const [failed, setFailed] = useState(false);
   const [retry, setRetry] = useState(0);
@@ -25,11 +26,12 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
     return () => { active = false; };
   }, [retry]);
   if (!session) return <section className="notice" role="status"><p>{failed ? 'Не удалось загрузить данные для восстановления прогресса. Сохранение не изменено.' : 'Восстанавливаем прогресс…'}</p>{failed && <button className="button button-secondary" onClick={() => { setFailed(false); setRetry(value => value + 1); }}>Повторить загрузку</button>}</section>;
-  return <ReadyProgressProvider loaded={session}>{children}</ReadyProgressProvider>;
+  return <ReadyProgressProvider loaded={session} practice={practice}>{children}</ReadyProgressProvider>;
 }
 
-function ReadyProgressProvider({ children, loaded }: { children: ReactNode; loaded: Session }) {
+function ReadyProgressProvider({ children, loaded, practice }: { children: ReactNode; loaded: Session; practice?: PracticePort }) {
   const [progress, setProgress] = useState(loaded.progress);
+  const latestProgress = useRef(loaded.progress);
   const [saveStatus, setSaveStatus] = useState<SaveStatus>(loaded.unavailable ? 'unavailable' : 'unchanged');
   const explicitReset = useRef(false);
   useEffect(() => {
@@ -37,12 +39,20 @@ function ReadyProgressProvider({ children, loaded }: { children: ReactNode; load
     explicitReset.current = false;
     setSaveStatus(result);
   }, [progress]);
-  const dispatch = useCallback((action: ProgressAction) => { setProgress(previous => updateProgress(previous, getProgressCourse(), action)); }, []);
+  const dispatch = useCallback((action: ProgressAction) => {
+    const before = latestProgress.current;
+    const after = updateProgress(before, getProgressCourse(), action);
+    if (before === after) return;
+    latestProgress.current = after;
+    setProgress(after);
+    practice?.capture({ before, after, action });
+  }, [practice]);
   function reset() {
     explicitReset.current = true;
-    setProgress(emptyProgress());
+    latestProgress.current = emptyProgress();
+    setProgress(latestProgress.current);
   }
-  return <ProgressContext value={{ progress, dispatch, reset }}>
+  return <ProgressContext value={{ progress, dispatch, reset, reportHint: practice?.hint }}>
     {(saveStatus !== 'saved' && saveStatus !== 'unchanged' || loaded.recovered) && <p className="storage-note" role="status">{saveStatus === 'conflict' ? 'В другой вкладке изменился прогресс. Чтобы не перезаписать его, сохранение остановлено. Обновите страницу перед продолжением.' : saveStatus === 'backup-failed' || saveStatus === 'empty-blocked' ? 'Исходный прогресс защищён от перезаписи. Не удалось безопасно сохранить изменения; они действуют до перезагрузки.' : saveStatus === 'unavailable' ? 'Не удалось безопасно прочитать или сохранить прогресс. Существующие данные не перезаписываются; новые изменения действуют до перезагрузки.' : 'Сохранённые данные проверены по текущей программе. Корректная часть восстановлена. Исходные данные сохраняются отдельно перед записью изменений; новые задания нужно пройти.'}</p>}
     {children}
   </ProgressContext>;

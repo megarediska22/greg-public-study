@@ -10,13 +10,13 @@ function hasProgress(progress: Progress): boolean {
 }
 
 /** Opening a session only reads. Recovery never replaces the original on startup. */
-export function openProgressSession(storage: StoragePort, course: readonly CourseEntry[]) {
+export function openProgressSession(storage: StoragePort, course: readonly CourseEntry[], granted?: ReadonlySet<string>) {
   let expectedRaw: string | null = null;
   let readable = true;
   let initial: ReturnType<typeof decodeProgress>;
   try {
     expectedRaw = storage.getItem(PROGRESS_KEY);
-    initial = decodeProgress(expectedRaw, course);
+    initial = decodeProgress(expectedRaw, course, granted);
   } catch {
     readable = false;
     initial = { progress: emptyProgress(), recovered: false };
