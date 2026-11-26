@@ -10,6 +10,7 @@ import { adaptUnit, replayLesson, unitBand, unitLevel } from '../src/content/ext
 import { decodeProgress, emptyProgress, getScore, isLessonUnlocked, isStepUnlocked, PROGRESS_KEY, updateProgress } from '../src/lib/progress.ts';
 import { openProgressSession } from '../src/lib/progressStorage.ts';
 import { taskPresentation, validateTaskIndicators } from '../src/lib/taskIndicators.ts';
+import { applyBlueprint } from '../src/content/blueprint/integration.ts';
 import { gradeAnswer } from '../src/lib/grading.ts';
 
 const questions = lesson => lesson.steps.flatMap(step => step.type === 'exercise' ? step.questions : []);
@@ -19,7 +20,7 @@ function finish(progress, course, lesson, introduceMistakes = false) {
     if (step.type !== 'exercise') progress = updateProgress(progress, course, { ...base, type: 'complete' });
     else {
       const answers = Object.fromEntries(step.questions.map(q => [q.id, q.acceptedAnswers[0]]));
-      if (introduceMistakes) {
+      if (introduceMistakes && !step.optional) {
         const first = step.questions[0];
         const wrong = first.type === 'choice' ? first.options.find(option => !first.acceptedAnswers.includes(option)) : 'definitely invalid answer';
         progress = updateProgress(progress, course, { ...base, type: 'check-exercise', answers: { ...answers, [first.id]: wrong } });
@@ -115,13 +116,13 @@ for (const id of availableUnitIds) test(`${id}: authored feedback, stable IDs, 5
   assert.equal(lesson.id, id);
   assert.equal(lesson.level, unitLevel(unit.number));
   assert.equal(lesson.band, unitBand(unit.number));
-  assert.deepEqual(lesson.steps.map(step => step.id), ['intro', 'theory', 'choice', 'blank', 'written', 'review', 'summary']);
-  assert.deepEqual(lesson.steps.filter(step => step.type === 'exercise').map(step => step.questions.length), [5, 5, 5]);
-  assert.equal(lesson.steps[5].description, unit.review);
-  assert.equal(lesson.steps[6].description, unit.summary);
+  assert.deepEqual(lesson.steps.filter(step => !step.optional).map(step => step.id), ['intro', 'theory', 'choice', 'blank', 'written', 'review', 'summary']);
+  assert.deepEqual(lesson.steps.filter(step => step.type === 'exercise' && !step.optional).map(step => step.questions.length), [5, 5, 5]);
+  assert.equal(lesson.steps[5].description, applyBlueprint(adaptUnit(unit)).steps[5].description);
+  assert.equal(lesson.steps.at(-1).description, unit.summary);
   const entry = availableEntries.find(entry => entry.id === id);
   const course = [{ ...entry, lesson }];
-  assert.equal(validateTaskIndicators(course, {}), 15);
+  assert.equal(validateTaskIndicators(course, {}), questions(lesson).length);
   for (const type of ['choice', 'blank', 'written']) unit[type].forEach((tuple, index) => {
     const q = lesson.steps[type === 'choice' ? 2 : type === 'blank' ? 3 : 4].questions[index];
     assert.equal(q.id, `${id}-${tuple[0]}`);
@@ -137,7 +138,7 @@ for (const id of availableUnitIds) test(`${id}: authored feedback, stable IDs, 5
   progress = finish(progress, course, lesson, true);
   assert.deepEqual(progress.completedLessons, [id]);
   assert.deepEqual(getScore(progress, lesson), { total: 15, correct: 15, firstTry: 12, attempts: 18 });
-  const replay = replayLesson(await replayLoaders[id]());
+  const replay = applyBlueprint(replayLesson(await replayLoaders[id]()));
   assert.deepEqual(decodeProgress(JSON.stringify(progress), [{ ...entry, lesson: replay }]), { progress, recovered: false });
   assert.deepEqual(decodeProgress(JSON.stringify(progress), course), { progress, recovered: false });
   assert.equal(isStepUnlocked(progress, lesson, 'summary'), true);

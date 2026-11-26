@@ -11,13 +11,13 @@ export function tasks(id: string) {
   const keys = (key: Key) => typeof key === 'string' ? [key] : key;
   return {
     c(slug: string, instruction: string, prompt: string, options: readonly string[], correct: number, explanation: string, hints: Hint, russian = false) {
-      return author.choose([slug, instruction, prompt, [options[correct]], explanation, ...hints], options, russian);
+      return author.choose([slug, instruction, prompt, [options[correct]], explanation, ...hints], options, russian, /[а-яё]/iu.test(prompt));
     },
     b(slug: string, instruction: string, prompt: string, key: Key, explanation: string, hints: Hint) {
-      return author.blank([slug, instruction, prompt, keys(key), explanation, ...hints]);
+      return author.blank([slug, instruction, prompt, keys(key), explanation, ...hints], false, /[а-яё]/iu.test(prompt));
     },
     w(slug: string, instruction: string, prompt: string, key: Key, explanation: string, hints: Hint, action: Parameters<typeof author.write>[1] = 'respond') {
-      return author.write([slug, instruction, prompt, keys(key), explanation, ...hints], action);
+      return author.write([slug, instruction, prompt, keys(key), explanation, ...hints], action, false, /[а-яё]/iu.test(prompt));
     },
   };
 }

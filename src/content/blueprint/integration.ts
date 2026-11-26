@@ -1,9 +1,10 @@
 import { practice } from '../pk01/author.ts';
 import type { CourseEntry, Lesson } from '../../types/lesson.ts';
+import { pk03 } from './pk03.ts';
 import { pk02 } from './pk02.ts';
 import type { ContentPacket } from './author.ts';
 
-export const packets: readonly ContentPacket[] = [pk02];
+export const packets: readonly ContentPacket[] = [pk02, pk03];
 
 export function insertBlueprint(entries: readonly CourseEntry[]): readonly CourseEntry[] {
   const after = new Map(packets.flatMap(packet => packet.placements.map(([id, lesson]) => [id, {
@@ -27,7 +28,7 @@ export function applyBlueprint(lesson: Lesson): Lesson {
     ...lesson,
     steps: lesson.steps.flatMap(step => {
       if (step.type === 'intro' && addition) return [{ ...step, text: `${step.text} ${addition.reminder}` }];
-      if (step.type === 'review' && review) return [{ ...step, guidance: review }];
+      if (step.type === 'review' && review) return [{ ...step, description: review }];
       if (step.type === 'summary' && addition?.questions.length) {
         return [practice(`pk0${packet.version - 2}-transfer`, 'Дополнительная практика', addition.questions, true), step];
       }

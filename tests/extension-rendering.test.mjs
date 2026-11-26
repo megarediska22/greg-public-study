@@ -24,9 +24,9 @@ test('new exercise indicators render the actual written task before the stimulus
       const html = render(createElement(ExerciseQuestion, { question, index: 0, value: '', saved: undefined, missing: false, onChange() {} }));
       assert.ok(html.indexOf('class="task-indicator"') < html.indexOf('class="exercise-prompt"'), question.id);
       assert.match(html, new RegExp(`data-task-question="${question.id}"`));
-      assert.match(html, new RegExp(`class="exercise-prompt" lang="${question.promptLanguage}"`));
+      assert.match(html, new RegExp(`class="exercise-prompt" lang="${question.promptLanguage ?? 'en'}"`));
       assert.doesNotMatch(html, /answer-feedback/);
-      if (question.type === 'choice') assert.match(html, new RegExp(`<span lang="${question.optionsLanguage}">`));
+      if (question.type === 'choice') assert.match(html, new RegExp(`<span lang="${question.optionsLanguage ?? 'en'}">`));
     }
     const theory = render(createElement(LessonContent, { lesson, step: lesson.steps[1] }));
     assert.match(theory, /<th scope="col">Перевод<\/th>/);

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { loadLesson } from '../../content/extension/registry';
-import { adaptiveCatalog } from '../../lib/adaptive/model';
+import { adaptiveCatalog, pilotCriteria } from '../../lib/adaptive/model';
 import type { Lesson } from '../../types/lesson';
 import { LinkButton } from '../LinkButton';
 import { AdaptiveQuestion, type Response } from './AdaptiveQuestion';
@@ -31,6 +31,10 @@ export function Checkpoint({ id }: { id: string }) {
   </>;
   const { write, busy } = adaptive;
   const { engine } = adaptive.host;
+  const criterionTitle = (id: string) => {
+    const ref = [...host!.content.rules.criteria, ...pilotCriteria].find(criterion => criterion.id === id);
+    return adaptiveCatalog.groups.find(group => group.id === ref?.group)?.name ?? 'Проверяемое умение';
+  };
   const questions = profile.items.map(itemId => lesson?.steps.flatMap(step => step.type === 'exercise' ? step.questions : []).find(q => q.id === itemId));
   const prompt = questions[index];
   async function begin() {
@@ -66,8 +70,14 @@ export function Checkpoint({ id }: { id: string }) {
       {state.criteria.some(item => item.fresh && item.state === 'CONFIRMED') ? <ul>
         {state.criteria.filter(item => item.fresh && item.state === 'CONFIRMED').map(item => <li key={item.criterion.id}>{criterionTitle(item.criterion.id)}</li>)}
       </ul> : <p>Пока нет подтверждённых тем в этой попытке.</p>}
-      {state.review.length > 0 && <><h2>Стоит потренировать</h2><ul>
-        {state.review.map(item => <li key={item.id}>{criterionTitle(item.id)}</li>)}</ul></>}
+      {state.criteria.some(item => item.fresh && item.state !== 'CONFIRMED') && <>
+        <h2>Есть верный самостоятельный ответ</h2>
+        <ul>{state.criteria.filter(item => item.fresh && item.state !== 'CONFIRMED')
+          .map(item => <li key={item.criterion.id}>{criterionTitle(item.criterion.id)}</li>)}</ul>
+        <p>Попробуйте другой материал по этим умениям, чтобы проверить результат ещё раз.</p>
+      </>}
+      {state.review.some(item => !state.criteria.some(result => result.criterion.id === item.id && result.fresh)) && <><h2>Стоит потренировать</h2><ul>
+        {state.review.filter(item => !state.criteria.some(result => result.criterion.id === item.id && result.fresh)).map(item => <li key={item.id}>{criterionTitle(item.id)}</li>)}</ul></>}
       <div className="adaptive-actions">
         {row.mode === 'BRIDGE' && state.next && <button className="button button-primary" disabled={busy}
           onClick={() => void transition(state.status === 'independent' ? 'independent' : 'supported')}>
@@ -92,8 +102,4 @@ export function Checkpoint({ id }: { id: string }) {
     </>}
     {notice && <p role="status">{notice}</p>}
   </>;
-}
-
-function criterionTitle(id: string) {
-  return adaptiveCatalog.groups.find(group => group.placementCriterion === id)?.name ?? 'Проверяемое умение';
 }

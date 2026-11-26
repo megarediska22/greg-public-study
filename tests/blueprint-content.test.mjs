@@ -12,6 +12,7 @@ import { validateCourse } from '../src/lib/validation.ts';
 
 const counts = [
   [4, [12, 12, 12, 12], 31],
+  [5, [10, 12, 13], 7],
 ];
 
 const keys = new Map([
@@ -19,6 +20,9 @@ const keys = new Map([
   ['bp-a1-03', ['In a cup.', 'О книге на столе.', 'There are two coats in the hall.', 'By the door.', 'an', 'the', 'is', 'in', 'The guest towel is beside the sink.', 'The glasses are in the red box.', 'Is there a blanket in the bedroom?', "No, there aren't."]],
   ['bp-a1-04', ['Kim is reading a note.', 'The worker works at the gym on Mondays.', 'Natasha can help after practice.', 'Учитель говорит в этот момент.', 'teaches', 'are', 'help', 'playing', 'Ren is talking to a guest.', 'Sky sells fruit at the market.', "Jo isn't cooking dinner.", 'Are you studying?']],
   ['bp-a1-05', ['What time works for you?', 'Can we meet at 4:30?', 'Great! Noon works for me.', 'Человек предлагает выбрать другое время.', '11:30', 'at', 'Thursday', 'What', "I can't. How about seven?", 'Monday works for me. What time works for you?', '12:30 works for me. See you then!', 'What day can we meet?']],
+  ['bp-a1-06', ['2:15 p.m.', 'The east door.', 'The lobby.', 'The room.', '10:45', 'at', '61', '4:30', "Hi, Kim. I'll be back at 1:45. Please wait in Room 6.", "Hi, Bo. Wait by the side door. I'll be back at 3:20."]],
+  ['bp-a1-07', ['Opened the doors.', 'The hall was cold.', 'Wash the cups.', 'At two on Saturday.', 'opened', 'was', 'finish', '9:20', 'First we opened the gym. Then we checked the balls.', "We changed the room. We didn't send a note.", 'The window was open.', 'Kai finished the signs.']],
+  ['bp-a1-08', ['Tuesday at 6:15.', 'Where does Dev work?', 'They moved the piano.', 'Kelly is carrying two bags.', '3:15', 'do', 'open', 'plays', 'Where do you buy lunch?', 'Dana is packing the boxes.', "Drew, I'll be back at 2:40. Please wait in Room 4.", "We opened the side door. We didn't call Sam.", "Hi, Chris. I'll be back at 11:35. Please leave your form on the table by the door."]],
 ]);
 
 const full = async () => Promise.all(lessons.map(async entry => ({ ...entry, lesson: await loadLesson(entry.id) })));
@@ -91,7 +95,7 @@ test('live mappings match their exact authored question and approved objectives'
   assert.deepEqual(rules.readyLessons, course.map(entry => entry.id));
   assert.deepEqual(bank.items, []);
   assert.deepEqual(bank.forms, []);
-  for (const item of practice.filter(item => !item.criterion.id.startsWith('C-P'))) {
+  for (const item of practice.filter(item => item.criterion.id.startsWith('C-BP-'))) {
     const step = course.find(entry => entry.id === item.lessonId).lesson.steps.find(step => step.id === item.stepId);
     const q = step.questions.find(q => q.id === item.itemId);
     assert.equal(item.role, q.type === 'choice' ? 'R' : 'P', item.itemId);
@@ -100,4 +104,40 @@ test('live mappings match their exact authored question and approved objectives'
       adaptiveCatalog.sequence.find(row => row.id === item.lessonId).objectives.includes(id) ||
       adaptiveCatalog.checkpoints.find(row => row.id === item.checkpointId)?.objectives.includes(id)), item.itemId);
   }
+});
+
+test('registered checkpoint routes match the approved transitions and require a fresh sign per readiness criterion', async () => {
+  const { checkpointState } = await import('../src/lib/adaptive/routes.ts');
+  const { interpret } = await import('../src/lib/adaptive/evidence.ts');
+  const { rules, practice } = adaptivePilot;
+  for (const profile of rules.checkpoints) {
+    const row = adaptiveCatalog.checkpoints.find(row => row.id === profile.id);
+    const designated = profile.items.map(itemId => practice.find(item => item.itemId === itemId));
+    const event = (item, source = 'current', channel = 'checkpoint', assistance = 'H0') => interpret({
+      submission: source + ':' + item.itemId, source, channel, item, first: true,
+      outcome: 'correct', assistance, priorExposure: false,
+    });
+    const fresh = designated.map(item => event(item));
+    const prior = profile.readiness.flatMap(ref => practice.filter(item => !item.checkpointId && item.criterion.id === ref.id).map(item => event(item, 'earlier', 'lesson')));
+    const result = checkpointState(rules, [...prior, ...fresh], row.id, 'current', profile.items);
+    assert.equal(result.completedAttempt, true, row.id);
+    assert.equal(result.next, row.next || null, row.id);
+    assert.equal(result.status, profile.readiness.length ? 'independent' : 'practice', row.id);
+    assert.equal(checkpointState(rules, [...prior, ...fresh], row.id, 'current', profile.items.slice(1)).status, 'incomplete', row.id);
+    if (profile.readiness.length) {
+      const assisted = designated.map(item => event(item, 'current', 'checkpoint', 'H1'));
+      assert.equal(checkpointState(rules, [...prior, ...assisted], row.id, 'current', profile.items).status, 'insufficient', row.id);
+    }
+  }
+});
+
+test('unsupported curriculum markers and waivers beyond an earned frontier cannot unlock lessons', async () => {
+  const course = await full();
+  const old = { ...emptyProgress(course), waivedInsertions: ['bp-a1-02'] };
+  const forged = decodeProgress(JSON.stringify(old), course);
+  assert.equal(forged.recovered, true);
+  assert.equal(forged.progress.waivedInsertions, undefined);
+  const future = decodeProgress(JSON.stringify({ ...old, curriculumVersion: 999 }), course);
+  assert.deepEqual(future, { progress: emptyProgress(course), recovered: true });
+  assert.equal(isLessonUnlocked(forged.progress, course, 'have-has'), false);
 });
